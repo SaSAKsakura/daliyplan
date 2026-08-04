@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>文件列表</title>
+  <link rel="stylesheet" href="../libs/css/vant.css">
+  <link rel="stylesheet" href="../assets/css/erow.css">
+
+  <style>
+    .van-tabs--line .van-tabs__wrap {
+      height: 40px;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    .van-tabs__wrap .van-tabs__nav {
+      border-color: #e6e6e6 !important;
+    }
+
+    .van-tab {
+      font-size: 14px;
+      font-weight: unset;
+    }
+
+    .van-tabs__line {
+      display: none;
+    }
+
+    .van-tab.van-tab--active .van-tab__text {
+      display: inline-flex;
+      border-bottom: 3px solid #3076ff;
+      height: 100%;
+      align-items: center;
+    }
+
+    .header .rightIcon {
+      width: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      right: 10px;
+    }
+
+    .main {
+      padding-bottom: 15px;
+    }
+
+    .tableCell {
+      /* margin: 15px; */
+      border-radius: 10px;
+      background-color: #fff;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 15px;
+      border-bottom: 1px solid #e6e6e6;
+    }
+
+    .tableCell>div:first-child {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .tableCell>div:first-child>span {
+      line-height: 22px;
+      font-size: 16px;
+    }
+
+    .tableCell>div:first-child>span:first-child {
+      color: #333;
+      word-break: break-all;
+    }
+
+    .tableCell>div:first-child>span:last-child {
+      margin-top: 8px;
+      color: #999;
+    }
+
+    audio {
+      margin-top: 10px;
+      width: 100%;
+    }
+
+    .amrAudio {
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+      width: 100%;
+    }
+
+    .amrAudio>span:first-child {
+      background-color: #61b2ff;
+      width: 60px;
+      height: 30px;
+      line-height: 30px;
+      border-radius: 15px;
+      text-align: center;
+      color: #fff;
+    }
+
+    .amrAudio>span:nth-child(2) {
+      margin-left: 8px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app" class="flexPage" v-cloak>
+    <div class="header">
+      <span class="leftIcon back" @click="closeForm()"></span>
+      <span class="centerTitle">文件列表</span>
+      <span class="rightIcon" @click="uploadAllFile">
+        <img src="../assets/images/common/upload_all.png" style="width: 30px;" />
+      </span>
+    </div>
+    <div>
+      <van-tabs v-model="curTab" swipeable color="#3076FF" title-active-color="#3076FF">
+        <van-tab :title="'待上传(' + ingList.length + ')'" name="doing"></van-tab>
+        <van-tab :title="'已上传(' + edList.length + ')'" name="done"></van-tab>
+      </van-tabs>
+    </div>
+    <div class="main" v-show="curTab === 'doing'">
+      <van-empty v-show="ingList.length == 0" class="empty-image" :image="window.PAGE_CONFIG.emptyListImage"
+        description="暂无数据">
+      </van-empty>
+      <div class="tableCell" v-for="file in ingList" :key="file.file_id" @click="viewLocalFile(file)">
+        <div style="margin-right: 8px;">
+          <span>{{ decodeURIComponent(file.file_name) }}</span>
+          <span>{{ file.file_size }}</span>
+        </div>
+        <div @click.stop="uploadFile(file)"
+          style="margin-right: 6px; width: 22px; height: 22px; background: url(../assets/images/common/upload.png) no-repeat center;background-size: 100%;">
+        </div>
+        <div @click.stop="deleteFile(file)"
+          style="width: 22px; height: 22px; background: url(../assets/images/common/delete.png) no-repeat center; background-size: 100%;">
+        </div>
+      </div>
+    </div>
+    <div class="main" v-show="curTab === 'done'">
+      <van-empty v-show="edList.length == 0" class="empty-image" :image="window.PAGE_CONFIG.emptyListImage"
+        description="暂无数据">
+      </van-empty>
+      <div class="tableCell" style="flex-direction: column; align-items: unset; justify-content: center;"
+        v-for="file in edList" :key="file.file_guid" @click="viewRemoteFile(file)">
+        <div>
+          <span style="display: flex; justify-content: space-between;">
+            <span style="flex: 1;">{{ file.file_name }}</span>
+            <span style="font-size: 15px; width: 100px; text-align: right; color: #999;">{{file.create_date}}</span>
+          </span>
+          <span>{{ (file.content_size / (1024 * 1024)).toFixed(2) }}MB</span>
+        </div>
+        <div v-if="audioControlType(file) == 1" class="amrAudio">
+          <span>{{ amrStautsTitle(file) }}</span>
+          <span>{{ file.amrCurPos.toFixed(1) }} / {{ file.amrDuration.toFixed(1) }}</span>
+        </div>
+      </div>
+    </div>
+    <van-image-preview v-model="showPic" :images="images"></van-image-preview>
+  </div>
+
+  <script src="../config/index.js"></script>
+  <script src="../tools/index.js"></script>
+  <script src="../libs/js/Vue.js"></script>
+  <script src="../libs/js/vant.min.js"></script>
+  <script src="../libs/js/BenzAMRRecorder.min.js"></script>
+
+  <script>
+    var screenScale = false;
+  </script>
+
+  <script>
+    let mode = erTool.QueryString("mode") || "Global"; // Global Module Item
+    let fnCode = erTool.QueryString("fnCode") || "";
+    let rowId = erTool.QueryString("rowId") || "";
+    let folder = erTool.QueryString("folder") || "";
+    let lastPage = "";
+    let inPageManager = false;
+    uploadName = '';
+
+    let time = null;
+    let curAmr = null;
+
+    let vm = new Vue({
+      el: '#app',
+      data: function () {
+        return {
+          curTab: 'doing',
+          isLoading: false,
+          ingList: [],
+          edList: [],
+          showPic: false,
+          images: [],
+        }
+      },
+
+      methods: {
+        closeForm: function () {
+          pageManager.back();
+        },
+        uploadFile: function (file) {
+          this.$dialog.confirm({
+            title: "系统消息",
+            message: "确定[上传]该文件？",
+          }).then(() => {
+            // erJsBridge.erowUploadFile(outNetDomain + "/common/commonFile/uploadFile?json=" + encodeURIComponent(JSON.stringify({ Token: erUser.token })), {
+            erJsBridge.erowUploadFile(outNetDomain + "/common/commonFile/uploadFile?json=" + encodeURIComponent(JSON.stringify({ [window.pageConfig.st || 'token']: erUser.token })), {
+              action: "upload",
+              fnCode: file.fn_code,
+              instanceGuid: file.instance_guid,
+
+              folderCode: file.folder_code || "",
+              longitude: file.lon || "",
+              latitude: file.lat || "",
+              remark: file.remark || "",
+              bizInfo: file.biz_info || "",
+              fileCreateDate: file.create_time || "",
+            },
+              file.file_id, "uploadedfile", file.file_name, file.file_path, "image/jpeg", data => {
+                vm.$toast.success("上传成功");
+                getFiles();
+                // vm.$toast.clear();
+              });
+          });
+        },
+
+        deleteFile: function (file) {
+          this.$dialog.confirm({
+            title: "系统消息",
+            message: "确定[删除]该文件？",
+          }).then(() => {
+            erJsBridge.deleteFile(file.file_id, function (data) {
+              if (data.resultFlag == "-1") {
+                getFiles();
+              } else {
+                vm.$toast.fail(data.errMsg);
+              }
+            });
+          });
+        },
+
+        uploadAllFile: function (file) {
+          if (this.ingList.length <= 0) return;
+          this.$dialog.confirm({
+            title: "系统消息",
+            message: "确定[上传全部]文件？",
+          }).then(() => {
+            vm.$toast.loading({ duration: 0, message: "文件上传中..." });
+            (async () => {
+              let successCnt = 0;
+              for (const file of vm.ingList) {
+                await new Promise((res, rej) => {
+                  // erJsBridge.erowUploadFile(outNetDomain + "/common/commonFile/uploadFile?json=" + encodeURIComponent(JSON.stringify({ Token: erUser.token })), {
+                  erJsBridge.erowUploadFile(outNetDomain + "/common/commonFile/uploadFile?json=" + encodeURIComponent(JSON.stringify({ [window.pageConfig.st || 'token']: erUser.token })), {
+                    action: "upload",
+                    fnCode: file.fn_code,
+                    instanceGuid: file.instance_guid,
+                    folderCode: file.folder_code || "",
+                    longitude: file.lon || "",
+                    latitude: file.lat || "",
+                    remark: file.remark || "",
+                    bizInfo: file.biz_info || "",
+                    fileCreateDate: file.create_time || "",
+                  },
+                    file.file_id, "uploadedfile", file.file_name, file.file_path, "image/jpeg", data => {
+                      res();
+                    });
+                }).then(data => {
+                  successCnt++;
+                }).catch(() => { });
+              }
+              if (successCnt > 0) {
+                getFiles();
+                vm.$toast.success(`上传完成，成功${successCnt}个`);
+              }
+              else {
+                vm.$toast.fail("上传失败");
+              }
+            })();
+          });
+        },
+
+        viewLocalFile: function (file) {
+          if (erJsBridge.osType != 1 && file.file_type == "Picture") {
+            let filePath = file.file_path;
+            filePath = filePath.substring(0, filePath.lastIndexOf("/") + 1) + encodeURIComponent(file.file_name);
+            this.images = [filePath];
+            this.showPic = true;
+          }
+          else {
+            // 改成新android.js里的方法,要用文件url
+            let url = file.url + `&fileName=${file.file_name}`;
+            erJsBridge.showFile(url);
+          }
+        },
+
+        viewRemoteFile: function (file) {
+          let type = file.content_type;
+          if (type == "jpg" || type == "png") {
+            // let url = outNetDomain + "/common/commonFile/getRecordImage?fileguid=" + file.file_guid + "&json=" + encodeURIComponent(JSON.stringify({ Token: erUser.token }));
+            let url = outNetDomain + "/common/commonFile/getRecordImage?fileguid=" + file.file_guid + "&json=" + encodeURIComponent(JSON.stringify({ [window.pageConfig.st || 'token']: erUser.token }));
+            this.images = [url];
+            this.showPic = true;
+          }
+          else if (type == "wav" || type == "mp3" || type == "m4a" || type == "amr") {
+            let amr = file.amr;
+            if (curAmr != amr) {
+              if (curAmr != null) curAmr.pause();
+              curAmr = amr;
+            }
+            if (!amr.isInit()) {
+              this.$toast.loading({
+                duration: 0,
+                message: "音频加载中",
+              })
+              amr.initWithUrl(this.audioSrc(file)).then(function () {
+                vm.$toast.clear();
+                file.amrDuration = amr.getDuration();
+                amr.play();
+              }).catch(err => {
+                vm.$toast.fail("音频加载异常");
+              });
+              // 绑定事件
+              amr.onPlay(function () {
+                file.amrStatus = "play";
+                if (time != null) clearInterval(time);
+                time = setInterval(function () {
+                  file.amrCurPos = amr.getCurrentPosition();
+                }, 100);
+              });
+              amr.onStop(function () {
+                file.amrStatus = "stop";
+                clearInterval(time);
+                time = null;
+                curAmr = null;
+              });
+              amr.onPause(function () {
+                file.amrStatus = "pause";
+                clearInterval(time);
+                time = null;
+              });
+              amr.onEnded(function () {
+                file.amrStatus = "stop";
+                file.amrCurPos = file.amrDuration;
+                clearInterval(time);
+                time = null;
+                curAmr = null;
+              });
+              amr.onResume(function () {
+                file.amrStatus = "play";
+                if (time != null) clearInterval(time);
+                time = setInterval(function () {
+                  file.amrCurPos = amr.getCurrentPosition();
+                }, 100);
+              });
+            }
+            else if (amr.isPlaying()) {
+              amr.pause();
+            }
+            else {
+              amr.playOrResume();
+            }
+          }
+          else if (type == "pdf") {
+            window.location.href = "./Pdf.html?file=" + encodeURIComponent(JSON.stringify(file)) + "&t=" + new Date().getTime();
+          }
+        },
+      },
+
+      computed: {
+        audioControlType: function () {
+          return file => {
+            let type = file.content_type.toLowerCase();
+            if (type == "amr" || type == "wav" || type == "mp3" || type == "m4a") return 1;
+            return 0;
+          }
+        },
+
+        audioSrc: function () {
+          return file => {
+            return outNetDomain + "/common/commonFile/getRecordRec?fileguid=" + file.file_guid
+              + "&content_type=" + file.content_type
+              // + "&json=" + encodeURIComponent(JSON.stringify({ Token: erUser.token }));
+              + "&json=" + encodeURIComponent(JSON.stringify({ [window.pageConfig.st || 'token']: erUser.token }));
+          }
+        },
+
+        amrStautsTitle: function () {
+          return file => {
+            if (file.amrStatus == "play") return "暂停";
+            return "播放";
+          }
+        },
+      },
+      created() {
+        erMain.initialize(() => {
+          if (pageManager.pages.length > 0 && pageManager.pages[pageManager.pages.length - 1].url.indexOf("/FileList.html") != -1) {
+            inPageManager = true;
+            let pageParams = pageManager.getPageParams();
+            mode = pageParams.mode || "Global";
+            fnCode = pageParams.fnCode || "";
+            rowId = pageParams.rowId || "";
+            folder = pageParams.folder || "";
+            uploadName = pageParams.uploadName || '';
+
+          }
+          getFiles()
+        })
+      }
+    });
+    function getFiles() {
+      if (mode == "Global") {
+        erJsBridge.getAllFiles(erUser.userId, setLocalFileList);
+        let params = { Token: erUser.token };
+        GetFileUploadedList();
+      }
+      else if (mode == "Module") {
+
+      }
+      else if (mode == "Item") {
+        erJsBridge.getFileList(erUser.userId, fnCode, rowId, folder, setLocalFileList);
+        let params = {
+          Token: erUser.token,
+          tablename: fnCode,
+          rowid: rowId,
+        }
+        GetFileUploadedList();
+      }
+    }
+    function GetFileUploadedList() {
+      if (mode == 'Item') {
+        let sysloadUrl = ServerPathPost + 'zhjl-APP/sysLoadPostData'
+        let menuConfigKey = pageManager.getPageParams().menuConfigKey;
+        let params = {
+          fnCode: fnCode,
+          instanceGuid: rowId
+        }
+        sysLoadPostData(sysloadUrl, uploadName, params, menuConfigKey, 'VIEW').then(res => {
+          if (res.data.datalist.length) {
+            let list = res.data.datalist;
+            for (let item of list) {
+              let contentType = item.content_type.toLowerCase();
+              if (contentType == "amr" || contentType == "mp3" || contentType == "wav" || contentType == "m4a") {
+                item.amr = new BenzAMRRecorder();
+                item.amrStatus = "stop";
+                item.amrDuration = 0;
+                item.amrCurPos = 0;
+              }
+            }
+            vm.edList = list;
+          }
+        })
+      }
+    }
+
+    function setLocalFileList(data) {
+      if (data.resultFlag == "-1") {
+        let list = data.result.filter(file => file.upload_status == "NotUpload");
+        let pointId = pageManager.getPageParams().pointId;
+        if (pointId && mode == 'item') {
+          let fileList = list.filter((file) => {
+            let biz_info = JSON.parse(decodeURIComponent(file.biz_info))
+            return bizInfo.pointId == pointId
+          })
+          vm.ingList = fileList;
+          return;
+        }
+        vm.ingList = list;
+      }
+    }
+    function setUploadFileList(data) {
+      if (data.hasOwnProperty("result") && data.result.hasOwnProperty("Table")) {
+        let list = data.result.Table;
+        for (let item of list) {
+          let contentType = item.content_type.toLowerCase();
+          if (contentType == "amr" || contentType == "mp3" || contentType == "wav" || contentType == "m4a") {
+            item.amr = new BenzAMRRecorder();
+            item.amrStatus = "stop";
+            item.amrDuration = 0;
+            item.amrCurPos = 0;
+          }
+        }
+        vm.edList = list;
+      }
+    }
+
+    function setProjectFileList(data) {
+      if (data.hasOwnProperty("result") && data.result.hasOwnProperty("Table")) {
+        let list = data.result.Table;
+        for (let item of list) {
+          let contentType = item.content_type.toLowerCase();
+          if (contentType == "amr" || contentType == "mp3" || contentType == "wav" || contentType == "m4a") {
+            item.amr = new BenzAMRRecorder();
+            item.amrStatus = "stop";
+            item.amrDuration = 0;
+            item.amrCurPos = 0;
+          }
+        }
+        vm.edList = list;
+      }
+    }
+
+    function closeForm() {
+      vm.closeForm();
+    }
+
+  </script>
+</body>
+
+</html>

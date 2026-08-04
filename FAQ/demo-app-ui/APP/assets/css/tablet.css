@@ -1,0 +1,95 @@
+/* @scope(#app) { */
+#app.isTablet .main {
+  background: var(--color-white);
+  padding: 60px 0;
+}
+#app.isTablet .oneMenu .menuIcon {
+  height: 66px;
+  width: 66px;
+}
+#app.isTablet .oneMenu .menuText {
+  font-size: 18px;
+  font-weight: normal;
+}
+
+#app.isTablet > .ucContainer {
+  flex-direction: row;
+}
+
+/* SideMenuContainer */
+
+#app .SideMenuContainer {
+  height: 100%;
+  width: 77px;
+  flex-shrink: 0;
+  background: #121c2a;
+}
+
+#app .SideMenuContainer + .pageContent {
+  margin-top: 0px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  overflow: auto;
+}
+
+#app .side-back {
+  margin: 16px auto 0;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #374452;
+  border-radius: 5px;
+}
+#app .side-back img {
+  height: 18px;
+  width: 18px;
+}
+#app .side-back p {
+  font-size: 14px;
+  color: var(--color-white);
+  margin-top: 2px;
+}
+
+#app .side-item {
+  margin-top: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-left: 5px solid #0000;
+}
+
+#app .side-item.active {
+  border-left-color: var(--theme-color);
+}
+
+#app .side-item img {
+  width: 26px;
+  height: 26px;
+  margin: auto;
+  filter: grayscale(1);
+}
+
+#app .side-item.active img {
+  filter: none;
+}
+
+#app .side-item span {
+  font-size: 16px;
+  color: var(--color-white);
+  margin-top: 12px;
+}
+
+#app .side-item.active span {
+  color: var(--theme-color);
+}
+
+
+
+
+
+/* } */

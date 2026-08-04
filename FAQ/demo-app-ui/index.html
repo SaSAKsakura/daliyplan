@@ -1,0 +1,1039 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .appName1,
+        .appName2 {
+            font-size: 32px;
+            color: white;
+            display: flex;
+            justify-content: center;
+            padding-top: 5px;
+            z-index: 20;
+        }
+
+        #loadingText {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            top: 120px;
+            position: absolute;
+            color: white;
+            z-index: 20;
+        }
+    </style>
+</head>
+
+<body style="position:absolute;height:100%;width:100%;" ondblclick="openConsole()">
+    <img src="Img/index.png" style="width:100%;height:100%;position:absolute;" />
+    <div id="loadingText">正在加载中,请稍候<span id="dian"></span></div>
+    <img src="Img/enter.png" style="width: 100%;position: absolute; top: 25%;z-index:10;" />
+    <div style="position: absolute; width: 100%; bottom: 15%;z-index:20;">
+        <div class="appName1">安全生产</div>
+        <div class="appName2">风险管控平台</div>
+        <div id="version" class="appName1" style="font-size: 15px;"></div>
+    </div>
+    <script src="js/jquery-3.1.0.min.js"></script>
+    <script src="APP/config/index.js"></script>
+    <script src="js/common.js?v=9"></script>
+    <script src="APP/js/syncData.js?v=2"></script>
+    <script src="APP/js/encrypt/aes.js" type="text/javascript"></script>
+    <script src="APP/js/encrypt/pbkdf2.js" type="text/javascript"></script>
+    <script src="APP/js/encrypt/aesutil.js" type="text/javascript"></script>
+
+    <script>
+
+        $("#version").html(htmlVersion);
+
+        var accessToken;
+        var wx_code;
+        var _Token;
+        var _UserID;
+        var _UserName;
+        var _UniqueID = "igw_" + new Date().getTime();
+        var _deviceOS = "android";
+        var debugMode = false;
+        var _VConsoleFlag = 0;
+        var vConsole = null;
+        var dianCount = 0;
+        var pageLoadCount = 1;
+        var _pageLoadIntVal = null;
+        var osType = 0;
+        var needConfirmFlag = 0;
+        if (!/android/i.test(navigator.userAgent)) {
+            osType = 1;
+        }
+        setInterval(function () {
+            if (dianCount == 0) {
+                $("#dian").html(".");
+                dianCount++;
+            } else if (dianCount == 1) {
+                $("#dian").html("..");
+
+                dianCount++;
+            } else if (dianCount == 2) {
+                $("#dian").html("...");
+                dianCount++;
+            }
+            else {
+                $("#dian").html("");
+                dianCount = 0;
+            }
+        }, 1000);
+        setTimeout(function (rData) {
+            $("#loading").hide();
+            goToSignin("加载超时！");
+        }, 1000 * 180);
+
+        var _loginLog = {};
+        _loginLog.wxUserId = localStorage.userId;
+        _loginLog.htmlVersion = htmlVersion;
+        function openConsole() {
+            if (_VConsoleFlag == 0) {
+                vConsole = new VConsole();
+                _VConsoleFlag = -1;
+                appSetParameter("_VConsoleFlag", -1, function (res) {
+
+                });
+            } else {
+                if (vConsole != null) {
+                    vConsole.destroy();
+                    _VConsoleFlag = 0;
+                    appSetParameter("_VConsoleFlag", 0, function (res) {
+
+                    });
+                }
+            }
+        }
+        initWeChartJs();
+
+        function initWeChartJs() {
+            var angent = navigator.userAgent
+            const versionArr = /wxworklocal\/(\d+.\d+.\d+)/.exec(angent)[1].replace('.','');
+            console.log(versionArr)
+            if( versionArr < limitIgwVersion) {
+                goToSignin("当前i国网版本过低，请升级i国网至最新版本");
+                return
+            }
+            $.getScript("js/jweixin-1.2.0.js", function () {
+
+                clearInterval(_pageLoadIntVal);
+                _pageLoadIntVal = setInterval(function () {
+
+                    if (document.getElementById("__WeixinJSBridgeIframe_SetResult") == null && osType == 0) {//android
+                        pageLoadCount++;
+                        console.log("加载失败重新刷新");
+                        window.location.reload();
+                    } else {
+                        clearInterval(_pageLoadIntVal);
+                    }
+
+                }, 2000);
+
+
+
+                wx.config({
+                    beta: true,
+                    debug: false,
+                    appId: wxappId,
+                    timestamp: new Date().getTime(),
+                    nonceStr: "CF82F13B500E43969998A4E8423F8A71",
+                    signature: "B96D85B82113469DAF3880A6EFFBF477",
+                    jsApiList: [
+                        //'onUserCaptureScreen',
+                        //'getZipAppDirectory',
+                        //'ext_FileManager_Write',
+                        //'ext_FileManager_Read',
+                        //'ext_FileManager_Remove',
+                        //'ext_FileManager_Create',
+                        //'ext_FileManager_RemoveDirectory',
+                        //'ext_FileManager_Exist',
+                        //'ext_FileManager_IsDirectory',
+                        //'ext_FileManager_Information',
+                        //'ext_Socket_Init',
+                        //'ext_Socket_UnInit',
+                        //'ext_Socket_CreateChannel',
+                        //'ext_Socket_CloseChannel',
+                        //'ext_Socket_SendData',
+                        //'multiWindows_subscribe',
+                        //'ext_Database_Open',
+                        //'ext_Database_Exec',
+                        //'ext_Database_Query',
+                        //'ext_Database_Close',
+                        //'ext_rlble_initBluetoothAdapter',
+                        //'ext_rlble_scanBluetoothDev',
+                        //'ext_rlble_startConnectBluetoothDev',
+                        //'ext_rlble_onBluetoothDevConnDataRecv',
+                        //'ext_rlble_BluetoothDevSendData',
+                        //'ext_rlble_closeBluetoothDevConnection',
+                        //'ext_rlble_stopBluetoothDevScan',
+                        //'showWatermark',
+                        //'hideWatermark',
+                        //'ext_SandBox_WaterMark',
+                        //"ext_SandBox_ScreenPolicy",
+                        //"ext_SandBox_ScreenShot",
+                        //"ext_DataCache_GetInfo",
+                        //"ext_DataCache_SaveInfo",
+                        //'multiWindows_subscribe',
+                        //'ext_Net_Upload',
+                        //'ext_Net_CancelUpload',
+                        //'ext_Net_Download',
+                        //"startRecordVoiceBuffer",
+                        //"onRecordBufferReceived", "stopRecordVoiceBuffer", "ocr"
+                        'getZipAppDirectory',
+
+                        'ext_FileManager_Write',
+                        'ext_FileManager_Read',
+                        'ext_FileManager_Remove',
+                        'ext_FileManager_Create',
+                        'ext_FileManager_RemoveDirectory',
+                        'ext_FileManager_Exist',
+                        'ext_FileManager_IsDirectory',
+                        'ext_FileManager_Information',
+
+                        'ext_Socket_Init',
+                        'ext_Socket_UnInit',
+                        'ext_Socket_CreateChannel',
+                        'ext_Socket_CloseChannel',
+                        'ext_Socket_SendData',
+
+                        'multiWindows_subscribe',
+
+                        'ext_SGMap_init',
+                        'ext_SGMap_Operation',
+                        'ext_SGMap_Search',
+                        'ext_SGMap_Location',
+
+                        'ext_Etas_List',
+                        'ext_Etas_Init',
+                        'ext_Etas_Reg',
+                        'ext_Etas_UnReg',
+                        'ext_Etas_checkStatus',
+                        'ext_Etas_Verify',
+                        'ext_Etas_SaveData',
+                        'ext_Etas_GetData',
+                        'ext_Etas_RemoveData',
+                        'ext_Etas_Clear',
+                        'ext_Etas_OffLineVerify',
+
+                        'ext_ISCP_Init',
+                        'ext_ISCP_ConnectService',
+                        'ext_ISCP_GetLocalPort',
+                        'ext_ISCP_Close',
+                        'ext_ISCP_Status',
+
+                        'ext_Database_Open',
+                        'ext_Database_Exec',
+                        'ext_Database_Query',
+                        'ext_Database_Close',
+
+                        'ext_rlble_initBluetoothAdapter',
+                        'ext_rlble_scanBluetoothDev',
+                        'ext_rlble_startConnectBluetoothDev',
+                        'ext_rlble_onBluetoothDevConnDataRecv',
+                        'ext_rlble_BluetoothDevSendData',
+                        'ext_rlble_closeBluetoothDevConnection',
+                        'ext_rlble_stopBluetoothDevScan',
+                        'ext_rlble_onBluetoothDevConnStateChange',
+                        'ext_rlble_autoBluetoothDevConnection',
+
+                        'ext_Popover_Open',
+                        'ext_Popover_Close',
+
+                        "multiWindows_open",
+                        "multiWindows_close",
+                        "multiWindows_startWidget",
+                        "multiWindows_finishWidget",
+                        "multiWindows_subscribe",
+                        "multiWindows_publish",
+
+                        'selectEnterpriseContact',
+                        'openChatWithMsg',
+                        'openUserProfile',
+
+                        'onMenuShareAppMessage',
+                        'onMenuShareWechat',
+                        'shareAppMessage',
+                        'shareWechatMessage',
+                        'onMenuShareTimeline',
+
+                        'chooseImage',
+                        'getLocalImgData',
+                        'previewImage',
+                        'uploadImage',
+                        'downloadImage',
+                        'previewFile',
+
+                        'chooseVideo',
+                        'uploadVideo',
+                        'downloadVideo',
+
+                        'startRecord',
+                        'stopRecord',
+                        'onVoiceRecordEnd',
+                        'playVoice',
+                        'playVoice',
+                        'stopVoice',
+                        'onVoicePlayEnd',
+                        'startRecordVoiceBuffer',
+                        'onRecordBufferReceived',
+                        'stopRecordVoiceBuffer',
+                        'uploadVoice',
+                        'downloadVoice',
+                        'translateVoice',
+
+                        'startWifi',
+                        'stopWifi',
+                        'connectWifi',
+                        'getWifiList',
+                        'onGetWifiList',
+                        'onWifiConnected',
+                        'getConnectedWifi',
+
+                        'openBluetoothAdapter',
+                        'closeBluetoothAdapter',
+                        'getBluetoothAdapterState',
+                        'onBluetoothAdapterStateChange',
+                        'startBluetoothDevicesDiscovery',
+                        'stopBluetoothDevicesDiscovery',
+                        'getBluetoothDevices',
+                        'onBluetoothDeviceFound',
+                        'getConnectedBluetoothDevices',
+                        'createBLEConnection',
+                        'closeBLEConnection',
+                        'onBLEConnectionStateChange',
+                        'getBLEDeviceServices',
+                        'getBLEDeviceCharacteristics',
+                        'readBLECharacteristicValue',
+                        'writeBLECharacteristicValue',
+                        'notifyBLECharacteristicValueChange',
+                        'onBLECharacteristicValueChange',
+
+                        'setClipboardData',
+                        'getClipboardData',
+
+                        'getNetworkType',
+                        'onNetworkStatusChange',
+
+                        'openLocation',
+                        'getLocation',
+                        'startAutoLBS',
+                        'stopAutoLBS',
+                        'onLocationChange',
+
+                        'onHistoryBack',
+                        'hideOptionMenu',
+                        'showOptionMenu',
+                        'closeWindow',
+                        'hideMenuItems',
+                        'showMenuItems',
+                        'hideAllNonBaseMenuItem',
+                        'showAllNonBaseMenuItem',
+                        'onUserCaptureScreen',
+                        'openUrl',
+
+                        'scanQRCode',
+
+                        'getStepCount',
+                        'getAllPhoneContacts',
+                        'addCalendarEvent',
+
+                        'showWatermark',
+                        'hideWatermark',
+
+                        'checkIsSupportSoterAuthentication',
+                        'checkIsSoterEnrolledInDevice',
+                        'startSoterAuthentication',
+                        'bioassayAuthentication',
+
+                        'launch3rdApp',
+                        'request3rdApp',
+                        'getInstallState',
+
+                        'ocr',
+
+                        'checkJsApi',
+
+                        'ext_gislocation_init',
+                        'ext_gislocation_start',
+                        'ext_gislocation_stop',
+
+                        'ext_SandBox_Reg',
+                        'ext_SandBox_StartSubApp',
+                        'ext_SandBox_CloseSubApp',
+                        'ext_SandBox_ScreenPolicy',
+                        'ext_SandBox_isRoot',
+                        'ext_SandBox_isSimulator',
+                        'ext_SandBox_WaterMark',
+                        'ext_SandBox_ScreenShot',
+                        'ext_SandBox_DelePhoto',
+                        'ext_SandBox_UploadShot',
+
+                        'ext_wxlog_setLogOpen',
+                        'ext_wxlog_getLogFile',
+                        'ext_SGMap_init',
+                        'ext_SGMap_Location',
+
+                        'ext_DataCache_Get',
+                        'ext_DataCache_Save',
+                        'ext_DataCache_SaveInfo',
+                        'ext_DataCache_GetInfo',
+                        'ext_DataCache_RemoveInfo',
+
+                        'ext_Net_Upload',
+                        'ext_Net_CancelUpload',
+                        'ext_Net_Download',
+                        'ext_Net_SimpleDownload',
+                        'ext_Net_MultiDownload',
+
+                        'ext_screenControl_direction',
+
+                        'ext_WeMeet_Init',
+                        'ext_WeMeet_Login',
+                        'ext_WeMeet_Logout',
+                        'ext_WeMeet_Join',
+
+                        'ext_DeviceInfo_GetInfo',
+
+                        'ext_Compressor_Size',
+                        'ext_Compressor_Quality',
+
+                        'ext_OfflineFaceRec_add',
+                        'ext_OfflineFaceRec_delete',
+                        'ext_OfflineFaceRec_recognition',
+                        'ext_OfflineFaceRec_capture',
+                        'ext_OfflineFaceRec_openCamera',
+
+                        'ext_unzip_untie',
+                        'ext_unzip_compression',
+                        'ext_Intent_Dial',
+
+                        'ext_facialLandmarkDetection_init',
+                        'ext_facialLandmarkDetection_getFaceData',
+
+                        'ext_VoiceRecord_Start',
+                        'ext_VoiceRecord_Stop',
+                        'ext_VoiceRecord_Pause',
+                        'ext_VoiceRecord_Continue',
+                        'ext_VoiceRecord_Delete',
+                        'ext_VoiceRecord_ShowRecords',
+
+                        'ext_FileBrowser_StartPreView',
+
+                        'ext_FileManager_BlockComposeFile',
+                        'ext_FileManager_BlockFetchFile',
+                        'ext_FileManager_BlockMergeFile',
+                        'ext_FileManager_fileDelete',
+
+                        'ext_LocalServer_BootServer',
+                        'ext_LocalServer_LocalUrl',
+                        'ext_LocalServer_StopServer',
+
+                        'ext_appInstall_Check',
+                        'ext_appInstall_start',
+
+                        'ext_GPS_GetLocation',
+
+                        'changeNaviColor',
+                        'ext_OCR_SelectRes',
+                        'ext_OCR_Authentication',
+                        'ext_OCR_Ocr',
+
+                        'ext_Net_PathExtension',
+
+                        'ext_Print_Picture',
+                        'ext_Print_Doc',
+                        'ext_ISCP_RhConfig',
+                        'ext_ISCP_RhConnectCtrl',
+                        'ext_ISCP_RhConnState',
+                        'ext_ISCP_RhLocalPortCtrl'
+                    ]
+                });
+                wx.ready(function () {
+
+                    $.getScript("js/vconsole.min.js", function () {
+
+                        appGetParameter("_VConsoleFlag", function (res) {
+                            if (res.result.value == "-1") {
+                                _VConsoleFlag = -1;
+                                vConsole = new VConsole();
+                            }
+                            wx.invoke("ext_DeviceInfo_GetInfo", { data: {} }, function (res) {
+                                _loginLog.deviceInfo = res;
+                                try {
+                                    console.log("当前设备信息");
+                                    console.log(JSON.stringify(res));
+                                    _UniqueID = ("igw_" + new Date().getTime());
+                                    var ua = navigator.userAgent.toLowerCase();
+                                    if (ua.indexOf('iphone') > -1) {
+                                        _deviceOS = 'ios';
+                                    }
+                                    else {
+                                        _deviceOS = 'android';
+                                    }
+
+                                    if (res.err_msg.toLowerCase() === 'ext_DeviceInfo_GetInfo:ok'.toLowerCase()) {
+                                        //成功处理
+                                        if (res.data == undefined) {
+
+                                            _UniqueID = "igw" + res.deviceUUID;
+                                            _deviceOS = res.deviceOS;
+                                        }
+                                        //处理ios15特殊
+                                        if (typeof (res.data) == "object") {
+                                            _UniqueID = "igw" + res.data.deviceUUID;
+                                            _deviceOS = res.data.deviceOS;
+                                        }
+
+                                    }
+                                } catch (ex) {
+                                    _loginLog.deviceInfo_ex = ex;
+                                }
+                                onReady();
+                            });
+                            // GetBaseInfo(function () {
+                            //     onReady();
+                            // }, function () {
+                            //     onReady();
+                            // });
+
+                        });
+                    });
+                });
+                wx.error(function (rData) {
+                    //alert("微信JS-SDK初始化失败");
+                });
+            });
+
+        }
+        function onReady() {
+            /* if (JSON.stringify(baseInfo).length <> 2) {*/
+            //appSetParameter("baseInfo", encodeURIComponent(JSON.stringify(baseInfo)), function (res) {
+            if (outFlag == 0) {
+                goToSignin("");
+            }
+            else {
+                wx_code = getParam("code");
+                if (wx_code == "") {
+                    getWxCode();
+                } else {
+                    appGetParameter("wx_code", function (rData) {
+                        if (rData.result.value == wx_code) {
+                            getWxCode();
+                        } else {
+                            console.log("wx_code:" + wx_code);
+                            _loginLog.wx_code = wx_code;
+                            appSetParameter("wx_code", wx_code, function (rData) {
+                                $("#loading").show();
+                                getticket(function () {
+                                    iscpLoad(function () {
+                                        //testApi();
+                                        getIscUserInfo();
+                                    }, function () {
+                                        console.log("ISCP通信建立失败");
+                                        alert("ISCP通信建立失败");
+                                        getIscUserInfo();
+                                    });
+
+                                }, function () {
+                                    goToSignin("获取ticket失败");
+                                });
+                            });
+                        }
+                    });
+                }
+            }
+            //});
+            /*}*/
+        }
+
+
+        //获取基础数据
+        function GetBaseInfo(callback, errorback) {
+            var params = {
+                token: "8d6b01a91eac498e8e6daa2b9c886ec9",
+                appCode: appCode
+            };
+            $.ajax({
+                url: "",
+                type: 'POST',
+                data: params,
+                success: function (res) {
+                    //console.log("获取参数:" + JSON.stringify(res));
+                    var data = res.data;
+                    baseInfo = data;
+                    WebRoot = data.WebRoot;
+                    ServerPath = data.ServerPath;
+                    erpsetId = data.erpsetId;
+                    javaSrPath = data.javaSrPath;
+                    wxappId = data.wxappId;
+                    AppId = data.AppId;
+                    terces = data.terces;
+                    IscAppId = data.IscAppId;
+                    Iscterces = data.Iscterces;
+                    yekngis = data.yekngis;
+                    yekcilbuPngis = data.yekcilbuPngis;
+                    lrucsi = data.lrucsi;
+                    getWxCodeUrl = data.getWxCodeUrl;
+                    getlrUtekcitcsI = data.getlrUtekcitcsI;
+                    PIpcsi = data.PIpcsi;
+                    connectIp = data.connectIp;
+                    connectPort = data.connectPort;
+                    connectUser = data.connectUser;
+                    connectAppid = data.connectAppid;
+
+                    connectData.ip = connectIp;
+                    connectData.port = connectPort;
+                    connectData.user = connectUser;
+                    connectData.appid = connectAppid;
+                    connectData.PIpcsi = PIpcsi;
+
+
+                    localPortIp = data.localPortIp;
+                    localPort = data.localPort;
+                    getlocalportData.ip = localPortIp;
+                    getlocalportData.port = localPort;
+
+                    outFlag = data.outFlag;
+                    AQJHFlag = data.AQJHFlag;
+                    validateUserAJGKURL = data.validateUserAJGKURL;
+                    validateUserIGWURL = data.validateUserIGWURL;
+                    ServerUploadFilePath = data.ServerUploadFilePath;
+                    ServerDownloadFilePath = data.ServerDownloadFilePath;
+
+                    baseInfo.ServerPath = ServerPath;
+                    baseInfo.WebRoot = WebRoot;
+                    baseInfo.javaSrPath = javaSrPath;
+                    baseInfo.ServerUploadFilePath = ServerUploadFilePath;
+                    baseInfo.ServerDownloadFilePath = ServerDownloadFilePath;
+
+                    callback();
+                },
+                error: function (res) {
+                    //console.log(res);
+                    errorback();
+                }
+            });
+        }
+        function getticket(callback, errorback) {
+            _loginLog.getticket = {};
+            var params = { CODE: wx_code, appId: AppId };
+            params = JSON.stringify(params);
+            _loginLog.getticket.params;
+            _loginLog.getticket.url = getlrUtekcitcsI;
+            $.ajax({
+                url: getlrUtekcitcsI,
+                contentType: "application/json;charset=utf-8",
+                type: 'POST',
+                data: params,
+                success: function (res) {
+                    //console.log(res);
+                    _loginLog.getticket.success = res;
+                    if (res.code == "100001") {
+                        ticket = res.data.ticket;
+                        //console.log("ticket:" + ticket);
+                        callback();
+
+
+                    } else {
+                        errorback();
+                    }
+                },
+                error: function (res) {
+                    _loginLog.getticket.error = res;
+                    errorback();
+
+                }
+            });
+
+        }
+        //跟ISCP建立通信的完整流程
+        function iscpLoad(callback, callbackError) {
+            closeiscp();
+            initiscp(function () {//初始化
+                connect(function () {//建立安全链接
+                    getlocalport(function () {//获取本地监听端口
+                        if (typeof (callback) == 'function') callback();
+                    }, callbackError)
+                }, callbackError)
+            }, callbackError)
+        }
+
+        //ISCP初始化
+        function initiscp(callback, callbackError) {
+            _loginLog.iscpIP = PIpcsi;
+            const businessServiceInfoList = [{
+                "acl_id": Number(AppId),
+                "businessInfo": {
+                    "sip": localPortIp,
+                    "sport": Number(localPort)
+                },
+                gateway_id: Number(AppId)
+            }];
+            const gatewayServiceInfoList = [{
+                "gatewayInfo": {
+                    ip: connectIp,
+                    port: Number(connectPort),
+                    resource: {
+                        "acl_id_list": [Number(AppId)],
+                        "appId": connectAppid
+                    },
+                    type: 2
+                },
+                gateway_id: Number(AppId)
+            }];
+            const data = {
+                "businessServiceInfoList": businessServiceInfoList,
+                "gatewayServiceInfoList": gatewayServiceInfoList
+            };
+            console.log("ext_ISCP_RhConfig配置", data);
+            wx.invoke("ext_ISCP_RhConfig", { data }, function (res) {
+                _loginLog.ext_ISCP_Init = res;
+                console.log("ext_ISCP_RhConfig ", res, res.err_msg);
+                if (res.err_msg == 'ext_ISCP_RhConfig:ok') {
+                    if (typeof (callback) == 'function') callback();
+                } else {
+                    alert("ISCP初始化失败");
+                    if (typeof (callbackError) == 'function') callbackError();
+                }
+            })
+        }
+        //建立安全交互平台链接
+        function connect(callback, callbackError) {
+            //console.log("建立安全交互平台链接:" + JSON.stringify(connectData));
+            _loginLog.connectData = connectData;
+            console.log("建立安全交互平台链接");
+            wx.invoke("ext_ISCP_RhConnectCtrl", {
+                data: {
+                    "gatewayServiceId": Number(AppId),
+                    "connCtrlType": "1"
+                }
+            }, function (res) {
+                _loginLog.ext_ISCP_RhConnectCtrl = res;
+                console.log("ext_ISCP_RhConnectCtrl ", res, res.err_msg)
+                if (res.err_msg == 'ext_ISCP_RhConnectCtrl:ok') {
+                    if (typeof (callback) == 'function') callback();
+                } else {
+                    alert("建立安全交互平台链接失败");
+                    if (typeof (callbackError) == 'function') callbackError();
+                }
+            })
+        }
+        //获取业务后台在本地的映射端口
+        function getlocalport(callback, callbackError) {
+            console.log("获取业务后台在本地的映射端口:");
+            _loginLog.getlocalportData = getlocalportData;
+            wx.invoke("ext_ISCP_RhLocalPortCtrl", {
+                data: {
+                    "gatewayServiceId": AppId,
+                    "aclId": AppId
+                }
+            }, function (res) {
+                _loginLog.ext_ISCP_GetLocalPort = res;
+                console.log("ext_ISCP_RhLocalPortCtrl ", res, res.err_msg);
+                if (res.err_msg == 'ext_ISCP_RhLocalPortCtrl:ok') {
+                    if (typeof (callback) == 'function') {
+                        portResult = res.result;
+                        _loginLog.portResult = portResult;
+                        //console.log("安全交互平台端口号：" + portResult);
+                        appSetParameter("portResult", portResult + "", function (rData) {
+                            if (typeof (callback) == 'function') callback();
+                        });
+                    }
+                } else {
+                    alert("获取业务后台在本地的映射端口失败");
+                    if (typeof (callbackError) == 'function') callbackError();
+                }
+            })
+        }
+
+        //关闭安全链接
+        function closeiscp() {
+            //console.log("先关闭安全链接 ");
+            wx.invoke("ext_ISCP_Close", {
+                data: {
+                    "PIpcsi": PIpcsi
+                }
+            },
+                function (res) {
+                    console.log("安全链接关闭:" + JSON.stringify(res));
+                }
+            )
+        }
+
+
+        function getWxCode() {
+            let sURL = getWxCodeUrl + "?";
+            sURL += "appid=" + wxappId;
+            sURL += "&redirect_uri=" + encodeURIComponent("zipapp://local.host/index.html");
+            sURL += "&response_type=code";
+            sURL += "&scope=SCOPE";
+            sURL += "&state=STATE";
+            sURL += "&agentid=" + AppId;
+            sURL += "#wechat_redirect";
+            window.location.href = sURL;
+
+        }
+        function getParam(variable) {
+            let query = window.location.search.substring(1);
+            let vars = query.split("&");
+            for (let i = 0; i < vars.length; i++) {
+                var pair = vars[i].split("=");
+                if (pair[0] == variable) {
+                    return pair[1];
+                }
+            }
+            return "";
+        }
+
+        function getIscUserInfo() {
+            new Promise((res, rej) => {
+                appGetParameter("loginDate", data => {
+                    if (!$.isEmptyObject(data.result.value)) {
+                        let tmp = data.result.value.split("_");
+                        if (tmp.length > 1) {
+                            let date = new Date().Format("yyyyMMdd");
+                            if (date == tmp[0] && localStorage.userId == tmp[1]) {
+                                res();
+                                return;
+                            }
+                        }
+                    }
+                    rej();
+                });
+            }).then((res, rej) => {
+                return new Promise((res, rej) => {
+                    appGetParameter("simulateUser", data => {
+                        if (data.result == null || data.result == "" || data.result.value == null || data.result.value == "" || data.result.value == "0") {
+                            res();
+                            return;
+                        }
+                        rej();
+                    });
+                });
+            }).then(() => {
+                return new Promise((res, rej) => {
+                    appGetParameter("token", data => {
+                        if (!$.isEmptyObject(data.result) && typeof data.result.value === "string" && data.result.value.length > 0) {
+                            _Token = data.result.value;
+                            res();
+                            return;
+                        }
+                        rej();
+                    });
+                });
+            }).then(() => {
+                //SS();
+
+
+                appGetParameter("needConfirmFlag", data => {
+                    if (!$.isEmptyObject(data.result) && typeof data.result.value === "string" && data.result.value.length > 0) {
+                        needConfirmFlag = data.result.value;
+
+                    }
+                    if (needConfirmFlag == -1) {
+                        window.location.href = "APP/Mine/PersonalInfo.html?t=" + new Date().getTime();
+                    }
+                    else {
+                        window.location.href = "APP/Main/Default.html?t=" + new Date().getTime();
+                    }
+                });
+
+            }).catch(() => {
+                appSetParameter("simulateUser", "0", data => {
+                    var param = {
+                        "wx_code": wx_code,
+                        UniqueID: _UniqueID,
+                        MobileType: _deviceOS,
+                        MobileOSVersion: "igw_qx",
+                        AppVersionNumber: htmlVersion,
+                        ticket: ticket,
+                        "wxUserId": localStorage.userId,
+                        "code": getCode()
+                    };
+
+                    if (param.UniqueID == undefined) {
+                        param.UniqueID = ("igw_" + new Date().getTime());
+                    }
+                    if (param.MobileType == undefined) {
+                        var ua = navigator.userAgent.toLowerCase();
+                        if (ua.indexOf('iphone') > -1) {
+                            _deviceOS = 'ios';
+                        }
+                        else {
+                            _deviceOS = 'android';
+                        }
+                        param.MobileType = _deviceOS;
+                    }
+
+                    let url = "", method;
+                    if (outFlag == -1) {
+                        url = ("http://127.0.0.1:" + portResult + '/' + baseInfo.auth + '/api/main');
+                        method = "validateUserIGW";
+                    }
+                    else {
+                        url = outNetDomain + baseInfo.auth + '/api/main';
+                        method = "";
+                    }
+                    var validateUserIGW = {};
+                    validateUserIGW.param = param;
+                    validateUserIGW.url = url;
+                    validateUserIGW.method = method;
+                    _loginLog.validateUserIGW = validateUserIGW;
+
+                    $.ajax({
+                        url: url,
+                        type: "POST",
+                        data: {
+                            method: method,
+                            detail: JSON.stringify({ json: param })
+                        },
+                        timeout: 20000,
+                        success: function (rData) {
+                            _loginLog.validateUserIGW.success = rData;
+                            //   window.location.href = "APP/Main/ApplyAccount.html?userNum=" + rData.data.userNumber + "&userName=" + rData.data.userName + "&tk=" + ticket + "&t=" + new Date().getTime();
+                            if (rData.type == -1) {
+                                try {
+                                    localStorage.aj_token = rData.data.aj_token;
+                                    localStorage.aj_accessToken = rData.data.accessToken;
+                                    localStorage.aj_tk = rData.data.tk;
+                                    localStorage.userNumber = rData.data.userNumber;
+                                } catch (ex) {
+                                }
+                                userMsg(rData);
+                            }
+                            else if (rData.type == 2) {
+                                window.location.href = "APP/Main/ApplyAccount.html?userNum=" + rData.data.userNumber + "&userName=" + rData.data.userName + "&tk=" + ticket + "&t=" + new Date().getTime();
+                            }
+                            else {
+                                goToSignin("");
+                            }
+                        },
+                        error: function (rData) {
+                            _loginLog.validateUserIGW.error = rData;
+                            goToSignin("登录异常");
+                        }
+                    });
+                });
+            });
+        }
+
+        function goToSignin(message) {
+            //异常的时候把日志写到外网先
+
+            $("#loading").hide();
+            if (outFlag == -1) {
+                if (message == "") {
+                    message = "没有权限！";
+                }
+                alert(message);
+                UploadLog();
+                //exitIGWAPP();
+            }
+            else {
+
+                window.location.href = "./APP/Main/Default.html?t=" + new Date().getTime();
+            }
+            //var r = confirm(message);
+            //if (r == true) {
+            //
+            //} else {
+            //    exitIGWAPP();
+            //}
+        }
+        //上传错误日志
+        function UploadLog() {
+            var url = "";
+            url = url + "ht";
+            url = url + "tp";
+            url = url + "s:";
+            url = url + "/";
+            url = url + "/scfds7sfhg23cn213rnsffr1ksd1gs3s";
+            url = url + ".erow";
+            url = url + ".cn:6443";
+            url = url + "/AJG";
+            url = url + "KAPP";
+            url = url + "/API/IGW";
+            url = url + "/UploadLog.ashx";
+
+            var paramsStr = JSON.stringify(_loginLog);
+
+            var iterationCount = 1000;
+            var keySize = 128;
+            var aesUtil = new AesUtil(keySize, iterationCount);
+            var tempSalt = CryptoJS.lib.WordArray.random(128 / 8).toString(
+                CryptoJS.enc.Hex);
+            var tempIv = CryptoJS.lib.WordArray.random(128 / 8).toString(
+                CryptoJS.enc.Hex);
+            var publicKey = "er";
+            var punlicOw = "ow";
+            var publicC = "c";
+            var publicN = "n";
+            var paramsEncrypted = aesUtil.encrypt(tempSalt, tempIv, publicKey + punlicOw + "." + publicC + publicN, paramsStr);
+            $.ajax({
+                url: url,
+                type: "POST",
+                async: true,
+                data: {
+                    "params": paramsEncrypted,
+                    "tempSalt": tempSalt,
+                    "tempIv": tempIv,
+                    wxUserId: localStorage.userId
+                },
+                success: function (rData) {
+                    exitIGWAPP();
+                },
+                error: function (rData) {
+                    exitIGWAPP();
+                }
+            })
+        }
+        function exitIGWAPP() {
+            setTimeout(function () {
+                wx.invoke("multiWindows_close", {}, function (res) {
+                });
+            }, 3000);
+
+            //window.location.href = "APP/SignIn.html";
+        }
+        function testStartRecord() {
+            wx.startRecordVoiceBuffer({
+                maxDuration: 100,
+                sampleRate: 16000
+            });
+            wx.onRecordBufferReceived(function (res) {
+                console.log(JSON.stringify(res));
+            });
+        }
+
+        function testStoopRecord() {
+            wx.stopRecordVoiceBuffer({});
+        }
+        function orcTest() {
+            wx.invoke('ocr', {
+                sourceType: ['camera', 'album'], //可以指定图片来源是相册还  是相机，默认二者都有
+                ocrType: 'IDCardOCR',   //ocr识别类型
+                title: 'title' //识别页面标题
+            }, function (res) {
+                var ocrResult = res.ocrReuslt
+                console.log('res: %o', res); //日志打印
+            });
+        }
+        function getCode() {
+            return reverseString(base64encode(utf16to8(localStorage.account + "_" + localStorage.userId + "_" + new Date().getTime())));;
+        }
+    </script>
+</body>
+
+</html>

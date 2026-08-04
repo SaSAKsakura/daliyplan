@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="color-scheme" content="light dark">
+    <link rel="stylesheet" href="../libs/css/vant.css" />
+    <style>
+      #app {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        background-color: var(--body-bg-color);
+        padding: 0;
+      }
+
+      .homePage {
+        display: flex;
+        flex-direction: column;
+        left: 0;
+      }
+
+      .template-wrap {
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+      }
+
+      .W100 {
+        width: 100%;
+      }
+
+      .H100 {
+        height: 100%;
+      }
+
+      .flex_r_vc {
+        display: flex;
+        flex-direction: row !important;
+        align-items: center;
+      }
+
+      /* templateFacialRecognition */
+      .frnotes-title {
+        font-size: 16px;
+        font-weight: 550;
+        color: var(--text-color);
+        margin: 80px auto 20px auto;
+      }
+
+      .frnotes-scan {
+        width: 176px;
+        margin: 40px auto;
+      }
+
+      .frnotes-info-title {
+        font-size: 14px;
+        font-weight: 550;
+        color: var(--text-color);
+        width: 100%;
+        text-align: left !important;
+        margin-bottom: 20px;
+      }
+
+      .frnotes-info {
+        width: 100%;
+        justify-content: space-between;
+        color: var(--color-gray);
+      }
+
+      .frnotes-info img {
+        width: 50px;
+        margin-bottom: 2px;
+      }
+
+      .template-facial-recognition {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 14px;
+        padding: 20px;
+        width: calc(100% - 40px);
+      }
+
+      .frresults-photo {
+        margin-bottom: 20px;
+        max-height: 65%;
+      }
+
+      .frresults-icon {
+        width: 35px;
+        margin-bottom: 10px;
+      }
+
+      .frresults-info {
+        margin-top: 20px;
+        text-align: left !important;
+      }
+
+      .frnotes-red {
+        position: relative;
+      }
+
+      .frnotes-info-red {
+        position: absolute;
+        width: 15px !important;
+        bottom: 20px;
+        right: 0;
+      }
+
+      .frresults-info-fail {
+        margin-top: 5px;
+        display: flex;
+        color: #ffa200;
+      }
+
+      .frresults-button {
+        display: flex;
+        justify-content: space-between;
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        width: calc(100% - 40px);
+      }
+
+      .frresults-button .half-button {
+        width: calc(50% - 10px);
+      }
+
+      /* 头部导航栏开始 */
+      .head-nav-container {
+        height: 44px;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        background: #61b2ff;
+        position: relative;
+        width: 100%;
+        flex-shrink: 0;
+      }
+
+      .head-title {
+        font-size: 17px;
+        color: #fff;
+        margin: 0 auto;
+        max-width: 60%;
+        font-weight: 500;
+        font-weight: 900;
+      }
+
+      .head-left {
+        left: 0;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        padding-left: 16px;
+        font-size: 14px;
+        cursor: pointer;
+      }
+
+      .leftIcon {
+        width: 11px;
+        height: 19px;
+        display: inline-block;
+        background-image: url(../images/common/back.png);
+        background-size: cover;
+      }
+
+      .head-right {
+        right: 0;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        display: flex;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+        padding-right: 16px;
+        font-size: 14px;
+        cursor: pointer;
+      }
+
+      .head-right .component-outer {
+        align-items: center !important;
+        margin-left: 7px;
+      }
+
+      .head-right .component-outer {
+        align-items: center;
+      }
+
+      .van-button--info {
+        background: #61b2ff;
+        border: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app" class="flexPage homePage" v-cloak>
+      <div class="head-nav-container">
+        <div class="head-left">
+          <img src="../assets/images/common/back-white.png" class="leftIcon back-image-unset" @click="closeForm" />
+        </div>
+        <span class="head-title">人脸采集</span>
+      </div>
+      <div class="template-wrap" v-if="loadEnd">
+        <template-facial-recognition ref="templateFRN" :config="templateConfig"></template-facial-recognition>
+      </div>
+    </div>
+
+    <script src="../config/index.js"></script>
+    <script src="../tools/index.js"></script>
+    <script src="../libs/js/Vue.js"></script>
+    <script src="../libs/js/vant.min.js"></script>
+    <script src="../special/selfDefine/templateFacialRecognition/templateFacialRecognition.js"></script>
+
+    <script>
+      let vm = new Vue({
+        el: "#app",
+        components: {
+          "template-facial-recognition": templateFacialRecognition,
+        },
+        methods: {
+          closeForm() {
+            pageManager.back();
+          },
+        },
+        data() {
+          return {
+            loadEnd: false,
+            templateConfig: {
+              ControlProperty: {
+                ExtraConfig: '{"submitUrl":"app/uploadFace","getImageUrl":"/app/getImageUrl"}',
+                FnCode: "iot_face_users",
+                FnParameter: "pda",
+              },
+            },
+          };
+        },
+        created() {
+          erMain.initialize(() => {
+            this.loadEnd = true;
+          });
+        },
+      });
+    </script>
+  </body>
+</html>

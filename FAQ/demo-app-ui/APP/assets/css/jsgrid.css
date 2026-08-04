@@ -1,0 +1,105 @@
+.js-title-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 15px;
+  /* height: 50px; */
+  height: 40px;
+}
+
+.js-title-container .open-or-close {
+  width: 22px;
+}
+.js-title-container .title {
+  /* font-family: PingFangSC-Regular; */
+  font-size: 14px;
+  color: #1a1a1a;
+  /* vertical-align: middle; */
+  /* line-height: 18px; */
+  font-weight: bold;
+}
+.title::before {
+  display: inline-block;
+  background: var(--theme-color);
+  height: 18px;
+  width: 3px;
+  content: "";
+  vertical-align: middle;
+  margin-right: 5px;
+  margin-top: -3px;
+}
+.jsgrid-card .jsGrid-list {
+  padding: 0;
+}
+
+.jsgrid-card .jsGrid-list tr {
+  border-bottom: 1px solid var(--border-gray);
+}
+.top-page {
+  display: flex;
+  align-items: center;
+  padding: 15px 15px 0 15px;
+  justify-content: space-between;
+}
+.top-page .icon {
+  width: 20px;
+  height: 20px;
+}
+
+.js-category-title {
+  font-size: 14px;
+  color: #1a1a1a;
+  font-weight: bold;
+}
+.js-category-title::before {
+  display: inline-block;
+  background: var(--theme-color);
+  height: 18px;
+  width: 3px;
+  content: "";
+  vertical-align: middle;
+  margin-right: 5px;
+  margin-top: -3px;
+}
+.hide-tr {
+  display: none;
+}
+.open-or-close {
+  width: 22px !important;
+  height: 22px !important;
+}
+.tr_bottom-border {
+  border-bottom: var(--border-gray) !important;
+}
+
+.red-text {
+  color: red;
+}
+
+.van-checkbox-group.van-radio-group--horizontal {
+  display: flex;
+}
+
+.jsgrid-form-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  transition: transform 0.3s ease; /* 平滑过渡 */
+  position: relative;
+}
+.jsgrid-item-delete {
+  width: 80px;
+  height: 100%;
+  background-color: red;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: -80px; /* 初始隐藏在右侧 */
+  top: 0;
+}
+
+.jsgrid-card .jsgrid-form-item td:first-of-type {
+  padding-left: 10px;
+}

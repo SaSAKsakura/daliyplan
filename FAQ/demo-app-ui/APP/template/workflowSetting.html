@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="color-scheme" content="light dark">
+    <link rel="stylesheet" href="../assets/css/index.css" />
+
+    <style>
+      body {
+        font-size: 14px;
+      }
+
+      [v-cloak] {
+        display: none;
+      }
+
+      .crumbs {
+        margin-top: 10px;
+        padding: 10px 20px;
+        display: flex;
+        background: white;
+        line-height: 1.4em;
+      }
+
+      .crumbs {
+        margin-top: 10px;
+        padding: 10px 20px;
+        display: flex;
+        background: white;
+        line-height: 1.4em;
+      }
+      .crumbs::before {
+        content: "";
+        height: 1.2em;
+        width: 3px;
+        background: var(--theme-color);
+        display: inline-block;
+        vertical-align: sub;
+        margin-right: 7px;
+        border-radius: 10px;
+      }
+
+      /* .crumbs-item:first-child {
+      border-left: 2px solid #49b5ff;
+      text-indent: 10px;
+    } */
+
+      .crumbs-item:last-child span {
+        display: none;
+      }
+
+      .workList {
+        margin-top: 10px;
+        background: white;
+        max-height: calc(100vh - 120px);
+        overflow: auto;
+      }
+
+      .workList-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        gap: 20px;
+      }
+
+      .workList-item span {
+        word-wrap: break-word;
+        word-break: break-all;
+        line-height: 1.4em;
+      }
+
+      .workList-item + .workList-item {
+        border-top: var(--border-gray);
+      }
+
+      .workList-item input {
+        flex: 1;
+        outline: none;
+        border: none;
+        font-size: 14px;
+        font-family: inherit;
+      }
+
+      .workList-item img {
+        height: 1.5em;
+        width: 1.5em;
+      }
+      .workList-item textarea{
+        resize: none;
+      }
+
+      .workList-item-text{
+        word-wrap: break-word;
+        word-break: break-all;
+        white-space: pre-line;
+      }
+
+      .workList-item-ops {
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+        gap: 10px;
+        color: var(--theme-color);
+      }
+
+      .workList-add-icon {
+        margin-left: auto;
+      }
+
+      .van-cell {
+        flex: 1;
+      }
+
+      .van-field__control {
+        border: none;
+        font-family: inherit;
+        outline: none;
+        font-size: 14px !important;
+        width: 100%;
+      }
+
+      .van-field__body {
+        margin-right: 0px;
+      }
+
+      pre {
+        font-family: inherit;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app" class="flexPage homePage" v-cloak>
+      <div class="head-nav-container">
+        <div class="head-left">
+          <img src="../assets/images/common/back-white.png" class="leftIcon back-image-unset" @click="close" />
+        </div>
+        <span class="head-title">常用审批意见</span>
+      </div>
+      <div class="crumbs">
+        <p class="crumbs-item" v-for="name in crumbs">
+          {{name}}
+          <span>></span>
+        </p>
+      </div>
+      <div class="workList">
+        <div class="workList-item" v-for="(item, index) in workList">
+          <van-field v-if="item.isEdit" v-model="item.opinion" autosize :rows="1" type="textarea" placeholder="请输入"></van-field>
+          <div v-else class="workList-item-text">{{item.opinion}}</div>
+          <div class="workList-item-ops">
+            <template v-if="item.isEdit">
+              <span @click="save(item)">保存</span>
+              <span @click="cancel(item)">取消</span>
+            </template>
+            <template v-else>
+              <img :src="getImgFileUrl({parentFilePath: 'icon', filename: 'edit', fileType: 'png'})" alt="" @click="edit(item)" />
+              <img src="../assets/images/icon/trash.png" alt="" @click="deleteItem(item)" />
+            </template>
+          </div>
+        </div>
+        <div class="workList-item" v-if="isShowAddItem">
+          <van-field v-model="addItem.opinion" autosize :rows="1" type="textarea" placeholder="请输入"></van-field>
+          <div class="workList-item-ops">
+            <span @click="save(addItem)">保存</span>
+            <span @click="cancelAdd()">取消</span>
+          </div>
+        </div>
+        <div class="workList-item" v-else>
+          <img class="workList-add-icon" :src="getImgFileUrl({parentFilePath: 'icon', filename: 'add', fileType: 'png'})"alt="" @click="isShowAddItem = true" />
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script src="../config/index.js"></script>
+  <script src="../tools/index.js"></script>
+  <script src="../libs/js/Vue.js"></script>
+  <script src="../config/index.js"></script>
+  <script src="../tools/index.js"></script>
+  <script src="../libs/js/Vue.js"></script>
+  <script src="../libs/js/vant.min.js"></script>
+  <script src="../utils/eventEmiter.js"></script>
+  <script src="../utils/erowConfig.js"></script>
+  <script src="../utils/main.js"></script>
+  <script src="../utils/baseSpecial.js"></script>
+  <script src="../components/pageList/install.js"></script>
+  <script src="../special/js/pageList.js"></script>
+  <script src="../special/js/common.js"></script>
+  <script src="../utils/apis.js"></script>
+
+  <script>
+    function closeForm() {
+      vm.close();
+    }
+    let vm = new Vue({
+      el: "#app",
+      mixins: [commonMinxin, layerMixin],
+      components: {},
+      data: () => ({
+        params: {},
+        crumbs: [],
+        workList: [],
+        dataIdMap: {},
+        saveIdMap: {},
+        searchControlGUID: "",
+        dataControlGUID: "",
+        pageRights: [],
+        pValueSet: erowConfig.generateUUID(),
+        addItem: { isAdd: true, opinion: "" },
+        isShowAddItem: false,
+        saveParentId: "",
+      }),
+      methods: {
+        edit(item, query) {
+          if (this.workList.find((item) => item.isEdit) || this.isShowAddItem) {
+            this.$message("error", "请先完成当前编辑！");
+          } else {
+            item.isEdit = true;
+          }
+        },
+        cancelAdd() {
+          this.addItem.opinion = "";
+          this.isShowAddItem = false;
+        },
+        dataAction(item, pageMode, succesMsg) {
+          erRequest.post(
+            erowplatformBackendUrl + "/appBaseApi/sysDataAction",
+            {
+              menuRowGuid: this.params.menuRowGuid,
+              controlGUID: this.dataControlGUID,
+              pValueSet: this.pValueSet,
+              pageMode,
+              paramMap: {
+                [this.saveParentId]: [
+                  {
+                    [this.saveIdMap.op_code]: this.params.opType,
+                    [this.saveIdMap.step_id]: this.params.from_step_id,
+                    [this.saveIdMap.opinion]: item.opinion,
+                    row_guid: item.row_guid,
+                  },
+                ],
+              },
+            },
+            (res) => {
+              if (res.code !== "SUCCESS") {
+                this.$toast.fail(res.msg);
+                return;
+              }
+              this.addItem.opinion = "";
+              this.$toast.success(succesMsg)
+              this.getWorkList();
+            },
+            (error) => {
+              console.log(error);
+              this.$toast.fail(error.msg);
+            }
+          );
+        },
+        save(item) {
+          this.dataAction(item, item.isAdd ? "ADD" : "EDIT", "保存成功");
+        },
+        deleteItem(item) {
+          this.workList = this.workList.filter((item0) => item0.row_guid !== item.row_guid);
+          this.dataAction(item, "DELETE", "删除成功");
+        },
+        cancel(item) {
+          item.opinion = item.initOpinion;
+          item.isEdit = false;
+        },
+        getConfig(callback) {
+          apis.sysLoadConfigData({
+            vm: this,
+            params: {
+              menuRowGuid: this.params.menuRowGuid,
+              controlGUID: this.params.controlGUID,
+              pValueSet: this.pValueSet,
+            },
+            success: (res) => {
+              const dataIds = res.data.ChildContainers[0].TargetContainer.ChildContainers;
+              this.dataIdMap = dataIds.reduce((dataIdMap, { ControlProperty: { ID, RSCode } }) => {
+                dataIdMap[ID] = RSCode;
+                dataIdMap[RSCode] = ID;
+                return dataIdMap;
+              }, {});
+              const saveIds = res.data.ChildContainers[1].TargetContainer.ChildContainers;
+              this.saveIdMap = saveIds.reduce((saveIdMap, { ControlProperty: { ID, RSCode } }) => {
+                saveIdMap[ID] = RSCode;
+                saveIdMap[RSCode] = ID;
+                return saveIdMap;
+              }, {});
+              this.searchControlGUID = res.data.ChildContainers[0].ControlGUID;
+              this.dataControlGUID = res.data.ChildContainers[1].ControlGUID;
+              this.saveParentId=res.data.ChildContainers[1].TargetContainer.ControlProperty.ID
+              callback();
+            },
+            fail: (error) => {
+              console.log(error);
+              this.$toast.fail(error.msg);
+            },
+            error: (error) => {
+              console.log(error);
+              this.$toast.fail(error.msg);
+            },
+          });
+        },
+        sysSearch(callback) {
+          erRequest.post(
+            `${erowplatformBackendUrl}/appBaseApi/sysSearch?t=${new Date().getTime()}`,
+            {
+              menuRowGuid: this.params.menuRowGuid,
+              controlGUID: this.searchControlGUID,
+              pValueSet: this.pValueSet,
+              paramMap: {
+                [this.dataIdMap.op_code]: this.params.opType,
+                [this.dataIdMap.step_id]: this.params.from_step_id,
+              },
+            },
+            (res) => {
+              if (res.code !== "SUCCESS") {
+                this.$message("error", res.msg);
+                return;
+              }
+              callback();
+            },
+            (error) => {
+              this.$message("error", error);
+            }
+          );
+        },
+        getWorkList() {
+          this.isShowAddItem = false;
+          this.config={ControlProperty:''}
+          apis.sysLoadDBData({
+            vm: this,
+            params: {
+              menuRowGuid: this.params.menuRowGuid,
+              controlGUID: this.dataControlGUID,
+              pValueSet: this.pValueSet,
+              page: 1,
+              rows: 1000,
+            },
+            success: (res) => {
+              this.saveParentId = Object.keys(res.data)[0];
+              const data = Object.values(res.data)[0];
+              this.pageRights = data.PageRights;
+              this.workList = data.dataList.map((item) => ({
+                ...item,
+                initOpinion: item.opinion,
+                isEdit: false,
+              }));
+            },
+            fail: (error) => {
+              console.log(error);
+              this.$toast.fail(error.msg);
+            },
+            error: (error) => {
+              console.log(error);
+              this.$toast.fail(error.msg);
+            },
+          });
+        },
+        close() {
+          pageManager.back();
+        },
+      },
+      created() {
+        erMain.initialize(() => {
+          const { params, crumbs } = pageManager.getPageParams();
+          this.params = params;
+          this.crumbs = crumbs;
+          getErUserInfo(() => {
+            this.getConfig(() => this.sysSearch(this.getWorkList));
+          });
+        });
+      },
+    });
+  </script>
+</html>

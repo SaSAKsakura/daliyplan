@@ -1,0 +1,18 @@
+.icon {
+  height: 20px;
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.jsgrid-thead {
+  background: var(--table-stripe-bg-color);
+  color: var(--table-stripe-head-color);
+}
+
+.label-required ::before{
+  content: "*";
+  color: var(--color-red);
+  margin-right: 4px;
+}
+

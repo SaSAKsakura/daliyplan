@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="stylesheet" href="../libs/css/vant.css" />
+    <link rel="stylesheet" href="../assets/css/erow.css" />
+    <link rel="stylesheet" href="../assets/css/index.css" />
+    <link rel="stylesheet" href="../assets/css/home.css" />
+    <link rel="stylesheet" href="../assets/css/tablet.css" />
+    <link rel="stylesheet" href="../assets/css/form.css" />
+    <link rel="stylesheet" href="../special/css/home.css" />
+    <style>
+      .collect-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 4px 12px;
+        margin-right: 12px;
+        background: linear-gradient(135deg, #61b2ff 0%, #2b6cff 100%);
+        color: #fff;
+        border-radius: 16px;
+        font-size: 12px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 8px rgba(43, 108, 255, 0.3);
+      }
+      .collect-btn:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(43, 108, 255, 0.4);
+      }
+      .collect-btn:active {
+        transform: translateY(0);
+      }
+      .collect-btn span {
+        white-space: nowrap;
+      }
+      .collect-btn.cancel {
+        background: linear-gradient(135deg, #ff8a61 0%, #ff4b2b 100%);
+        box-shadow: 0 2px 8px rgba(255, 75, 43, 0.3);
+      }
+      .collect-btn.cancel:hover {
+        box-shadow: 0 4px 12px rgba(255, 75, 43, 0.4);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app" class="flexPage homePage" :class="{isTablet}" v-cloak>
+      <div class="refreshText" size="24px" style="font-size: 16px"></div>
+      <igw-capsuler></igw-capsuler>
+      <div class="homeHeader" v-if="!isTablet">
+        <div class="headerleft flexAlignCenter">
+          <img class="nameSpan" v-if="homeHeadSculpture" :src="homeHeadSculpture" alt="" />
+          <span class="nameSpan" v-else> {{userName}} </span>
+
+          <div class="userInfo">
+            <p>{{userName}}</p>
+            <p class="f12Gray" v-if="userDataMasterList.length == 0">{{currentDataMaster !== '' ? currentDataMaster:teamName}}</p>
+            <van-popover v-else v-model:show="showTeamListPopover" :actions="userDataMasterList" @select="onSelectTeam">
+              <template #reference>
+                <p class="f12Gray" @click="showTeamListPopover = true">
+                  {{currentDataMaster}}
+                  <van-icon name="arrow-down" v-if="userDataMasterList.length > 1" />
+                </p>
+              </template>
+            </van-popover>
+          </div>
+        </div>
+        <div class="headerRight">
+          <span @click="toggleCollect" class="collect-btn" v-if="canCollect">
+            <span v-if="!isCollecting">开始采集</span>
+            <span v-else>提交采集</span>
+          </span>
+          <span @click="cancelCollect" class="collect-btn cancel" v-if="canCollect && isCollecting">
+            <span>放弃采集</span>
+          </span>
+          <span @click="signOut" class="logout">
+            <img v-if="isAnalogUser === false" src="../assets/images/home/logout.png" alt="" />
+            <span v-if="isAnalogUser === true">退出模拟</span>
+          </span>
+        </div>
+      </div>
+      <div class="main">
+        <uc-container v-if="containerConfig" :config="containerConfig" :flag="'inhome'"></uc-container>
+      </div>
+      <uc-layer-container
+        @close="handleCloseLayer"
+        :class="getThemeClass()"
+        ref="ucLayerContainer"
+        v-for="configItem in layerConfigArr"
+        :config="configItem"
+        :key="configItem.ControlGUID"
+      >
+      </uc-layer-container>
+    </div>
+
+    <script src="../config/index.js"></script>
+    <script src="../tools/index.js"></script>
+    <script src="../libs/js/Vue.js"></script>
+    <script src="../libs/js/vant.min.js"></script>
+    <script src="../utils/eventEmiter.js"></script>
+    <script src="../utils/erowConfig.js"></script>
+    <script src="../utils/main.js"></script>
+    <script src="../components/default/install.js"></script>
+    <script src="../utils/cacheHelper.js"></script>
+    <script src="../special/js/home.js"></script>
+    <script src="../special/js/common.js"></script>
+    <script src="../utils/baseSpecial.js"></script>
+    <script src="../utils/apis.js"></script>
+    <script src="../utils/indexedDBCache.js"></script>
+    <script src="../utils/pageCollect.js"></script>
+    <script>
+      if (window.pageConfig.useTabletMode) {
+        if (navigator.userAgent.includes("iPad") || window.innerWidth > window.innerHeight) {
+          sessionStorage.setItem("isTablet", "true");
+        } else {
+          sessionStorage.setItem("isTablet", "false");
+        }
+      }
+      let vm = new Vue({
+        el: "#app",
+        mixins: [commonMinxin, layerMixin],
+        components: {
+          "uc-msg-container": UcMsgContainer,
+          "uc-banner-container": UcBannerContainer,
+          "uc-menu-container": UcMenuContainer,
+          "page-list-content-container": PageListContentContainer,
+          "uc-container": UcContainer,
+          "uc-layer-container": UcLayerContainer,
+          "igw-capsuler": IgwCapsule,
+        },
+        data: () => ({
+          isTablet: sessionStorage.getItem("isTablet") === "true",
+          menuConfigKey: "",
+          pValueSet: "",
+          userName: "",
+          teamName: "",
+          currentDataMaster: "",
+          userDataMasterList: [],
+          showTeamListPopover: false,
+          containerConfig: null,
+          initContainerData: [],
+          childContainers: [],
+          dataObj: {},
+          homeHeadSculpture: window.PAGE_CONFIG.homeHeadSculpture,
+          isAnalogUser: undefined,
+          canCollect: false,//false
+          isCollecting: false,
+          collectedCount: 0,
+          collectCheckTimer: null,
+        }),
+        created() {
+          erMain.initialize(() => {
+            if (igwMode) {
+              pageManager.reset([
+                {
+                  url: window.location.pathname,
+                  params: {
+                    name: "Default",
+                  },
+                },
+              ]);
+              erJsBridge.screenControlDirection(this.isPortrait);
+            } else {
+              pageManager.pageManagerReady(() => {
+                pageManager.reset([
+                  {
+                    url: window.location.pathname,
+                    params: {
+                      name: "Default",
+                    },
+                  },
+                ]);
+              });
+            }
+            this.pValueSet = erowConfig.generateUUID();
+            if (erTool.QueryString("isFirst")) {
+              app.db.deleteAll(() => {
+                this.getConfig({ refreshFlag: "" });
+              });
+            } else {
+              this.getConfig({ refreshFlag: "" });
+            }
+            apis.getConfigVersionList({ vm: this });
+            this.userName = erUser.userName == "null" ? "" : erUser.userName;
+            this.teamName = erUser.teamName == "null" ? "" : erUser.teamName;
+            this.currentDataMaster = erUser.currentDataMaster == "null" ? "" : erUser.currentDataMaster;
+            this.userDataMasterList =
+              !erUser.userDataMasterList || erUser.currentDataMaster == "null" ? [] : JSON.parse(decodeURIComponent(erUser.userDataMasterList));
+            if (this.userDataMasterList.length) {
+              this.userDataMasterList.forEach((el) => {
+                this.$set(el, "text", el.estab_name);
+              });
+            }
+
+            this.restoreCollectState();
+
+            let isTablet = erTool.isTablet();
+            if (isTablet) {
+              var meta = document.createElement("meta");
+              meta.setAttribute("name", "viewport");
+              meta.setAttribute("content", "width=580, initial-scale=1.6, user-scalable=no");
+              document.head.appendChild(meta);
+            }
+          });
+          window.getErUserInfo((user) => {
+            this.isAnalogUser = !!user.oldToken;
+          });
+        },
+        methods: {
+          getConfig(cparms) {
+            let realKey = "homepage_config";
+            let getRemoteConfig = () => {
+              let url = erowplatformBackendUrl + "/appBaseApi/sysLoadHomePageConfig";
+              let params = { pValueSet: this.pValueSet };
+              erRequest.post(
+                url,
+                params,
+                (res) => {
+                  if (res.code == "SUCCESS") {
+                    if (pageConfig.IsCacheConfig) {
+                      app.db.save(
+                        {
+                          name: realKey,
+                          value: JSON.stringify(res.data),
+                          pValueSet: params.pValueSet,
+                          cacheTime: new Date().getTime(),
+                          expireTime: 8 * 60 * 60 * 1000,
+                        },
+                        function () {
+                          console.log("insert home succ");
+                        }
+                      );
+                    }
+                    document.querySelector(".refreshText").innerText = "";
+                    let temp = res.data;
+                    temp.pValueSet = this.pValueSet;
+
+                    if (cparms && cparms.refreshFlag) {
+                      temp.refreshFlag = cparms.refreshFlag;
+                      this.containerConfig = null;
+                      setTimeout(() => {
+                        this.containerConfig = temp;
+                      }, 100);
+                    } else {
+                      this.containerConfig = temp;
+                    }
+                  }
+                },
+                (error) => {
+                  console.log(error);
+                }
+              );
+            };
+            let handleLocalAfterGetConfig = (res) => {
+              let currentTime = new Date().getTime();
+              //过期则重新获取
+              if (currentTime - res.cacheTime > res.expireTime) {
+                app.db.delete(realKey, function () {
+                  console.log("删除成功");
+                });
+                getRemoteConfig();
+              } else {
+                let data = JSON.parse(res.value);
+                data.pValueSet = res.pValueSet;
+                setTimeout(() => {
+                  this.containerConfig = data;
+                }, 100);
+              }
+            };
+            if (cparms && cparms.refreshFlag != "refresh") {
+              app.db.get(realKey, function (res) {
+                if (res && res.value && res.value != "{}" && res.value != "undefined") {
+                  handleLocalAfterGetConfig(res);
+                } else {
+                  getRemoteConfig();
+                }
+              });
+            } else {
+              getRemoteConfig();
+            }
+          },
+          signOut: function () {
+            this.$dialog
+              .confirm({
+                title: "系统消息",
+                message: this.isAnalogUser ? "确定退出模拟用户？" : "确定[退出]？",
+                cancelButtonColor: true,
+                className: "checkConfirm",
+              })
+              .then(() => {
+                if (this.isAnalogUser) {
+                  baseSpecial.outSimulateLogin();
+                } else {
+                  erJsBridge.setParameter("userName", "");
+                  erJsBridge.setParameter("userID", "");
+                  erJsBridge.setParameter("token", "");
+                  erJsBridge.setParameter("userDataMasterList", "");
+                  localStorage.setItem("userId", "");
+                  if (!erJsBridge.exitToYJK()) {
+                    // 逸集控
+                    erJsBridge.exitSystem();
+                  }
+                }
+              })
+              .catch(() => {});
+          },
+          handleCloseLayer(config) {
+            this.removeLayer(config);
+          },
+          getThemeClass() {
+            return pageConfig.formTheme == "border" ? "form-with-border" : "";
+          },
+          onSelectTeam(action) {
+            if (this.currentDataMaster == action.estab_name) {
+              return;
+            }
+            var params = {
+              row_guid: action.row_guid,
+            };
+            let url = baseUrl + "/token-manager/user/setDataMaster";
+            erRequest.post(url, params, (res) => {
+              if (res.code == "SUCCESS") {
+                erJsBridge.setParameter("currentDataMaster", action.estab_name, function (res) {
+                  this.currentDataMaster = action.estab_name;
+                  window.location.reload();
+                });
+              }
+            });
+          },
+          checkCollectPermission(menuList) {
+            if (typeof window.pageCollect === 'undefined') {
+              return;
+            }
+            window.pageCollect.checkCollectPermission(menuList,(err, canCollect) => {
+              if (!err) {
+                this.canCollect = canCollect;
+              }
+            });
+          },
+          toggleCollect() {
+            if (typeof window.pageCollect === 'undefined') {
+              vant.Toast.fail('采集模块未加载');
+              return;
+            }
+            if (!this.isCollecting) {
+              const clientGuid = window.pageCollect.startCollecting();
+              this.isCollecting = true;
+              this.startCollectMonitor();
+              vant.Toast.success('已开始采集，请浏览需要采集的页面');
+            } else {
+              window.pageCollect.submitCollectData((err, res) => {
+                if (!err) {
+                  this.isCollecting = false;
+                  this.collectedCount = 0;
+                  this.stopCollectMonitor();
+                  vant.Toast.success('采集数据已提交');
+                }
+              });
+            }
+          },
+          cancelCollect() {
+            if (typeof window.pageCollect === 'undefined') {
+              vant.Toast.fail('采集模块未加载');
+              return;
+            }
+            this.$dialog
+              .confirm({
+                title: '确认放弃',
+                message: '确定要放弃本次采集吗？采集数据将被清空。',
+                cancelButtonColor: true,
+                className: 'checkConfirm',
+              })
+              .then(() => {
+                window.pageCollect.cancelCollecting((err, res) => {
+                  if (!err) {
+                    this.isCollecting = false;
+                    this.collectedCount = 0;
+                    this.stopCollectMonitor();
+                  }
+                });
+              })
+              .catch(() => {});
+          },
+          startCollectMonitor() {
+            this.collectCheckTimer = setInterval(() => {
+              const state = window.pageCollect.getCollectState();
+              this.collectedCount = state.collectedCount;
+            }, 1000);
+          },
+          stopCollectMonitor() {
+            if (this.collectCheckTimer) {
+              clearInterval(this.collectCheckTimer);
+              this.collectCheckTimer = null;
+            }
+          },
+          restoreCollectState() {
+            if (typeof window.pageCollect === 'undefined') {
+              return;
+            }
+            const state = window.pageCollect.getCollectState();
+            if (state.isCollecting) {
+              this.isCollecting = true;
+              this.collectedCount = state.collectedCount;
+              this.startCollectMonitor();
+            }
+          },
+        },
+        mounted() {
+          erowConfig.bindPageRefreshEvent(this.getConfig, { refreshFlag: "refresh", pageMode: "VIEW" });
+          Object.keys(localStorage).forEach((key) => {
+            if (key.indexOf("searchKey") != -1) {
+              localStorage.removeItem(key);
+            }
+          });
+          for (let i = sessionStorage.length - 1; i >= 0; i--) {
+            const key = sessionStorage.key(i); // 获取键名
+            // 如果键名包含指定的子字符串
+            if (key.includes("tempSearch")) {
+              sessionStorage.removeItem(key); // 删除该键
+              // console.log(`删除键: ${key}`); // 打印已删除的键
+            }
+          }
+          if (window.pageContext) {
+            window.pageContext["root"] = this;
+          } else {
+            window.pageContext = {
+              root: this,
+            };
+          }
+        },
+      });
+      function closeForm() {
+        vm.signOut();
+      }
+    </script>
+  </body>
+</html>

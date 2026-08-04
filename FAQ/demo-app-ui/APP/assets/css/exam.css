@@ -1,0 +1,91 @@
+.examContainer {
+    background-color: #43baf7;
+}
+.examDetailTitle {
+    background-color: #43baf7;
+}
+.examDetailTitle .head-title {
+    color: var(--color-white);
+}
+.timerForm {
+    background-color: transparent;
+    position: absolute;
+    top: 20px;
+}
+.timerForm .UcTimer-inner {
+    background-color: var(--color-white);
+    border-color: #64cbff;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.05);
+}
+.examContainer .UcDataListContainer {
+    margin: 80px 20px 20px;
+    padding: 60px 0 0 0;
+    border-radius: 10px;
+    height: calc(100% - 100px);
+}
+.form-with-border .examTitle .van-cell__value {
+    border: none;
+    padding: 5px 0;
+    position: relative;
+}
+.form-with-border .examTitle .van-cell__value::after {
+    content: "";
+    height: 10px;
+    width: 100%;
+    background-color: #43baf744;
+    border-radius: 10px;
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+}
+.form-with-border .examTitle input[disabled="disabled"] {
+    background: var(--color-white) !important;
+    font-size: 14px !important;
+    color: #43baf7;
+    -webkit-text-fill-color: #43baf7;
+    font-weight: bold;
+}
+.examContainer .UcDataListContainer .editer-form tr {
+    border: none;
+}
+.form-with-border .examContent .van-cell__value {
+    border: none;
+}
+.form-with-border .examContent .van-cell::after,
+.form-with-border .examTitle .van-cell::after {
+    display: none;
+}
+.form-with-border .examContent textarea[disabled="disabled"] {
+    background: var(--color-white) !important;
+    font-size: 16px !important;
+    padding: 0 !important;
+    border: none;
+    font-weight: bold;
+}
+.examContainer .UcDataListContainer .van-checkbox-group, 
+.examContainer .UcDataListContainer .van-radio-group {
+    grid-gap: 10px;
+}
+.examContainer .UcDataListContainer .van-checkbox,
+.examContainer .UcDataListContainer .van-radio__label {
+    font-size: 16px;
+}
+.timerForm tr {
+    border: none;
+}
+.UcDataListContainer .van-radio__label {
+    line-height: 20px;
+}
+.UcDataListContainer .quick-reply-wrapper {
+    display: none;
+}
+.progress-title {
+    font-weight: bold;
+}
+.submit_buttons {
+    background-color: transparent;
+}
+.submit_button {
+    background-color: #5fcaff;
+    color: var(--color-white);
+}

@@ -1,0 +1,51 @@
+.upload-title {
+    font-size: 16px;
+    margin: 15px;
+}
+
+.forPreview-list {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-left: 15px;
+    width: 100%;
+}
+
+.forPreview_wrap {
+    margin-right: 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    width: calc((100% - 60px)/4);
+    position: relative;
+}
+
+.forPreview {
+    border-radius: 10px;
+    width: 100%;
+
+}
+
+.deletBtn {
+    width: 20px;
+    height: 20px;
+    top: 3px;
+    right: 3px;
+    position: absolute;
+}
+
+.upload-button {
+    margin-left: 15px;
+    width: 75px;
+    height: 75px;
+    color: #999999;
+    font-size: 12px;
+    text-align: center;
+    padding-top: 45px;
+    border: 1px dashed #DCDFE6;
+    border-radius: 10px;
+    background: no-repeat url('../../../../assets/images/common/upload_all.png');
+    background-size: 23px;
+    background-position: 50% 30%;
+    background-color: #F5F5F5;
+}

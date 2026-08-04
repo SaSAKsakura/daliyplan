@@ -1,0 +1,1700 @@
+{
+  "backgroundColor": "#ffffff",
+  "animation": true,
+  "animationDuration": 600,
+  "title": {
+    "text": "总任务进度：98%    累计投入工时：1800h",
+    "left": 16,
+    "top": 10,
+    "textStyle": {
+      "color": "#4b5563",
+      "fontSize": 13,
+      "fontWeight": 500
+    }
+  },
+  "grid": {
+    "left": 54,
+    "right": 98,
+    "top": 132,
+    "bottom": 58,
+    "containLabel": true
+  },
+  "tooltip": {
+    "trigger": "axis",
+    "confine": true,
+    "axisPointer": {
+      "type": "shadow",
+      "shadowStyle": {
+        "color": "rgba(97,178,255,0.08)"
+      }
+    },
+    "backgroundColor": "rgba(31,41,55,0.94)",
+    "borderWidth": 0,
+    "padding": [
+      10,
+      14
+    ],
+    "textStyle": {
+      "color": "#ffffff",
+      "fontSize": 11
+    }
+  },
+  "legend": [
+    {
+      "type": "plain",
+      "top": 42,
+      "left": 10,
+      "right": 10,
+      "itemWidth": 18,
+      "itemHeight": 4,
+      "itemGap": 14,
+      "textStyle": {
+        "color": "#667382",
+        "fontSize": 11
+      },
+      "data": [
+        "设计输出完成率",
+        "联络确认完成率",
+        "变更响应完成率",
+        "测试准备完成率",
+        "总投入工时"
+      ]
+    },
+    {
+      "type": "scroll",
+      "top": 76,
+      "left": 10,
+      "right": 10,
+      "height": 30,
+      "pageButtonGap": 8,
+      "pageButtonItemGap": 4,
+      "pageIconSize": 11,
+      "pageTextStyle": {
+        "color": "#8995a3",
+        "fontSize": 10
+      },
+      "itemWidth": 10,
+      "itemHeight": 8,
+      "itemGap": 8,
+      "textStyle": {
+        "color": "#7b8794",
+        "fontSize": 10
+      },
+      "data": [
+        "任务01工时",
+        "任务02工时",
+        "任务03工时",
+        "任务04工时",
+        "任务05工时",
+        "任务06工时",
+        "任务07工时",
+        "任务08工时",
+        "任务09工时",
+        "任务10工时",
+        "任务11工时",
+        "任务12工时",
+        "任务13工时",
+        "任务14工时",
+        "任务15工时",
+        "任务16工时",
+        "任务17工时",
+        "任务18工时",
+        "任务19工时",
+        "任务20工时",
+        "任务21工时",
+        "任务22工时",
+        "任务23工时",
+        "任务24工时",
+        "任务25工时",
+        "任务26工时",
+        "任务27工时",
+        "任务28工时",
+        "任务29工时",
+        "任务30工时",
+        "任务31工时",
+        "任务32工时",
+        "任务33工时",
+        "任务34工时",
+        "任务35工时",
+        "任务36工时",
+        "任务37工时",
+        "任务38工时",
+        "任务39工时",
+        "任务40工时"
+      ]
+    }
+  ],
+  "xAxis": {
+    "type": "category",
+    "boundaryGap": true,
+    "data": [
+      "07-12",
+      "07-14",
+      "07-16",
+      "07-18",
+      "07-20",
+      "07-22",
+      "07-24",
+      "07-26",
+      "07-28",
+      "07-30"
+    ],
+    "axisLine": {
+      "lineStyle": {
+        "color": "#d9e1e8"
+      }
+    },
+    "axisTick": {
+      "show": false
+    },
+    "axisLabel": {
+      "color": "#8995a3",
+      "fontSize": 11,
+      "interval": 0
+    }
+  },
+  "yAxis": [
+    {
+      "type": "value",
+      "min": 0,
+      "max": 100,
+      "interval": 20,
+      "name": "进度（%）",
+      "nameTextStyle": {
+        "color": "#8a96a3",
+        "fontSize": 11
+      },
+      "axisLine": {
+        "show": false
+      },
+      "axisTick": {
+        "show": false
+      },
+      "axisLabel": {
+        "color": "#8995a3",
+        "fontSize": 11,
+        "formatter": "{value}%"
+      },
+      "splitLine": {
+        "lineStyle": {
+          "color": "#edf1f5"
+        }
+      }
+    },
+    {
+      "type": "value",
+      "min": 0,
+      "max": 10,
+      "interval": 2,
+      "name": "单任务工时（h）",
+      "position": "right",
+      "nameTextStyle": {
+        "color": "#8a96a3",
+        "fontSize": 11
+      },
+      "axisLine": {
+        "show": false
+      },
+      "axisTick": {
+        "show": false
+      },
+      "axisLabel": {
+        "color": "#8995a3",
+        "fontSize": 11,
+        "formatter": "{value}h"
+      },
+      "splitLine": {
+        "show": false
+      }
+    },
+    {
+      "type": "value",
+      "min": 0,
+      "max": 220,
+      "interval": 40,
+      "name": "总投入工时（h）",
+      "position": "right",
+      "offset": 48,
+      "nameTextStyle": {
+        "color": "#8a96a3",
+        "fontSize": 11
+      },
+      "axisLine": {
+        "show": false
+      },
+      "axisTick": {
+        "show": false
+      },
+      "axisLabel": {
+        "color": "#8995a3",
+        "fontSize": 11,
+        "formatter": "{value}h"
+      },
+      "splitLine": {
+        "show": false
+      }
+    }
+  ],
+  "series": [
+    {
+      "name": "设计输出完成率",
+      "type": "line",
+      "yAxisIndex": 0,
+      "smooth": true,
+      "symbol": "circle",
+      "symbolSize": 5,
+      "lineStyle": {
+        "width": 2,
+        "color": "#63aaf2"
+      },
+      "itemStyle": {
+        "color": "#63aaf2"
+      },
+      "data": [
+        0,
+        12,
+        24,
+        36,
+        48,
+        60,
+        72,
+        84,
+        92,
+        98
+      ]
+    },
+    {
+      "name": "联络确认完成率",
+      "type": "line",
+      "yAxisIndex": 0,
+      "smooth": true,
+      "symbol": "circle",
+      "symbolSize": 5,
+      "lineStyle": {
+        "width": 2,
+        "color": "#51c6b7"
+      },
+      "itemStyle": {
+        "color": "#51c6b7"
+      },
+      "data": [
+        0,
+        8,
+        18,
+        29,
+        41,
+        53,
+        65,
+        76,
+        86,
+        94
+      ]
+    },
+    {
+      "name": "变更响应完成率",
+      "type": "line",
+      "yAxisIndex": 0,
+      "smooth": true,
+      "symbol": "circle",
+      "symbolSize": 5,
+      "lineStyle": {
+        "width": 2,
+        "color": "#f687a4"
+      },
+      "itemStyle": {
+        "color": "#f687a4"
+      },
+      "data": [
+        0,
+        7,
+        16,
+        25,
+        35,
+        45,
+        55,
+        64,
+        72,
+        80
+      ]
+    },
+    {
+      "name": "测试准备完成率",
+      "type": "line",
+      "yAxisIndex": 0,
+      "smooth": true,
+      "symbol": "circle",
+      "symbolSize": 5,
+      "lineStyle": {
+        "width": 2,
+        "color": "#9a7af5"
+      },
+      "itemStyle": {
+        "color": "#9a7af5"
+      },
+      "data": [
+        0,
+        20,
+        41,
+        60,
+        76,
+        88,
+        95,
+        98,
+        98,
+        98
+      ]
+    },
+    {
+      "name": "总投入工时",
+      "type": "line",
+      "yAxisIndex": 2,
+      "smooth": true,
+      "symbol": "circle",
+      "symbolSize": 5,
+      "z": 1,
+      "lineStyle": {
+        "width": 2,
+        "type": "dashed",
+        "color": "#f3ad42"
+      },
+      "itemStyle": {
+        "color": "#f3ad42"
+      },
+      "areaStyle": {
+        "color": "rgba(246,205,102,0.22)"
+      },
+      "data": [
+        190,
+        190,
+        180,
+        170,
+        170,
+        170,
+        170,
+        180,
+        190,
+        190
+      ]
+    },
+    {
+      "name": "任务01工时",
+      "type": "bar",
+      "yAxisIndex": 1,
+      "barWidth": 2,
+      "barGap": "0%",
+      "barCategoryGap": "18%",
+      "z": 3,
+      "itemStyle": {
+        "color": "#63aaf2",
+        "borderRadius": [
+          1,
+          1,
+          0,
+          0
+        ]
+      },
+      "emphasis": {
+        "focus": "series"
+      },
+      "data": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "name": "任务02工时",
+      "type": "bar",
+      "yAxisIndex": 1,
+      "barWidth": 2,
+      "barGap": "0%",
+      "barCategoryGap": "18%",
+      "z": 3,
+      "itemStyle": {
+        "color": "#51c6b7",
+        "borderRadius": [
+          1,
+          1,
+          0,
+          0
+        ]
+      },
+      "emphasis": {
+        "focus": "series"
+      },
+      "data": [
+        7,
+        8,
+        9,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "name": "任务03工时",
+      "type": "bar",
+      "yAxisIndex": 1,
+      "barWidth": 2,
+      "barGap": "0%",
+      "barCategoryGap": "18%",
+      "z": 3,
+      "itemStyle": {
+        "color": "#f687a4",
+        "borderRadius": [
+          1,
+          1,
+          0,
+          0
+        ]
+      },
+      "emphasis": {
+        "focus": "series"
+      },
+      "data": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "任务04工时",
+      "type": "bar",
+      "yAxisIndex": 1,
+      "barWidth": 2,
+      "barGap": "0%",
+      "barCategoryGap": "18%",
+      "z": 3,
+      "itemStyle": {
+        "color": "#9a7af5",
+        "borderRadius": [
+          1,
+          1,
+          0,
+          0
+        ]
+      },
+      "emphasis": {
+        "focus": "series"
+      },
+      "data": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        0
+      ]
+    },
+    {
+      "name": "任务05工时",
+      "type": "bar",
+      "yAxisIndex": 1,
+      "barWidth": 2,
+      "barGap": "0%",
+      "barCategoryGap": "18%",
+      "z": 3,
+      "itemStyle": {
+        "color": "#f3ad42",
+        "borderRadius": [
+          1,
+          1,
+          0,
+          0
+        ]
+      },
+      "emphasis": {
+        "focus": "series"
+      },
+      "data": [
+        8,
+        9,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      "name": "任务06工时",
+      "type": "bar",
+      "yAxisIndex": 1,
+      "barWidth": 2,
+      "barGap": "0%",
+      "barCategoryGap": "18%",
+      "z": 3,
+      "itemStyle": {
+        "color": "#76b7eb",
+        "borderRadius": [
+          1,
+          1,
+          0,
+          0
+        ]
+      },
+      "emphasis": {
+        "focus": "series"
+      },
+      "data": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "name": "任务07工时",
+      "type": "bar",
+      "yAxisIndex": 1,
+      "barWidth": 2,
+      "barGap": "0%",
+      "barCategoryGap": "18%",
+      "z": 3,
+      "itemStyle": {
+        "color": "#62c4d0",
+        "borderRadius": [
+          1,
+          1,
+          0,
+          0
+        ]
+      },
+      "emphasis": {
+        "focus": "series"
+      },
+      "data": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "任务08工时",
+      "type": "bar",
+      "yAxisIndex": 1,
+      "barWidth": 2,
+      "barGap": "0%",
+      "barCategoryGap": "18%",
+      "z": 3,
+      "itemStyle": {
+        "color": "#7fc97f",
+        "borderRadius": [
+          1,
+          1,
+          0,
+          0
+        ]
+      },
+      "emphasis": {
+        "focus": "series"
+      },
+      "data": [
+        9,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "name": "任务09工时",
+      "type": "bar",
+      "yAxisIndex": 1,
+      "barWidth": 2,
+      "barGap": "0%",
+      "barCategoryGap": "18%",
+      "z": 3,
+      "itemStyle": {
+        "color": "#63aaf2",
+        "borderRadius": [
+          1,
+          1,
+          0,
+          0
+        ]
+      },
+      "emphasis": {
+        "focus": "series"
+      },
+      "data": [
+        9,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "name": "任务10工时",
+      "type": "bar",
+      "yAxisIndex": 1,
+      "barWidth": 2,
+      "barGap": "0%",
+      "barCategoryGap": "18%",
+      "z": 3,
+      "itemStyle": {
+        "color": "#51c6b7",
+        "borderRadius": [
+          1,
+          1,
+          0,
+          0
+        ]
+      },
+      "emphasis": {
+        "focus": "series"
+      },
+      "data": [
+        6,
+        7,
+        8,
+        9,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "name": "任务11工时",
+      "type": "bar",
+      "yAxisIndex": 1,
+      "barWidth": 2,
+      "barGap": "0%",
+      "barCategoryGap": "18%",
+      "z": 3,
+      "itemStyle": {
+        "color": "#f687a4",
+        "borderRadius": [
+          1,
+          1,
+          0,
+          0
+        ]
+      },
+      "emphasis": {
+        "focus": "series"
+      },
+      "data": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "name": "任务12工时",
+      "type": "bar",
+      "yAxisIndex": 1,
+      "barWidth": 2,
+      "barGap": "0%",
+      "barCategoryGap": "18%",
+      "z": 3,
+      "itemStyle": {
+        "color": "#9a7af5",
+        "borderRadius": [
+          1,
+          1,
+          0,
+          0
+        ]
+      },
+      "emphasis": {
+        "focus": "series"
+      },
+      "data": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "name": "任务13工时",
+      "type": "bar",
+      "yAxisIndex": 1,
+      "barWidth": 2,
+      "barGap": "0%",
+      "barCategoryGap": "18%",
+      "z": 3,
+      "itemStyle": {
+        "color": "#f3ad42",
+        "borderRadius": [
+          1,
+          1,
+          0,
+          0
+        ]
+      },
+      "emphasis": {
+        "focus": "series"
+      },
+      "data": [
+        7,
+        8,
+        9,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "name": "任务14工时",
+      "type": "bar",
+      "yAxisIndex": 1,
+      "barWidth": 2,
+      "barGap": "0%",
+      "barCategoryGap": "18%",
+      "z": 3,
+      "itemStyle": {
+        "color": "#76b7eb",
+        "borderRadius": [
+          1,
+          1,
+          0,
+          0
+        ]
+      },
+      "emphasis": {
+        "focus": "series"
+      },
+      "data": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "任务15工时",
+      "type": "bar",
+      "yAxisIndex": 1,
+      "barWidth": 2,
+      "barGap": "0%",
+      "barCategoryGap": "18%",
+      "z": 3,
+      "itemStyle": {
+        "color": "#62c4d0",
+        "borderRadius": [
+          1,
+          1,
+          0,
+          0
+        ]
+      },
+      "emphasis": {
+        "focus": "series"
+      },
+      "data": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        0
+      ]
+    },
+    {
+      "name": "任务16工时",
+      "type": "bar",
+      "yAxisIndex": 1,
+      "barWidth": 2,
+      "barGap": "0%",
+      "barCategoryGap": "18%",
+      "z": 3,
+      "itemStyle": {
+        "color": "#7fc97f",
+        "borderRadius": [
+          1,
+          1,
+          0,
+          0
+        ]
+      },
+      "emphasis": {
+        "focus": "series"
+      },
+      "data": [
+        8,
+        9,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      "name": "任务17工时",
+      "type": "bar",
+      "yAxisIndex": 1,
+      "barWidth": 2,
+      "barGap": "0%",
+      "barCategoryGap": "18%",
+      "z": 3,
+      "itemStyle": {
+        "color": "#63aaf2",
+        "borderRadius": [
+          1,
+          1,
+          0,
+          0
+        ]
+      },
+      "emphasis": {
+        "focus": "series"
+      },
+      "data": [
+        8,
+        9,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      "name": "任务18工时",
+      "type": "bar",
+      "yAxisIndex": 1,
+      "barWidth": 2,
+      "barGap": "0%",
+      "barCategoryGap": "18%",
+      "z": 3,
+      "itemStyle": {
+        "color": "#51c6b7",
+        "borderRadius": [
+          1,
+          1,
+          0,
+          0
+        ]
+      },
+      "emphasis": {
+        "focus": "series"
+      },
+      "data": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "name": "任务19工时",
+      "type": "bar",
+      "yAxisIndex": 1,
+      "barWidth": 2,
+      "barGap": "0%",
+      "barCategoryGap": "18%",
+      "z": 3,
+      "itemStyle": {
+        "color": "#f687a4",
+        "borderRadius": [
+          1,
+          1,
+          0,
+          0
+        ]
+      },
+      "emphasis": {
+        "focus": "series"
+      },
+      "data": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "任务20工时",
+      "type": "bar",
+      "yAxisIndex": 1,
+      "barWidth": 2,
+      "barGap": "0%",
+      "barCategoryGap": "18%",
+      "z": 3,
+      "itemStyle": {
+        "color": "#9a7af5",
+        "borderRadius": [
+          1,
+          1,
+          0,
+          0
+        ]
+      },
+      "emphasis": {
+        "focus": "series"
+      },
+      "data": [
+        9,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "name": "任务21工时",
+      "type": "bar",
+      "yAxisIndex": 1,
+      "barWidth": 2,
+      "barGap": "0%",
+      "barCategoryGap": "18%",
+      "z": 3,
+      "itemStyle": {
+        "color": "#f3ad42",
+        "borderRadius": [
+          1,
+          1,
+          0,
+          0
+        ]
+      },
+      "emphasis": {
+        "focus": "series"
+      },
+      "data": [
+        6,
+        7,
+        8,
+        9,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "name": "任务22工时",
+      "type": "bar",
+      "yAxisIndex": 1,
+      "barWidth": 2,
+      "barGap": "0%",
+      "barCategoryGap": "18%",
+      "z": 3,
+      "itemStyle": {
+        "color": "#76b7eb",
+        "borderRadius": [
+          1,
+          1,
+          0,
+          0
+        ]
+      },
+      "emphasis": {
+        "focus": "series"
+      },
+      "data": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "name": "任务23工时",
+      "type": "bar",
+      "yAxisIndex": 1,
+      "barWidth": 2,
+      "barGap": "0%",
+      "barCategoryGap": "18%",
+      "z": 3,
+      "itemStyle": {
+        "color": "#62c4d0",
+        "borderRadius": [
+          1,
+          1,
+          0,
+          0
+        ]
+      },
+      "emphasis": {
+        "focus": "series"
+      },
+      "data": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "name": "任务24工时",
+      "type": "bar",
+      "yAxisIndex": 1,
+      "barWidth": 2,
+      "barGap": "0%",
+      "barCategoryGap": "18%",
+      "z": 3,
+      "itemStyle": {
+        "color": "#7fc97f",
+        "borderRadius": [
+          1,
+          1,
+          0,
+          0
+        ]
+      },
+      "emphasis": {
+        "focus": "series"
+      },
+      "data": [
+        7,
+        8,
+        9,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "name": "任务25工时",
+      "type": "bar",
+      "yAxisIndex": 1,
+      "barWidth": 2,
+      "barGap": "0%",
+      "barCategoryGap": "18%",
+      "z": 3,
+      "itemStyle": {
+        "color": "#63aaf2",
+        "borderRadius": [
+          1,
+          1,
+          0,
+          0
+        ]
+      },
+      "emphasis": {
+        "focus": "series"
+      },
+      "data": [
+        7,
+        8,
+        9,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "name": "任务26工时",
+      "type": "bar",
+      "yAxisIndex": 1,
+      "barWidth": 2,
+      "barGap": "0%",
+      "barCategoryGap": "18%",
+      "z": 3,
+      "itemStyle": {
+        "color": "#51c6b7",
+        "borderRadius": [
+          1,
+          1,
+          0,
+          0
+        ]
+      },
+      "emphasis": {
+        "focus": "series"
+      },
+      "data": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "任务27工时",
+      "type": "bar",
+      "yAxisIndex": 1,
+      "barWidth": 2,
+      "barGap": "0%",
+      "barCategoryGap": "18%",
+      "z": 3,
+      "itemStyle": {
+        "color": "#f687a4",
+        "borderRadius": [
+          1,
+          1,
+          0,
+          0
+        ]
+      },
+      "emphasis": {
+        "focus": "series"
+      },
+      "data": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        0
+      ]
+    },
+    {
+      "name": "任务28工时",
+      "type": "bar",
+      "yAxisIndex": 1,
+      "barWidth": 2,
+      "barGap": "0%",
+      "barCategoryGap": "18%",
+      "z": 3,
+      "itemStyle": {
+        "color": "#9a7af5",
+        "borderRadius": [
+          1,
+          1,
+          0,
+          0
+        ]
+      },
+      "emphasis": {
+        "focus": "series"
+      },
+      "data": [
+        8,
+        9,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      "name": "任务29工时",
+      "type": "bar",
+      "yAxisIndex": 1,
+      "barWidth": 2,
+      "barGap": "0%",
+      "barCategoryGap": "18%",
+      "z": 3,
+      "itemStyle": {
+        "color": "#f3ad42",
+        "borderRadius": [
+          1,
+          1,
+          0,
+          0
+        ]
+      },
+      "emphasis": {
+        "focus": "series"
+      },
+      "data": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "name": "任务30工时",
+      "type": "bar",
+      "yAxisIndex": 1,
+      "barWidth": 2,
+      "barGap": "0%",
+      "barCategoryGap": "18%",
+      "z": 3,
+      "itemStyle": {
+        "color": "#76b7eb",
+        "borderRadius": [
+          1,
+          1,
+          0,
+          0
+        ]
+      },
+      "emphasis": {
+        "focus": "series"
+      },
+      "data": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "任务31工时",
+      "type": "bar",
+      "yAxisIndex": 1,
+      "barWidth": 2,
+      "barGap": "0%",
+      "barCategoryGap": "18%",
+      "z": 3,
+      "itemStyle": {
+        "color": "#62c4d0",
+        "borderRadius": [
+          1,
+          1,
+          0,
+          0
+        ]
+      },
+      "emphasis": {
+        "focus": "series"
+      },
+      "data": [
+        9,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "name": "任务32工时",
+      "type": "bar",
+      "yAxisIndex": 1,
+      "barWidth": 2,
+      "barGap": "0%",
+      "barCategoryGap": "18%",
+      "z": 3,
+      "itemStyle": {
+        "color": "#7fc97f",
+        "borderRadius": [
+          1,
+          1,
+          0,
+          0
+        ]
+      },
+      "emphasis": {
+        "focus": "series"
+      },
+      "data": [
+        6,
+        7,
+        8,
+        9,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "name": "任务33工时",
+      "type": "bar",
+      "yAxisIndex": 1,
+      "barWidth": 2,
+      "barGap": "0%",
+      "barCategoryGap": "18%",
+      "z": 3,
+      "itemStyle": {
+        "color": "#63aaf2",
+        "borderRadius": [
+          1,
+          1,
+          0,
+          0
+        ]
+      },
+      "emphasis": {
+        "focus": "series"
+      },
+      "data": [
+        6,
+        7,
+        8,
+        9,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "name": "任务34工时",
+      "type": "bar",
+      "yAxisIndex": 1,
+      "barWidth": 2,
+      "barGap": "0%",
+      "barCategoryGap": "18%",
+      "z": 3,
+      "itemStyle": {
+        "color": "#51c6b7",
+        "borderRadius": [
+          1,
+          1,
+          0,
+          0
+        ]
+      },
+      "emphasis": {
+        "focus": "series"
+      },
+      "data": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "name": "任务35工时",
+      "type": "bar",
+      "yAxisIndex": 1,
+      "barWidth": 2,
+      "barGap": "0%",
+      "barCategoryGap": "18%",
+      "z": 3,
+      "itemStyle": {
+        "color": "#f687a4",
+        "borderRadius": [
+          1,
+          1,
+          0,
+          0
+        ]
+      },
+      "emphasis": {
+        "focus": "series"
+      },
+      "data": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "name": "任务36工时",
+      "type": "bar",
+      "yAxisIndex": 1,
+      "barWidth": 2,
+      "barGap": "0%",
+      "barCategoryGap": "18%",
+      "z": 3,
+      "itemStyle": {
+        "color": "#9a7af5",
+        "borderRadius": [
+          1,
+          1,
+          0,
+          0
+        ]
+      },
+      "emphasis": {
+        "focus": "series"
+      },
+      "data": [
+        7,
+        8,
+        9,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "name": "任务37工时",
+      "type": "bar",
+      "yAxisIndex": 1,
+      "barWidth": 2,
+      "barGap": "0%",
+      "barCategoryGap": "18%",
+      "z": 3,
+      "itemStyle": {
+        "color": "#f3ad42",
+        "borderRadius": [
+          1,
+          1,
+          0,
+          0
+        ]
+      },
+      "emphasis": {
+        "focus": "series"
+      },
+      "data": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "任务38工时",
+      "type": "bar",
+      "yAxisIndex": 1,
+      "barWidth": 2,
+      "barGap": "0%",
+      "barCategoryGap": "18%",
+      "z": 3,
+      "itemStyle": {
+        "color": "#76b7eb",
+        "borderRadius": [
+          1,
+          1,
+          0,
+          0
+        ]
+      },
+      "emphasis": {
+        "focus": "series"
+      },
+      "data": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        0
+      ]
+    },
+    {
+      "name": "任务39工时",
+      "type": "bar",
+      "yAxisIndex": 1,
+      "barWidth": 2,
+      "barGap": "0%",
+      "barCategoryGap": "18%",
+      "z": 3,
+      "itemStyle": {
+        "color": "#62c4d0",
+        "borderRadius": [
+          1,
+          1,
+          0,
+          0
+        ]
+      },
+      "emphasis": {
+        "focus": "series"
+      },
+      "data": [
+        8,
+        9,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      "name": "任务40工时",
+      "type": "bar",
+      "yAxisIndex": 1,
+      "barWidth": 2,
+      "barGap": "0%",
+      "barCategoryGap": "18%",
+      "z": 3,
+      "itemStyle": {
+        "color": "#7fc97f",
+        "borderRadius": [
+          1,
+          1,
+          0,
+          0
+        ]
+      },
+      "emphasis": {
+        "focus": "series"
+      },
+      "data": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  ]
+}

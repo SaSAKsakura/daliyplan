@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Title</title>
+  </head>
+  <body>
+    <script>
+      window.onload = () => {
+        // let data = location.search
+        //   ? JSON.parse(decodeURIComponent(location.search.substring(1)))
+        //   : { DepPath: "/SelfDefineProject", rootDir: "/APP"，"" };
+        let data = location.search
+          ? JSON.parse(decodeURIComponent(location.search.substring(1).split("?")[0]))
+          : { DepPath: "/SelfDefineProject", rootDir: "/APP", indexPath: "" };
+        if(!data.rootDir){
+          data.rootDir='/APP'
+        }
+        // 深度合并:source的字段覆盖target,object类型递归合并,其他类型直接替换
+        var deepMergeConfig = (target, source) => {
+          if (source === null || source === undefined) return target;
+          if (target === null || target === undefined) return source;
+          if (typeof source !== "object" || Array.isArray(source)) return source;
+          if (typeof target !== "object" || Array.isArray(target)) return source;
+          let result = Object.assign({}, target);
+          Object.keys(source).forEach((key) => {
+            result[key] = deepMergeConfig(target[key], source[key]);
+          });
+          return result;
+        };
+        // 若存在远程下发的部分配置项,合并覆盖到本地BASE_CONFIG
+        var applyRemotePartialConfig = () => {
+          let isRemoteConfig = localStorage.getItem("isRemoteConfig");
+          if (isRemoteConfig != "-1") return;
+          let remotePartialStr = localStorage.getItem("REMOTE_PARTIAL_CONFIG");
+          if (!remotePartialStr) {
+            localStorage.removeItem("isRemoteConfig");
+            return;
+          }
+          try {
+            let remotePartial = JSON.parse(remotePartialStr);
+            // 优先使用远程配置中的projectPath定位本地BASE_CONFIG;否则用URL中的DepPath
+            let targetKey = (remotePartial && remotePartial.projectPath) || data.DepPath;
+            let baseConfigStr = localStorage.getItem(targetKey + "BASE_CONFIG");
+            let baseConfig = baseConfigStr ? JSON.parse(baseConfigStr) : {};
+            let mergedConfig = deepMergeConfig(baseConfig, remotePartial);
+            localStorage.setItem(targetKey + "BASE_CONFIG", JSON.stringify(mergedConfig));
+            localStorage.setItem("currentConfigKey", targetKey);
+          } catch (e) {
+            console.error("合并远程配置失败", e);
+          }
+          // 用完即清,防止下次进入仍命中旧的远程配置
+          localStorage.removeItem("REMOTE_PARTIAL_CONFIG");
+          localStorage.removeItem("isRemoteConfig");
+        };
+        var handleLocalConfig = () => {
+          let currentConfigKey = localStorage.getItem("currentConfigKey");
+          let tempConfig = JSON.parse(localStorage.getItem(currentConfigKey + "BASE_CONFIG"));
+          tempConfig.DepPath = data.DepPath;
+          tempConfig.rootDir = data.rootDir;
+          tempConfig.projectPath = data.DepPath;
+          if (data.indexPath) {
+            tempConfig.indexPath = data.indexPath;
+          }
+          // 进去主系统时清除所有主子引用的配置缓存防止缓存移除
+          if (data.DepPath == "/SelfDefineProject") {
+            // 清除localStorage中存储key含有BASE_CONFIG的值
+            Object.keys(localStorage).forEach((key) => {
+              if (key.indexOf("BASE_CONFIG") !== -1) {
+                localStorage.removeItem(key);
+              }
+            });
+          }
+          // 切换当前激活的配置项并存储新的配置
+          localStorage.setItem("currentConfigKey", data.DepPath);
+          localStorage.setItem(data.DepPath + "BASE_CONFIG", JSON.stringify(tempConfig));
+          // 加载完成，重定向至目标页面
+          if (tempConfig["indexPath"]) {
+            window.location.href = `${window.location.pathname.substring(
+              0,
+              window.location.pathname.indexOf(data.rootDir) + data.rootDir.length
+            )}/template${tempConfig["indexPath"]}.html?isFirst=true&t=${new Date().getTime()}`;
+          }
+        };
+        // 加载自定义配置
+        let loadEntranceJs = () => {
+          let configJSEle = document.createElement("script");
+          configJSEle.src = `${window.location.pathname.substring(0, window.location.pathname.lastIndexOf(data.rootDir))}${
+            data.DepPath
+          }/entranceJS/index.js`;
+          configJSEle.type = "text/javascript";
+          document.body.appendChild(configJSEle);
+          Object.keys(localStorage).forEach((key) => {
+            if (key.indexOf("searchKey") != -1) {
+              localStorage.removeItem(key);
+            }
+          });
+          for (let i = sessionStorage.length - 1; i >= 0; i--) {
+            const key = sessionStorage.key(i); // 获取键名
+            // 如果键名包含指定的子字符串
+            if (key.includes("tempSearch")) {
+              sessionStorage.removeItem(key); // 删除该键
+              // console.log(`删除键: ${key}`); // 打印已删除的键
+            }
+          }
+          configJSEle.onload = () => {
+            // 本地entranceJS已设置完整BASE_CONFIG,这里用远程部分配置项覆盖之
+            applyRemotePartialConfig();
+            // 将查询参数拷贝至BASE_CONFIG
+            handleLocalConfig();
+          };
+        };
+        loadEntranceJs();
+      };
+    </script>
+    <script></script>
+  </body>
+</html>

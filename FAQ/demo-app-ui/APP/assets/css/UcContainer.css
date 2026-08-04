@@ -1,0 +1,9 @@
+.gray-bg-uccontainer{
+    background-color: #f5f6fa;
+  }
+.UcContainerNoGroup-content{
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: auto;
+}

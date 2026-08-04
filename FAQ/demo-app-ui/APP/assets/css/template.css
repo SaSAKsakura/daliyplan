@@ -1,0 +1,333 @@
+/* TemplateFlowDiagram */
+.template-flow-diagram {
+  width: 100%;
+  padding: 20px;
+  background-color: var(--color-white);
+}
+
+.flow-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.flow-icon-img {
+  width: 34px;
+  z-index: 1;
+}
+
+.flow-min-icon {
+  margin-top: 8px;
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+}
+
+.flow-down .flow-min-icon {
+  background: #7ed321;
+  box-shadow: 0 0 0 3px rgba(126, 211, 33, 0.2);
+}
+
+.flow-ing .flow-min-icon {
+  background: #61b2ff;
+  box-shadow: 0 0 0 3px rgba(97, 178, 255, 0.2);
+}
+
+.flow-ing .flow-icon {
+  background-color: var(themeColor);
+  color: var(--color-white);
+}
+
+.flow-wait .flow-min-icon {
+  background: #c0c0c0;
+  box-shadow: 0 0 0 3px rgba(116, 116, 116, 0.2);
+}
+
+.flow-wait .flow-icon {
+  color: var(--color-gray);
+  background-color: var(--color-white);
+  border: 1px solid var(--border-color);
+}
+
+.folw-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 10px;
+  position: relative;
+  font-size: 14px;
+  width: 100%;
+}
+
+.folw-item .flow-status {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.folw-item .flow-info {
+  font-size: 14px;
+  color: var(--text-color);
+  flex-direction: column;
+  line-height: 26px;
+  border-radius: 6px;
+  width: 100%;
+  align-items: flex-start;
+}
+
+.folw-item .flow-title {
+  font-size: 16px;
+}
+
+.flow-line {
+  flex: 1;
+  width: 1px;
+  position: absolute;
+  left: 4px;
+  height: 100%;
+  z-index: 0;
+  border: 1px dashed var(--border-color);
+}
+
+.flow-icon {
+  width: 34px;
+  height: 34px;
+  line-height: 34px;
+  border-radius: 17px;
+  font-size: 16px;
+  text-align: center;
+  z-index: 1;
+}
+
+.red-label {
+  padding: 2px 3px;
+  background: #fff1f1;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #ff4d4f;
+  margin: auto 0 auto auto;
+}
+
+.special-icon {
+  width: 14px;
+  margin: auto 3px 1px 3px;
+}
+
+/* templateFacialRecognition */
+.frnotes-title {
+  font-size: 16px;
+  font-weight: 550;
+  color: var(--text-color);
+  margin: 80px auto 20px auto;
+}
+
+.frnotes-scan {
+  width: 176px;
+  margin: 40px auto;
+}
+
+.frnotes-info-title {
+  font-size: 14px;
+  font-weight: 550;
+  color: var(--text-color);
+  width: 100%;
+  text-align: left !important;
+  margin-bottom: 20px;
+}
+
+.frnotes-info {
+  width: 100%;
+  justify-content: space-between;
+  color: var(--color-gray);
+}
+
+.frnotes-info img {
+  width: 50px;
+  margin-bottom: 2px;
+}
+
+.template-facial-recognition {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 14px;
+  padding: 20px;
+}
+
+.frresults-photo {
+  margin-bottom: 20px;
+  max-height: 65%;
+}
+
+.frresults-icon {
+  width: 35px;
+  margin-bottom: 10px;
+}
+
+.frresults-info {
+  margin-top: 20px;
+  text-align: left !important;
+}
+
+.frnotes-red {
+  position: relative;
+}
+
+.frnotes-info-red {
+  position: absolute;
+  width: 15px !important;
+  bottom: 20px;
+  right: 0;
+}
+
+.frresults-info-fail {
+  margin-top: 5px;
+  display: flex;
+  color: var(--color-yellow-1);
+}
+
+.frresults-button {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  width: calc(100% - 40px);
+}
+
+.frresults-button .half-button {
+  width: calc(50% - 10px);
+}
+
+/* TemplateFileSync */
+.template-file-sync {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-height: 100vh;
+  background-color: var(--color-white);
+}
+
+.template-file-sync .head-nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px;
+  background-color: var(--theme-color);
+  color: var(--color-white);
+}
+
+.template-file-sync .head-nav-container .nav-title {
+  color: var(--color-white);
+}
+
+.template-file-sync .head-nav-container .nav-left-icon {
+  width: 11px;
+}
+
+.template-file-sync .head-nav-container .nav-right-icon {
+  width: 28px;
+}
+
+.template-file-sync .template-file-sync-header {
+}
+
+.template-file-sync-header .header-tab {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  border-bottom: var(--border-gray);
+}
+
+.template-file-sync-header .tab-item {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: var(--text-color);
+  font-size: var(--text-font-size);
+}
+.template-file-sync-header .tab-item-content {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.template-file-sync-header .tab-item-content.current {
+  color: var(--theme-color);
+  border-bottom: 3px solid var(--theme-color);
+}
+
+/* 列表 */
+.template-file-sync-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  overflow-y: auto;
+}
+
+.template-file-sync-body .body-file-list {
+  flex: 1;
+  width: 100%;
+  overflow-y: auto;
+}
+
+.body-file-list .body-file-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  height: 80px;
+  padding: 20px;
+  border-bottom: var(--border-gray);
+}
+
+.body-file-list .body-file-item-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  font-size: var(--text-font-size);
+  overflow: hidden;
+}
+
+.body-file-item-left .file-item-name {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: var(--text-color);
+}
+
+.body-file-item-left .file-item-size {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: var(--van-text-color-2);
+}
+
+.body-file-list .body-file-item-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  height: 100%;
+}
+
+.body-file-item-right .item-right-icon {
+  width: 22px;
+  height: 22px;
+}
+
+.template-file-sync .van-swipe__track:not(.images-in-fileContainer > .van-swipe > .van-swipe__track) {
+  max-height: unset;
+}

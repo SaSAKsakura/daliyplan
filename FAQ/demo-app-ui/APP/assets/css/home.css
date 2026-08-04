@@ -1,0 +1,384 @@
+body {
+  margin: 0;
+  padding: 0;
+  color: var(--text-color);
+  box-sizing: border-box;
+}
+
+.homePage {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-white);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.flexAlignCenter {
+  display: flex;
+  align-items: center;
+}
+
+.homeHeader {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 15px;
+  font-size: 14px;
+  flex-shrink: 0;
+  background-color: var(--color-white);
+}
+
+.homeHeader .nameSpan {
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 50%;
+  background: #3076ff;
+  color: var(--color-white);
+  margin-right: 10px;
+}
+
+img.nameSpan {
+  background: none !important;
+}
+
+.logout {
+  margin-left: 10px;
+}
+
+.logout img {
+  width: 18px;
+}
+
+.homeHeader .userInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  height: 35px;
+}
+
+.f12Gray {
+  font-size: 12px;
+  color: var(--text-color-1);
+}
+
+.homePage .main {
+  flex: 1;
+  overflow: hidden auto;
+}
+
+.tgContainer {
+  background: var(--color-gray-2);
+  align-items: center;
+  position: relative;
+  height: 35px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.tgMain {
+  width: 100%;
+}
+.tgItem {
+  height: 35px;
+  display: flex;
+  align-items: center;
+}
+.tgContainer .tgTitle {
+  border: 1px solid var(--color-red);
+  border-radius: 6px;
+  font-size: 10px;
+  color: var(--color-red);
+  padding: 0 7px;
+  line-height: 18px;
+  flex-shrink: 0;
+  margin-right: 5px;
+}
+
+.tgContent {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--text-color-1);
+}
+
+.homeBanner {
+  padding: 15px;
+}
+
+.homeBanner img {
+  width: 100%;
+}
+
+.menuBanner {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px 15px;
+  width: 100%;
+  /* justify-content: space-between; */
+}
+.menuBanner.isCard {
+  padding: 0;
+}
+
+.p-0 {
+  padding: 0;
+}
+
+.mb-0 {
+  margin-bottom: 0 !important;
+}
+
+.bc-fff {
+  background-color: var(--color-white);
+}
+
+.bc-f8f8f8 {
+  background-color: #f8f8f8;
+}
+
+.menu-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 10px;
+  padding: 15px;
+  padding-bottom: 0;
+  color: var(--text-color-3);
+  font-size: 14px;
+  background-color: var(--color-white);
+}
+
+.menu-group:first-of-type {
+  margin-top: 0;
+}
+
+.menu-group .group-title {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  color: var(--text-color);
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.menu-group .group-title .group-title-icon {
+  width: 3px;
+  height: 15px;
+  margin-right: 7px;
+  background: #61b2ff;
+  border-radius: 3px;
+}
+
+.menu-group .group-body {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 0 5px;
+}
+
+.menu-group .group-body .menuText {
+}
+
+.oneMenu {
+  /* width: calc((100% - 20px * 3) / 4);  */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.oneMenu .menuIcon {
+  width: 35px;
+  margin-bottom: 10px;
+}
+
+.oneMenu .menuText {
+  color: var(--text-color);
+  /* font-weight: bold; */
+  font-size: 14px;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.oneMenuisCard {
+  border-radius: 7px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.oneMenuisCard .van-badge__wrapper {
+  width: 100%;
+}
+.uc-menu-container-cardType {
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: #eee;
+  font-size: 13px;
+  font-weight: bold;
+}
+/* .oneMenu:not(:nth-of-type(4n)) {
+  margin-right: 20px;
+} */
+
+.openIcon,
+.closeIcon {
+  /* margin-top: -15px; */
+  text-align: center;
+  width: 100%;
+  background-color: var(--color-white);
+}
+
+.menu-group-container .openIcon,
+.menu-group-container .closeIcon {
+  padding-top: 0;
+  padding-bottom: 20px;
+}
+
+.closeIcon.reverse {
+  transform: rotate(180deg);
+}
+
+.menu-group-container .closeIcon.reverse {
+  padding-top: 20px;
+  padding-bottom: 0;
+}
+
+.openIcon img {
+  width: 20px;
+  transform: rotate(180deg);
+}
+
+.dbBanner {
+  padding: 0px 15px 20px;
+}
+
+.oneDbSpan {
+  background: #f8f8f8;
+  border-radius: 12px;
+  height: 40px;
+  width: 100%;
+  padding: 0 15px;
+}
+
+.oneDbSpan .dbTitle {
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--text-color);
+  flex: 1;
+}
+.dbContainer {
+  padding: 4px 20px;
+}
+
+.dbContainer .FormViewTable {
+  width: 100%;
+  table-layout: fixed;
+  background: #f8f8f8;
+  border-radius: 8px;
+}
+
+.dbItemLeft {
+  display: flex;
+  align-items: center;
+}
+.dbItemLeft img {
+  width: 30px;
+}
+
+.dbItemRight {
+  text-align: right;
+}
+
+.titleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+.titleContainer .title {
+  font-size: 16px;
+  color: var(--text-color);
+  font-weight: 600;
+}
+.titleContainer .title {
+  font-size: 16px;
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+.titleBanner {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  font-weight: bold;
+  color: var(--text-color);
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.titleBanner img {
+  width: 12px;
+}
+
+.wtBanner {
+  padding: 10px 15px 20px;
+}
+
+.wtContent {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.wtBanner .totalSpan {
+  background: #f8f8f8;
+  border-radius: 12px;
+  font-size: 14px;
+  color: var(--text-color);
+  font-weight: bold;
+  display: flex;
+  padding: 10px 15px;
+  align-items: center;
+  width: 100%;
+}
+
+.wtBanner .left {
+  margin-top: 10px;
+  width: calc((100% - 15px) / 2);
+  background: #f8f8f8;
+  border-radius: 12px;
+  padding: 15px;
+}
+
+.wtBanner .right {
+  margin-top: 10px;
+  width: calc((100% - 15px) / 2);
+  margin-left: 15px;
+  background: #f8f8f8;
+  border-radius: 12px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}

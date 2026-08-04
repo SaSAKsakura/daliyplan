@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <title>终端文件同步</title>
+    <link rel="stylesheet" href="../libs/css/vant.css" />
+    <link rel="stylesheet" href="../assets/css/erow.css" />
+    <link rel="stylesheet" href="../assets/css/index.css" />
+    <style>
+      .main {
+        padding: 20px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app" class="flexPage" v-cloak>
+      <div class="head-nav-container">
+        <div class="head-left">
+          <img src="../assets/images/common/back-white.png" class="leftIcon back-image-unset" @click="closeForm" />
+        </div>
+        <span class="head-title">终端文件同步</span>
+      </div>
+      <!-- <div class="header">
+        <span class="leftIcon back white-back" @click="closeForm()"></span>
+        <span class="centerTitle">终端文件同步</span>
+      </div> -->
+      <div class="main">
+        <van-button type="info" @click="syncFile()">终端文件同步</van-button>
+      </div>
+    </div>
+    <script src="../config/index.js"></script>
+    <script src="../tools/index.js"></script>
+    <script src="../libs/js/Vue.js"></script>
+    <script src="../libs/js/vant.min.js"></script>
+    <script src="../utils/erowConfig.js"></script>
+    <script src="../utils/main.js"></script>
+    <script>
+      let vm = new Vue({
+        el: "#app",
+        data() {
+          return {};
+        },
+        created() {
+          erMain.initialize(() => {});
+        },
+        methods: {
+          syncFile() {
+            let url = erowplatformBackendUrl + "/appBaseApi/syncPdaFile";
+            erRequest.post(
+              url,
+              {},
+              (res) => {
+                if (res.code == "SUCCESS") {
+                  this.$toast.success("同步成功！");
+                } else {
+                  console.log(res);
+                }
+              },
+              (error) => {
+                console.log(error);
+              }
+            );
+          },
+          closeForm() {
+            pageManager.back();
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,187 @@
+.uc-tree-container {
+  background: var(--color-white);
+  overflow: auto;
+  height: 100%;
+  width: 100%;
+}
+
+.uc-tree-container .uc-tree-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* padding: 0 20px;
+  height: 44px;
+  background-color: #3076ff; */
+  font-size: 17px;
+  /* color: var(--color-white); */
+}
+
+.uc-tree-container .uc-tree-nav .nav-left-icon {
+  position: absolute;
+  left: 15px;
+  width: 11px;
+}
+
+.uc-tree-container .uc-tree-nav .nav-title {
+  /* margin: 0 auto; */
+}
+
+.uc-tree-container .uc-tree-search {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 0 15px;
+  height: 35px;
+  font-size: 14px;
+}
+
+.uc-tree-container .uc-tree-search .search-input-container {
+  flex: 1;
+}
+
+.uc-tree-container .uc-tree-search .search-input-container .search-input {
+  width: 100%;
+  height: 100%;
+}
+
+.uc-tree-container .uc-tree-search .search-button {
+  display: inline-block;
+  margin-left: 15px;
+  color: var(--theme-color);
+}
+
+.uc-tree-container .uc-tree-body {
+  /* position: fixed;
+  inset: 0; */
+  /* top: 99px;
+  bottom: 80px; */
+  /* position: relative; */
+  /* height: calc(100% - 80px); */
+  padding: 15px;
+  padding-top: 0;
+  overflow-y: auto;
+  border-top: var(--border-gray);
+}
+.uc-tree-container .uc-tree-body .el-tree-node__content{
+  /* border-top: var(--border-gray); */
+  border-color: rgba(220, 223, 230, 0.8);
+}
+.uc-tree-container .uc-tree-body .el-tree-node__content > .el-tree-node__expand-icon {
+  padding-right: 5px;
+}
+
+.uc-tree-container .uc-tree-body .el-icon-caret-right:before {
+  display: inline-block;
+  width: 18px;
+  height: 12px;
+  content: "" !important;
+  background-image: url("../images/icon/arrowUpwards.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  /* transform: rotate(-90deg); */
+  transform: rotate(180deg);
+}
+
+.uc-tree-container .uc-tree-body .el-tree-node__content {
+  height: auto;
+  border-bottom: 1px solid #dcdfe6;
+  background-color: var(--color-white) !important;
+  padding: 15px 0;
+}
+
+.uc-tree-container .uc-tree-body .el-tree-node__expand-icon.expanded {
+  /* transform: rotate(180deg); */
+  transform: rotate(180deg);
+}
+
+
+.uc-tree-container .uc-tree-body .el-tree-node__expand-icon.is-leaf:before {
+  background-image: none;
+  /* display: none; */
+}
+
+.uc-tree-container .uc-tree-body .el-tree-node__content > label.el-checkbox {
+  position: absolute;
+  right: 0;
+}
+
+.uc-tree-container .uc-tree-body .single-select {
+}
+
+.uc-tree-container .single-select .el-tree-node__content > label.el-checkbox {
+  display: none !important;
+}
+
+.uc-tree-container .single-select .el-tree-node__expand-icon:is(.is-leaf) + label {
+  display: block !important;
+}
+
+.uc-tree-container .uc-tree-body .uc-tree-item {
+  display: flex;
+  min-height: 40px;
+  max-width: 84%;
+  padding: 10px 0;
+  font-size: 14px;
+  color: var(--text-color-3);
+  /* white-space: pre-wrap; */
+}
+
+.uc-tree-container .uc-tree-body .uc-tree-item .uc-tree-item-label {
+  word-break: break-all;
+  white-space: pre-wrap;
+}
+.uc-tree-container .uc-tree-body .el-tree-node {
+  white-space: wrap;
+}
+
+.uc-tree-container .uc-tree-footer {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 63px;
+  padding: 0 15px;
+  border-top: var(--border-gray);
+  font-size: 14px;
+}
+
+.uc-tree-container .uc-tree-footer .uc-tree-footer-btn-clear {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  /* border: 1px solid #3076ff;
+  border-radius: 20px;
+  color: #3076ff;
+  background-color: var(--color-white); */
+}
+
+.uc-tree-container .uc-tree-footer .uc-tree-footer-btn-confirm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  /* border-radius: 20px;
+  color: var(--color-white);
+  background-color: #3076ff; */
+  margin-left: 15px;
+}
+
+.uc-tree-container .is-current > .el-tree-node__content {
+  color: var(--theme-color);
+}
+
+.el-icon-arrow-right:before {
+  content: "" !important;
+}
+.uc-tree-container .align-center-flex {
+  display: flex;
+  align-items: center;
+  /* width: 100%; */
+  /* justify-content: space-between; */
+  width: 100%;
+}

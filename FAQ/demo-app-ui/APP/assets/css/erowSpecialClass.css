@@ -1,0 +1,229 @@
+/* text 配置字体的颜色*/
+.gray-text-erow,
+.gray-text-erow input {
+  color: var(--color-gray) !important;
+  -webkit-text-fill-color: var(--color-gray) !important;
+}
+.blue-text-erow,
+.blue-text-erow * {
+  color: var(--theme-color) !important;
+  -webkit-text-fill-color: var(--theme-color) !important;
+}
+
+/* 连接样式 */
+.text-anchor-erow {
+  color: var(--theme-color);
+  text-decoration: underline;
+}
+.text-anchor-erow * {
+  color: var(--theme-color) !important;
+  -webkit-text-fill-color: var(--theme-color) !important;
+}
+
+/* 位置布局 */
+.text-right-erow {
+  margin-left: auto;
+  margin-right: 0;
+  text-align: right;
+}
+.text-center-erow {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+.to-right-erow {
+  margin-left: auto;
+  margin-right: 0;
+}
+.to-center-erow {
+  margin-left: auto;
+  margin-right: auto;
+}
+.to-top-erow {
+  margin-top: 10px;
+  margin-bottom: auto;
+}
+.to-bottom-erow {
+  margin-top: auto;
+  margin-bottom: 10px;
+}
+.to-middle-erow {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+/* 边框 */
+.gray-border-erow {
+  border: var(--border-gray);
+  border-radius: 6px;
+}
+
+/* 删除按钮图标 */
+.gray-delete-erow .delete-icon {
+  background-image: url("../images/icon/clear.png");
+}
+.trash-delete-erow .delete-icon {
+  background-image: url("../images/icon/trash.png");
+}
+/* pithy-title-erow 头部标题样式 */
+.head-nav-container.pithy-title-erow,
+.head-nav-container.pithy-title-diy-erow {
+  height: 40px;
+  background: var(--color-white);
+  color: var(--text-color);
+  padding: 0 15px;
+  justify-content: space-between;
+  /* margin-top: 10px; */
+}
+.head-nav-container.pithy-title-erow .head-title,
+.head-nav-container.pithy-title-diy-erow .head-title {
+  color: var(--text-color);
+  margin: 0;
+  font-size: 14px;
+}
+.head-nav-container.pithy-title-erow .head-title::before {
+  content: "";
+  height: 1.2em;
+  width: 3px;
+  background: var(--theme-color);
+  display: inline-block;
+  vertical-align: sub;
+  margin-right: 7px;
+  border-radius: 10px;
+}
+.head-nav-container.pithy-title-erow .head-left {
+  display: none;
+}
+.head-nav-container.pithy-title-diy-erow .head-left {
+  position: relative;
+  padding: 0;
+  margin-right: 10px;
+}
+.head-nav-container.pithy-title-diy-erow .head-right {
+  position: relative;
+  margin-left: auto;
+  padding: 0;
+}
+.head-search-active {
+  color: var(--theme-color);
+  background: var(--theme-bg-color) !important;
+}
+
+/* label 添加label样式 */
+[class*="-label-erow"] {
+  border-radius: 4px;
+  padding: 4px 4px;
+  width: fit-content;
+  /* line-height: 1em; */
+  height: fit-content;
+  font-size: 13px;
+  margin-top: -3px;
+  margin-bottom: -3px;
+}
+.green-label-erow {
+  color: #59c623;
+  background: #edf9e8;
+}
+.red-label-erow {
+  color: #ff4141;
+  background: #fff2f2;
+}
+.yellow-label-erow {
+  color: #ffb117;
+  background: #fff9f2;
+}
+.blue-label-erow {
+  color: var(--theme-color);
+  border: 1px solid;
+  border-color: var(--theme-color);
+  background: #eff7ff;
+}
+span.orange-label-erow {
+  color: #ff6a00;
+  background: #ffeed5;
+}
+
+/* full-label 深颜色的lable样式 */
+[class*="-full-label-erow"] {
+  color: var(--color-white);
+}
+.green-full-label-erow {
+  background: #0ebd8b;
+}
+.blue-full-label-erow {
+  background: #61b2ff;
+}
+.gray-full-label-erow {
+  background: #c0c0c0;
+}
+
+/* line 分割线配置 */
+[class*="-dotted-erow"] {
+  font-size: 0px;
+  color: transparent;
+  user-select: none;
+  pointer-events: none;
+  height: 1px;
+  width: 100%;
+}
+.line-dotted-erow {
+  /* background: linear-gradient(to right, var(--border-color), var(--border-color) 5px, #0000 5px, #0000 10px) 0/ 10px 1px repeat-x; */
+  background: linear-gradient(to right, rgba(220, 223, 230, 0.8), rgba(220, 223, 230, 0.8) 5px, #0000 5px, #0000 10px) 0/ 10px 1px repeat-x;
+}
+.line-solid-erow {
+  /* background: var(--border-gray); */
+  background: var(rgba(220, 223, 230, 0.8));
+}
+
+/* icon 图标 */
+[class*="-icon-erow"] {
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  height: 1.2em;
+  background: url("") 0 0 / auto 100% no-repeat;
+  color: transparent;
+  user-select: none;
+}
+.search-icon-erow {
+  background-image: url("../images/icon/search.png");
+}
+.right-icon-erow {
+  background-image: url("../images/icon/arrow.png");
+}
+
+/* 按钮 */
+button.white-button-erow {
+  background: var(--color-white);
+  border: var(--button-border-blue);
+  color: var(--button-text-blue);
+}
+
+button.blue-button-hype-link {
+  background: transparent;
+  border: none;
+  color: var(--button-text-blue);
+}
+/* card 卡片样式 */
+.card-erow {
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-top: 10px;
+  border-radius: 8px;
+  overflow: auto;
+  /* box-shadow: var(--box-shadow); */
+  box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.08);
+}
+
+/* .pageList-category-list-item:first-child .card-erow {
+  margin-top: 0;
+} */
+.van-tabs__content .pageList-category-list-item:first-child .card-erow {
+  margin-top: 0;
+}
+
+/* 清除上边距 */
+.clear-top-erow {
+  margin-top: 0 !important;
+  border-top: var(--border-gray);
+}

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../libs/css/element-ui.css" />
+    <link rel="stylesheet" href="../libs/css/vant.css" />
+    <link rel="stylesheet" href="../assets/css/index.css" />
+    <link rel="stylesheet" href="../assets/css/form.css" />
+    <link rel="stylesheet" href="../special/css/detail.css" />
+    <style>
+      .detailContainer {
+        height: calc(100% - 0px);
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .detailContainer > .uc-content {
+        padding-bottom: 10px;
+      }
+
+      .btn-footer-container {
+        height: 50px;
+        padding-bottom: 0;
+        justify-content: space-around;
+        overflow: hidden;
+        width: 100%;
+      }
+
+      .two-btn {
+        min-width: 45%;
+      }
+    </style>
+    <script src="../config/index.js"></script>
+    <script src="../tools/index.js"></script>
+    <script src="../libs/js/Vue.js"></script>
+    <script src="../libs/js/element-ui.js"></script>
+    <script src="../libs/js/vant.min.js"></script>
+    <script src="../utils/eventEmiter.js"></script>
+    <script src="../utils/erowConfig.js"></script>
+    <script src="../utils/main.js"></script>
+    <script src="../utils/baseSpecial.js"></script>
+    <script src="../components/pageList/install.js"></script>
+    <script src="../utils/cacheHelper.js"></script>
+    <script src="../special/js/common.js"></script>
+    <script src="../utils/apis.js"></script>
+    <script src="../utils/pageCollect.js"></script>
+    <script src="../special/js/detail.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <div class="refreshText" size="24px" style="font-size: 16px"></div>
+      <uc-container class="detailContainer" :class="getThemeClass()" v-if="config" ref="UcContainer" :config="config"> </uc-container>
+      <uc-layer-container
+        @close="handleCloseLayer"
+        :class="getThemeClass()"
+        ref="ucLayerContainer"
+        v-for="configItem in layerConfigArr"
+        :config="configItem"
+        :key="configItem.ControlGUID"
+      >
+      </uc-layer-container>
+    </div>
+
+    <script>
+      function loadScript(url, callback) {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = url;
+        //  script.onload = callback;
+        document.getElementsByTagName("head")[0].appendChild(script);
+      }
+
+      var listComponents = {
+        "uc-container": UcContainer,
+        "uc-layer-container": UcLayerContainer,
+      };
+
+      let vm = new Vue({
+        el: "#app",
+        components: listComponents,
+        mixins: [commonMinxin, layerMixin],
+        data() {
+          return {
+            config: "",
+            pageParams: "",
+            keyValue: "",
+            isEdit: false,
+            popupList: [],
+          };
+        },
+        mounted() {
+          if (window.pageContext) {
+            window.pageContext["root"] = this;
+          } else {
+            window.pageContext = {
+              root: this,
+            };
+          }
+          window.addEventListener("beforeunload", (event) => {
+            this.getCacheDataCallback(() => {
+              console.log(2222);
+            });
+            erowConfig.setPageListState(); //缓存页面的pageList状态
+          });
+          // pagehide 是 iOS Safari 的可靠替代方案
+          if(erJsBridge.osType==='iOS'){
+            window.addEventListener("pagehide", (event) => {
+              this.getCacheDataCallback(() => {
+                console.log(2222);
+              });
+              erowConfig.setPageListState(); //缓存页面的pageList状态
+            });
+          }
+        },
+        methods: {
+          getCacheDataCallback(callback) {
+            let result = [];
+            erowConfig.cacheTargetContainerTempData(this.$refs.UcContainer, ["UcFormDetailView"], ["UcJsGridContainer"], result);
+            let all = [];
+            for (let i = 0; i < result.length; i++) {
+              all.push(
+                new Promise((res, rej) => {
+                  app.db.save(result[i], function () {
+                    res();
+                  });
+                }),
+              );
+            }
+            Promise.all(all).then((res) => {
+              callback && callback();
+            });
+          },
+          getThemeClass() {
+            return pageConfig.formTheme == "border" ? "form-with-border" : "";
+          },
+          closeForm() {
+            erowConfig.closeForm(this.config, vm);
+            //  pageManager.back();
+          },
+          handleCloseLayer(config) {
+            this.removeLayer(config);
+          },
+          getConfig(cparms) {
+            let type = cparms.pageMode;
+            if (type == "CANCELSAVE") {
+              this.isEdit = false;
+            }
+            const mode = type == "CANCELSAVE" ? "VIEW" : type;
+            const params = {
+              menuRowGuid: this.pageParams.menu_row_guid,
+              controlGUID: this.pageParams.controlGUID,
+              pageMode: mode,
+              pValueSet: this.pValueSet,
+            };
+            if (cparms.refreshFlag) {
+              params["refreshFlag"] = cparms.refreshFlag;
+            }
+            if (this.pageParams.commonPValueSet) {
+              params["commonPValueSet"] = this.pageParams.commonPValueSet;
+            }
+            let ctnrUID = this.pageParams.ctnrUID || this.pageParams.CtnrUID;
+            if (ctnrUID) {
+              params["ctnrUID"] = ctnrUID;
+            }
+            if (this.pageParams.fnCode) {
+              params["fnCode"] = this.pageParams.fnCode;
+            }
+            if (this.pageParams.fnParameter) {
+              params["fnParameter"] = this.pageParams.fnParameter;
+            }
+            apis.sysLoadConfigData({
+              vm: this,
+              params,
+              success: (res) => {
+                let initData = res.data;
+                let temp = {
+                  pValueSet: res.pValueSet || this.pValueSet,
+                  menuRowGuid: this.pageParams.menu_row_guid,
+                  menuConfigKey: this.pageParams.menuConfigKey,
+                  pageMode: mode,
+                  rootControlGuid: this.pageParams.rootControlGuid,
+                  check_keyValues: this.pageParams.check_keyValues,
+                };
+                if (this.pageParams.defaultValueObj) {
+                  temp.defaultValueObj = this.pageParams.defaultValueObj;
+                }
+                if (mode != "ADD") {
+                  temp.keyValue = this.keyValue;
+                }
+
+                if (this.pageParams.keyValue) {
+                  temp.keyValue = this.pageParams.keyValue;
+                  temp.pageMode = this.pageParams.pageMode || "VIEW";
+                }
+                if (this.pageParams.searchParams) {
+                  temp.searchParams = this.pageParams.searchParams;
+                }
+                if (!erowConfig.hasProp(initData, ["ClientClass", "CssClass"])) {
+                  temp.CssClass = "detailContainer";
+                }
+                document.querySelector(".refreshText").innerText = "";
+                if (cparms.refreshFlag == "refresh") {
+                  this.config = null;
+                  temp.refreshFlag = cparms.refreshFlag;
+                }
+                Object.assign(initData, temp);
+
+                setTimeout(() => {
+                  this.config = initData;
+                  if (cparms.callBack) {
+                    cparms.callBack();
+                  }
+                }, 100);
+              },
+              fail: (error) => {
+                this.$toast.fail(error.msg);
+              },
+              error: (error) => {
+                this.$toast.fail(error.msg);
+              },
+            });
+          },
+        },
+        created() {
+          erMain.initialize(() => {
+            this.pValueSet = erowConfig.generateUUID();
+            this.pageParams = pageManager.getPageParams();
+            this.keyValue = this.pageParams.keyValue;
+            this.getConfig({
+              pageMode: this.pageParams.pageMode,
+              callBack: () => {
+                erowConfig.bindPageRefreshEvent(this.getConfig, { refreshFlag: "refresh", pageMode: this.pageParams.pageMode, config: this.config });
+              },
+            });
+            pageManager.resetCurrentPage(); //恢复当前页面url
+            eventEmitter.on("refresh", ({}) => {
+              this.getConfig({ pageMode: "VIEW" });
+              pageManager.updateParams(pageManager.pages.length - 1, {
+                pageMode: "VIEW",
+              });
+            });
+
+            let isTablet = erTool.isTablet();
+            if (isTablet) {
+              var meta = document.createElement("meta");
+              meta.setAttribute("name", "viewport");
+              meta.setAttribute("content", "width=580, initial-scale=1.6, user-scalable=no");
+              document.head.appendChild(meta);
+            }
+          });
+        },
+      });
+
+      function closeForm() {
+        vm.closeForm();
+      }
+    </script>
+  </body>
+</html>

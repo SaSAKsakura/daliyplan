@@ -1,0 +1,31 @@
+# 将整个 ErowSetupMobileExpmale 目录复制到 /data/www/ErowSetupMobileExpmale 后使用。
+server {
+    listen 80;
+    server_name example.com;
+    charset utf-8;
+
+    # 只把当前独立案例目录作为站点根目录，不暴露 FAQ 中的其他目录。
+    root /data/www/ErowSetupMobileExpmale;
+    index index.html;
+    autoindex off;
+
+    location = / {
+        try_files /index.html =404;
+    }
+
+    location = /index.html {
+        try_files /index.html =404;
+        add_header Cache-Control "no-cache, no-store, must-revalidate";
+    }
+
+    # index.html 运行所需的目录内资源。
+    # CSS、JavaScript、SVG 和文件图标均已嵌入 index.html。
+    # 拒绝访问源文件、说明、校验脚本、截图和其他未列出的文件。
+    location / {
+        return 404;
+    }
+
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header X-Frame-Options "SAMEORIGIN" always;
+    add_header Referrer-Policy "same-origin" always;
+}

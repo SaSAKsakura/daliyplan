@@ -1,0 +1,57 @@
+@import url("./xxbsCommon.css");
+
+/*按钮的颜色调整 催办和撤回按钮*/
+.blue-a,
+.blue-a a {
+  color: var(--color-blue);
+}
+
+.idmp_sealcert_useurgCallBack {
+  padding: 0px !important;
+}
+/*按钮颜色调整，以及超链接*/
+.blue-link-a,
+.blue-link-a a {
+  color: var(--color-blue);
+  text-decoration: underline;
+  font-size: 13px;
+  background: transparent;
+}
+.blue-link-a button {
+  min-width: auto;
+  padding: 0;
+}
+
+/*首页通知卡片的箭头 尺寸为12px*/
+.home-msg-right-arrow {
+  background: url("../images/idmp/home/home-msg-right-arrow.png") 0 0 / auto 12px no-repeat;
+  color: transparent;
+  background-position-x: right;
+}
+
+/*隐藏详情页头上的form*/
+.hide-file-form {
+  display: none;
+}
+
+/*隐藏详情页  隐藏form下面容器的margin-top*/
+.hide-form-bottom {
+  margin-top: 0;
+}
+
+/*文件列表的实线*/
+.forPreview-list {
+  border-bottom: var(--border-gray);
+}
+
+.to-top-xh {
+  margin-top: 0;
+  margin-bottom: auto;
+}
+.to-bottom-xh {
+  margin-top: auto;
+  margin-bottom: 0;
+}
+.viod.align-right--wrap .component-outer {
+  justify-content: flex-end;
+}

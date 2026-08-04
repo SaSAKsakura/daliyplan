@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="color-scheme" content="light dark">
+    <link rel="stylesheet" href="../libs/css/vant.css" />
+    <link rel="stylesheet" href="../assets/css/erow.css" />
+    <style>
+      .menus {
+        display: flex;
+        padding: 60px;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+      .menu {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 180px;
+        height: 180px;
+      }
+      .menu-icon {
+        height: 66px;
+        width: 66px;
+      }
+      .menu-name {
+        margin-top: 17px;
+        font-size: 19px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app" v-cloak>
+      <div class="menus">
+        <div class="menu" v-for="item in menuList" @click="goMenu(item)">
+          <img :src="getImgSrc(item)" class="menu-icon" @error="setDefautImg" />
+          <p class="menu-name">{{item.menu_name}}</p>
+        </div>
+      </div>
+    </div>
+
+    <script src="../config/index.js"></script>
+    <script src="../tools/index.js"></script>
+    <script src="../libs/js/Vue.js"></script>
+    <script src="../libs/js/vant.min.js"></script>
+    <script src="../utils/eventEmiter.js"></script>
+    <script src="../utils/erowConfig.js"></script>
+    <script src="../utils/main.js"></script>
+    <script src="../components/default/install.js"></script>
+    <script src="../special/js/home.js"></script>
+    <script src="../special/js/common.js"></script>
+    <script src="../utils/baseSpecial.js"></script>
+    <script src="../utils/apis.js"></script>
+
+    <script>
+      sessionStorage.setItem('isTabletMode', true);
+      let vm = new Vue({
+        el: "#app",
+        mixins: [commonMinxin],
+        components: {},
+        data: () => ({
+          menuList: [],
+          homeHeadSculpture: window.PAGE_CONFIG.homeHeadSculpture,
+          isAnalogUser: undefined,
+        }),
+        created() {
+          erMain.initialize(() => {
+            pageManager.pageManagerReady(() => {
+              pageManager.reset([
+                {
+                  url: window.location.pathname,
+                  params: {
+                    name: "Default",
+                  },
+                },
+              ]);
+              erRequest.post(
+                `${erowplatformBackendUrl}/appBaseApi/getAppMenuData`,
+                {},
+                (res) => {
+                  if (res.code == "SUCCESS") {
+                    this.menuList = res.data;
+                  }
+                },
+                (error) => {
+                  console.log(error);
+                }
+              );
+            });
+          });
+          window.getErUserInfo((user) => {
+            this.isAnalogUser = !!user.oldToken;
+          });
+        },
+        methods: {
+          getImgSrc(item) {
+            let temp = this.menuPre + item.fn_code;
+            if (item.fn_parameter) {
+              temp += "_";
+              temp += item.fn_parameter;
+            }
+            return temp + ".png";
+          },
+          goMenu(item) {
+            if (item.page_url) {
+              const [pageUrl, params] = item.page_url.split("?");
+              if (params) {
+                params.split("&").forEach((kv) => {
+                  const [k, v] = kv.split("=");
+                  item[k] = v;
+                });
+              }
+              if (!item.pageMode) {
+                item.pageMode = "VIEW";
+              }
+              pageManager.push(pageUrl, item);
+            }
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

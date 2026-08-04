@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "recentDocumentPaths": [
+    "\\\\?\\D:\\工作文档\\每月文档\\正常工作\\Daily\\2026\\07\\2026-07-28.md",
+    "\\\\?\\D:\\工作文档\\每月文档\\正常工作\\Daily\\2026\\07\\2026-07-29.md",
+    "\\\\?\\D:\\工作文档\\每月文档\\正常工作\\Daily\\2026\\07\\2026-07-27.md",
+    "\\\\?\\D:\\工作文档\\每月文档\\正常工作\\Daily\\2026\\07\\2026-07-24.md",
+    "\\\\?\\D:\\工作文档\\每月文档\\正常工作\\协助工器具配置内容\\看板相关需要调整内容.md"
+  ],
+  "expandedPaths": [],
+  "sortOrder": {
+    "nodes": {
+      ".agents": {
+        "parentPath": "",
+        "rank": 3072
+      },
+      "2026-07-14.md": {
+        "parentPath": "",
+        "rank": 3072
+      },
+      "2026-07-15.md": {
+        "parentPath": "",
+        "rank": 2048
+      },
+      "Daily": {
+        "parentPath": "",
+        "rank": 1024
+      },
+      "FAQ": {
+        "parentPath": "",
+        "rank": 5120
+      },
+      "协助工器具配置内容": {
+        "parentPath": "",
+        "rank": 2048
+      },
+      "未命名目录": {
+        "parentPath": "",
+        "rank": 5120
+      },
+      "每日复盘&每周复盘": {
+        "parentPath": "",
+        "rank": 4096
+      }
+    },
+    "version": 1
+  },
+  "dailyNotes": {
+    "selectedDate": "2026-07-28",
+    "entries": {
+      "2026-07-12": {
+        "documentPath": "\\\\?\\D:\\工作文档\\每月文档\\正常工作\\Daily\\2026\\07\\2026-07-12.md",
+        "hasContent": false,
+        "updatedAt": 1784506466106
+      },
+      "2026-07-13": {
+        "documentPath": "\\\\?\\D:\\工作文档\\每月文档\\正常工作\\Daily\\2026\\07\\2026-07-13.md",
+        "hasContent": false,
+        "updatedAt": 1783935079432
+      },
+      "2026-07-14": {
+        "documentPath": "\\\\?\\D:\\工作文档\\每月文档\\正常工作\\Daily\\2026\\07\\2026-07-14.md",
+        "hasContent": true,
+        "updatedAt": 1784788507413
+      },
+      "2026-07-15": {
+        "documentPath": "\\\\?\\D:\\工作文档\\每月文档\\正常工作\\Daily\\2026\\07\\2026-07-15.md",
+        "hasContent": true,
+        "updatedAt": 1784476092236
+      },
+      "2026-07-16": {
+        "documentPath": "\\\\?\\D:\\工作文档\\每月文档\\正常工作\\Daily\\2026\\07\\2026-07-16.md",
+        "hasContent": true,
+        "updatedAt": 1784476426643
+      },
+      "2026-07-17": {
+        "documentPath": "\\\\?\\D:\\工作文档\\每月文档\\正常工作\\Daily\\2026\\07\\2026-07-17.md",
+        "hasContent": true,
+        "updatedAt": 1784507525548
+      },
+      "2026-07-18": {
+        "documentPath": "\\\\?\\D:\\工作文档\\每月文档\\正常工作\\Daily\\2026\\07\\2026-07-18.md",
+        "hasContent": false,
+        "updatedAt": 1784276400573
+      },
+      "2026-07-20": {
+        "documentPath": "\\\\?\\D:\\工作文档\\每月文档\\正常工作\\Daily\\2026\\07\\2026-07-20.md",
+        "hasContent": true,
+        "updatedAt": 1785128576652
+      },
+      "2026-07-21": {
+        "documentPath": "\\\\?\\D:\\工作文档\\每月文档\\正常工作\\Daily\\2026\\07\\2026-07-21.md",
+        "hasContent": true,
+        "updatedAt": 1784626717256
+      },
+      "2026-07-22": {
+        "documentPath": "\\\\?\\D:\\工作文档\\每月文档\\正常工作\\Daily\\2026\\07\\2026-07-22.md",
+        "hasContent": true,
+        "updatedAt": 1785122333051
+      },
+      "2026-07-23": {
+        "documentPath": "\\\\?\\D:\\工作文档\\每月文档\\正常工作\\Daily\\2026\\07\\2026-07-23.md",
+        "hasContent": true,
+        "updatedAt": 1784793632478
+      },
+      "2026-07-24": {
+        "documentPath": "\\\\?\\D:\\工作文档\\每月文档\\正常工作\\Daily\\2026\\07\\2026-07-24.md",
+        "hasContent": true,
+        "updatedAt": 1785112021365
+      },
+      "2026-07-27": {
+        "documentPath": "\\\\?\\D:\\工作文档\\每月文档\\正常工作\\Daily\\2026\\07\\2026-07-27.md",
+        "hasContent": true,
+        "updatedAt": 1785215270923
+      },
+      "2026-07-28": {
+        "documentPath": "\\\\?\\D:\\工作文档\\每月文档\\正常工作\\Daily\\2026\\07\\2026-07-28.md",
+        "hasContent": true,
+        "updatedAt": 1785319751392
+      },
+      "2026-07-29": {
+        "documentPath": "\\\\?\\D:\\工作文档\\每月文档\\正常工作\\Daily\\2026\\07\\2026-07-29.md",
+        "hasContent": true,
+        "updatedAt": 1785319140158
+      }
+    }
+  },
+  "nodeState": {},
+  "gitSync": {
+    "enabled": true,
+    "intervalMinutes": 10,
+    "conflictResolution": "abort",
+    "lastSyncedAt": null
+  }
+}

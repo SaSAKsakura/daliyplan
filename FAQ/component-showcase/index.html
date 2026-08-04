@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light" />
+    <title>demo-app-ui 移动端组件交互展厅</title>
+    <link rel="stylesheet" href="styles.css?v=20260730-3" />
+  </head>
+  <body>
+    <a class="skip-link" href="#showcase">跳到交互展厅</a>
+    <header class="site-header">
+      <div class="site-header__copy">
+        <p class="eyebrow">demo-app-ui / 移动端组件证据与预期样式</p>
+        <h1>151 条定义，六类可视交互</h1>
+        <p class="site-summary">源码复原优先；静态夹具只验证前端外观与状态，不代表后端、权限或原生桥接已联调。</p>
+      </div>
+      <div class="header-actions" aria-label="展示设置">
+        <a class="report-link" href="../screen-pattern-library/index.html">打开移动端页面案例库</a>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false">
+          <span class="theme-dot" aria-hidden="true"></span>
+          <span id="themeLabel">切换绿色主题</span>
+        </button>
+        <a class="report-link" href="../移动端组件统计与交互方案.md">打开全量统计报告</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="metrics" aria-label="主清单统计">
+        <article class="metric">
+          <span>Excel 主清单</span>
+          <strong id="metricTotal">151</strong>
+          <small>唯一代码</small>
+        </article>
+        <article class="metric">
+          <span><code>Uc*</code> 定义</span>
+          <strong id="metricUc">138</strong>
+          <small>另有 13 条动作/参数</small>
+        </article>
+        <article class="metric">
+          <span>内容控件</span>
+          <strong id="metricContent">55</strong>
+          <small>源表标记为 -1</small>
+        </article>
+        <article class="metric">
+          <span>重点交互演示</span>
+          <strong id="metricDemo">—</strong>
+          <small>六类共享夹具</small>
+        </article>
+      </section>
+
+      <section class="showcase-shell" id="showcase">
+        <aside class="category-rail" aria-label="组件分类">
+          <div class="rail-heading">
+            <span>可视分类</span>
+            <strong>6</strong>
+          </div>
+          <nav id="categoryNav"></nav>
+          <div class="evidence-legend">
+            <span><i class="legend-dot legend-dot--source"></i>源码复原</span>
+            <span><i class="legend-dot legend-dot--idea"></i>交互建议</span>
+          </div>
+        </aside>
+
+        <section class="stage">
+          <header class="stage-header">
+            <div>
+              <p class="stage-kicker" id="stageKicker">源码复原 + 交互建议</p>
+              <h2 id="stageTitle">页面骨架与导航</h2>
+              <p id="stageDescription">标题、页签、菜单与底部导航组成移动端页面骨架。</p>
+            </div>
+            <div class="stage-status">
+              <span id="stageCount">—</span>
+              <small>Excel 定义</small>
+            </div>
+          </header>
+
+          <div class="device-and-notes">
+            <div class="device" aria-label="390 像素移动端预览">
+              <div class="device-speaker" aria-hidden="true"></div>
+              <div class="device-screen" id="deviceScreen"></div>
+              <div class="device-home" aria-hidden="true"></div>
+            </div>
+            <aside class="interaction-notes" id="interactionNotes"></aside>
+          </div>
+        </section>
+      </section>
+
+      <section class="catalog-section" aria-labelledby="catalogTitle">
+        <div class="catalog-heading">
+          <div>
+            <p class="eyebrow">机器可读目录的可视入口</p>
+            <h2 id="catalogTitle">151 条覆盖矩阵</h2>
+          </div>
+          <label class="search-field">
+            <span>搜索组件</span>
+            <input id="catalogSearch" type="search" placeholder="代码、名称、分类或覆盖方式" />
+          </label>
+        </div>
+        <div class="filter-row" id="sourceFilters" aria-label="源码覆盖方式"></div>
+        <div class="catalog-result" id="catalogResult" aria-live="polite"></div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>组件</th>
+                <th>分类</th>
+                <th>手册</th>
+                <th>源码</th>
+                <th>展示等级</th>
+              </tr>
+            </thead>
+            <tbody id="catalogBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="data/component-catalog.js?v=20260730-3"></script>
+    <script src="app.js?v=20260730-3"></script>
+  </body>
+</html>

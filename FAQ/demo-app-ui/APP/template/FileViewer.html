@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="color-scheme" content="light dark">
+    <link rel="stylesheet" href="../libs/css/vant.css" />
+    <link rel="stylesheet" href="../assets/css/erow.css" />
+    <link rel="stylesheet" href="../assets/css/index.css" />
+    <link rel="stylesheet" href="../assets/css/home.css" />
+    <link rel="stylesheet" href="../assets/css/pdfh5.css" />
+  </head>
+
+  <body>
+    <div id="app" class="flexPage homePage" v-cloak>
+      <viewer :file-info="fileInfo" v-if="fileInfo"></viewer>
+    </div>
+
+    <script src="../config/index.js"></script>
+    <script src="../tools/index.js"></script>
+    <script src="../libs/js/Vue.js"></script>
+    <script src="../libs/js/vant.min.js"></script>
+    <script src="../utils/erowConfig.js"></script>
+    <script src="../utils/main.js"></script>
+    <script src="../components/pageList/install.js"></script>
+    <script src="../components/common/container/UcViewContainer/UcViewContainer.js"></script>
+    <script src="../utils/apis.js"></script>
+
+    <script>
+      let vm = new Vue({
+        el: "#app",
+        components: {
+          viewer: UcViewContainer,
+        },
+        data() {
+          return {
+            fileInfo: undefined,
+          };
+        },
+        created() {
+          erMain.initialize(() => {
+            this.setFilePath();
+          });
+        },
+        methods: {
+          setFilePath() {
+            erJsBridge.getParameter("fileInfo", (res) => {
+              if (Number(res.resultFlag) === -1) {
+                this.fileInfo = JSON.parse(decodeURIComponent(res.result.value));
+              } else {
+                this.$toast.warn("获取参数出错");
+              }
+            });
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,53 @@
+.form-with-border tr {
+  /*border-bottom: none;*/
+}
+
+.form-with-border .van-cell__value {
+  border: 1px solid #dcdfe6;
+  border-radius: 2px;
+}
+
+.form-with-border .van-dropdown-item .van-cell__value {
+  border: none;
+}
+
+.form-with-border .input-text-box .van-field__control {
+  padding: 3px 3px 3px 10px !important;
+}
+
+/* .form-with-border input[required="required"] {
+  background-color: var(--required-bg);
+  background: red;
+  color: var(--primay-color);
+} */
+.form-with-border input[reuquired="required"] {
+  background-color: var(--required-bg) !important;
+}
+
+.form-with-border input[disabled="disabled"] {
+  background-color: var(--disabled-bg) !important;
+}
+
+.form-with-border textarea[reuquired="required"] {
+  background-color: var(--required-bg) !important;
+}
+
+.form-with-border textarea[disabled="disabled"] {
+  background-color: var(--disabled-bg) !important;
+}
+
+.form-with-border input[reuquired="required"]::placeholder {
+  color: var(--color-gray);
+}
+.form-with-border textarea[reuquired="required"]::placeholder {
+  color: var(--color-gray);
+}
+.UcFormContainer .editer-form-label.card-title-form::before {
+  display: none;
+}
+.card .FormViewTable span.editer-form-label.border-bottom-gray  {
+  line-height: 0px;
+}
+.card .FormViewTable .border-bottom-gray--td {
+  height: fit-content;
+}
