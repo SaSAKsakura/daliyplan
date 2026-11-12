@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "recentDrawingIds": [
+    "6459e23a-6a8a-400f-8190-1572098eb04e",
+    "12e5e264-9031-4cea-b512-94fe3dc3fa17",
+    "7af1d56e-5f03-42cb-9b3a-abb262d64cd0",
+    "bffefece-f5f8-4e1b-ac89-cb36d09c4197"
+  ],
+  "viewports": {
+    "12e5e264-9031-4cea-b512-94fe3dc3fa17": {
+      "scrollX": 22.28844395949193,
+      "scrollY": 256.98953426226467,
+      "zoom": 0.527337
+    },
+    "6459e23a-6a8a-400f-8190-1572098eb04e": {
+      "scrollX": 18.453982398622884,
+      "scrollY": -1019.1109110514316,
+      "zoom": 0.5
+    },
+    "7af1d56e-5f03-42cb-9b3a-abb262d64cd0": {
+      "scrollX": 0.0,
+      "scrollY": 300.0,
+      "zoom": 1.0
+    },
+    "bffefece-f5f8-4e1b-ac89-cb36d09c4197": {
+      "scrollX": 0.0,
+      "scrollY": 300.0,
+      "zoom": 1.0
+    }
+  }
+}

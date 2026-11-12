@@ -1,0 +1,9 @@
+import fs from 'node:fs/promises';
+import {constants} from 'node:fs';
+import {createHash} from 'node:crypto';
+import {finalizePresentation} from 'file:///C:/Users/MateBook%2014/.codex/plugins/cache/openai-primary-runtime/presentations/26.1030.10813/skills/presentations/container_tools/artifact_tool_utils.mjs';
+const root='D:/工作文档/每月文档/正常工作/ai智能ppt',dir=`${root}/.ppt-build/merge-20261105-1745`,skill='C:/Users/MateBook 14/.codex/plugins/cache/openai-primary-runtime/presentations/26.1030.10813/skills/presentations';
+const source=`${root}/output/AI新能源设施建设场景方案v13.pptx`;
+const link=fs.link.bind(fs);fs.link=async(a,b)=>{try{return await link(a,b);}catch(e){if(e.code!=='EPERM'&&e.code!=='ENOTSUP')throw e;await fs.copyFile(a,b,constants.COPYFILE_EXCL);}};
+const result=await finalizePresentation({workspaceDir:root,candidatePath:`${dir}/candidate.pptx`,finalPath:`${root}/output/AI新能源设施建设场景方案v14_内容整合.pptx`,pythonExecutable:'C:/Users/MateBook 14/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe',integrityValidatorPath:`${skill}/container_tools/inspect_presentation_package_integrity.py`,layoutValidatorPath:`${skill}/container_tools/inspect_presentation_layout_geometry.py`,layoutArgs:['--expected-slide-size-emu','12192000,6858000','--validate-bullet-geometry','--validate-heading-fit','--require-native-table-slide','11'],explicitTotalSlideCount:20,requiredNativeTableOwnerSlides:[11],fontPolicy:{basis:'reference',families:['微软雅黑'],referencePath:source,referenceSha256:createHash('sha256').update(await fs.readFile(source)).digest('hex')},verifyArtifactToolImport:true,receiptPath:`${dir}/validation.json`});
+console.log(JSON.stringify(result));

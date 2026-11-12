@@ -1,0 +1,31 @@
+{"kind":"deck","id":"pr/a2p7f2","name":"Deck"}
+{"kind":"layout","id":"ly/i9gfix03","editable":false,"name":"Master","type":"master"}
+{"kind":"layout","id":"ly/l8zax8fu","editable":false,"name":"Title Slide","type":"title","placeholders":[{"name":"title","type":"title"},{"name":"subtitle","type":"subtitle"}]}
+{"kind":"layout","id":"ly/ahwz65wz","editable":false,"name":"Section Header","type":"sectionHeader","placeholders":[{"name":"title","type":"title"}]}
+{"kind":"layout","id":"ly/wzelszml","editable":false,"name":"Title and Body","type":"tx","placeholders":[{"name":"title","type":"title"},{"name":"body","type":"body"}]}
+{"kind":"layout","id":"ly/fe5kv6d4","editable":false,"name":"Title and Two Column","type":"twoColTx","placeholders":[{"name":"title","type":"title"},{"name":"Left column","type":"body"},{"name":"Right column","type":"body"}]}
+{"kind":"layout","id":"ly/crqt03e5","editable":false,"name":"Title and One Column","type":"tx","placeholders":[{"name":"title","type":"title"},{"name":"body","type":"body"}]}
+{"kind":"layout","id":"ly/ylcrm1gv","editable":false,"name":"Blank","type":"blank"}
+{"kind":"slide","id":"sl/j12270","slideIndex":0,"layout":{"id":"ly/ylcrm1gv","name":"Blank"},"title":"系统界面展示","textShapes":13,"backgroundColor":"rgba(255,255,255,1)"}
+{"kind":"textbox","id":"sh/sv2dgvu9","slideIndex":0,"position":{"left":60,"top":28,"width":1160,"height":23},"name":"页眉","text":"系统界面展示","geometry":"rect","lineWidth":0,"style":{"fontSize":14,"typeface":"微软雅黑","color":"#6C8198","alignment":"left"}}
+{"kind":"textbox","id":"sh/rutw7qto","slideIndex":0,"position":{"left":60,"top":64,"width":1160,"height":50},"name":"主标题","text":"标准任务贯通计划、日志与检查","geometry":"rect","lineWidth":0,"style":{"fontSize":36,"typeface":"微软雅黑","color":"#1C2A38","bold":true,"alignment":"left"}}
+{"kind":"textbox","id":"sh/qtkve5c3","slideIndex":0,"position":{"left":60,"top":125,"width":1160,"height":30},"name":"副标题","text":"沿用同一套分部分项，让后台标准、每日安排与现场执行衔接","geometry":"rect","lineWidth":0,"style":{"fontSize":19,"typeface":"微软雅黑","color":"#627A92","alignment":"left"}}
+{"kind":"textbox","id":"sh/5sbe50bi","slideIndex":0,"position":{"left":60,"top":188,"width":260,"height":32},"name":"环节1","text":"01  标准分部分项","geometry":"rect","lineWidth":0,"style":{"fontSize":23,"typeface":"微软雅黑","color":"#0C4168","bold":true,"alignment":"left"}}
+{"kind":"textbox","id":"sh/4r2dcvux","slideIndex":0,"position":{"left":60,"top":226,"width":260,"height":25},"name":"说明1","text":"专业与工序逐级组织","geometry":"rect","lineWidth":0,"style":{"fontSize":16,"typeface":"微软雅黑","color":"#627A92","alignment":"left"}}
+{"kind":"textbox","id":"sh/3qtw3qdc","slideIndex":0,"position":{"left":360,"top":188,"width":260,"height":32},"name":"环节2","text":"02  计划编排","geometry":"rect","lineWidth":0,"style":{"fontSize":23,"typeface":"微软雅黑","color":"#0C4168","bold":true,"alignment":"left"}}
+{"kind":"textbox","id":"sh/ipkvalc7","slideIndex":0,"position":{"left":360,"top":226,"width":260,"height":25},"name":"说明2","text":"周计划分解到每日","geometry":"rect","lineWidth":0,"style":{"fontSize":16,"typeface":"微软雅黑","color":"#627A92","alignment":"left"}}
+{"kind":"textbox","id":"sh/hore1gvm","slideIndex":0,"position":{"left":660,"top":188,"width":260,"height":32},"name":"环节3","text":"03  施工日志","geometry":"rect","lineWidth":0,"style":{"fontSize":23,"typeface":"微软雅黑","color":"#0C4168","bold":true,"alignment":"left"}}
+{"kind":"textbox","id":"sh/gnid8bu1","slideIndex":0,"position":{"left":660,"top":226,"width":260,"height":25},"name":"说明3","text":"任务信息带到现场","geometry":"rect","lineWidth":0,"style":{"fontSize":16,"typeface":"微软雅黑","color":"#627A92","alignment":"left"}}
+{"kind":"textbox","id":"sh/aho3exsn","slideIndex":0,"position":{"left":960,"top":188,"width":260,"height":32},"name":"环节4","text":"04  检查整改","geometry":"rect","lineWidth":0,"style":{"fontSize":23,"typeface":"微软雅黑","color":"#0C4168","bold":true,"alignment":"left"}}
+{"kind":"textbox","id":"sh/vix4n29s","slideIndex":0,"position":{"left":960,"top":226,"width":260,"height":25},"name":"说明4","text":"检查状态关联整改","geometry":"rect","lineWidth":0,"style":{"fontSize":16,"typeface":"微软雅黑","color":"#627A92","alignment":"left"}}
+{"kind":"textbox","id":"sh/3i9srulg","slideIndex":0,"position":{"left":60,"top":656,"width":120,"height":25},"name":"智能体衔接标签","text":"智能体衔接","geometry":"rect","lineWidth":0,"style":{"fontSize":18,"typeface":"微软雅黑","color":"#D59128","bold":true,"alignment":"left"}}
+{"kind":"textbox","id":"sh/2h0ryp4v","slideIndex":0,"position":{"left":195,"top":658,"width":1025,"height":25},"name":"智能体衔接内容","text":"按标准生成任务，辅助排期与日志归集，提示检查缺项及整改期限","geometry":"rect","lineWidth":0,"style":{"fontSize":17,"typeface":"微软雅黑","color":"#0C4168","alignment":"left"}}
+{"kind":"image","id":"im/fu14fmdg","slideIndex":0,"position":{"left":60,"top":269,"width":260,"height":343.73},"fit":"contain","name":"","alt":"标准库_专业与工序，用户原始界面裁剪"}
+{"kind":"image","id":"im/etsnmhcb","slideIndex":0,"position":{"left":360,"top":269,"width":260,"height":101.83},"fit":"contain","name":"","alt":"周计划_分部分项，用户原始界面裁剪"}
+{"kind":"image","id":"im/tsjmdwvq","slideIndex":0,"position":{"left":360,"top":391,"width":260,"height":203.94},"fit":"contain","name":"","alt":"每日安排_单据日期，用户原始界面裁剪"}
+{"kind":"image","id":"im/sralkru5","slideIndex":0,"position":{"left":660,"top":269,"width":260,"height":234.05},"fit":"contain","name":"","alt":"移动日志_任务卡片，用户原始界面裁剪"}
+{"kind":"image","id":"im/rq14bmdk","slideIndex":0,"position":{"left":660,"top":523,"width":260,"height":74.02},"fit":"contain","name":"","alt":"移动日志_工序内容，用户原始界面裁剪"}
+{"kind":"image","id":"im/6p83ihcz","slideIndex":0,"position":{"left":960,"top":269,"width":260,"height":135.2},"fit":"contain","name":"","alt":"施工中_检查与质量取照，用户原始界面裁剪"}
+{"kind":"image","id":"im/xo3mpgvu","slideIndex":0,"position":{"left":960,"top":419,"width":260,"height":110.72},"fit":"contain","name":"","alt":"质量验收_整改关联，用户原始界面裁剪"}
+{"kind":"image","id":"im/cnu5wbu9","slideIndex":0,"position":{"left":960,"top":548,"width":260,"height":79.11},"fit":"contain","name":"","alt":"工艺标准_整改要求与期限，用户原始界面裁剪"}
+{"kind":"notes","id":"nt/j12270","slideIndex":0,"text":"展示定义：使用用户提供的8张现有系统截图，裁剪为专业工序、周计划分项、每日日期、任务卡片、工序内容、施工中检查、验收整改关联和工艺标准整改信息，按01标准分部分项、02计划编排、03施工日志、04安全质量检查顺序组织。\n对应主方案：AI新能源设施建设场景方案v10，第6至9页。底部文字为方案中的智能体衔接方向，不将截图当作AI功能已实现的证明。\n原图脱敏、空值及完成状态均保持。所选截图来自不同业务样例，表达功能之间的关系，不作为同一项目的数据追溯链。完整截图保留于用户原附件。"}

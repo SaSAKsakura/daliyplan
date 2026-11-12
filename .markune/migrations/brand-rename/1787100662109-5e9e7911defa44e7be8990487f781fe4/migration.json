@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "migrationId": "1787100662109-5e9e7911defa44e7be8990487f781fe4",
+  "createdAt": "1787100662227",
+  "status": "completed",
+  "files": [
+    {
+      "path": ".madora/assets\\index.json",
+      "backupPath": "backup\\legacy-private\\assets\\index.json",
+      "originalSha256": "eabbcd6911bd02f8eedc5d4124eaa860040acea0195eac6bb4f1c9aadbd22a39"
+    },
+    {
+      "path": "Daily\\2026\\07\\2026-07-20.md",
+      "backupPath": "backup\\workspace\\Daily\\2026\\07\\2026-07-20.md",
+      "originalSha256": "c10c2640d702ef817ca3b1376c3a3b9a93c9dfa8d985da179c02f98588600cba"
+    },
+    {
+      "path": "Daily\\2026\\07\\2026-07-21.md",
+      "backupPath": "backup\\workspace\\Daily\\2026\\07\\2026-07-21.md",
+      "originalSha256": "2f6f44271b9b36cebdd8d6f08a17864e704ae796ff2f7f26b19409e41526b733"
+    },
+    {
+      "path": "Daily\\2026\\07\\2026-07-22.md",
+      "backupPath": "backup\\workspace\\Daily\\2026\\07\\2026-07-22.md",
+      "originalSha256": "f265d8d16af222dd57db42f298fe77a8a7926291a919bf50bf05a81946d8ed72"
+    },
+    {
+      "path": "Daily\\2026\\07\\2026-07-23.md",
+      "backupPath": "backup\\workspace\\Daily\\2026\\07\\2026-07-23.md",
+      "originalSha256": "99a77afe27585aee0f31df32c73652f0b12959ccc9a379dc30974e41bc38fef6"
+    },
+    {
+      "path": "Daily\\2026\\07\\2026-07-24.md",
+      "backupPath": "backup\\workspace\\Daily\\2026\\07\\2026-07-24.md",
+      "originalSha256": "29bdb2485186e2414061ebc23cde510b8e4a072df51345af03dbd2bc796f9dfd"
+    },
+    {
+      "path": "Daily\\2026\\07\\2026-07-27.md",
+      "backupPath": "backup\\workspace\\Daily\\2026\\07\\2026-07-27.md",
+      "originalSha256": "4f31bd7454c66996163bbba03a0ac216e6f1935f36c1462435d16ee6c4a80c14"
+    },
+    {
+      "path": "Daily\\2026\\07\\2026-07-28.md",
+      "backupPath": "backup\\workspace\\Daily\\2026\\07\\2026-07-28.md",
+      "originalSha256": "4c458e976d1e6d9de746c80231e787464fb755ff94c05e317c63fb5cd48d9c8a"
+    },
+    {
+      "path": "Daily\\2026\\07\\2026-07-30.md",
+      "backupPath": "backup\\workspace\\Daily\\2026\\07\\2026-07-30.md",
+      "originalSha256": "213f088a5e6eb8d7754505c07eacd2d0bd944b95913cfbdc674790c751deb3e7"
+    },
+    {
+      "path": "Daily\\2026\\08\\2026-08-05.md",
+      "backupPath": "backup\\workspace\\Daily\\2026\\08\\2026-08-05.md",
+      "originalSha256": "56d1da2dbfcc4183a572a5b02fd23f9d9c68c929ab070f20addbed996538a519"
+    },
+    {
+      "path": "Daily\\2026\\08\\2026-08-06.md",
+      "backupPath": "backup\\workspace\\Daily\\2026\\08\\2026-08-06.md",
+      "originalSha256": "d2ba78d53f1288dd15521c507039b07f0790883218e7c426426ed0d7674e61d8"
+    },
+    {
+      "path": "Daily\\2026\\08\\2026-08-07.md",
+      "backupPath": "backup\\workspace\\Daily\\2026\\08\\2026-08-07.md",
+      "originalSha256": "cf1164ff495a4ac85096ddc503d13680408c87097bf76b4e599b539cddee2540"
+    },
+    {
+      "path": "Daily\\2026\\08\\2026-08-14.md",
+      "backupPath": "backup\\workspace\\Daily\\2026\\08\\2026-08-14.md",
+      "originalSha256": "1236d17a4d2946a7fc1ef229ecc4a8794e2fefb559413f3e09819f1040d12ff1"
+    },
+    {
+      "path": "Daily\\2026\\08\\2026-08-17.md",
+      "backupPath": "backup\\workspace\\Daily\\2026\\08\\2026-08-17.md",
+      "originalSha256": "642ffb95d3a02d4744f2c97ed6c61c2451ddf222e833c6861b37abb634f93a4e"
+    },
+    {
+      "path": "FAQ\\移动端组件统计与交互方案.md",
+      "backupPath": "backup\\workspace\\FAQ\\移动端组件统计与交互方案.md",
+      "originalSha256": "786b24705e4125e418a2616c251888a9109ff286c36162c095d12b1f27faabae"
+    },
+    {
+      "path": "FAQ\\配置中心功能清单2.5.md",
+      "backupPath": "backup\\workspace\\FAQ\\配置中心功能清单2.5.md",
+      "originalSha256": "070cbd8ea0a92622dd57ac90d08827eabf3e64111f0289a2c0936c95b33ab742"
+    },
+    {
+      "path": "FAQ\\配置中心操作手册2.5.md",
+      "backupPath": "backup\\workspace\\FAQ\\配置中心操作手册2.5.md",
+      "originalSha256": "8e42bb51749fa07ed614d053b02fd65c21748f87e8f23ae4ae42bdc8b6ab7d1f"
+    },
+    {
+      "path": "FAQ\\配置中心移动端操作手册1.0.md",
+      "backupPath": "backup\\workspace\\FAQ\\配置中心移动端操作手册1.0.md",
+      "originalSha256": "36bf20baef8d094fb1a19e37dafaf2e49f1070a55a30b6b50e3d28dd65b8f7a7"
+    },
+    {
+      "path": "FAQ\\配置中心移动端组件手册1.0.md",
+      "backupPath": "backup\\workspace\\FAQ\\配置中心移动端组件手册1.0.md",
+      "originalSha256": "0fbeb795e35c16acfa72f1c822fa2f6803c5fefdaad4f9055dc7bf6e60bd53ea"
+    },
+    {
+      "path": "前端调整内容\\任务协同对应的调整.md",
+      "backupPath": "backup\\workspace\\前端调整内容\\任务协同对应的调整.md",
+      "originalSha256": "d7ca157476bed8646f327531254720e0a0cb716eb7c5a1faafd39f6e98b7d588"
+    },
+    {
+      "path": "月度更新\\低代码平台月度更新发布通知-20260811\\低代码平台月度更新发布通知-20260811-1.md",
+      "backupPath": "backup\\workspace\\月度更新\\低代码平台月度更新发布通知-20260811\\低代码平台月度更新发布通知-20260811-1.md",
+      "originalSha256": "449605f430c609d24726ad678ad8881c03004a5a8348c043dba24f9fad549bc4"
+    }
+  ]
+}

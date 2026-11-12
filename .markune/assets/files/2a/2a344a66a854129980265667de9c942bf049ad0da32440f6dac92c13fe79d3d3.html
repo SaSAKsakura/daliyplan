@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>通风与气体智能监测 · 数据看板（蓝白增强版）</title>
+<style>
+/* ===== 经典蓝白 · 增强设计系统 ===== */
+:root{
+  --bg:#eef3fb;
+  --card:#ffffff;
+  --border:#e3e9f3;
+  --border-strong:#c9d6ea;
+  --primary:#1677ff;
+  --primary-2:#2f54eb;
+  --primary-3:#13c2c2;
+  --primary-light:#e8f1ff;
+  --primary-dark:#0958d9;
+  --success:#52c41a;
+  --success-bg:#f1fbe9;
+  --warning:#fa8c16;
+  --warning-bg:#fff5e9;
+  --danger:#ff4d4f;
+  --danger-bg:#fff1f0;
+  --crit:#cf1322;
+  --text-0:#16233b;
+  --text-1:#46546b;
+  --text-2:#8492a6;
+  --text-3:#b6c0d0;
+  --shadow-sm:0 1px 2px rgba(22,53,103,.05);
+  --shadow-md:0 6px 18px rgba(22,53,103,.09);
+  --shadow-lg:0 10px 30px rgba(22,53,103,.12);
+  --radius:14px;
+  --gap:16px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Hiragino Sans GB",sans-serif;
+  color:var(--text-0);font-size:14px;line-height:1.5715;-webkit-font-smoothing:antialiased;
+  background-color:var(--bg);
+  background-image:radial-gradient(rgba(120,150,200,.10) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+.num{font-family:"DIN Alternate","Segoe UI",sans-serif;font-variant-numeric:tabular-nums;letter-spacing:-.3px}
+.screen{max-width:1920px;margin:0 auto;padding:18px 24px 22px;display:flex;flex-direction:column;gap:var(--gap)}
+
+/* ===== 顶栏 ===== */
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:20px;
+  background:linear-gradient(100deg,#ffffff 0%,#f3f8ff 100%);
+  border:1px solid var(--border);border-radius:var(--radius);padding:14px 20px;box-shadow:var(--shadow-sm)}
+.brand{display:flex;align-items:center;gap:14px}
+.brand .logo{width:46px;height:46px;border-radius:13px;
+  background:linear-gradient(135deg,var(--primary),#4096ff);
+  display:grid;place-items:center;color:#fff;box-shadow:0 6px 14px rgba(22,119,255,.35)}
+.brand .logo svg{width:25px;height:25px}
+.brand h1{font-size:21px;font-weight:800;color:var(--text-0);letter-spacing:.5px}
+.brand .sub{font-size:12px;color:var(--text-2);margin-top:3px}
+.status-pill{display:inline-flex;align-items:center;gap:6px;margin-left:10px;font-size:12px;color:var(--success);
+  background:var(--success-bg);border:1px solid #d8f0c4;padding:3px 10px;border-radius:20px;font-weight:600}
+.status-pill .dot{width:7px;height:7px;border-radius:50%;background:var(--success);box-shadow:0 0 0 0 rgba(82,196,26,.6);animation:pulse 1.8s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(82,196,26,.55)}70%{box-shadow:0 0 0 7px rgba(82,196,26,0)}100%{box-shadow:0 0 0 0 rgba(82,196,26,0)}}
+
+.filter-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.fg{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--text-1)}
+.fg label{color:var(--text-2);white-space:nowrap}
+select,input{font:inherit;font-size:13px;border:1px solid var(--border-strong);border-radius:8px;padding:6px 28px 6px 11px;
+  background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24'%3E%3Cpath d='M6 9l6 6 6-6' fill='none' stroke='%238492a6' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 8px center;
+  color:var(--text-0);outline:none;transition:border-color .15s,box-shadow .15s;cursor:pointer;appearance:none;-webkit-appearance:none}
+select:focus,input:focus{border-color:var(--primary);box-shadow:0 0 0 3px var(--primary-light)}
+.btn-primary{font:inherit;font-size:13px;font-weight:600;color:#fff;background:linear-gradient(135deg,var(--primary),#4096ff);
+  border:1px solid transparent;border-radius:8px;padding:7px 18px;cursor:pointer;transition:filter .15s,transform .1s;white-space:nowrap;box-shadow:0 4px 10px rgba(22,119,255,.28)}
+.btn-primary:hover{filter:brightness(1.06)}
+.btn-primary:active{transform:translateY(1px)}
+.btn-ghost{font:inherit;font-size:13px;font-weight:600;color:var(--primary);background:#fff;border:1px solid var(--border-strong);
+  border-radius:8px;padding:7px 16px;cursor:pointer;transition:background .15s}
+.btn-ghost:hover{background:var(--primary-light)}
+
+/* ===== KPI 行 ===== */
+.kpis{display:grid;grid-template-columns:repeat(8,1fr);gap:var(--gap)}
+.kpi{position:relative;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  padding:14px 14px 10px;box-shadow:var(--shadow-sm);overflow:visible;transition:transform .18s,box-shadow .18s,z-index 0s;
+  display:flex;flex-direction:column;gap:7px}
+.kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--primary)}
+.kpi.orange::before{background:var(--warning)} .kpi.green::before{background:var(--success)}
+.kpi.red::before{background:var(--danger)} .kpi.darkred::before{background:var(--crit)}
+.kpi:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);z-index:60}
+.kpi.info-open{z-index:60}
+.k-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.k-name{font-size:12.5px;color:var(--text-1);font-weight:500;line-height:1.35}
+.k-ico{width:30px;height:30px;border-radius:9px;flex-shrink:0;display:grid;place-items:center}
+.k-ico svg{width:17px;height:17px}
+.k-ico.blue{background:var(--primary-light);color:var(--primary)}
+.k-ico.green{background:var(--success-bg);color:var(--success)}
+.k-ico.orange{background:var(--warning-bg);color:var(--warning)}
+.k-ico.red{background:var(--danger-bg);color:var(--danger)}
+.k-val{font-size:27px;font-weight:800;line-height:1.05;color:var(--text-0)}
+.k-val .u{font-size:13px;font-weight:600;color:var(--text-2);margin-left:3px}
+.k-val.blue{color:var(--primary)} .k-val.green{color:var(--success)}
+.k-val.orange{color:var(--warning)} .k-val.red{color:var(--danger)} .k-val.darkred{color:var(--crit)}
+.k-foot{display:flex;align-items:center;justify-content:space-between;gap:6px;margin-top:1px}
+.k-sub{font-size:11.5px;color:var(--text-2)}
+.k-chip{font-size:11px;font-weight:700;padding:1px 7px;border-radius:20px;white-space:nowrap}
+.chip-g{background:var(--success-bg);color:var(--success)} .chip-r{background:var(--danger-bg);color:var(--danger)}
+.chip-o{background:var(--warning-bg);color:var(--warning)} .chip-b{background:var(--primary-light);color:var(--primary)}
+
+/* ===== KPI 数值悬浮提示 ===== */
+.k-val-wrap{position:relative;cursor:help;display:inline-block}
+.k-val:hover+.k-hover-tip,.k-val-wrap:hover .k-hover-tip{opacity:1;visibility:visible;transform:translateY(0)}
+.k-hover-tip{position:absolute;bottom:calc(100%+8px);left:50%;transform:translateX(-50%) translateY(4px);
+  background:#1a2744;color:#e8ecf5;border-radius:10px;padding:12px 16px;font-size:12px;line-height:1.7;
+  min-width:280px;max-width:340px;z-index:9998;box-shadow:0 8px 28px rgba(0,0,0,.22);
+  opacity:0;visibility:hidden;transition:.2s ease;pointer-events:none}
+.k-hover-tip::after{content:'';position:absolute;top:100%;left:50%;margin-left:-7px;
+  border:7px solid transparent;border-top-color:#1a2744}
+.k-ht-title{font-weight:700;font-size:13px;color:#fff;margin-bottom:6px;padding-bottom:6px;
+  border-bottom:1px solid rgba(255,255,255,.15)}
+.k-ht-formula{color:#a8c0e8;margin-bottom:4px}
+.k-ht-detail{color:#8fa3c8;font-size:11.5px}
+
+/* ===== KPI 指标说明图标(ⓘ) ===== */
+.k-info-btn{width:18px;height:18px;border-radius:50%;border:1.3px solid var(--border-strong);
+  background:#fff;color:var(--text-2);cursor:pointer;display:inline-grid;place-items:center;
+  flex-shrink:0;transition:all .15s;font-size:11px;font-weight:700;line-height:1;
+  font-family:"DIN Alternate","Segoe UI",sans-serif}
+.k-info-btn:hover{border-color:var(--primary);color:var(--primary);background:var(--primary-light)}
+.k-info-pop{position:absolute;top:100%;right:0;margin-top:6px;width:300px;background:#fff;
+  border:1px solid var(--border-strong);border-radius:12px;padding:14px 16px;z-index:9999;
+  box-shadow:0 10px 36px rgba(0,0,0,.15);opacity:0;visibility:hidden;transform:translateY(-6px);
+  transition:.2s ease;pointer-events:auto}
+.k-info-pop.open{opacity:1;visibility:visible;transform:translateY(0)}
+.k-ip-title{font-size:13px;font-weight:700;color:var(--text-0);margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.k-ip-body{font-size:12px;color:var(--text-1);line-height:1.75}
+
+/* ===== 主布局 ===== */
+.main{display:grid;grid-template-columns:2fr 4fr 2fr;gap:var(--gap);flex:1;min-height:0;align-items:stretch}
+.col{display:flex;flex-direction:column;gap:var(--gap);min-width:0}
+
+/* ===== 面板 ===== */
+.panel{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  padding:14px 16px 12px;display:flex;flex-direction:column;min-height:0;box-shadow:var(--shadow-sm);flex:1;
+  overflow:hidden;transition:box-shadow .18s}
+.panel:hover{box-shadow:var(--shadow-md)}
+.p-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;gap:8px}
+.p-title{display:flex;align-items:center;gap:9px;font-size:15px;font-weight:700;color:var(--text-0)}
+.p-title .bar{width:5px;height:17px;border-radius:3px;background:var(--primary)}
+.p-title.c-blue .bar{background:var(--primary)} .p-title.c-indigo .bar{background:var(--primary-2)}
+.p-title.c-cyan .bar{background:var(--primary-3)}
+.p-title .t-ico{width:26px;height:26px;border-radius:8px;display:grid;place-items:center}
+.p-title.c-blue .t-ico{background:var(--primary-light);color:var(--primary)}
+.p-title.c-indigo .t-ico{background:#eef2ff;color:var(--primary-2)}
+.p-title.c-cyan .t-ico{background:#e6fafa;color:var(--primary-3)}
+.p-title .t-ico svg{width:15px;height:15px}
+.p-unit{font-size:11.5px;color:var(--text-2);background:#f1f5fb;border:1px solid var(--border);padding:2px 9px;border-radius:20px}
+.p-body{flex:1;min-height:0;position:relative;overflow:hidden}
+.panel.chart-panel .p-body{min-height:340px}
+.panel.chart-panel .p-body>div{position:absolute;inset:0}
+
+/* ===== 标签页 ===== */
+.tabs{display:flex;background:#f1f5fb;border-radius:9px;padding:3px;gap:2px;border:1px solid var(--border)}
+.tab{font:inherit;font-size:12.5px;color:var(--text-1);background:transparent;border:0;padding:6px 12px;border-radius:7px;
+  cursor:pointer;transition:all .15s;white-space:nowrap;font-weight:500}
+.tab:hover{color:var(--text-0)}
+.tab.active{background:#fff;color:var(--primary);font-weight:700;box-shadow:var(--shadow-sm)}
+
+/* ===== 右侧表格 ===== */
+.rtable{width:100%;border-collapse:collapse;font-size:12.5px}
+.rtable th{text-align:left;padding:8px 10px;background:#f3f7fd;color:var(--text-1);font-weight:700;
+  border-bottom:2px solid var(--primary);white-space:nowrap;position:sticky;top:0}
+.rtable td{padding:7px 10px;border-bottom:1px solid #eef1f6;color:var(--text-1);white-space:nowrap}
+.rtable tr:last-child td{border-bottom:0}
+.rtable tbody tr{transition:background .12s}
+.rtable tbody tr:hover td{background:var(--primary-light)}
+.rnum{text-align:right;font-weight:700;color:var(--text-0)}
+.rpct{text-align:right;font-weight:700;min-width:58px}
+.rpct.g{color:var(--success)} .rpct.o{color:var(--warning)} .rpct.r{color:var(--danger)} .rpct.z{color:var(--text-3)}
+.pbar-cell{width:78px}
+.pbar-track{height:7px;border-radius:4px;background:#eef0f4;overflow:hidden}
+.pbar-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--primary),#4096ff);transition:width .4s}
+.pbar-fill.warn{background:linear-gradient(90deg,var(--warning),#ffc069)}
+.pbar-fill.danger{background:linear-gradient(90deg,var(--danger),#ff7875)}
+
+/* ===== 概览环 ===== */
+.rings{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.ring-wrap{display:flex;flex-direction:column;align-items:center;gap:2px}
+.ring-cap{font-size:12px;color:var(--text-1);font-weight:600;text-align:center;line-height:1.3}
+.ring-val{font-size:14px;font-weight:800}
+.ring-sub{font-size:12px;font-weight:800;color:var(--text-0);margin-top:1px}
+.ring-sub b{color:var(--primary)}
+.ok-list{margin-top:12px;display:flex;flex-direction:column;gap:9px;border-top:1px dashed var(--border);padding-top:11px}
+.ok-row{display:flex;gap:8px;align-items:flex-start}
+.ok-dim{font-size:12px;font-weight:700;min-width:78px;flex-shrink:0;line-height:1.55}
+.ok-chips{display:flex;flex-wrap:wrap;gap:4px}
+.ok-chip{font-size:11px;color:var(--text-1);background:#f1f5fb;border:1px solid var(--border);padding:1px 8px;border-radius:20px;white-space:nowrap}
+.ok-chip.none{color:var(--text-3);background:#f6f8fb;border-color:#eef1f6}
+.ok-note{margin-top:auto;font-size:11px;color:var(--text-2);line-height:1.55;border-top:1px dashed var(--border);padding-top:9px}
+
+/* ===== 施工单位综合评分卡（堆积图 · 仅等级） ===== */
+.score-legend{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:9px}
+.lg{display:flex;align-items:center;gap:5px;font-size:11.5px;color:var(--text-1)}
+.lg i{width:11px;height:11px;border-radius:3px;display:inline-block}
+.score-list{flex:1;min-height:0;overflow:auto;display:flex;flex-direction:column;gap:8px;margin:2px 0;padding-right:4px}
+.score-row{display:grid;grid-template-columns:22px 84px 1fr 48px;align-items:center;gap:8px}
+.score-rank{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:700;background:#eef3fb;color:var(--text-2)}
+.score-rank.top{background:var(--primary);color:#fff}
+.score-name{font-size:12.5px;color:var(--text-1);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.score-stack{display:flex;height:14px;background:#eef1f6;border-radius:6px;overflow:hidden}
+.sb-seg{height:100%;transition:width .6s ease}
+.grade-tag{font-size:11px;font-weight:700;text-align:center;border:1px solid;border-radius:20px;padding:1px 0;line-height:1.4}
+
+/* ===== 页脚 ===== */
+.footbar{display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--text-2);
+  padding:10px 16px;border:1px solid var(--border);border-radius:var(--radius);background:#fff;box-shadow:var(--shadow-sm)}
+.footbar .left{display:flex;gap:8px;align-items:center}
+.tag{background:#f1f5fb;border:1px solid var(--border);padding:2px 10px;border-radius:20px;color:var(--text-1)}
+
+/* ===== 下钻明细（独立页面：图表 + 完整字段明细表） ===== */
+.btn-drill{font:inherit;font-size:12px;font-weight:600;color:#fff;background:linear-gradient(135deg,var(--primary),#4096ff);
+  border:0;border-radius:7px;padding:5px 13px;cursor:pointer;transition:filter .15s;white-space:nowrap;
+  box-shadow:0 3px 8px rgba(22,119,255,.25);display:inline-flex;align-items:center;gap:4px}
+.btn-drill:hover{filter:brightness(1.08)}
+.btn-drill svg{width:14px;height:14px;flex-shrink:0}
+
+.detail-view{display:none;max-width:1920px;margin:0 auto;padding:18px 24px 22px;flex-direction:column;gap:var(--gap)}
+.detail-view.open{display:flex}
+.dv-head{display:flex;align-items:center;justify-content:space-between;gap:16px;
+  background:linear-gradient(100deg,#ffffff,#f3f8ff);border:1px solid var(--border);border-radius:var(--radius);
+  padding:13px 20px;box-shadow:var(--shadow-sm);flex-wrap:wrap}
+.dv-back{font:inherit;font-size:13px;font-weight:600;color:var(--primary);background:#fff;border:1px solid var(--border-strong);
+  border-radius:8px;padding:7px 14px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:background .15s}
+.dv-back:hover{background:var(--primary-light)}
+.dv-back svg{width:15px;height:15px}
+.dv-title{font-size:18px;font-weight:800;color:var(--text-0);display:flex;align-items:center;gap:10px}
+.dv-title .bar{width:5px;height:19px;border-radius:3px;background:var(--primary)}
+.dv-actions{display:flex;align-items:center;gap:8px}
+.btn-export{font:inherit;font-size:12.5px;font-weight:600;color:var(--primary);background:#fff;
+  border:1px solid var(--primary);border-radius:8px;padding:6px 14px;cursor:pointer;transition:all .15s;
+  display:inline-flex;align-items:center;gap:5px}
+.btn-export:hover{background:var(--primary-light)}
+.btn-export svg{width:14px;height:14px}
+.dv-kpi-row{display:flex;gap:12px;flex-wrap:wrap}
+.dv-kpi{display:flex;align-items:center;gap:9px;background:linear-gradient(135deg,#f8fbff,#f0f5ff);
+  border:1px solid #d6e4ff;border-radius:11px;padding:9px 16px;min-width:150px}
+.dv-kpi .mk{font-size:12px;color:var(--text-2);font-weight:500}
+.dv-kpi .mv{font-size:21px;font-weight:800;color:var(--text-0);font-family:"DIN Alternate","Segoe UI",sans-serif}
+.dv-chart-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  padding:14px 16px 12px;box-shadow:var(--shadow-sm);display:flex;flex-direction:column}
+.dv-chart{width:100%;height:320px}
+.dv-table-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  padding:14px 16px;box-shadow:var(--shadow-sm)}
+.dv-table-scroll{max-height:46vh;overflow:auto;border-radius:8px}
+
+.dtable{width:100%;border-collapse:collapse;font-size:12.5px}
+.dtable th{text-align:left;padding:9px 11px;background:#f3f7fd;color:var(--text-1);font-weight:700;
+  border-bottom:2px solid var(--primary);white-space:nowrap;position:sticky;top:0;z-index:1}
+.dtable td{padding:8px 11px;border-bottom:1px solid #eef1f6;color:var(--text-1);white-space:nowrap}
+.dtable tr:last-child td{border-bottom:0}
+.dtable tbody tr{transition:background .12s}
+.dtable tbody tr:hover td{background:var(--primary-light)}
+.dt-num{text-align:right;font-weight:700;color:var(--text-0)}
+.dt-pct{text-align:right;font-weight:700}
+.dt-pct.g{color:var(--success)}.dt-pct.o{color:var(--warning)}.dt-pct.r{color:var(--danger)}.dt-pct.z{color:var(--text-3)}
+
+/* 入场动画 */
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.rise{animation:rise .5s ease both}
+
+@media(max-width:1600px){.kpis{grid-template-columns:repeat(4,1fr)}.main{grid-template-columns:2fr 4fr 2fr}}
+@media(max-width:1200px){.kpis{grid-template-columns:repeat(2,1fr)}.main{grid-template-columns:1fr}.rings{grid-template-columns:repeat(3,1fr)}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+::-webkit-scrollbar{width:6px;height:6px}::-webkit-scrollbar-thumb{background:#c9d6ea;border-radius:4px}
+::-webkit-scrollbar-thumb:hover{background:#8492a6}::-webkit-scrollbar-track{background:transparent}
+</style>
+</head>
+<body>
+<div class="screen">
+
+<!-- 顶栏 -->
+<header class="topbar rise">
+  <div class="brand">
+    <div class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12h3l2-7 4 14 3-9 2 4h4"/></svg></div>
+    <div>
+      <h1>通风与气体智能监测 <span class="status-pill"><span class="dot"></span>实时监测中</span></h1>
+      <div class="sub">有限空间作业 · 通风测毒数据看板</div>
+    </div>
+  </div>
+  <div class="filter-row">
+    <div class="fg"><label>时间范围</label><input type="date" value="2026-06-12"/></div>
+    <div class="fg"><label>至</label><input type="date" value="2026-06-12"/></div>
+    <div class="fg"><label>施工单位</label><select><option selected>全部</option></select></div>
+    <button class="btn-primary">更新数据</button>
+  </div>
+</header>
+
+<!-- KPI 行 -->
+<section class="kpis">
+  <!-- ① 作业日志 / 有限空间 -->
+  <div class="kpi blue rise" style="animation-delay:.02s">
+    <div class="k-top"><span class="k-name">作业日志 / 有限空间</span><button class="k-info-btn" data-info-title="作业日志 / 有限空间" data-info-body="本期统计范围内所有施工单位的作业日志总数，以及其中被识别为「有限空间」类型的高风险作业日志数量。用于衡量整体作业规模与有限空间作业的绝对量级。" aria-label="指标说明">ⓘ</button><span class="k-ico blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg></span></div>
+    <div class="k-val-wrap"><div class="k-val blue num" data-to="53577">0<span class="u">/ 2368</span></div>
+      <div class="k-hover-tip"><div class="k-ht-title">作业日志 / 有限空间</div><div class="k-ht-formula">作业日志总数：53,577 条<br/>有限空间作业日志数：2,368 条</div><div class="k-ht-detail">统计周期内全部施工单位上报的作业日志总量及其中标记为有限空间类型的子集。</div></div>
+    </div>
+    <div class="k-foot"><span class="k-sub">总 / 有限空间</span></div>
+    <div class="k-info-pop"></div>
+  </div>
+
+  <!-- ② 有限空间作业占比 -->
+  <div class="kpi orange rise" style="animation-delay:.06s">
+    <div class="k-top"><span class="k-name">有限空间作业占比</span><button class="k-info-btn" data-info-title="有限空间作业占比" data-info-body="衡量有限空间作业在施工单位整体作业中的比重，反映对高风险作业类型的业务聚焦与管理关注度。" aria-label="指标说明">ⓘ</button><span class="k-ico orange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="9"/></svg></span></div>
+    <div class="k-val-wrap"><div class="k-val orange num" data-to="5.54" data-dec="2">0<span class="u">%</span></div>
+      <div class="k-hover-tip"><div class="k-ht-title">有限空间作业占比</div><div class="k-ht-formula">计算公式：（有限空间作业日志数 / 作业日志总数）× 100%</div><div class="k-ht-detail">有限空间作业日志数 = 2,368<br/>作业日志总数 = 53,577<br/><b>本期数值 = 5.54%</b></div></div>
+    </div>
+    <div class="k-foot"><span class="k-sub">有限空间占比</span><span class="k-chip chip-o">中</span></div>
+    <div class="k-info-pop"></div>
+  </div>
+
+  <!-- ③ 装置应用覆盖率 -->
+  <div class="kpi orange rise" style="animation-delay:.10s">
+    <div class="k-top"><span class="k-name">装置应用覆盖率</span><button class="k-info-btn" data-info-title="装置应用覆盖率" data-info-body="考核在有限空间作业中实际关联并使用通风测毒一体化设备的比例，直接反映智能管控手段的现场应用广度。" aria-label="指标说明">ⓘ</button><span class="k-ico orange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9"/><path d="M3 12h9V3"/></svg></span></div>
+    <div class="k-val-wrap"><div class="k-val orange num" data-to="67.42" data-dec="2">0<span class="u">%</span></div>
+      <div class="k-hover-tip"><div class="k-ht-title">装置应用覆盖率</div><div class="k-ht-formula">计算公式：（挂接通风测毒设备的有限空间作业日志数 / 有限空间作业日志总数）× 100%</div><div class="k-ht-detail">挂接通风测毒设备的有限空间作业日志数 = 1,597<br/>有限空间作业日志总数 = 2,368<br/><b>本期数值 = 67.42%</b></div></div>
+    </div>
+    <div class="k-foot"><span class="k-sub">目标 ≥95%</span><span class="k-chip chip-o">待提升</span></div>
+    <div class="k-info-pop"></div>
+  </div>
+
+  <!-- ④ 高风险作业装置覆盖 -->
+  <div class="kpi green rise" style="animation-delay:.14s">
+    <div class="k-top"><span class="k-name">高风险作业装置覆盖</span><button class="k-info-btn" data-info-title="高风险作业装置覆盖率" data-info-body="考核在风险等级更高的有限空间作业中装置的应用情况，体现对重点风险的重点管控资源投入。" aria-label="指标说明">ⓘ</button><span class="k-ico green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 5v6c0 5 3 8 8 11 5-3 8-6 8-11V5z"/></svg></span></div>
+    <div class="k-val-wrap"><div class="k-val green num" data-to="100" data-dec="0">0<span class="u">%</span></div>
+      <div class="k-hover-tip"><div class="k-ht-title">高风险作业装置覆盖率</div><div class="k-ht-formula">计算公式：（挂接通风测毒设备的高风险等级有限空间作业日志数 / 高风险等级有限空间作业日志总数）× 100%</div><div class="k-ht-detail">挂接通风测毒设备的高风险等级有限空间作业日志数 = 2,086<br/>高风险等级有限空间作业日志总数 = 2,086<br/><b>本期数值 = 100%</b></div></div>
+    </div>
+    <div class="k-foot"><span class="k-sub">已达标</span><span class="k-chip chip-g">优</span></div>
+    <div class="k-info-pop"></div>
+  </div>
+
+  <!-- ⑤ 安全规程刚性执行率 -->
+  <div class="kpi red rise" style="animation-delay:.18s">
+    <div class="k-top"><span class="k-name">安全规程刚性执行率</span><button class="k-info-btn" data-info-title="安全规程刚性执行率" data-info-body="考核&quot;先通风、再检测、后作业&quot;规程是否通过技术手段被强制、无例外地执行，是&quot;技防&quot;替代&quot;人防&quot;的核心体现。" aria-label="指标说明">ⓘ</button><span class="k-ico red"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 4 6v5c0 5 3 8 8 10 5-2 8-5 8-10V6z"/><path d="M9 12l2 2 4-4"/></svg></span></div>
+    <div class="k-val-wrap"><div class="k-val red num" data-to="46.54" data-dec="2">0<span class="u">%</span></div>
+      <div class="k-hover-tip"><div class="k-ht-title">安全规程刚性执行率</div><div class="k-ht-formula">计算公式：（达标开工有限空间作业日志数 / 有限空间作业日志总数）× 100%</div><div class="k-ht-detail">达标开工有限空间作业日志数 = 1,102<br/>有限空间作业日志总数 = 2,368<br/><b>本期数值 = 46.54%</b></div></div>
+    </div>
+    <div class="k-foot"><span class="k-sub">需提升</span><span class="k-chip chip-r">低</span></div>
+    <div class="k-info-pop"></div>
+  </div>
+
+  <!-- ⑥ 施工过程装备应用覆盖 -->
+  <div class="kpi red rise" style="animation-delay:.22s">
+    <div class="k-top"><span class="k-name">施工过程装备应用覆盖</span><button class="k-info-btn" data-info-title="施工过程装备覆盖率" data-info-body="考核智能装备对有限空间作业全过程的监控覆盖程度，旨在杜绝监控盲区。" aria-label="指标说明">ⓘ</button><span class="k-ico red"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 7l3 3-9 9-4 1 1-4z"/><path d="M12 5l3 3"/></svg></span></div>
+    <div class="k-val-wrap"><div class="k-val red num" data-to="37.32" data-dec="2">0<span class="u">%</span></div>
+      <div class="k-hover-tip"><div class="k-ht-title">施工过程装备覆盖率</div><div class="k-ht-formula">计算公式：∑（单次作业装备有效传输数据时长 / 该次作业总时长）/ 作业次数 × 100%</div><div class="k-ht-detail">本期各施工单位平均装备有效传输数据时长占比 = 37.32%<br/>（按 12 家施工单位加权平均）<br/><b>本期数值 = 37.32%</b></div></div>
+    </div>
+    <div class="k-foot"><span class="k-sub">需提升</span><span class="k-chip chip-r">低</span></div>
+    <div class="k-info-pop"></div>
+  </div>
+
+  <!-- ⑦ 预警闭环及时处置率 -->
+  <div class="kpi green rise" style="animation-delay:.26s">
+    <div class="k-top"><span class="k-name">预警闭环及时处置率</span><button class="k-info-btn" data-info-title="预警闭环及时处置率" data-info-body="考核预警处置的及时性与有效性，反映快速响应与风险消除的能力。" aria-label="指标说明">ⓘ</button><span class="k-ico green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-9-9"/><path d="M12 7v5l3 2"/></svg></span></div>
+    <div class="k-val-wrap"><div class="k-val green num" data-to="86.43" data-dec="2">0<span class="u">%</span></div>
+      <div class="k-hover-tip"><div class="k-ht-title">预警闭环及时处置率</div><div class="k-ht-formula">计算公式：（5 分钟内预警闭环处置量 / 预警总组数）× 100%</div><div class="k-ht-detail">5 分钟内预警闭环处置量 = 94,158 条<br/>预警总组数 = 108,987 组<br/><b>本期数值 = 86.43%</b></div></div>
+    </div>
+    <div class="k-foot"><span class="k-sub">良好</span><span class="k-chip chip-g">良</span></div>
+    <div class="k-info-pop"></div>
+  </div>
+
+  <!-- ⑧ 预警平均恢复时间 -->
+  <div class="kpi green rise" style="animation-delay:.30s">
+    <div class="k-top"><span class="k-name">预警平均恢复时间</span><button class="k-info-btn" data-info-title="预警平均恢复时间" data-info-body="考核从预警产生到气体浓度恢复正常的平均耗时，衡量&quot;智能通风&quot;功能的实际效果，时间越短效能越高。" aria-label="指标说明">ⓘ</button><span class="k-ico green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg></span></div>
+    <div class="k-val-wrap"><div class="k-val green num" data-to="1.41" data-dec="2">0<span class="u">min</span></div>
+      <div class="k-hover-tip"><div class="k-ht-title">预警平均恢复时间</div><div class="k-ht-formula">计算公式：预警闭环处置总时长 / 预警闭环总处置量（单位：分钟）</div><div class="k-ht-detail">预警闭环处置总时长 = 153,559 min<br/>预警闭环总处置量 = 108,987 次<br/><b>本期数值 = 1.41 min</b></div></div>
+    </div>
+    <div class="k-foot"><span class="k-sub">优于阈值</span><span class="k-chip chip-g">优</span></div>
+    <div class="k-info-pop"></div>
+  </div>
+</section>
+
+<!-- 主网格 -->
+<section class="main">
+  <!-- 左列：施工单位综合评分（堆积图 · 仅等级） -->
+  <div class="col">
+    <div class="panel rise" style="flex:1;min-height:0">
+      <div class="p-head" style="margin-bottom:8px"><div class="p-title c-blue"><span class="t-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></span><span class="bar"></span>施工单位综合评分</div></div>
+      <div class="score-legend" id="scoreLegend"></div>
+      <div class="score-list" id="scoreList"></div>
+      <div class="ok-note">堆积条按三维度得分（建设·过程·风险）分色展示，整体仅以等级呈现。等级：优秀≥85 · 良好≥75 · 合格≥65 · 待改进&lt;65。分值与权重模型见悬浮说明。</div>
+    </div>
+  </div>
+
+  <!-- 中列：三个维度分别统计（加宽） -->
+  <div class="col">
+    <div class="panel rise chart-panel" style="flex:1;min-height:0">
+      <div class="p-head">
+        <div class="p-title c-blue"><span class="t-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V8l7-5 7 5v13"/><path d="M9 21v-6h6v6"/></svg></span><span class="bar"></span>建设与应用覆盖</div>
+        <div style="display:flex;align-items:center;gap:8px"><span class="p-unit">单位：%</span><button class="btn-drill" data-drill="build"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z"/></svg>查看明细</button></div>
+      </div>
+      <div class="tabs" id="buildTabs" style="margin-bottom:10px">
+        <button class="tab active" data-t="ratio">有限空间作业占比</button>
+        <button class="tab" data-t="cover">装置应用覆盖率</button>
+        <button class="tab" data-t="highrisk">高风险作业应用覆盖率</button>
+      </div>
+      <div class="p-body"><div id="chartBuild" style="width:100%;height:100%"></div></div>
+    </div>
+
+    <div class="panel rise chart-panel" style="flex:1;min-height:0">
+      <div class="p-head">
+        <div class="p-title c-indigo"><span class="t-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3 8-8"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span><span class="bar"></span>过程执行与合规</div>
+        <div style="display:flex;align-items:center;gap:8px"><span class="p-unit">单位：%</span><button class="btn-drill" data-drill="process"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z"/></svg>查看明细</button></div>
+      </div>
+      <div class="tabs" id="processTabs" style="margin-bottom:10px">
+        <button class="tab active" data-t="rule">安全规程刚性执行率</button>
+        <button class="tab" data-t="equip">施工过程装备应用覆盖率</button>
+      </div>
+      <div class="p-body"><div id="chartProcess" style="width:100%;height:100%"></div></div>
+    </div>
+
+    <div class="panel rise chart-panel" style="flex:1;min-height:0">
+      <div class="p-head">
+        <div class="p-title c-cyan"><span class="t-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3 8 8 10 5-2 8-5 8-10V6z"/><path d="M12 8v4"/></svg></span><span class="bar"></span>风险管控效能</div>
+        <div style="display:flex;align-items:center;gap:8px"><span class="p-unit">单位：% / min</span><button class="btn-drill" data-drill="risk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z"/></svg>查看明细</button></div>
+      </div>
+      <div class="tabs" id="riskTabs" style="margin-bottom:10px">
+        <button class="tab active" data-t="close">告警闭环处置率</button>
+        <button class="tab" data-t="recover">预警平均恢复时间</button>
+      </div>
+      <div class="p-body"><div id="chartRisk" style="width:100%;height:100%"></div></div>
+    </div>
+  </div>
+
+  <!-- 右列：建管单位应用情况 -->
+  <div class="col">
+    <div class="panel rise" style="flex:1;min-height:0">
+      <div class="p-head"><div class="p-title c-blue"><span class="t-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/><circle cx="9" cy="6" r="0"/></svg></span><span class="bar"></span>建管单位应用情况</div><div style="display:flex;align-items:center;gap:8px"><button class="btn-drill" data-drill="mgmt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z"/></svg>查看明细</button></div></div>
+      <div class="p-body" style="overflow:auto">
+        <table class="rtable">
+          <thead><tr><th>建管单位</th><th>作业日志</th><th>设备挂接率</th></tr></thead>
+          <tbody id="mgmtBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footbar rise">
+  <div class="left"><span class="tag">数据来源 · 通风测毒物联网平台</span><span class="tag">样本周期 · 2026-06-12</span></div>
+  <span>共监测有限空间作业 <b>2,368</b> 项 · 覆盖施工单位 <b>12</b> 家 · 建管单位 <b>15</b> 家</span>
+</footer>
+
+</div>
+
+<!-- 下钻明细 · 独立页面（图表 + 完整字段明细表同屏） -->
+<div class="detail-view" id="detailView">
+  <div class="dv-head">
+    <div style="display:flex;align-items:center;gap:14px">
+      <button class="dv-back" id="dvBack"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>返回看板</button>
+      <div class="dv-title" id="dvTitle"><span class="bar" style="background:var(--primary)"></span><span id="dvTitleText"></span></div>
+    </div>
+    <div class="dv-actions">
+      <button class="btn-export" id="btnExport"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>导出Excel</button>
+    </div>
+  </div>
+  <div class="dv-kpi-row" id="dvKpiRow"></div>
+  <div class="dv-chart-card">
+    <div class="p-head" style="margin-bottom:10px">
+      <div class="p-title c-blue"><span class="bar"></span>指标对比</div>
+      <span class="p-unit" id="dvChartUnit">单位：%</span>
+    </div>
+    <div class="tabs" id="dvTabs" style="margin-bottom:12px"></div>
+    <div class="dv-chart" id="dvChart"></div>
+  </div>
+  <div class="dv-table-card">
+    <div class="p-head" style="margin-bottom:8px"><div class="p-title c-blue"><span class="bar"></span>统计明细（各指标计算完整字段）</div><span class="p-unit">固定 · 不随指标切换</span></div>
+    <div class="dv-table-scroll"><table class="dtable" id="detailTable"><thead></thead><tbody></tbody></table></div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+<script>
+(function(){
+  var UNITS=['市南集团','久隆集团','上电实业','上送','华送','新泰','电力电缆','创卓','沪总','华瑞','东捷','明昕'];
+  var BUILD={
+    ratio:[4.78,5.76,5.13,4.98,3.28,2.78,2.32,2.01,1.72,1.41,1.22,0.88],
+    cover:[72.4,71.8,69.5,68.2,66.1,64.3,62.8,58.4,55.2,51.8,48.6,44.2],
+    highrisk:[94.2,91.5,89.8,87.3,85.1,82.4,79.6,76.2,73.8,70.4,65.8,58.2]
+  };
+  var PROCESS={
+    rule:[77.78,75.14,73.90,67.28,65.70,65.11,63.58,53.29,51.61,54.44,50.66,48.48],
+    equip:[68.42,65.31,62.18,58.74,55.33,52.08,49.62,44.17,41.83,38.56,35.21,31.47]
+  };
+  var RISK={
+    close:[93.78,92.65,91.35,89.54,88.23,87.44,81.23,81.23,79.45,78.32,73.23,69.45],
+    recover:[1.02,1.08,1.15,1.22,1.31,1.38,1.52,1.59,1.71,1.84,2.03,2.26]
+  };
+  var MGMT=[
+    {n:'奉贤供电',c:9,r:100.00},{n:'市北供电',c:22,r:90.91},{n:'市区供电',c:84,r:88.90},
+    {n:'浦东供电',c:56,r:85.71},{n:'电缆',c:23,r:78.26},{n:'松江供电',c:88,r:70.45},
+    {n:'市南供电',c:62,r:68.29},{n:'嘉定供电',c:25,r:68.00},{n:'金山供电',c:34,r:61.76},
+    {n:'青浦供电',c:63,r:41.27},{n:'其他',c:10,r:10.00},{n:'长兴供电',c:0,r:0.00},
+    {n:'建设咨询',c:1,r:0.00},{n:'崇明供电',c:0,r:0.00},{n:'超高压',c:0,r:0.00}
+  ];
+
+  // 指标达标口径（目标值）：min=不低于目标，max=不高于目标
+  var SRC={ratio:BUILD.ratio,cover:BUILD.cover,highrisk:BUILD.highrisk,
+           rule:PROCESS.rule,equip:PROCESS.equip,
+           close:RISK.close,recover:RISK.recover};
+  var DIMS=[
+    {id:'build',name:'建设与应用覆盖',color:'#fa8c16',ring:'ringBuild',sub:'subBuild',
+      keys:['ratio','cover','highrisk'], min:{ratio:3.0,cover:60,highrisk:80}, max:{}},
+    {id:'process',name:'过程执行与合规',color:'#ff4d4f',ring:'ringProcess',sub:'subProcess',
+      keys:['rule','equip'], min:{rule:60,equip:50}, max:{}},
+    {id:'risk',name:'风险管控效能',color:'#52c41a',ring:'ringRisk',sub:'subRisk',
+      keys:['close','recover'], min:{close:80}, max:{recover:1.5}}
+  ];
+  function passList(d){
+    var out=[];
+    UNITS.forEach(function(u,i){
+      var ok=true;
+      d.keys.forEach(function(k){
+        var v=SRC[k][i];
+        if(d.min[k]!=null && v<d.min[k]) ok=false;
+        if(d.max[k]!=null && v>d.max[k]) ok=false;
+      });
+      if(ok) out.push(u);
+    });
+    return out;
+  }
+
+  var AX='#8492a6', SPLIT='#eef1f6';
+
+  // ---- KPI 数字滚动 ----
+  [].forEach.call(document.querySelectorAll('.k-val.num'), function(el){
+    var to=parseFloat(el.getAttribute('data-to')),
+        dec=parseInt(el.getAttribute('data-dec')||'0',10),
+        t0=null, dur=900;
+    function step(ts){
+      if(!t0)t0=ts;
+      var p=Math.min((ts-t0)/dur,1),
+          e=1-Math.pow(1-p,3),
+          v=to*e;
+      el.firstChild.nodeValue=v.toFixed(dec);
+      if(p<1)requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  });
+
+
+  // ---- 通用 ----
+  function tooltip(){
+    return {
+      trigger:'axis',
+      backgroundColor:'#fff',
+      borderColor:'#e3e9f3',
+      borderWidth:1,
+      textStyle:{color:'#16233b',fontSize:12},
+      axisPointer:{type:'shadow',shadowStyle:{color:'rgba(22,119,255,.06)'}}
+    };
+  }
+  function grid(){return {left:6,right:14,top:18,bottom:30,containLabel:true};}
+  function mk(id){return echarts.init(document.getElementById(id),null,{renderer:'canvas'});}
+  var charts=[];
+
+  function shade(hex){
+    var m={'#1677ff':'#69b1ff','#2f54eb':'#85a5ff','#13c2c2':'#5cdbd3'};
+    return m[hex]||'#9ec5ff';
+  }
+  function renderBar(chart,data,opt){
+    opt=opt||{};
+    var unit=opt.unit||'%', target=opt.target, accent=opt.accent||'#1677ff', isPct=(unit==='%');
+    chart.setOption({
+      grid:grid(),
+      tooltip:tooltip(),
+      xAxis:{
+        type:'category',data:opt.x||UNITS,
+        axisLabel:{color:AX,fontSize:11,rotate:28,interval:0},
+        axisLine:{lineStyle:{color:SPLIT}},axisTick:{show:false}
+      },
+      yAxis:{
+        type:'value',
+        axisLabel:{color:AX,fontSize:11,formatter:function(v){return isPct?v+'%':v;}},
+        splitLine:{lineStyle:{color:SPLIT,type:'dashed'}},
+        min:0,
+        max:opt.max!=null?opt.max:(isPct?100:(Math.ceil(Math.max.apply(null,data)*1.2*10)/10))
+      },
+      series:[{
+        type:'bar',
+        data:data.map(function(v){
+          return {
+            value:v,
+            itemStyle:{color:new echarts.graphic.LinearGradient(0,0,0,1,[
+              {offset:0,color:accent},{offset:1,color:shade(accent)}
+            ])}
+          };
+        }),
+        barWidth:'52%',
+        itemStyle:{borderRadius:[5,5,0,0]},
+        label:{
+          show:true,position:'top',fontSize:10,color:'#46546b',fontWeight:600,
+          formatter:function(p){return p.value+(isPct?'%':(unit==='min'?'m':''));}
+        },
+        markLine: target ? {
+          silent:true,symbol:'none',
+          lineStyle:{color:'#ff4d4f',type:'dashed',width:1.5},
+          label:{formatter:'目标 '+target+'%',color:'#ff4d4f',fontSize:10,position:'insideEndTop'},
+          data:[{yAxis:target}]
+        } : undefined
+      }]
+    }, true);
+  }
+
+  var cBuild=mk('chartBuild'); charts.push(cBuild);
+  var cProcess=mk('chartProcess'); charts.push(cProcess);
+  var cRisk=mk('chartRisk'); charts.push(cRisk);
+  function renderBuild(k){renderBar(cBuild,BUILD[k],{accent:'#1677ff',unit:'%',max:(k==='ratio'?20:null),target:(k==='cover'?95:null)});}
+  function renderProcess(k){renderBar(cProcess,PROCESS[k],{accent:'#2f54eb',unit:'%'});}
+  function renderRisk(k){var isT=(k==='recover');renderBar(cRisk,RISK[k],{accent:'#13c2c2',unit:(isT?'min':'%')});}
+  renderBuild('ratio'); renderProcess('rule'); renderRisk('close');
+
+  // ===== 施工单位综合评分（权重 + 折算方案）=====
+  var SCORE_MODEL={
+    dims:[
+      {id:'build',name:'建设与应用覆盖',weight:0.30,color:'#fa8c16',metrics:[
+        {key:'ratio',weight:0.20,dir:'up',pass:3.0,full:8.0},
+        {key:'cover',weight:0.40,dir:'up',pass:60,full:100},
+        {key:'highrisk',weight:0.40,dir:'up',pass:80,full:100}
+      ]},
+      {id:'process',name:'过程执行与合规',weight:0.35,color:'#ff4d4f',metrics:[
+        {key:'rule',weight:0.50,dir:'up',pass:60,full:100},
+        {key:'equip',weight:0.50,dir:'up',pass:50,full:100}
+      ]},
+      {id:'risk',name:'风险管控效能',weight:0.35,color:'#52c41a',metrics:[
+        {key:'close',weight:0.60,dir:'up',pass:80,full:100},
+        {key:'recover',weight:0.40,dir:'down',pass:1.5,full:0.5,worst:5.0}
+      ]}
+    ]
+  };
+  // 单指标折算为 0–100：达标线=60分，满分线=100分，线性插值
+  function scoreMetric(m,v){
+    if(m.dir==='up'){
+      if(v>=m.full) return 100;
+      if(v>=m.pass) return 60+40*(v-m.pass)/(m.full-m.pass);
+      return Math.max(0,60*v/m.pass);
+    } else { // 逆向指标（数值越低越好，如恢复时间）
+      if(v<=m.full) return 100;
+      if(v<=m.pass) return 60+40*(m.pass-v)/(m.pass-m.full);
+      return Math.max(0,60*(m.worst-v)/(m.worst-m.pass));
+    }
+  }
+  // 综合评分 = Σ(维度权重 × 指标权重 × 指标折算分)
+  function unitScore(i){
+    var t=0;
+    SCORE_MODEL.dims.forEach(function(d){ d.metrics.forEach(function(m){
+      t += d.weight*m.weight*scoreMetric(m,SRC[m.key][i]);
+    });});
+    return t;
+  }
+  function gradeOf(s){ return s>=85?'exc':s>=75?'good':s>=65?'pass':'warn'; }
+  var GRADE_TXT={exc:'优秀',good:'良好',pass:'合格',warn:'待改进'};
+  var GRADE_COL={exc:'#52c41a',good:'#1677ff',pass:'#fa8c16',warn:'#ff4d4f'};
+  // 维度得分（0–100）：维度内按指标权重加权
+  var DIM_COL={build:'#fa8c16',process:'#ff4d4f',risk:'#52c41a'};
+  function dimScore(dIdx,i){
+    var d=SCORE_MODEL.dims[dIdx]; var t=0;
+    d.metrics.forEach(function(m){ t += m.weight*scoreMetric(m,SRC[m.key][i]); });
+    return t;
+  }
+  var scoreData=UNITS.map(function(u,i){
+    var ds=[dimScore(0,i),dimScore(1,i),dimScore(2,i)];
+    var ov=ds[0]*0.30+ds[1]*0.35+ds[2]*0.35; // = unitScore(i)
+    return {u:u,ds:ds,ov:ov,g:gradeOf(ov)};
+  });
+  scoreData.sort(function(a,b){return b.ov-a.ov;});
+  // 图例
+  document.getElementById('scoreLegend').innerHTML=SCORE_MODEL.dims.map(function(d){
+    return '<span class="lg"><i style="background:'+DIM_COL[d.id]+'"></i>'+d.name+'</span>';
+  }).join('');
+  // 堆积图（仅等级，不展示分值）
+  document.getElementById('scoreList').innerHTML=scoreData.map(function(d,idx){
+    var col=GRADE_COL[d.g];
+    var segs=d.ds.map(function(v,k){
+      var id=SCORE_MODEL.dims[k].id, nm=SCORE_MODEL.dims[k].name;
+      return '<i class="sb-seg" style="width:'+(v/3).toFixed(2)+'%;background:'+DIM_COL[id]+'" title="'+nm+'：'+v.toFixed(1)+'"></i>';
+    }).join('');
+    return '<div class="score-row">'+
+      '<span class="score-rank'+(idx<3?' top':'')+'">'+(idx+1)+'</span>'+
+      '<span class="score-name">'+d.u+'</span>'+
+      '<span class="score-stack">'+segs+'</span>'+
+      '<span class="grade-tag" style="background:'+col+'1a;color:'+col+';border-color:'+col+'55">'+GRADE_TXT[d.g]+'</span>'+
+    '</div>';
+  }).join('');
+
+  document.getElementById('mgmtBody').innerHTML=MGMT.map(function(m){
+    var rc=m.r>=90?'g':m.r>=60?'o':m.r>0?'r':'z';
+    return '<tr><td>'+m.n+'</td><td class="rnum">'+m.c+'</td>'+
+      '<td><div style="display:flex;align-items:center;gap:8px"><div class="pbar-cell">'+
+      '<div class="pbar-track"><div class="pbar-fill '+(m.r>=90?'':(m.r>=60?'':'danger'))+'" style="width:'+Math.min(m.r,100)+'%"></div></div></div>'+
+      '<span class="rpct '+rc+'">'+m.r.toFixed(2)+'%</span></div></td></tr>';
+  }).join('');
+
+  function bind(id,fn){
+    var el=document.getElementById(id);
+    el.addEventListener('click',function(e){
+      var b=e.target.closest('.tab'); if(!b)return;
+      [].forEach.call(el.children,function(x){x.classList.remove('active');});
+      b.classList.add('active'); fn(b.dataset.t);
+    });
+  }
+  bind('buildTabs',renderBuild);
+  bind('processTabs',renderProcess);
+  bind('riskTabs',renderRisk);
+
+  // ===== 下钻明细（独立页面：图表 + 各指标完整字段明细表）=====
+  // 每个维度：charts=指标对比（tab 仅切换图表），table=各指标计算涉及的完整字段（固定不变）
+  var DETAIL={
+    build:{
+      title:'建设与应用覆盖 · 数据明细', color:'#1677ff', x:UNITS,
+      charts:[
+        {key:'ratio',label:'有限空间作业占比',data:BUILD.ratio,unit:'%',max:20},
+        {key:'cover',label:'装置应用覆盖率',data:BUILD.cover,unit:'%',max:100,target:95},
+        {key:'highrisk',label:'高风险作业装置应用覆盖率',data:BUILD.highrisk,unit:'%',max:100}
+      ],
+      table:{cols:['施工单位','作业日志总数','有限空间作业日志数','有限空间作业占比','接通风测毒设备有限空间作业日志数','装置应用覆盖率','高风险有限空间作业日志数','接通风测毒设备高风险作业日志数','高风险作业装置应用覆盖率'],
+        rows:[
+          ['市南集团',1400,67,'4.78%',67,'80.24%',25,25,'100%'],
+          ['久隆集团',121,7,'5.78%',7,'78.55%',3,3,'100%'],
+          ['上电实业',1600,82,'5.13%',82,'76.67%',35,35,'100%'],
+          ['上送',3918,156,'3.98%',156,'70.58%',60,60,'100%'],
+          ['华送',3780,124,'3.28%',124,'65.78%',48,48,'100%'],
+          ['新泰',647,18,'2.78%',18,'66.67%',8,8,'100%'],
+          ['电力电缆',2285,63,'2.32%',63,'66.67%',22,22,'100%'],
+          ['创卓',9707,195,'2.01%',195,'65.78%',75,75,'100%'],
+          ['沪总',1900,34,'1.79%',34,'65.13%',14,14,'100%'],
+          ['华瑞',3049,43,'1.41%',43,'63.98%',16,16,'100%'],
+          ['东捷',2787,34,'1.22%',34,'53.28%',14,14,'100%'],
+          ['明昕',12609,111,'0.88%',111,'51.41%',45,45,'100%']
+        ]}
+    },
+    process:{
+      title:'过程执行与合规 · 数据明细', color:'#2f54eb', x:UNITS,
+      charts:[
+        {key:'rule',label:'安全规程刚性执行率',data:PROCESS.rule,unit:'%',max:100},
+        {key:'equip',label:'施工过程装备应用覆盖率',data:PROCESS.equip,unit:'%',max:100}
+      ],
+      table:{cols:['施工单位','安全规程检查次数','符合规程次数','安全规程刚性执行率','违规次数','主要违规类型','应配备装备次数','实际使用装备次数','施工过程装备应用覆盖率','未使用次数','主要缺失装备'],
+        rows:[
+          ['市南集团',420,326,'77.78%',77,'未佩戴防护装备',380,260,'68.42%',120,'气体检测仪'],
+          ['久隆集团',380,285,'75.00%',95,'未按流程操作',340,222,'65.29%',118,'通风设备'],
+          ['上电实业',350,258,'73.71%',92,'未佩戴防护装备',300,187,'62.23%',113,'气体检测仪'],
+          ['上送',520,350,'67.31%',170,'未按流程操作',480,282,'58.74%',198,'通风设备'],
+          ['华送',480,315,'65.63%',165,'未佩戴防护装备',440,243,'55.23%',197,'防护用品'],
+          ['新泰',290,189,'65.17%',101,'未按流程操作',270,141,'52.08%',129,'气体检测仪'],
+          ['电力电缆',310,196,'63.23%',114,'未佩戴防护装备',290,144,'49.62%',146,'通风设备'],
+          ['创卓',850,453,'53.29%',397,'未按流程操作',790,349,'44.17%',441,'气体检测仪'],
+          ['沪总',620,320,'51.61%',300,'未佩戴防护装备',560,234,'41.83%',326,'防护用品'],
+          ['华瑞',540,294,'54.44%',246,'未按流程操作',490,203,'41.38%',287,'通风设备'],
+          ['东捷',450,228,'50.66%',222,'未佩戴防护装备',410,144,'35.12%',266,'气体检测仪'],
+          ['明昕',920,446,'48.48%',474,'未按流程操作',830,261,'31.47%',569,'防护用品']
+        ]}
+    },
+    risk:{
+      title:'风险管控效能 · 数据明细', color:'#13c2c2', x:UNITS,
+      kpis:[{label:'异常告警总量',val:1089,color:'#ff4d4f'},{label:'快速闭环处置量',val:71432,color:'#1677ff'}],
+      charts:[
+        {key:'close',label:'告警闭环处置率',data:RISK.close,unit:'%',max:100},
+        {key:'recover',label:'预警平均恢复时间',data:RISK.recover,unit:'min',max:null}
+      ],
+      table:{cols:['施工单位','异常告警总量','快速闭环处置量','告警闭环处置率','累计异常总时长','闭环处置次数','预警平均恢复时间'],
+        rows:[
+          ['市南集团',120,112,'93.28%','168min',110,'1.41min'],
+          ['久隆集团',60,56,'92.65%','84min',55,'1.23min'],
+          ['上电实业',150,137,'91.59%','205min',135,'1.34min'],
+          ['上送',280,251,'89.64%','420min',248,'1.65min'],
+          ['华送',200,176,'88.23%','290min',174,'1.24min'],
+          ['新泰',90,79,'87.44%','145min',77,'1.78min'],
+          ['电力电缆',130,108,'83.23%','210min',106,'1.72min'],
+          ['创卓',240,195,'81.23%','360min',192,'1.68min'],
+          ['沪总',170,135,'79.45%','260min',133,'1.67min'],
+          ['华瑞',110,86,'78.32%','145min',84,'1.51min'],
+          ['东捷',160,117,'73.23%','230min',115,'1.43min'],
+          ['明昕',250,174,'69.45%','290min',171,'1.28min']
+        ]}
+    },
+    mgmt:{
+      title:'建管单位应用情况 · 数据明细', color:'#1677ff',
+      x:MGMT.map(function(m){return m.n;}),
+      charts:[
+        {key:'rate',label:'设备挂接率',data:MGMT.map(function(m){return m.r;}),unit:'%',max:100}
+      ],
+      table:{cols:['建管单位','作业日志总数','有限空间作业日志数','有限空间作业占比','接通风测毒设备有限空间作业日志数','设备挂接率'],
+        rows:[
+          ['奉贤供电',223,56,'25.11%',48,'85.71%'],
+          ['市南供电',952,82,'8.61%',56,'68.29%'],
+          ['市区供电',919,84,'9.14%',73,'86.90%'],
+          ['市北供电',1141,22,'1.93%',20,'90.91%'],
+          ['浦东供电',88,9,'10.47%',9,'100.00%'],
+          ['松江供电',1301,88,'6.76%',62,'70.45%'],
+          ['青浦供电',896,63,'7.03%',26,'41.27%'],
+          ['嘉定供电',1088,25,'2.30%',17,'68.00%'],
+          ['金山供电',850,34,'4.00%',21,'61.76%'],
+          ['新明供电',0,9,'0.00%',0,'0.00%'],
+          ['长兴供电',1,0,'0.00%',0,'0.00%'],
+          ['超高压',0,0,'0.00%',0,'0.00%'],
+          ['建设咨询',115,1,'0.87%',0,'0.00%'],
+          ['电缆',100,23,'23.00%',18,'78.26%'],
+          ['其他',613,10,'1.63%',1,'10.00%']
+        ]}
+    }
+  };
+
+  var currentKey=null, dvChart=null;
+
+  function showDetail(key){
+    currentKey=key;
+    var cfg=DETAIL[key];
+    document.getElementById('dvTitleText').textContent=cfg.title;
+    document.querySelector('#dvTitle .bar').style.background=cfg.color;
+    // KPI 行（仅 risk 有）
+    var kpiRow=document.getElementById('dvKpiRow');
+    kpiRow.innerHTML = cfg.kpis ? cfg.kpis.map(function(k){
+      return '<div class="dv-kpi"><span class="mk">'+k.label+'</span><span class="mv" style="color:'+k.color+'">'+k.val.toLocaleString()+'</span></div>';
+    }).join('') : '';
+    // tab（指标切换仅作用于图表）
+    var tabsEl=document.getElementById('dvTabs');
+    tabsEl.style.display = cfg.charts.length>1 ? 'flex':'none';
+    tabsEl.innerHTML = cfg.charts.map(function(c,idx){
+      return '<button class="tab'+(idx===0?' active':'')+'" data-t="'+c.key+'">'+c.label+'</button>';
+    }).join('');
+    // 切换到独立页面
+    document.querySelector('.screen').style.display='none';
+    document.getElementById('detailView').classList.add('open');
+    // 初始化 / resize 图表（需元素可见后）
+    if(!dvChart) dvChart=mk('dvChart');
+    dvChart.resize();
+    // 明细表：完整字段，固定渲染一次
+    renderDetailTable(cfg.table);
+    // 图表：默认第一项
+    renderDvChart(cfg, cfg.charts[0]);
+    // tab 仅切换图表
+    tabsEl.onclick=function(e){
+      var b=e.target.closest('.tab'); if(!b) return;
+      [].forEach.call(tabsEl.children, function(x){x.classList.remove('active');});
+      b.classList.add('active');
+      var c=cfg.charts.filter(function(x){return x.key===b.dataset.t;})[0];
+      renderDvChart(cfg, c);
+    };
+  }
+
+  function hideDetail(){
+    document.getElementById('detailView').classList.remove('open');
+    document.querySelector('.screen').style.display='';
+    // 主看板图表恢复尺寸
+    [cBuild,cProcess,cRisk].forEach(function(c){try{c.resize();}catch(e){}});
+  }
+
+  function renderDvChart(cfg, c){
+    renderBar(dvChart, c.data, {accent:cfg.color, unit:c.unit, max:c.max, target:c.target, x:cfg.x});
+  }
+
+  function renderDetailTable(t){
+    var thead=document.querySelector('#detailTable thead');
+    var tbody=document.querySelector('#detailTable tbody');
+    thead.innerHTML='<tr>'+t.cols.map(function(c){return '<th>'+c+'</th>';}).join('')+'</tr>';
+    var numIdx={};
+    t.cols.forEach(function(c,idx){ if(/率|占比|数量|次数|时长|日志|覆盖/.test(c)) numIdx[idx]=true; });
+    tbody.innerHTML=t.rows.map(function(row){
+      return '<tr>'+row.map(function(v,idx){
+        var cls='';
+        if(numIdx[idx]){
+          if(typeof v==='string' && v.charAt(v.length-1)==='%'){
+            var fv=parseFloat(v);
+            cls=' dt-pct'+(fv>=90?' g':fv>=60?' o':fv>0?' r':' z');
+          } else { cls=' dt-num'; }
+        }
+        return '<td'+(cls?' class="'+cls.trim()+'"':'')+'>'+v+'</td>';
+      }).join('')+'</tr>';
+    }).join('');
+  }
+
+  function exportDetail(){
+    if(!currentKey) return;
+    var cfg=DETAIL[currentKey], t=cfg.table;
+    var csv='\uFEFF'+t.cols.join(',')+'\n';
+    t.rows.forEach(function(r){ csv+=r.join(',')+'\n'; });
+    var blob=new Blob([csv],{type:'text/csv;charset=utf-8'});
+    var a=document.createElement('a'); a.href=URL.createObjectURL(blob);
+    a.download=cfg.title.replace(/ · /g,'_')+'.csv';
+    a.click(); URL.revokeObjectURL(a.href);
+  }
+
+  document.getElementById('dvBack').addEventListener('click', hideDetail);
+  document.getElementById('btnExport').addEventListener('click', exportDetail);
+  [].forEach.call(document.querySelectorAll('[data-drill]'), function(btn){
+    btn.addEventListener('click', function(){ showDetail(this.dataset.drill); });
+  });
+
+  // ===== KPI 指标说明(ⓘ)弹窗 =====
+  var activeInfoPop = null;
+  var activeKpi = null;
+  function closeInfoPop(){
+    if(activeInfoPop){
+      activeInfoPop.classList.remove('open');
+      if(activeKpi) activeKpi.classList.remove('info-open');
+      activeInfoPop = null;
+      activeKpi = null;
+    }
+  }
+  document.addEventListener('click', function(e){
+    // 点击 ⓘ 按钮
+    var btn = e.target.closest('.k-info-btn');
+    if (btn) {
+      e.stopPropagation();
+      var kpi = btn.closest('.kpi');
+      var pop = kpi.querySelector('.k-info-pop');
+      var title = btn.getAttribute('data-info-title') || '';
+      var body = btn.getAttribute('data-info-body') || '';
+      // 再次点击同一个：关闭
+      if (pop.classList.contains('open')) {
+        closeInfoPop();
+        return;
+      }
+      // 关闭其他已打开的弹窗
+      closeInfoPop();
+      // 填充内容并打开
+      pop.innerHTML = '<div class="k-ip-title"><span style="color:var(--primary)">ⓘ</span> ' + title + '</div><div class="k-ip-body">' + body + '</div>';
+      pop.classList.add('open');
+      kpi.classList.add('info-open');
+      activeInfoPop = pop;
+      activeKpi = kpi;
+      return;
+    }
+    // 点击外部（弹窗之外任意位置）关闭
+    if (activeInfoPop && !e.target.closest('.k-info-pop')) {
+      closeInfoPop();
+    }
+  });
+
+  window.addEventListener('resize', function(){
+    charts.forEach(function(c){try{c.resize();}catch(e){}});
+    if(dvChart) dvChart.resize();
+  });
+
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+{"kind":"deck","id":"pr/bl149i","name":"Deck"}
+{"kind":"layout","id":"ly/cb6xkbed","editable":false,"name":"Master","type":"master"}
+{"kind":"layout","id":"ly/8r61of6p","editable":false,"name":"Title Slide","type":"title","placeholders":[{"name":"title","type":"title"},{"name":"subtitle","type":"subtitle"}]}
+{"kind":"layout","id":"ly/tczyd4ra","editable":false,"name":"Section Header","type":"sectionHeader","placeholders":[{"name":"title","type":"title"}]}
+{"kind":"layout","id":"ly/e5svmxsr","editable":false,"name":"Title and Body","type":"tx","placeholders":[{"name":"title","type":"title"},{"name":"body","type":"body"}]}
+{"kind":"layout","id":"ly/lc321sna","editable":false,"name":"Title and Two Column","type":"twoColTx","placeholders":[{"name":"title","type":"title"},{"name":"Left column","type":"body"},{"name":"Right column","type":"body"}]}
+{"kind":"layout","id":"ly/hgz6lsbm","editable":false,"name":"Title and One Column","type":"tx","placeholders":[{"name":"title","type":"title"},{"name":"body","type":"body"}]}
+{"kind":"layout","id":"ly/ls7yd872","editable":false,"name":"Blank","type":"blank"}
+{"kind":"slide","id":"sl/sxxmmk","slideIndex":0,"layout":{"id":"ly/ls7yd872","name":"Blank"},"title":"01 ／ 19","textShapes":1,"backgroundColor":"rgba(255,255,255,1)"}
+{"kind":"textbox","id":"sh/9wjaxwbi","slideIndex":0,"position":{"left":1138,"top":675,"width":82,"height":22},"name":"统一页码","text":"01 ／ 19","geometry":"rect","lineWidth":0,"style":{"fontSize":14,"typeface":"微软雅黑","color":"#CBD5E1","alignment":"right"}}
+{"kind":"image","id":"im/ju1cnq98","slideIndex":0,"position":{"left":60,"top":666,"width":148,"height":37.28},"fit":"contain","name":"","alt":"EROWSOFT 逸舟信息科技公司Logo"}
+{"kind":"notes","id":"nt/sxxmmk","slideIndex":0,"text":""}
+{"kind":"slide","id":"sl/2vw09g","slideIndex":1,"layout":{"id":"ly/ls7yd872","name":"Blank"},"title":"01 ／ 公司介绍","textShapes":2,"backgroundColor":"rgba(255,255,255,1)"}
+{"kind":"textbox","id":"sh/nipc72dc","slideIndex":1,"position":{"left":60,"top":58,"width":1160,"height":24},"name":"统一页眉","text":"01 ／ 公司介绍","geometry":"rect","lineWidth":0,"style":{"fontSize":14,"typeface":"微软雅黑","color":"#64748B","alignment":"left"}}
+{"kind":"shape","id":"sh/ojyd07ex","slideIndex":1,"position":{"left":60,"top":88,"width":1160,"height":0},"name":"统一页眉分隔线","geometry":"line","lineColor":"#D8E0EA","lineWidth":0.8}
+{"kind":"textbox","id":"sh/algv2xwn","slideIndex":1,"position":{"left":1138,"top":675,"width":82,"height":22},"name":"统一页码","text":"02 ／ 19","geometry":"rect","lineWidth":0,"style":{"fontSize":14,"typeface":"微软雅黑","color":"#94A3B8","alignment":"right"}}
+{"kind":"image","id":"im/4ryxkfux","slideIndex":1,"position":{"left":60,"top":666,"width":148,"height":37.28},"fit":"contain","name":"","alt":"EROWSOFT 逸舟信息科技公司Logo"}
+{"kind":"notes","id":"nt/2vw09g","slideIndex":1,"text":""}
+{"kind":"slide","id":"sl/ylxsri","slideIndex":2,"layout":{"id":"ly/ls7yd872","name":"Blank"},"title":"01 ／ 公司介绍","textShapes":2,"backgroundColor":"rgba(255,255,255,1)"}
+{"kind":"textbox","id":"sh/xkjel4jq","slideIndex":2,"position":{"left":60,"top":58,"width":1160,"height":24},"name":"统一页眉","text":"01 ／ 公司介绍","geometry":"rect","lineWidth":0,"style":{"fontSize":14,"typeface":"微软雅黑","color":"#64748B","alignment":"left"}}
+{"kind":"shape","id":"sh/axsfq9kf","slideIndex":2,"position":{"left":60,"top":88,"width":1160,"height":0},"name":"统一页眉分隔线","geometry":"line","lineColor":"#D8E0EA","lineWidth":0.8}
+{"kind":"textbox","id":"sh/ovaxoz29","slideIndex":2,"position":{"left":1138,"top":675,"width":82,"height":22},"name":"统一页码","text":"03 ／ 19","geometry":"rect","lineWidth":0,"style":{"fontSize":14,"typeface":"微软雅黑","color":"#94A3B8","alignment":"right"}}
+{"kind":"image","id":"im/2psri1cf","slideIndex":2,"position":{"left":60,"top":666,"width":148,"height":37.28},"fit":"contain","name":"","alt":"EROWSOFT 逸舟信息科技公司Logo"}
+{"kind":"notes","id":"nt/ylxsri","slideIndex":2,"text":""}
+{"kind":"slide","id":"sl/e4mpc7","slideIndex":3,"layout":{"id":"ly/ls7yd872","name":"Blank"},"title":"02 ／ 新能源项目管理业务场景","textShapes":2,"backgroundColor":"rgba(255,255,255,1)"}
+{"kind":"textbox","id":"sh/orah0nux","slideIndex":3,"position":{"left":60,"top":58,"width":1160,"height":24},"name":"统一页眉","text":"02 ／ 新能源项目管理业务场景","geometry":"rect","lineWidth":0,"style":{"fontSize":14,"typeface":"微软雅黑","color":"#64748B","alignment":"left"}}
+{"kind":"shape","id":"sh/nq107idc","slideIndex":3,"position":{"left":60,"top":88,"width":1160,"height":0},"name":"统一页眉分隔线","geometry":"line","lineColor":"#D8E0EA","lineWidth":0.8}
+{"kind":"textbox","id":"sh/xwjidsve","slideIndex":3,"position":{"left":1138,"top":675,"width":82,"height":22},"name":"统一页码","text":"04 ／ 19","geometry":"rect","lineWidth":0,"style":{"fontSize":14,"typeface":"微软雅黑","color":"#94A3B8","alignment":"right"}}
+{"kind":"image","id":"im/7axorypg","slideIndex":3,"position":{"left":60,"top":666,"width":148,"height":37.28},"fit":"contain","name":"","alt":"EROWSOFT 逸舟信息科技公司Logo"}
+{"kind":"notes","id":"nt/e4mpc7","slideIndex":3,"text":""}
+{"kind":"slide","id":"sl/jj0wu5","slideIndex":4,"layout":{"id":"ly/ls7yd872","name":"Blank"},"title":"02 ／ 新能源项目管理业务场景","textShapes":2,"backgroundColor":"rgba(255,255,255,1)"}
+{"kind":"textbox","id":"sh/ja1c3yl8","slideIndex":4,"position":{"left":60,"top":58,"width":1160,"height":24},"name":"统一页眉","text":"02 ／ 新能源项目管理业务场景","geometry":"rect","lineWidth":0,"style":{"fontSize":14,"typeface":"微软雅黑","color":"#64748B","alignment":"left"}}
+{"kind":"shape","id":"sh/4batwjmt","slideIndex":4,"position":{"left":60,"top":88,"width":1160,"height":0},"name":"统一页眉分隔线","geometry":"line","lineColor":"#D8E0EA","lineWidth":0.8}
+{"kind":"textbox","id":"sh/u58bq94r","slideIndex":4,"position":{"left":1138,"top":675,"width":82,"height":22},"name":"统一页码","text":"05 ／ 19","geometry":"rect","lineWidth":0,"style":{"fontSize":14,"typeface":"微软雅黑","color":"#94A3B8","alignment":"right"}}
+{"kind":"image","id":"im/4zyxgva9","slideIndex":4,"position":{"left":60,"top":666,"width":148,"height":37.28},"fit":"contain","name":"","alt":"EROWSOFT 逸舟信息科技公司Logo"}
+{"kind":"notes","id":"nt/jj0wu5","slideIndex":4,"text":""}
+{"kind":"slide","id":"sl/6xulhp","slideIndex":5,"layout":{"id":"ly/ls7yd872","name":"Blank"},"title":"03 ／ 场景智能体 · 01 标准分部分项 · 能力介绍","textShapes":2,"backgroundColor":"rgba(255,255,255,1)"}
+{"kind":"textbox","id":"sh/zidcnatk","slideIndex":5,"position":{"left":60,"top":58,"width":1160,"height":24},"name":"统一页眉","text":"03 ／ 场景智能体 · 01 标准分部分项 · 能力介绍","geometry":"rect","lineWidth":0,"style":{"fontSize":14,"typeface":"微软雅黑","color":"#64748B","alignment":"left"}}
+{"kind":"shape","id":"sh/k3mdgfa5","slideIndex":5,"position":{"left":60,"top":88,"width":1160,"height":0},"name":"统一页眉分隔线","geometry":"line","lineColor":"#D8E0EA","lineWidth":0.8}
+{"kind":"textbox","id":"sh/m54vipsb","slideIndex":5,"position":{"left":1138,"top":675,"width":82,"height":22},"name":"统一页码","text":"06 ／ 19","geometry":"rect","lineWidth":0,"style":{"fontSize":14,"typeface":"微软雅黑","color":"#94A3B8","alignment":"right"}}
+{"kind":"image","id":"im/k729sfel","slideIndex":5,"position":{"left":60,"top":666,"width":148,"height":37.28},"fit":"contain","name":"","alt":"EROWSOFT 逸舟信息科技公司Logo"}
+{"kind":"notes","id":"nt/6xulhp","slideIndex":5,"text":""}
+{"kind":"slide","id":"sl/iaxjib","slideIndex":6,"layout":{"id":"ly/ls7yd872","name":"Blank"},"title":"03 ／ 场景智能体 · 01 标准分部分项 · 应用界面","textShapes":2,"backgroundColor":"rgba(255,255,255,1)"}
+{"kind":"textbox","id":"sh/fuxc769s","slideIndex":6,"position":{"left":60,"top":58,"width":1160,"height":24},"name":"统一页眉","text":"03 ／ 场景智能体 · 01 标准分部分项 · 应用界面","geometry":"rect","lineWidth":0,"style":{"fontSize":14,"typeface":"微软雅黑","color":"#64748B","alignment":"left"}}
+{"kind":"shape","id":"sh/0v6dgbad","slideIndex":6,"position":{"left":60,"top":88,"width":1160,"height":0},"name":"统一页眉分隔线","geometry":"line","lineColor":"#D8E0EA","lineWidth":0.8}
+{"kind":"textbox","id":"sh/qpoba1sb","slideIndex":6,"position":{"left":1138,"top":675,"width":82,"height":22},"name":"统一页码","text":"07 ／ 19","geometry":"rect","lineWidth":0,"style":{"fontSize":14,"typeface":"微软雅黑","color":"#94A3B8","alignment":"right"}}
+{"kind":"image","id":"im/87u1wvyx","slideIndex":6,"position":{"left":60,"top":666,"width":148,"height":37.28},"fit":"contain","name":"","alt":"EROWSOFT 逸舟信息科技公司Logo"}
+{"kind":"notes","id":"nt/iaxjib","slideIndex":6,"text":""}
+{"kind":"slide","id":"sl/e50a33","slideIndex":7,"layout":{"id":"ly/ls7yd872","name":"Blank"},"title":"03 ／ 场景智能体 · 02 计划编排 · 能力介绍","textShapes":2,"backgroundColor":"rgba(255,255,255,1)"}
+{"kind":"textbox","id":"sh/ridczm9g","slideIndex":7,"position":{"left":60,"top":58,"width":1160,"height":24},"name":"统一页眉","text":"03 ／ 场景智能体 · 02 计划编排 · 能力介绍","geometry":"rect","lineWidth":0,"style":{"fontSize":14,"typeface":"微软雅黑","color":"#64748B","alignment":"left"}}
+{"kind":"shape","id":"sh/cjmtsrq1","slideIndex":7,"position":{"left":60,"top":88,"width":1160,"height":0},"name":"统一页眉分隔线","geometry":"line","lineColor":"#D8E0EA","lineWidth":0.8}
+{"kind":"textbox","id":"sh/el4bu187","slideIndex":7,"position":{"left":1138,"top":675,"width":82,"height":22},"name":"统一页码","text":"08 ／ 19","geometry":"rect","lineWidth":0,"style":{"fontSize":14,"typeface":"微软雅黑","color":"#94A3B8","alignment":"right"}}
+{"kind":"image","id":"im/8zup8rqd","slideIndex":7,"position":{"left":60,"top":666,"width":148,"height":37.28},"fit":"contain","name":"","alt":"EROWSOFT 逸舟信息科技公司Logo"}
+{"kind":"notes","id":"nt/e50a33","slideIndex":7,"text":""}
+{"kind":"slide","id":"sl/44vaw8","slideIndex":8,"layout":{"id":"ly/ls7yd872","name":"Blank"},"title":"03 ／ 场景智能体 · 02 计划编排 · 应用界面","textShapes":2,"backgroundColor":"rgba(255,255,255,1)"}
+{"kind":"textbox","id":"sh/wrehgf2d","slideIndex":8,"position":{"left":60,"top":58,"width":1160,"height":24},"name":"统一页眉","text":"03 ／ 场景智能体 · 02 计划编排 · 应用界面","geometry":"rect","lineWidth":0,"style":{"fontSize":14,"typeface":"微软雅黑","color":"#64748B","alignment":"left"}}
+{"kind":"shape","id":"sh/bq5gnul8","slideIndex":8,"position":{"left":60,"top":88,"width":1160,"height":0},"name":"统一页眉分隔线","geometry":"line","lineColor":"#D8E0EA","lineWidth":0.8}
+{"kind":"textbox","id":"sh/lw7yt43a","slideIndex":8,"position":{"left":1138,"top":675,"width":82,"height":22},"name":"统一页码","text":"09 ／ 19","geometry":"rect","lineWidth":0,"style":{"fontSize":14,"typeface":"微软雅黑","color":"#94A3B8","alignment":"right"}}
+{"kind":"image","id":"im/jytoj6x8","slideIndex":8,"position":{"left":60,"top":666,"width":148,"height":37.28},"fit":"contain","name":"","alt":"EROWSOFT 逸舟信息科技公司Logo"}
+{"kind":"notes","id":"nt/44vaw8","slideIndex":8,"text":""}
+{"kind":"slide","id":"sl/p1rmd1","slideIndex":9,"layout":{"id":"ly/ls7yd872","name":"Blank"},"title":"03 ／ 场景智能体 · 03 施工日志 · 能力介绍","textShapes":2,"backgroundColor":"rgba(255,255,255,1)"}
+{"kind":"textbox","id":"sh/dwjqd0ri","slideIndex":9,"position":{"left":60,"top":58,"width":1160,"height":24},"name":"统一页眉","text":"03 ／ 场景智能体 · 03 施工日志 · 能力介绍","geometry":"rect","lineWidth":0,"style":{"fontSize":14,"typeface":"微软雅黑","color":"#64748B","alignment":"left"}}
+{"kind":"shape","id":"sh/qts7ils7","slideIndex":9,"position":{"left":60,"top":88,"width":1160,"height":0},"name":"统一页眉分隔线","geometry":"line","lineColor":"#D8E0EA","lineWidth":0.8}
+{"kind":"textbox","id":"sh/orqpgba1","slideIndex":9,"position":{"left":1138,"top":675,"width":82,"height":22},"name":"统一页码","text":"10 ／ 19","geometry":"rect","lineWidth":0,"style":{"fontSize":14,"typeface":"微软雅黑","color":"#94A3B8","alignment":"right"}}
+{"kind":"image","id":"im/axsv6l03","slideIndex":9,"position":{"left":60,"top":666,"width":148,"height":37.28},"fit":"contain","name":"","alt":"EROWSOFT 逸舟信息科技公司Logo"}
+{"kind":"notes","id":"nt/p1rmd1","slideIndex":9,"text":""}
+{"kind":"slide","id":"sl/6bubds","slideIndex":10,"layout":{"id":"ly/ls7yd872","name":"Blank"},"title":"03 ／ 场景智能体 · 03 施工日志 · 应用界面","textShapes":2,"backgroundColor":"rgba(255,255,255,1)"}
+{"kind":"textbox","id":"sh/kj654r6p","slideIndex":10,"position":{"left":60,"top":58,"width":1160,"height":24},"name":"统一页眉","text":"03 ／ 场景智能体 · 03 施工日志 · 应用界面","geometry":"rect","lineWidth":0,"style":{"fontSize":14,"typeface":"微软雅黑","color":"#64748B","alignment":"left"}}
+{"kind":"shape","id":"sh/jix4bmp4","slideIndex":10,"position":{"left":60,"top":88,"width":1160,"height":0},"name":"统一页眉分隔线","geometry":"line","lineColor":"#D8E0EA","lineWidth":0.8}
+{"kind":"textbox","id":"sh/t8z6hgn6","slideIndex":10,"position":{"left":1138,"top":675,"width":82,"height":22},"name":"统一页码","text":"11 ／ 19","geometry":"rect","lineWidth":0,"style":{"fontSize":14,"typeface":"微软雅黑","color":"#94A3B8","alignment":"right"}}
+{"kind":"image","id":"im/7ap0z2xo","slideIndex":10,"position":{"left":60,"top":666,"width":148,"height":37.28},"fit":"contain","name":"","alt":"EROWSOFT 逸舟信息科技公司Logo"}
+{"kind":"notes","id":"nt/6bubds","slideIndex":10,"text":""}
+{"kind":"slide","id":"sl/m0kbte","slideIndex":11,"layout":{"id":"ly/ls7yd872","name":"Blank"},"title":"03 ／ 场景智能体 · 04 安全质量检查 · 能力介绍","textShapes":2,"backgroundColor":"rgba(255,255,255,1)"}
+{"kind":"textbox","id":"sh/3a5ovmxo","slideIndex":11,"position":{"left":60,"top":58,"width":1160,"height":24},"name":"统一页眉","text":"03 ／ 场景智能体 · 04 安全质量检查 · 能力介绍","geometry":"rect","lineWidth":0,"style":{"fontSize":14,"typeface":"微软雅黑","color":"#64748B","alignment":"left"}}
+{"kind":"shape","id":"sh/4vepory9","slideIndex":11,"position":{"left":60,"top":88,"width":1160,"height":0},"name":"统一页眉分隔线","geometry":"line","lineColor":"#D8E0EA","lineWidth":0.8}
+{"kind":"textbox","id":"sh/u5c7ihg7","slideIndex":11,"position":{"left":1138,"top":675,"width":82,"height":22},"name":"统一页码","text":"12 ／ 19","geometry":"rect","lineWidth":0,"style":{"fontSize":14,"typeface":"微软雅黑","color":"#94A3B8","alignment":"right"}}
+{"kind":"image","id":"im/cnixg7qx","slideIndex":11,"position":{"left":60,"top":666,"width":148,"height":37.28},"fit":"contain","name":"","alt":"EROWSOFT 逸舟信息科技公司Logo"}
+{"kind":"notes","id":"nt/m0kbte","slideIndex":11,"text":""}
+{"kind":"slide","id":"sl/efu8vq","slideIndex":12,"layout":{"id":"ly/ls7yd872","name":"Blank"},"title":"03 ／ 场景智能体 · 04 安全质量检查 · 应用界面","textShapes":2,"backgroundColor":"rgba(255,255,255,1)"}
+{"kind":"textbox","id":"sh/vm14z2ts","slideIndex":12,"position":{"left":60,"top":58,"width":1160,"height":24},"name":"统一页眉","text":"03 ／ 场景智能体 · 04 安全质量检查 · 应用界面","geometry":"rect","lineWidth":0,"style":{"fontSize":14,"typeface":"微软雅黑","color":"#64748B","alignment":"left"}}
+{"kind":"shape","id":"sh/w7als7ax","slideIndex":12,"position":{"left":60,"top":88,"width":1160,"height":0},"name":"统一页眉分隔线","geometry":"line","lineColor":"#D8E0EA","lineWidth":0.8}
+{"kind":"textbox","id":"sh/mhs3mxsv","slideIndex":12,"position":{"left":1138,"top":675,"width":82,"height":22},"name":"统一页码","text":"13 ／ 19","geometry":"rect","lineWidth":0,"style":{"fontSize":14,"typeface":"微软雅黑","color":"#94A3B8","alignment":"right"}}
+{"kind":"image","id":"im/o32t8v2d","slideIndex":12,"position":{"left":60,"top":666,"width":148,"height":37.28},"fit":"contain","name":"","alt":"EROWSOFT 逸舟信息科技公司Logo"}
+{"kind":"notes","id":"nt/efu8vq","slideIndex":12,"text":""}
+{"kind":"slide","id":"sl/uw4mdk","slideIndex":13,"layout":{"id":"ly/ls7yd872","name":"Blank"},"title":"03 ／ 场景智能体 · 05 分包队伍 · 能力介绍","textShapes":2,"backgroundColor":"rgba(255,255,255,1)"}
+{"kind":"textbox","id":"sh/4vyhgrmp","slideIndex":13,"position":{"left":60,"top":58,"width":1160,"height":24},"name":"统一页眉","text":"03 ／ 场景智能体 · 05 分包队伍 · 能力介绍","geometry":"rect","lineWidth":0,"style":{"fontSize":14,"typeface":"微软雅黑","color":"#64748B","alignment":"left"}}
+{"kind":"shape","id":"sh/jupg7ml4","slideIndex":13,"position":{"left":60,"top":88,"width":1160,"height":0},"name":"统一页眉分隔线","geometry":"line","lineColor":"#D8E0EA","lineWidth":0.8}
+{"kind":"textbox","id":"sh/hs7y5c3y","slideIndex":13,"position":{"left":1138,"top":675,"width":82,"height":22},"name":"统一页码","text":"14 ／ 19","geometry":"rect","lineWidth":0,"style":{"fontSize":14,"typeface":"微软雅黑","color":"#94A3B8","alignment":"right"}}
+{"kind":"image","id":"im/ve5gb69g","slideIndex":13,"position":{"left":60,"top":666,"width":148,"height":37.28},"fit":"contain","name":"","alt":"EROWSOFT 逸舟信息科技公司Logo"}
+{"kind":"notes","id":"nt/uw4mdk","slideIndex":13,"text":""}
+{"kind":"slide","id":"sl/nrhdjb","slideIndex":14,"layout":{"id":"ly/ls7yd872","name":"Blank"},"title":"03 ／ 场景智能体 · 05 分包队伍 · 应用界面","textShapes":2,"backgroundColor":"rgba(255,255,255,1)"}
+{"kind":"textbox","id":"sh/y5cjel8b","slideIndex":14,"position":{"left":60,"top":58,"width":1160,"height":24},"name":"统一页眉","text":"03 ／ 场景智能体 · 05 分包队伍 · 应用界面","geometry":"rect","lineWidth":0,"style":{"fontSize":14,"typeface":"微软雅黑","color":"#64748B","alignment":"left"}}
+{"kind":"shape","id":"sh/l832907m","slideIndex":14,"position":{"left":60,"top":88,"width":1160,"height":0},"name":"统一页眉分隔线","geometry":"line","lineColor":"#D8E0EA","lineWidth":0.8}
+{"kind":"textbox","id":"sh/7alkbqps","slideIndex":14,"position":{"left":1138,"top":675,"width":82,"height":22},"name":"统一页码","text":"15 ／ 19","geometry":"rect","lineWidth":0,"style":{"fontSize":14,"typeface":"微软雅黑","color":"#94A3B8","alignment":"right"}}
+{"kind":"image","id":"im/tcbqlgvm","slideIndex":14,"position":{"left":60,"top":666,"width":148,"height":37.28},"fit":"contain","name":"","alt":"EROWSOFT 逸舟信息科技公司Logo"}
+{"kind":"notes","id":"nt/nrhdjb","slideIndex":14,"text":""}
+{"kind":"slide","id":"sl/iy1bbf","slideIndex":15,"layout":{"id":"ly/ls7yd872","name":"Blank"},"title":"03 ／ 场景智能体 · 06 档案交付 · 能力介绍","textShapes":2,"backgroundColor":"rgba(255,255,255,1)"}
+{"kind":"textbox","id":"sh/9wzux4fm","slideIndex":15,"position":{"left":60,"top":58,"width":1160,"height":24},"name":"统一页眉","text":"03 ／ 场景智能体 · 06 档案交付 · 能力介绍","geometry":"rect","lineWidth":0,"style":{"fontSize":14,"typeface":"微软雅黑","color":"#64748B","alignment":"left"}}
+{"kind":"shape","id":"sh/mt8bmpwv","slideIndex":15,"position":{"left":60,"top":88,"width":1160,"height":0},"name":"统一页眉分隔线","geometry":"line","lineColor":"#D8E0EA","lineWidth":0.8}
+{"kind":"textbox","id":"sh/0r6tkzep","slideIndex":15,"position":{"left":1138,"top":675,"width":82,"height":22},"name":"统一页码","text":"16 ／ 19","geometry":"rect","lineWidth":0,"style":{"fontSize":14,"typeface":"微软雅黑","color":"#94A3B8","alignment":"right"}}
+{"kind":"image","id":"im/i5cbutgb","slideIndex":15,"position":{"left":60,"top":666,"width":148,"height":37.28},"fit":"contain","name":"","alt":"EROWSOFT 逸舟信息科技公司Logo"}
+{"kind":"notes","id":"nt/iy1bbf","slideIndex":15,"text":""}
+{"kind":"slide","id":"sl/ndyq4l","slideIndex":16,"layout":{"id":"ly/ls7yd872","name":"Blank"},"title":"03 ／ 场景智能体 · 06 档案交付 · 应用界面","textShapes":2,"backgroundColor":"rgba(255,255,255,1)"}
+{"kind":"textbox","id":"sh/al8ba1kb","slideIndex":16,"position":{"left":60,"top":58,"width":1160,"height":24},"name":"统一页眉","text":"03 ／ 场景智能体 · 06 档案交付 · 应用界面","geometry":"rect","lineWidth":0,"style":{"fontSize":14,"typeface":"微软雅黑","color":"#64748B","alignment":"left"}}
+{"kind":"shape","id":"sh/x8julgjm","slideIndex":16,"position":{"left":60,"top":88,"width":1160,"height":0},"name":"统一页眉分隔线","geometry":"line","lineColor":"#D8E0EA","lineWidth":0.8}
+{"kind":"textbox","id":"sh/ja1cn61s","slideIndex":16,"position":{"left":1138,"top":675,"width":82,"height":22},"name":"统一页码","text":"17 ／ 19","geometry":"rect","lineWidth":0,"style":{"fontSize":14,"typeface":"微软雅黑","color":"#94A3B8","alignment":"right"}}
+{"kind":"image","id":"im/d83a1sr2","slideIndex":16,"position":{"left":60,"top":666,"width":148,"height":37.28},"fit":"contain","name":"","alt":"EROWSOFT 逸舟信息科技公司Logo"}
+{"kind":"notes","id":"nt/ndyq4l","slideIndex":16,"text":""}
+{"kind":"slide","id":"sl/9cu00a","slideIndex":17,"layout":{"id":"ly/ls7yd872","name":"Blank"},"title":"04 ／ 实施路径","textShapes":2,"backgroundColor":"rgba(255,255,255,1)"}
+{"kind":"textbox","id":"sh/kjedob61","slideIndex":17,"position":{"left":60,"top":58,"width":1160,"height":24},"name":"统一页眉","text":"04 ／ 实施路径","geometry":"rect","lineWidth":0,"style":{"fontSize":14,"typeface":"微软雅黑","color":"#64748B","alignment":"left"}}
+{"kind":"shape","id":"sh/jy5wvqpg","slideIndex":17,"position":{"left":60,"top":88,"width":1160,"height":0},"name":"统一页眉分隔线","geometry":"line","lineColor":"#D8E0EA","lineWidth":0.8}
+{"kind":"textbox","id":"sh/xwnetg7q","slideIndex":17,"position":{"left":1138,"top":675,"width":82,"height":22},"name":"统一页码","text":"18 ／ 19","geometry":"rect","lineWidth":0,"style":{"fontSize":14,"typeface":"微软雅黑","color":"#94A3B8","alignment":"right"}}
+{"kind":"image","id":"im/7y58zu94","slideIndex":17,"position":{"left":60,"top":666,"width":148,"height":37.28},"fit":"contain","name":"","alt":"EROWSOFT 逸舟信息科技公司Logo"}
+{"kind":"notes","id":"nt/9cu00a","slideIndex":17,"text":""}
+{"kind":"slide","id":"sl/ylchfu","slideIndex":18,"layout":{"id":"ly/ls7yd872","name":"Blank"},"title":"19 ／ 19","textShapes":1,"backgroundColor":"rgba(255,255,255,1)"}
+{"kind":"textbox","id":"sh/k7m5sjmx","slideIndex":18,"position":{"left":1138,"top":675,"width":82,"height":22},"name":"统一页码","text":"19 ／ 19","geometry":"rect","lineWidth":0,"style":{"fontSize":14,"typeface":"微软雅黑","color":"#CBD5E1","alignment":"right"}}
+{"kind":"image","id":"im/a9gfqtwf","slideIndex":18,"position":{"left":60,"top":666,"width":148,"height":37.28},"fit":"contain","name":"","alt":"EROWSOFT 逸舟信息科技公司Logo"}
+{"kind":"notes","id":"nt/ylchfu","slideIndex":18,"text":""}

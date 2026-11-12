@@ -1,0 +1,23 @@
+{
+  "Effects": [
+    {
+      "Exit": 0,
+      "Duration": 0.6,
+      "Type": 10,
+      "Target": "看板展示标题",
+      "Trigger": 1,
+      "Index": 1
+    },
+    {
+      "Exit": 0,
+      "Duration": 0.6,
+      "Type": 10,
+      "Target": "Picture 47",
+      "Trigger": 2,
+      "Index": 2
+    }
+  ],
+  "SlideCount": 13,
+  "OpenedWithoutRepair": true,
+  "PowerPointVersion": "16.0"
+}

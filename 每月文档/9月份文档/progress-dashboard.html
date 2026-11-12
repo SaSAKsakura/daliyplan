@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>逸领域低代码平台 · 进度看板</title>
+<style>
+:root{
+  --bg:#f7f7f5; --card:#ffffff; --line:#e3e2dd; --line2:#d3d1c7;
+  --tx:#2c2c2a; --tx2:#5f5e5a; --tx3:#888780;
+  --gray:#f1efe8; --gray-t:#5f5e5a;
+  --amber:#faeeda; --amber-t:#854f0b;
+  --blue:#e6f1fb; --blue-t:#185fa5;
+  --green:#eaf3de; --green-t:#3b6d11;
+  --green2:#c0dd97; --green2-t:#27500a;
+  --red:#fcebeb; --red-t:#a32d2d;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);
+  font:14px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}
+.wrap{max-width:1180px;margin:0 auto;padding:24px 20px 60px}
+h1{font-size:19px;font-weight:600;margin:0 0 4px}
+.sub{color:var(--tx2);font-size:13px;margin-bottom:20px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin-bottom:16px}
+.stats{display:flex;gap:26px;flex-wrap:wrap;align-items:center}
+.stat{min-width:78px}
+.stat .n{font-size:24px;font-weight:600;line-height:1.2}
+.stat .l{font-size:12px;color:var(--tx2)}
+.bar{height:9px;background:var(--gray);border-radius:5px;overflow:hidden;margin:14px 0 6px;display:flex}
+.bar i{display:block;height:100%}
+.bar i.done{background:#639922}.bar i.doing{background:#ef9f27}
+.barlg{display:flex;gap:16px;font-size:12px;color:var(--tx2)}
+.barlg span::before{content:"";display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:5px;vertical-align:middle}
+.barlg .a::before{background:#639922}.barlg .b::before{background:#ef9f27}.barlg .c::before{background:var(--line2)}
+.tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:16px}
+button,select,input[type=text]{font:inherit;font-size:13px;padding:6px 11px;border:1px solid var(--line2);
+  background:var(--card);color:var(--tx);border-radius:7px;cursor:pointer}
+button:hover{background:var(--gray)}
+input[type=text]{cursor:text;min-width:170px}
+.phase{background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:14px;overflow:hidden}
+.ph{padding:13px 18px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px;flex-wrap:wrap;cursor:pointer;user-select:none}
+.ph:hover{background:#fafaf8}
+.ph .tag{font-size:12px;font-weight:600;padding:2px 9px;border-radius:5px;background:var(--gray);color:var(--tx2)}
+.ph .nm{font-weight:600;font-size:15px}
+.ph .meta{color:var(--tx2);font-size:12px}
+.ph .rt{margin-left:auto;display:flex;align-items:center;gap:10px;font-size:12px;color:var(--tx2)}
+.mini{width:88px;height:6px;background:var(--gray);border-radius:3px;overflow:hidden}
+.mini i{display:block;height:100%;background:#639922}
+.rows{width:100%;border-collapse:collapse}
+.rows th{font-size:12px;color:var(--tx2);font-weight:500;text-align:left;padding:8px 18px;background:#fafaf8;border-bottom:1px solid var(--line)}
+.rows td{padding:9px 18px;border-bottom:1px solid #f0efea;vertical-align:top;font-size:13px}
+.rows tr:last-child td{border-bottom:none}
+.rows tr:hover td{background:#fafaf8}
+.nm{font-weight:500}
+.desc{color:var(--tx2);font-size:12px;margin-top:2px}
+.risk{color:var(--red-t);background:var(--red);font-size:11px;padding:1px 6px;border-radius:4px;margin-left:6px;white-space:nowrap}
+.pri{font-size:11px;padding:1px 6px;border-radius:4px;background:var(--gray);color:var(--tx2)}
+.pri.p0{background:var(--red);color:var(--red-t)}
+.sel{font-size:12px;padding:3px 6px;border-radius:6px;border:1px solid var(--line2);background:var(--card);cursor:pointer;min-width:96px}
+.s-gray{background:var(--gray);color:var(--gray-t);border-color:var(--line2)}
+.s-amber{background:var(--amber);color:var(--amber-t);border-color:#ef9f27}
+.s-blue{background:var(--blue);color:var(--blue-t);border-color:#85b7eb}
+.s-green{background:var(--green);color:var(--green-t);border-color:#97c459}
+.s-green2{background:var(--green2);color:var(--green2-t);border-color:#639922}
+.doc{color:var(--tx3);font-size:12px}
+.collapsed .rows{display:none}
+.note{font-size:12px;color:var(--tx2);background:#fafaf8;border-left:3px solid var(--line2);padding:9px 12px;border-radius:0 6px 6px 0;margin-top:10px}
+.foot{color:var(--tx3);font-size:12px;margin-top:18px;text-align:center}
+@media(max-width:720px){.rows th:nth-child(4),.rows td:nth-child(4){display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>逸领域低代码平台 · 开发进度看板</h1>
+  <div class="sub" id="sub">数据来源：《项目开发工作计划》阶段清单 + 《文档-代码映射台账》实现状态 + 《核心类设计台账》设计覆盖度</div>
+
+  <div class="panel">
+    <div class="stats">
+      <div class="stat"><div class="n" id="s-total">0</div><div class="l">任务总数</div></div>
+      <div class="stat"><div class="n" id="s-done" style="color:#3b6d11">0</div><div class="l">已完成</div></div>
+      <div class="stat"><div class="n" id="s-doing" style="color:#854f0b">0</div><div class="l">进行中</div></div>
+      <div class="stat"><div class="n" id="s-todo" style="color:#888780">0</div><div class="l">未开始</div></div>
+      <div class="stat"><div class="n" id="s-risk" style="color:#a32d2d">0</div><div class="l">风险项</div></div>
+      <div class="stat"><div class="n" id="s-pct">0%</div><div class="l">整体完成率</div></div>
+    </div>
+    <div class="bar"><i class="done" id="b-done"></i><i class="doing" id="b-doing"></i></div>
+    <div class="barlg">
+      <span class="a">已完成（已实现自测 / 已验收）</span>
+      <span class="b">进行中（编码中）</span>
+      <span class="c">未开始</span>
+    </div>
+    <div class="note" id="syncinfo">尚未同步过进度</div>
+  </div>
+
+  <div class="tools">
+    <select id="f-phase"><option value="">全部阶段</option></select>
+    <select id="f-impl">
+      <option value="">全部实现状态</option>
+      <option>未开始</option><option>编码中</option><option>已实现自测</option><option>已验收</option>
+    </select>
+    <select id="f-design">
+      <option value="">全部设计状态</option>
+      <option>无设计</option><option>设计中</option><option>已定稿</option><option>不适用</option>
+    </select>
+    <input type="text" id="f-kw" placeholder="搜索任务 / 说明">
+    <button id="btn-risk">只看风险项</button>
+    <button id="btn-exp">导出 JSON</button>
+    <button id="btn-imp">导入 JSON</button>
+    <button id="btn-reset">重置为初始状态</button>
+    <input type="file" id="file" accept=".json" style="display:none">
+  </div>
+
+  <div id="phases"></div>
+
+  <div class="foot">状态改动自动保存在本机浏览器（localStorage）· 换设备或交接请用「导出 JSON / 导入 JSON」</div>
+</div>
+
+<script>
+var DESIGN=['无设计','设计中','已定稿','不适用'];
+var IMPL=['未开始','编码中','已实现自测','已验收'];
+var DCLS={'无设计':'s-gray','设计中':'s-amber','已定稿':'s-blue','不适用':'s-gray'};
+var ICLS={'未开始':'s-gray','编码中':'s-amber','已实现自测':'s-green','已验收':'s-green2'};
+
+// [阶段, 任务, 说明, 优先级, 周期, 设计状态, 实现状态, 权威文档, 风险]
+var DATA=[
+// ── P0-0 工程底座 (W1~W2, M0 09-11)
+['P0-0','仓库初始化','根 package.json（workspaces）+ pnpm-workspace.yaml + tsconfig.base.json','P0','W1','不适用','已验收','Monorepo架构说明',''],
+['P0-0','工程规范','eslint 9 flat config、prettier、editorconfig、vscode 推荐配置','P0','W1','不适用','已验收','Monorepo架构说明',''],
+['P0-0','提交守门','husky + lint-staged','P0','W1','不适用','已验收','Monorepo架构说明',''],
+['P0-0','packages 骨架','core/components/utils 三包，vue 走 peerDependencies','P0','W1','不适用','已验收','Monorepo架构说明',''],
+['P0-0','apps/yi-demo 骨架','vite base:./ + inlineDynamicImports、config.json、async bootstrap','P0','W1','不适用','已验收','Monorepo架构说明',''],
+['P0-0','运行时配置体系','core/src/config：types / loadConfig / defaults','P0','W2','已定稿','已验收','Monorepo架构说明+BRIEF',''],
+['P0-0','三层机制验证','workspace 注册表 / 符号链接同源 / 独立构建 tree-shaking','P0','W2','不适用','已验收','Monorepo架构说明',''],
+['P0-0','移动端产物验证','单 chunk + hash router 基础验证','P1','W2','已定稿','编码中','兼容移动端分析报告',''],
+['P0-0','AGENT.md / AGENTS.md','仓库结构、依赖规则、代码归属、协作规范','P1','W2','已定稿','已验收','AGENTS.md',''],
+['P0-0','ThemeManager','亮/暗/自动 + 持久化 + CSS 变量','P1','W2','设计中','已实现自测','AppShell §13','设计滞后于代码，仅 SHELL 一节'],
+['P0-0','createYiApp 启动编排','core/src/bootstrap.ts 通用启动器','P1','W2','无设计','已实现自测','Monorepo架构说明 §7.3','零设计，代码已实现（核心类 A4）'],
+
+// ── P0-1 核心运行时 (W3~W7, M1 10-16)
+['P0-1','YiEventBus','mitt 封装、命名空间、类型化事件契约、泄漏防护','P0','W3','已定稿','未开始','YiEventBus详细设计',''],
+['P0-1','YiComponentRegistry','type→Component 单 Map、三来源注册、白名单','P0','W3','已定稿','已实现自测','YiComponentRegistry详细设计',''],
+['P0-1','YiLayoutRegistry','布局模板注册、双轨解析、区域匹配、后端扩展','P0','W3','已定稿','已实现自测','YiLayoutRegistry详细设计',''],
+['P0-1','YiDataSource','双副本、脏跟踪、双作用域、SWR、persistMode、依赖链、list 模式','P0','W4','已定稿','编码中','数据源组件详细设计',''],
+['P0-1','useDataBindable','props/返回值/methods/生命周期/events 全规范 + 绑定注册注销','P0','W4','设计中','未开始','BRIEF §4 + 数据源详设 §11','集合型绑定契约缺失（一览表 L3）'],
+['P0-1','YiApiCaller','apiAction 路由表、去重、四策略缓存、取消、collectConfig、paramsFrom','P0','W5','已定稿','未开始','YiApiCaller-详细设计',''],
+['P0-1','YiDomainRegistry + YiDomainTemplate','字段→domain 映射、命名约定推导、系统字段隐藏、4 场景×3 模式三级合并','P0','W5','无设计','未开始','—（仅 BRIEF §6.1 两行）','零设计却是字段渲染地基，YiField 依赖它（核心类 A1）'],
+['P0-1','YiPageRegistry','PageMeta 预载、config 懒加载缓存、菜单/面包屑、configVersion','P0','W6','已定稿','已实现自测','YiPageRegistry详细设计',''],
+['P0-1','YiPage','四阶段生命周期、Loading/Error/Empty/Degraded、keep-alive、preload','P0','W6','已定稿','未开始','YiPage组件详细设计',''],
+['P0-1','YiDynamicRenderer','路由→PageConfig→组件树递归创建（visibleWhen/events 等）','P0','W6','已定稿','未开始','YiDynamicRenderer详细设计',''],
+['P0-1','YiField','datasourceId+field 声明、schema+模板自动推导、overrides','P0','W7','设计中','未开始','BRIEF §6.4','依赖 YiDomainRegistry，后者零设计'],
+['P0-1','配置迁移机制','schemaVersion + MigrationRegistry（基线 1，当前无迁移项）','P1','W7','已定稿','未开始','数据源详设 §20',''],
+['P0-1','表达式引擎基础版','$ds_xxx.field / $page.routeParams / $triggerValue 等','P1','W7','已定稿','未开始','YiExprEngine-详细设计',''],
+['P0-1','缓存与降级体系','内存 LRU + IndexedDB + localStorage 兜底、三级降级、离线降级条','P1','W7','已定稿','编码中','数据源详设 §7 + YiPage §6','上报通道未闭合（核心类 A3 / G6）'],
+
+// ── P1-2 基础组件库 (W7~W10, M2 11-06)
+['P1-2','薄包装基座','按模板接入 useDataBindable（v-model → setValue）','P0','W7','设计中','未开始','BRIEF §7.4',''],
+['P1-2','表单类组件','YiInput / YiSelector / YiPicker / YiUpload','P0','W8','无设计','未开始','BRIEF §6.9','4 类均无详设'],
+['P1-2','操作类组件','YiButton（8 动作 + confirm + refreshAfter）、YiLink','P0','W8','设计中','已实现自测','BRIEF §6.11 + JSON_Schema §4.4','代码已实现但无详设；动作模型三套并存'],
+['P1-2','容器类组件','YiGridContainer / YiFlexContainer / YiTabContainer / YiCard / YiCollapse / YiSection','P0','W9','无设计','未开始','BRIEF §6.12','6 类均无详设'],
+['P1-2','布局模板','YiLayout（list/detail/search）+ LayoutRegistry','P0','W10','已定稿','已实现自测','YiLayoutRegistry详细设计',''],
+['P1-2','三模式编辑','view/create/update 切换 + required/editableOn* 控制','P0','W10','设计中','未开始','JSON_Schema §5.3',''],
+['P1-2','展示类组件','YiLabel / YiImage / YiTag / YiBadge / YiStatistic / YiTimeline / YiTree / YiProgress / YiAlert / YiPagination','P1','W9','无设计','未开始','BRIEF §6.10','10 类均无详设，含一览表必需的 YiPagination'],
+['P1-2','必填标记规范','红点前缀 + 边框强调 + 提示 + 保存校验兜底','P1','W9','无设计','未开始','—',''],
+['P1-2','主题体系','CSS 变量覆盖 Element Plus、运行时切换','P1','W10','设计中','已实现自测','AppShell §13','代码已实现（core/src/theme）'],
+['P1-2','事件透传','薄包装 change/focus/blur/validate 事件规范对齐','P1','W10','无设计','未开始','BRIEF §4.5',''],
+
+// ── P1-3 增强组件与业务闭环 (W10~W13, M3 11-27)
+['P1-3','YiDataTable','列配置（columnDefs）、排序、多选/单选、分页联动、导出、数据源绑定','P0','W11','无设计','未开始','BRIEF §6.13（5 行）','一览表硬阻塞；列协议 columns/columnDefs 未裁决'],
+['P1-3','YiFilterPanel','条件渲染、条件→load 参数映射、查询/重置/折叠','P0','W12','无设计','未开始','BRIEF §6.1（自注详设待产出）','计划风险表第 7 项；查询条件存放位未定义（L2）'],
+['P1-3','组件间联动','linkages：trigger/action/expression/context/condition/debounce','P0','W11','已定稿','未开始','JSON_Schema §9 + EVBUS §4.3',''],
+['P1-3','后端接口联调','API 注册表 / 域注册表 / 布局注册表 / 页面配置 / 数据源接口族','P0','W12','无设计','未开始','contract/（仅 1 份契约）','契约缺失，联调无依据'],
+['P1-3','真实业务样例','订单列表→详情→编辑→保存→批量操作（双端复用）','P0','W13','设计中','未开始','一览表界面分析与场景设计',''],
+['P1-3','YiTableEditor','行内编辑、rowKey、maxRows','P1','W11','无设计','未开始','BRIEF §6.13',''],
+['P1-3','YiEditor','rich/code/json/sql/markdown + 偏好记忆','P1','W12','无设计','未开始','BRIEF §6.9',''],
+['P1-3','三路联动场景','同源跨字段、跨源级联、列表行内编辑联动','P1','W12','设计中','未开始','BRIEF §5.3',''],
+['P1-3','YiInspector','四 Tab 调试面板、devMode 触发','P1','W12','已定稿','未开始','YiInspector详细设计',''],
+['P1-3','YiValidationToast','校验错误汇总 + 定位跳转','P2','W13','无设计','未开始','BRIEF §6.13',''],
+['P1-3','扩展输入类','YiTransfer / YiTagInput / YiMention / YiIconPicker','P2','W13','无设计','未开始','BRIEF §6.9',''],
+
+// ── P1-4 双端 + 外壳 + 首项目 (W13~W15, M4 12-11)
+['P1-4','device 双端容器体系','device/list/：YiListTable + YiListCard + resolveListContainer','P0','W14','无设计','已实现自测','BRIEF 双端约定 + AGENTS §1.5','代码已实现无详设；form/detail 类型未建'],
+['P1-4','device 上下文注入','渲染器注入 device 上下文、config.device 生效链路','P0','W14','设计中','未开始','Monorepo架构说明 §6',''],
+['P1-4','首个业务项目','复制 yi-demo → apps/project-x，接入真实页面配置','P0','W15','不适用','未开始','项目开发工作计划',''],
+['P1-4','移动端完整验证','单 chunk、hash router、WebView 真机/模拟器验证','P0','W14','已定稿','未开始','兼容移动端分析报告',''],
+['P1-4','YiAppShell','菜单/面包屑/权限过滤、shellLayout 覆盖、iframe 集成','P1','W14','已定稿','已实现自测','YiAppShell平台外壳详细设计',''],
+['P1-4','发布流程','Web 静态服务器 + 移动端下发链路验证','P1','W15','无设计','未开始','—',''],
+['P1-4','YiBridge（移动端原生桥）','相机/定位/推送、返回键协调、WebView 路由','P2','W15','无设计','未开始','兼容移动端分析报告','报告标为需新增设计'],
+
+// ── P2-5 动态扩展与安全 (W15~W16, M5 12-18)
+['P2-5','YiScriptLoader','声明解析/版本/SRI+HMAC/依赖池/沙箱/注册热更/持久缓存 L1.5','P0','W16','已定稿','未开始','YiScriptLoader-详细设计',''],
+['P2-5','YiComponentLoader','远程组件编译隔离引擎、capabilities 门控、词法沙箱、scoped 样式','P0','W16','已定稿','未开始','YiComponentLoader-详细设计',''],
+['P2-5','扩展单元门面','manifest 解析、成员分发路由、能力白名单 Proxy','P0','W16','已定稿','未开始','扩展单元机制-详细设计',''],
+['P2-5','后端安全协同','AST 静态分析、草稿→审核→发布、签名校验、审计上报','P0','W16','无设计','未开始','contract/','依赖后端'],
+['P2-5','YiHTMLLoader','三种内容来源、HTML→VNode 编译、自定义标签解析','P1','W16','无设计','未开始','BRIEF §6.13','无详设，与 CMLD 同类安全问题'],
+['P2-5','YiTimer','autoStart/maxExecutions/refresh|execute、条件启停','P2','W16','无设计','未开始','BRIEF §6.6',''],
+['P2-5','YiFilePreview / YiChatBox','PDF/Office/视频预览 + 水印；消息列表 + WebSocket','P2','W16','无设计','未开始','BRIEF §6.13',''],
+
+// ── P2-6 AI 助手与发布收尾 (W17~W18, M6 12-31)
+['P2-6','YiAIAssistant','应用级单例、SSE 流式、上下文采集、动作白名单、数据脱敏','P0','W17','设计中','未开始','BRIEF §6.13',''],
+['P2-6','正式发布','全业务项目发布 + 发布手册 + 交接文档','P0','W18','不适用','未开始','—',''],
+['P2-6','性能优化','首屏体积、懒加载策略、缓存命中率','P1','W17','设计中','未开始','REN §8.3 / YiPage §17.2',''],
+['P2-6','多项目推广','apps/project-y 落地，验证共享包零侵入扩展','P1','W18','不适用','未开始','—',''],
+['P2-6','全量回归 + 文档收尾','一致性回归、AGENT.md / 架构文档同步','P1','W18','不适用','未开始','跨文档引用矩阵',''],
+['P2-6','YiMapViewer / YiIframeEmbed','地图（Leaflet/高德）、iframe 嵌入','P2','W18','无设计','未开始','BRIEF §6.10','']
+];
+
+var META={
+ 'P0-0':['P0-0 · Monorepo 工程底座','W1~W2 (08-31~09-11)','里程碑 M0 · 09-11'],
+ 'P0-1':['P0-1 · 核心运行时','W3~W7 (09-14~10-16)','里程碑 M1 · 10-16'],
+ 'P1-2':['P1-2 · 基础组件库','W7~W10 (10-12~11-06)','里程碑 M2 · 11-06'],
+ 'P1-3':['P1-3 · 增强组件与业务闭环','W10~W13 (11-02~11-27)','里程碑 M3 · 11-27'],
+ 'P1-4':['P1-4 · 双端适配 + 外壳 + 首项目','W13~W15 (11-23~12-11)','里程碑 M4 · 12-11'],
+ 'P2-5':['P2-5 · 动态扩展与安全体系','W15~W16 (11-30~12-18)','里程碑 M5 · 12-18'],
+ 'P2-6':['P2-6 · AI 助手与发布收尾','W17~W18 (12-21~12-31)','里程碑 M6 · 12-31']
+};
+var KEY='yi-progress-v1';
+var st=load();
+
+function load(){
+  try{var s=JSON.parse(localStorage.getItem(KEY));if(s&&s.items)return s;}catch(e){}
+  return {items:{},log:[],updated:''};
+}
+function save(){localStorage.setItem(KEY,JSON.stringify(st));}
+
+function get(i,f){return (st.items[i]&&st.items[i][f]!==undefined)?st.items[i][f]:DATA[i][f];}
+function set(i,f,v){
+  if(!st.items[i])st.items[i]={};
+  var old=get(i,f); if(old===v)return;
+  st.items[i][f]=v;
+  st.log.unshift({t:new Date().toISOString().slice(0,16).replace('T',' '),
+    task:DATA[i][1],field:f,from:old,to:v});
+  if(st.log.length>300)st.log.length=300;
+  st.updated=new Date().toISOString().slice(0,16).replace('T',' ');
+  save();
+}
+function cell(i,f){
+  var v=get(i,f);
+  var opts=(f===5)?DESIGN:IMPL;
+  var cls=(f===5)?DCLS[v]:ICLS[v];
+  var h='<select class="sel '+cls+'" data-i="'+i+'" data-f="'+f+'">';
+  opts.forEach(function(o){h+='<option'+(o===v?' selected':'')+'>'+o+'</option>';});
+  return h+'</select>';
+}
+function done(i){var v=get(i,6);return v==='已实现自测'||v==='已验收';}
+function doing(i){return get(i,6)==='编码中';}
+function risk(i){return !!DATA[i][8];}
+
+function render(){
+  var fp=document.getElementById('f-phase').value;
+  var fi=document.getElementById('f-impl').value;
+  var fd=document.getElementById('f-design').value;
+  var kw=document.getElementById('f-kw').value.trim().toLowerCase();
+  var onlyRisk=document.getElementById('btn-risk').dataset.on==='1';
+  var box=document.getElementById('phases');box.innerHTML='';
+  var T=0,D=0,G=0,R=0;
+
+  Object.keys(META).forEach(function(p){
+    var idx=[];DATA.forEach(function(r,i){if(r[0]===p)idx.push(i);});
+    var vis=idx.filter(function(i){
+      if(fp&&DATA[i][0]!==fp)return false;
+      if(fi&&get(i,6)!==fi)return false;
+      if(fd&&get(i,5)!==fd)return false;
+      if(onlyRisk&&!risk(i))return false;
+      if(kw&&(DATA[i][1]+DATA[i][2]+DATA[i][7]).toLowerCase().indexOf(kw)<0)return false;
+      return true;
+    });
+    if(!vis.length)return;
+    var pd=vis.filter(done).length, pg=vis.filter(doing).length;
+    var pct=Math.round(pd/vis.length*100);
+    var h='<div class="phase" data-p="'+p+'"><div class="ph" onclick="this.parentNode.classList.toggle(\'collapsed\')">'
+      +'<span class="tag">'+p+'</span><span class="nm">'+META[p][0].split('· ')[1]+'</span>'
+      +'<span class="meta">'+META[p][1]+' · '+META[p][2]+'</span>'
+      +'<span class="rt"><span>'+pd+'/'+vis.length+'</span><span class="mini"><i style="width:'+pct+'%"></i></span><span>'+pct+'%</span></span></div>';
+    h+='<table class="rows"><thead><tr><th style="width:34%">任务</th><th style="width:9%">优先级</th><th style="width:7%">周期</th><th style="width:20%">说明</th><th style="width:11%">设计状态</th><th style="width:11%">实现状态</th><th style="width:12%">权威文档</th></tr></thead><tbody>';
+    vis.forEach(function(i){
+      var r=DATA[i];
+      h+='<tr><td><div class="nm">'+r[1]+(risk(i)?'<span class="risk" title="'+r[8]+'">风险</span>':'')+'</div>'
+        +(risk(i)?'<div class="desc" style="color:#a32d2d">'+r[8]+'</div>':'')
+        +'</td><td><span class="pri '+(r[3]==='P0'?'p0':'')+'">'+r[3]+'</span></td><td class="doc">'+r[4]
+        +'</td><td class="desc">'+r[2]+'</td><td>'+cell(i,5)+'</td><td>'+cell(i,6)
+        +'</td><td class="doc">'+(r[7]||'—')+'</td></tr>';
+      T++; if(done(i))D++; else if(doing(i))G++; if(risk(i))R++;
+    });
+    h+='</tbody></table></div>';
+    box.innerHTML+=h;
+  });
+
+  document.getElementById('s-total').textContent=T;
+  document.getElementById('s-done').textContent=D;
+  document.getElementById('s-doing').textContent=G;
+  document.getElementById('s-todo').textContent=T-D-G;
+  document.getElementById('s-risk').textContent=R;
+  var pct=T?Math.round(D/T*100):0;
+  document.getElementById('s-pct').textContent=pct+'%';
+  document.getElementById('b-done').style.width=(T?D/T*100:0)+'%';
+  document.getElementById('b-doing').style.width=(T?G/T*100:0)+'%';
+  document.getElementById('syncinfo').textContent=st.updated
+    ?('最后同步：'+st.updated+' · 累计 '+st.log.length+' 次状态变更 · 风险项 '+R+' 个（红色标记，悬停看原因）')
+    :'尚未同步过进度 —— 直接在表中改状态即可自动保存';
+
+  document.querySelectorAll('.sel').forEach(function(s){
+    s.onchange=function(){
+      set(+this.dataset.i,+this.dataset.f,this.value);
+      render();
+    };
+    var v=(+s.dataset.f===5)?get(+s.dataset.i,5):get(+s.dataset.i,6);
+    s.className='sel '+((+s.dataset.f===5)?DCLS[v]:ICLS[v]);
+  });
+}
+
+var sel=document.getElementById('f-phase');
+Object.keys(META).forEach(function(p){
+  var o=document.createElement('option');o.value=p;o.textContent=META[p][0];sel.appendChild(o);
+});
+['f-phase','f-impl','f-design'].forEach(function(id){
+  document.getElementById(id).onchange=render;
+});
+document.getElementById('f-kw').oninput=render;
+document.getElementById('btn-risk').onclick=function(){
+  this.dataset.on=this.dataset.on==='1'?'0':'1';
+  this.style.background=this.dataset.on==='1'?'var(--red)':'';
+  this.style.color=this.dataset.on==='1'?'var(--red-t)':'';
+  render();
+};
+document.getElementById('btn-exp').onclick=function(){
+  var out={exportedAt:new Date().toISOString(),updated:st.updated,log:st.log,
+    items:DATA.map(function(r,i){return {phase:r[0],task:r[1],design:get(i,5),impl:get(i,6)};})};
+  var b=new Blob([JSON.stringify(out,null,2)],{type:'application/json'});
+  var a=document.createElement('a');
+  a.href=URL.createObjectURL(b);
+  a.download='yi-progress-'+new Date().toISOString().slice(0,10)+'.json';
+  a.click();
+};
+document.getElementById('btn-imp').onclick=function(){document.getElementById('file').click();};
+document.getElementById('file').onchange=function(){
+  var f=this.files[0];if(!f)return;
+  var r=new FileReader();
+  r.onload=function(){
+    try{
+      var o=JSON.parse(r.result);
+      if(!o.items)throw 0;
+      o.items.forEach(function(it,i){
+        var m=DATA.findIndex(function(d){return d[1]===it.task;});
+        if(m<0)return;
+        if(it.design)set(m,5,it.design);
+        if(it.impl)set(m,6,it.impl);
+      });
+      render();alert('导入成功，共 '+o.items.length+' 项');
+    }catch(e){alert('导入失败：文件格式不正确');}
+  };
+  r.readAsText(f);this.value='';
+};
+document.getElementById('btn-reset').onclick=function(){
+  if(!confirm('确定重置为初始状态？所有本机进度改动将丢失。'))return;
+  st={items:{},log:[],updated:''};save();render();
+};
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 2,
+  "kind": "whiteboard",
+  "id": "12e5e264-9031-4cea-b512-94fe3dc3fa17",
+  "title": "逸集控登录、mTLS 与应用访问完整时序",
+  "tags": [],
+  "favorite": false,
+  "createdAt": "2026-09-08T06:02:40.387Z",
+  "updatedAt": "2026-09-08T06:49:25.044Z",
+  "revision": 5,
+  "contentSha256": "aa63683bec15d835487ac44ad123e2eca92d8e45182079a652334d473db4c4cc",
+  "itemCount": 133,
+  "searchText": "逸集控登录、mTLS 与应用访问完整时序 逸集控登录、mTLS 与应用访问完整时序 逸集控登录、mTLS 与应用访问完整时序 用户 用户 用户 用户 [每个绑定应用] [每个绑定应用] 逸集控前端 逸集控前端 逸集控前端 逸集控前端 逸集控服务 逸集控服务 逸集控服务 逸集控服务 绑定与应用配置 绑定与应用配置 绑定与应用配置 绑定与应用配置 应用域名入口 应用域名入口 应用域名入口 应用域名入口 应用 Token 服 务 应用 Token 服务 应用 Token 服 务 应用 Token 服务 yjk_server_inf o yjk_server_info yjk_server_inf o yjk_server_info 应用前端 应用前端 应用前端 应用前端 参数化与权限接 口 参数化与权限接口 参数化与权限接 口 参数化与权限接口 默认服务间认证为 HTTPS + mTLS 默认服务间认证为 HTTPS + mTLS 后台配置 Token 服务域名，双方配置受信 CA 与证书 后台配置 Token 服务域名，双方配置受信 CA 与证书 内网应用由 Nginx 校验证书并以 mTLS 回源 内网应用由 Nginx 校验证书并以 mTLS 回源 全链路使用域名，代理场景同步白名单域名 全链路使用域名，代理场景同步白名单域名 输入用户名和密码 输入用户名和密码 提交登录 提交登录 校验身份 校验身份 查询当前用户绑定信息 查询当前用户绑定信息 返回绑定应用 返回绑定应用 读取 Token 服务域名 读取 Token 服务域名 返回已配置 URL 返回已配置 URL mTLS 主动访问校验 mTLS 主动访问校验 校验逸集控客户端证书 校验逸集控客户端证书 按域名 mTLS 回源 按域名 mTLS 回源 检查白名单授权 检查白名单授权 返回允许或拒绝 返回允许或拒绝 返回可访问状态 返回可访问状态 返回校验结果 返回校验结果 返回应用权限与状态 返回应用权限与状态 展示可访问应用 展示可访问应用 点击进入系统 点击进入系统 请求进入已绑定应用 请求进入已绑定应用 mTLS 请求签发 cookieKey mTLS 请求签发 cookieKey 按域名 mTLS 回源 按域名 mTLS 回源 检查白名单授权 检查白名单授权 返回允许或拒绝 返回允许或拒绝 生成 cookieKey 生成 cookieKey 返回 cookieKey 返回 cookieKey 返回签发结果 返回签发结果 返回应用域名与 cookieKey 返回应用域名与 cookieKey 按域名携 cookieKey 打开应用 按域名携 cookieKey 打开应用 用 cookieKey 请求参数 化接口 用 cookieKey 请求参数化接口 校验 cookieKey 校验 cookieKey 返回用户校验结果 返回用户校验结果 返回菜单入口与授权接口 返回菜单入口与授权接口 按权限渲染界面 按权限渲染界面 loop loop 逸集控登录、mTLS 与应用访问完整时序 逸集控登录、mTLS 与应用访问完整时序 用户 用户 用户 用户 [每个绑定应用] [每个绑定应用] 逸集控前端 逸集控前端 逸集控前端 逸集控前端 逸集控服务 逸集控服务 逸集控服务 逸集控服务 绑定与应用配置 绑定与应用配置 绑定与应用配置 绑定与应用配置 应用域名入口 应用域名入口 应用域名入口 应用域名入口 应用 Token 服 务 应用 Token 服务 应用 Token 服 务 应用 Token 服务 yjk_server_inf o yjk_server_info yjk_server_inf o yjk_server_info 应用前端 应用前端 应用前端 应用前端 参数化与权限接 口 参数化与权限接口 参数化与权限接 口 参数化与权限接口 默认服务间认证为 HTTPS + mTLS 默认服务间认证为 HTTPS + mTLS 后台配置 Token 服务域名，双方配置受信 CA 与证书 后台配置 Token 服务域名，双方配置受信 CA 与证书 内网应用由 Nginx 校验证书并以 mTLS 回源 内网应用由 Nginx 校验证书并以 mTLS 回源 全链路使用域名，代理场景同步白名单域名 全链路使用域名，代理场景同步白名单域名 输入用户名和密码 输入用户名和密码 提交登录 提交登录 校验身份 校验身份 查询当前用户绑定信息 查询当前用户绑定信息 返回绑定应用 返回绑定应用 读取 Token 服务域名 读取 Token 服务域名 返回已配置 URL 返回已配置 URL mTLS 主动访问校验 mTLS 主动访问校验 校验逸集控客户端证书 校验逸集控客户端证书 按域名 mTLS 回源 按域名 mTLS 回源 检查白名单授权 检查白名单授权 返回允许或拒绝 返回允许或拒绝 返回可访问状态 返回可访问状态 返回校验结果 返回校验结果 返回应用权限与状态 返回应用权限与状态 展示可访问应用 展示可访问应用 点击进入系统 点击进入系统 请求进入已绑定应用 请求进入已绑定应用 mTLS 请求签发 cookieKey mTLS 请求签发 cookieKey 按域名 mTLS 回源 按域名 mTLS 回源 检查白名单授权 检查白名单授权 返回允许或拒绝 返回允许或拒绝 生成 cookieKey 生成 cookieKey 返回 cookieKey 返回 cookieKey 返回签发结果 返回签发结果 返回应用域名与 cookieKey 返回应用域名与 cookieKey 按域名携 cookieKey 打开应用 按域名携 cookieKey 打开应用 用 cookieKey 请求参数 化接口 用 cookieKey 请求参数化接口 校验 cookieKey 校验 cookieKey 返回用户校验结果 返回用户校验结果 返回菜单入口与授权接口 返回菜单入口与授权接口 按权限渲染界面 按权限渲染界面 loop loop",
+  "previewRevision": 5
+}

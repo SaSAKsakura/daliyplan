@@ -1,0 +1,49 @@
+{
+  "PowerPointVersion": "16.0",
+  "Effects": [
+    {
+      "Target": "档案示例1标题",
+      "Duration": 0.6,
+      "Trigger": 1,
+      "Index": 1
+    },
+    {
+      "Target": "档案示例1底板",
+      "Duration": 0.6,
+      "Trigger": 2,
+      "Index": 2
+    },
+    {
+      "Target": "Picture 74",
+      "Duration": 0.6,
+      "Trigger": 2,
+      "Index": 3
+    },
+    {
+      "Target": "档案示例2标题",
+      "Duration": 0.6,
+      "Trigger": 1,
+      "Index": 4
+    },
+    {
+      "Target": "档案示例2底板",
+      "Duration": 0.6,
+      "Trigger": 2,
+      "Index": 5
+    },
+    {
+      "Target": "Picture 77",
+      "Duration": 0.6,
+      "Trigger": 2,
+      "Index": 6
+    }
+  ],
+  "PlaybackStates": [
+    0,
+    1,
+    2
+  ],
+  "PreviousPageAnimationPreserved": true,
+  "PlaybackPassed": true,
+  "AnimationClickCount": 2
+}

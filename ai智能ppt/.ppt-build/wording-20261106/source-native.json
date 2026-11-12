@@ -1,0 +1,3662 @@
+[
+  {
+    "Page": 1,
+    "Texts": [
+      {
+        "Text": "AI＋新能源设施专场 · 场景方案交流",
+        "Width": 750.0,
+        "Left": 60.0,
+        "Top": 276.0,
+        "Height": 16.5,
+        "Name": "TextBox 4",
+        "FontSize": 13.5
+      },
+      {
+        "Text": "AI 赋能新能源设施建设",
+        "Width": 750.0,
+        "Left": 60.0,
+        "Top": 306.0,
+        "Height": 78.75,
+        "Name": "TextBox 5",
+        "FontSize": 57.0
+      },
+      {
+        "Text": "从分部分项到档案交付，电力施工全过程的六类智能体",
+        "Width": 750.0,
+        "Left": 60.0,
+        "Top": 399.75,
+        "Height": 24.0,
+        "Name": "TextBox 7",
+        "FontSize": 19.5
+      },
+      {
+        "Text": "上海逸舟信息科技有限公司 ｜ 2026 年 11 月",
+        "Width": 750.0,
+        "Left": 60.0,
+        "Top": 459.0,
+        "Height": 15.0,
+        "Name": "TextBox 8",
+        "FontSize": 12.0
+      }
+    ]
+  },
+  {
+    "Page": 2,
+    "Texts": [
+      {
+        "Text": "01 ／ 公司介绍",
+        "Width": 870.0,
+        "Left": 45.0,
+        "Top": 45.0,
+        "Height": 12.75,
+        "Name": "TextBox 101",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "二十年，深耕电力行业数字化",
+        "Width": 870.0,
+        "Left": 45.0,
+        "Top": 81.0,
+        "Height": 33.0,
+        "Name": "TextBox 103",
+        "FontSize": 27.0
+      },
+      {
+        "Text": "我们是谁",
+        "Width": 213.0,
+        "Left": 66.0,
+        "Top": 159.0,
+        "Height": 20.25,
+        "Name": "TextBox 105",
+        "FontSize": 16.5
+      },
+      {
+        "Text": "体系与资质",
+        "Width": 213.0,
+        "Left": 66.0,
+        "Top": 306.75,
+        "Height": 13.5,
+        "Name": "TextBox 107",
+        "FontSize": 11.25
+      },
+      {
+        "Text": "81",
+        "Width": 50.25,
+        "Left": 342.0,
+        "Top": 151.5,
+        "Height": 48.75,
+        "Name": "TextBox 109",
+        "FontSize": 40.5
+      },
+      {
+        "Text": "人",
+        "Width": 13.5,
+        "Left": 396.75,
+        "Top": 179.25,
+        "Height": 21.0,
+        "Name": "TextBox 110",
+        "FontSize": 13.5
+      },
+      {
+        "Text": "研发占比约 80%，50+ 项软著、2 项专利",
+        "Width": 172.5,
+        "Left": 342.0,
+        "Top": 207.75,
+        "Height": 27.0,
+        "Name": "TextBox 111",
+        "FontSize": 11.25
+      },
+      {
+        "Text": "1000",
+        "Width": 77.25,
+        "Left": 552.75,
+        "Top": 151.5,
+        "Height": 48.75,
+        "Name": "TextBox 113",
+        "FontSize": 40.5
+      },
+      {
+        "Text": "+ 家",
+        "Width": 21.0,
+        "Left": 650.25,
+        "Top": 179.25,
+        "Height": 21.0,
+        "Name": "TextBox 114",
+        "FontSize": 13.5
+      },
+      {
+        "Text": "累计服务企业",
+        "Width": 102.75,
+        "Left": 568.5,
+        "Top": 207.75,
+        "Height": 13.5,
+        "Name": "TextBox 115",
+        "FontSize": 11.25
+      },
+      {
+        "Text": "16",
+        "Width": 50.25,
+        "Left": 725.25,
+        "Top": 151.5,
+        "Height": 48.75,
+        "Name": "TextBox 117",
+        "FontSize": 40.5
+      },
+      {
+        "Text": "款",
+        "Width": 13.5,
+        "Left": 780.0,
+        "Top": 179.25,
+        "Height": 21.0,
+        "Name": "TextBox 118",
+        "FontSize": 13.5
+      },
+      {
+        "Text": "电网客户：国网上海市电力公司及 11 家供电单位（建设、安监、后勤、设备、运检等部）",
+        "Width": 537.0,
+        "Left": 342.0,
+        "Top": 289.5,
+        "Height": 16.5,
+        "Name": "TextBox 121",
+        "FontSize": 13.5
+      },
+      {
+        "Text": "电力产业链：6 大集团＋2 家送变电＋5 家专业公司",
+        "Width": 306.0,
+        "Left": 342.0,
+        "Top": 319.5,
+        "Height": 16.5,
+        "Name": "TextBox 123",
+        "FontSize": 13.5
+      },
+      {
+        "Text": "电力服务商：基于工业互联网标识解析体系的承包商 SaaS 服务平台已服务 1000+ 家",
+        "Width": 318.0,
+        "Left": 342.0,
+        "Top": 349.5,
+        "Height": 16.5,
+        "Name": "TextBox 125",
+        "FontSize": 13.5
+      },
+      {
+        "Text": "技术底座：低代码 ＋ AI ＋ 物联感知，具备 AI 算法工程化与云边端协同的全栈交付能力",
+        "Width": 466.5,
+        "Left": 339.0,
+        "Top": 448.5,
+        "Height": 15.0,
+        "Name": "TextBox 127",
+        "FontSize": 12.0
+      },
+      {
+        "Text": "2006 年成立，注册资本 1000 万元，上海总部＋长沙分公司。服务电网基建、运维与新能源设施建设全过程。",
+        "Width": 213.0,
+        "Left": 66.0,
+        "Top": 192.75,
+        "Height": 78.75,
+        "Name": "TextBox 128",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "上海市高新技术企业\r上海市「专精特新」中小企业\rISO9001 ／ 14001\rISO27001 ／ 20000",
+        "Width": 213.0,
+        "Left": 66.0,
+        "Top": 329.25,
+        "Height": 104.25,
+        "Name": "TextBox 129",
+        "FontSize": 12.0
+      },
+      {
+        "Text": "自有产品，覆盖智慧办公与工程管控",
+        "Width": 171.75,
+        "Left": 725.25,
+        "Top": 207.75,
+        "Height": 27.0,
+        "Name": "TextBox 130",
+        "FontSize": 11.25
+      },
+      {
+        "Text": "02 ／ 21",
+        "Width": 42.0,
+        "Left": 873.0,
+        "Top": 504.75,
+        "Height": 12.75,
+        "Name": "TextBox 131",
+        "FontSize": 10.5
+      }
+    ]
+  },
+  {
+    "Page": 3,
+    "Texts": [
+      {
+        "Text": "01 ／ 公司介绍",
+        "Width": 870.0,
+        "Left": 45.0,
+        "Top": 45.0,
+        "Height": 12.75,
+        "Name": "TextBox 134",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "三条产品线",
+        "Width": 870.0,
+        "Left": 45.0,
+        "Top": 81.0,
+        "Height": 33.0,
+        "Name": "TextBox 136",
+        "FontSize": 27.0
+      },
+      {
+        "Text": "逸管理",
+        "Width": 63.0,
+        "Left": 66.0,
+        "Top": 153.0,
+        "Height": 25.5,
+        "Name": "TextBox 138",
+        "FontSize": 21.0
+      },
+      {
+        "Text": "系统端 · 产品＋定制",
+        "Width": 93.0,
+        "Left": 148.5,
+        "Top": 159.75,
+        "Height": 12.75,
+        "Name": "TextBox 140",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "项目管理",
+        "Width": 48.0,
+        "Left": 78.0,
+        "Top": 237.75,
+        "Height": 15.0,
+        "Name": "TextBox 142",
+        "FontSize": 12.0
+      },
+      {
+        "Text": "智慧工地 · 智慧小站",
+        "Width": 108.75,
+        "Left": 157.5,
+        "Top": 237.75,
+        "Height": 15.0,
+        "Name": "TextBox 144",
+        "FontSize": 12.0
+      },
+      {
+        "Text": "智慧监理",
+        "Width": 48.0,
+        "Left": 297.75,
+        "Top": 237.75,
+        "Height": 15.0,
+        "Name": "TextBox 146",
+        "FontSize": 12.0
+      },
+      {
+        "Text": "承包商 SaaS 平台",
+        "Width": 96.0,
+        "Left": 78.0,
+        "Top": 272.25,
+        "Height": 15.0,
+        "Name": "TextBox 148",
+        "FontSize": 12.0
+      },
+      {
+        "Text": "逸集控",
+        "Width": 186.0,
+        "Left": 471.0,
+        "Top": 153.0,
+        "Height": 21.75,
+        "Name": "TextBox 150",
+        "FontSize": 18.0
+      },
+      {
+        "Text": "用户端",
+        "Width": 186.0,
+        "Left": 471.0,
+        "Top": 179.25,
+        "Height": 12.75,
+        "Name": "TextBox 151",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "七端一个入口，同一套账号与权限，66,000+ 次下载。",
+        "Width": 186.0,
+        "Left": 471.0,
+        "Top": 204.0,
+        "Height": 52.5,
+        "Name": "TextBox 152",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "零信任安全模式，支持鸿蒙与国产操作系统。",
+        "Width": 186.0,
+        "Left": 471.0,
+        "Top": 265.5,
+        "Height": 52.5,
+        "Name": "TextBox 153",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "现场的人用它接任务、报日志",
+        "Width": 186.0,
+        "Left": 471.0,
+        "Top": 356.4,
+        "Height": 13.5,
+        "Name": "TextBox 154",
+        "FontSize": 11.25
+      },
+      {
+        "Text": "逸视角",
+        "Width": 186.0,
+        "Left": 711.0,
+        "Top": 153.0,
+        "Height": 21.75,
+        "Name": "TextBox 156",
+        "FontSize": 18.0
+      },
+      {
+        "Text": "设备端",
+        "Width": 186.0,
+        "Left": 711.0,
+        "Top": 179.25,
+        "Height": 12.75,
+        "Name": "TextBox 157",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "单兵设备＋布控球＋边缘算法，违章 AI 识别、远程喊话、录像留证。",
+        "Width": 186.0,
+        "Left": 711.0,
+        "Top": 204.0,
+        "Height": 78.75,
+        "Name": "TextBox 158",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "智能库房：人脸识别＋RFID，人—具—票校验。",
+        "Width": 186.0,
+        "Left": 711.0,
+        "Top": 291.75,
+        "Height": 52.5,
+        "Name": "TextBox 159",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "现场的设备替人盯着",
+        "Width": 186.0,
+        "Left": 711.0,
+        "Top": 356.25,
+        "Height": 13.5,
+        "Name": "TextBox 160",
+        "FontSize": 11.25
+      },
+      {
+        "Text": "本次方案的落点：逸管理·工程管控 ＋ 逸视角现场感知 ＋ AI 智能体——有产品底盘的落地，不是概念演示。",
+        "Width": 610.5,
+        "Left": 63.0,
+        "Top": 429.0,
+        "Height": 15.75,
+        "Name": "TextBox 162",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "16 款产品 · 覆盖智慧办公、工程管控、移动测绘、智慧食堂四大领域。",
+        "Width": 348.0,
+        "Left": 66.0,
+        "Top": 187.5,
+        "Height": 30.75,
+        "Name": "TextBox 163",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "工程管控四件套，管住计划、队伍、人员、现场——本次六个场景全部落在这条线上。",
+        "Width": 348.0,
+        "Left": 66.0,
+        "Top": 308.25,
+        "Height": 52.5,
+        "Name": "TextBox 164",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "03 ／ 21",
+        "Width": 42.0,
+        "Left": 873.0,
+        "Top": 504.75,
+        "Height": 12.75,
+        "Name": "TextBox 165",
+        "FontSize": 10.5
+      }
+    ]
+  },
+  {
+    "Page": 4,
+    "Texts": [
+      {
+        "Text": "01 ／ 公司介绍 · 逸视角 · 界面展示",
+        "Width": 870.0,
+        "Left": 45.0,
+        "Top": 45.0,
+        "Height": 15.0,
+        "Name": "页眉",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "逸视角 · 智能物联运行管理 （去除）",
+        "Width": 592.5,
+        "Left": 45.0,
+        "Top": 81.0,
+        "Height": 33.0,
+        "Name": "主标题",
+        "FontSize": 27.0
+      },
+      {
+        "Text": "设备状态、现场画面与告警同屏可查",
+        "Width": 280.5,
+        "Left": 634.5,
+        "Top": 90.0,
+        "Height": 27.0,
+        "Name": "副标题",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "01",
+        "Width": 30.0,
+        "Left": 688.5,
+        "Top": 148.5,
+        "Height": 30.0,
+        "Name": "编号1",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "项目与设备关联",
+        "Width": 184.5,
+        "Left": 730.5,
+        "Top": 148.5,
+        "Height": 18.0,
+        "Name": "说明标题1",
+        "FontSize": 13.5
+      },
+      {
+        "Text": "按项目、站点或设备查看，\r将现场设备与作业票据对应。",
+        "Width": 184.5,
+        "Left": 730.5,
+        "Top": 168.0,
+        "Height": 43.5,
+        "Name": "说明正文1",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "02",
+        "Width": 30.0,
+        "Left": 688.5,
+        "Top": 217.5,
+        "Height": 30.0,
+        "Name": "编号2",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "现场状态同屏查看",
+        "Width": 184.5,
+        "Left": 730.5,
+        "Top": 217.5,
+        "Height": 18.0,
+        "Name": "说明标题2",
+        "FontSize": 13.5
+      },
+      {
+        "Text": "布控球、单兵画面与通风测毒\r数据同屏，查看在线及运行状态。",
+        "Width": 184.5,
+        "Left": 730.5,
+        "Top": 237.0,
+        "Height": 43.5,
+        "Name": "说明正文2",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "03",
+        "Width": 30.0,
+        "Left": 688.5,
+        "Top": 286.5,
+        "Height": 30.0,
+        "Name": "编号3",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "分级告警与历史回查",
+        "Width": 184.5,
+        "Left": 730.5,
+        "Top": 286.5,
+        "Height": 18.0,
+        "Name": "说明标题3",
+        "FontSize": 13.5
+      },
+      {
+        "Text": "按级别查看告警及恢复状态，\r进入设备详情回查历史数据与视频。",
+        "Width": 184.5,
+        "Left": 730.5,
+        "Top": 306.0,
+        "Height": 43.5,
+        "Name": "说明正文3",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "现场感知支撑工程管控",
+        "Width": 193.5,
+        "Left": 705.0,
+        "Top": 420.0,
+        "Height": 21.0,
+        "Name": "结果标题",
+        "FontSize": 13.5
+      },
+      {
+        "Text": "为安全质量检查提供现场依据，\r辅助项目部定位异常、回查过程。",
+        "Width": 193.5,
+        "Left": 705.0,
+        "Top": 441.75,
+        "Height": 42.0,
+        "Name": "结果正文",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "原型界面示例，告警区按原字段重排；项目、设备、坐标及监测数值已脱敏",
+        "Width": 750.0,
+        "Left": 45.0,
+        "Top": 502.5,
+        "Height": 13.5,
+        "Name": "脱敏说明",
+        "FontSize": 8.25
+      },
+      {
+        "Text": "04 ／ 21",
+        "Width": 42.0,
+        "Left": 873.0,
+        "Top": 504.75,
+        "Height": 12.75,
+        "Name": "页码",
+        "FontSize": 10.5
+      }
+    ]
+  },
+  {
+    "Page": 5,
+    "Texts": [
+      {
+        "Text": "01 ／ 公司介绍",
+        "Width": 870.0,
+        "Left": 45.0,
+        "Top": 45.0,
+        "Height": 15.0,
+        "Name": "栏目",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "电力工程领域的应用积累（最后一页）",
+        "Width": 870.0,
+        "Left": 45.0,
+        "Top": 81.0,
+        "Height": 33.0,
+        "Name": "标题",
+        "FontSize": 27.0
+      },
+      {
+        "Text": "        ",
+        "Width": 870.0,
+        "Left": 45.0,
+        "Top": 124.5,
+        "Height": 22.5,
+        "Name": "副标题",
+        "FontSize": 14.25
+      },
+      {
+        "Text": "3.4万+",
+        "Width": 270.0,
+        "Left": 45.0,
+        "Top": 226.5,
+        "Height": 81.0,
+        "Name": "指标数值0",
+        "FontSize": 57.0
+      },
+      {
+        "Text": "目前准入的分包人员",
+        "Width": 270.0,
+        "Left": 45.0,
+        "Top": 330.0,
+        "Height": 25.5,
+        "Name": "指标名称0",
+        "FontSize": 16.5
+      },
+      {
+        "Text": "人",
+        "Width": 270.0,
+        "Left": 45.0,
+        "Top": 366.0,
+        "Height": 21.0,
+        "Name": "指标单位0",
+        "FontSize": 13.5
+      },
+      {
+        "Text": "4.5万+",
+        "Width": 270.0,
+        "Left": 345.0,
+        "Top": 226.5,
+        "Height": 81.0,
+        "Name": "指标数值1",
+        "FontSize": 57.0
+      },
+      {
+        "Text": "两年内准入的分包人员",
+        "Width": 270.0,
+        "Left": 345.0,
+        "Top": 330.0,
+        "Height": 25.5,
+        "Name": "指标名称1",
+        "FontSize": 16.5
+      },
+      {
+        "Text": "人",
+        "Width": 270.0,
+        "Left": 345.0,
+        "Top": 366.0,
+        "Height": 21.0,
+        "Name": "指标单位1",
+        "FontSize": 13.5
+      },
+      {
+        "Text": "1,300+",
+        "Width": 270.0,
+        "Left": 645.0,
+        "Top": 226.5,
+        "Height": 81.0,
+        "Name": "指标数值2",
+        "FontSize": 57.0
+      },
+      {
+        "Text": "目前准入的分包队伍",
+        "Width": 270.0,
+        "Left": 645.0,
+        "Top": 330.0,
+        "Height": 25.5,
+        "Name": "指标名称2",
+        "FontSize": 16.5
+      },
+      {
+        "Text": "支",
+        "Width": 270.0,
+        "Left": 645.0,
+        "Top": 366.0,
+        "Height": 21.0,
+        "Name": "指标单位2",
+        "FontSize": 13.5
+      },
+      {
+        "Text": "05 ／ 21",
+        "Width": 45.0,
+        "Left": 870.0,
+        "Top": 506.25,
+        "Height": 15.0,
+        "Name": "统一页码",
+        "FontSize": 10.5
+      }
+    ]
+  },
+  {
+    "Page": 6,
+    "Texts": [
+      {
+        "Text": "02 ／ 新能源项目管理业务场景",
+        "Width": 870.0,
+        "Left": 45.0,
+        "Top": 45.0,
+        "Height": 12.75,
+        "Name": "TextBox 168",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "分布式光伏、储能、充电设施——项目的六个真实卡点",
+        "Width": 870.0,
+        "Left": 45.0,
+        "Top": 81.0,
+        "Height": 33.0,
+        "Name": "TextBox 170",
+        "FontSize": 27.0
+      },
+      {
+        "Text": "01",
+        "Width": 25.5,
+        "Left": 519.0,
+        "Top": 138.75,
+        "Height": 20.25,
+        "Name": "TextBox 172",
+        "FontSize": 16.5
+      },
+      {
+        "Text": "点多面广",
+        "Width": 220.5,
+        "Left": 555.0,
+        "Top": 133.5,
+        "Height": 15.75,
+        "Name": "TextBox 173",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "一个片区几十个点位，项目部一两个人跑不过来",
+        "Width": 220.5,
+        "Left": 555.0,
+        "Top": 150.75,
+        "Height": 12.75,
+        "Name": "TextBox 174",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "02",
+        "Width": 25.5,
+        "Left": 519.0,
+        "Top": 189.0,
+        "Height": 20.25,
+        "Name": "TextBox 175",
+        "FontSize": 16.5
+      },
+      {
+        "Text": "节点倒逼",
+        "Width": 189.0,
+        "Left": 555.0,
+        "Top": 183.75,
+        "Height": 15.75,
+        "Name": "TextBox 176",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "并网日期卡死，工序一乱就压缩后期调试",
+        "Width": 189.0,
+        "Left": 555.0,
+        "Top": 201.0,
+        "Height": 12.75,
+        "Name": "TextBox 177",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "03",
+        "Width": 25.5,
+        "Left": 519.0,
+        "Top": 240.0,
+        "Height": 20.25,
+        "Name": "TextBox 178",
+        "FontSize": 16.5
+      },
+      {
+        "Text": "队伍小散",
+        "Width": 168.0,
+        "Left": 555.0,
+        "Top": 234.75,
+        "Height": 15.75,
+        "Name": "TextBox 179",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "班组流动大，派活靠电话，谁闲谁干",
+        "Width": 168.0,
+        "Left": 555.0,
+        "Top": 252.0,
+        "Height": 12.75,
+        "Name": "TextBox 180",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "04",
+        "Width": 25.5,
+        "Left": 519.0,
+        "Top": 290.25,
+        "Height": 20.25,
+        "Name": "TextBox 181",
+        "FontSize": 16.5
+      },
+      {
+        "Text": "资料散落",
+        "Width": 199.5,
+        "Left": 555.0,
+        "Top": 285.0,
+        "Height": 15.75,
+        "Name": "TextBox 182",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "报验、隐蔽、影像跟着人走，验收前集中补",
+        "Width": 199.5,
+        "Left": 555.0,
+        "Top": 302.25,
+        "Height": 12.75,
+        "Name": "TextBox 183",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "05",
+        "Width": 25.5,
+        "Left": 519.0,
+        "Top": 340.5,
+        "Height": 20.25,
+        "Name": "TextBox 184",
+        "FontSize": 16.5
+      },
+      {
+        "Text": "检查难到边",
+        "Width": 189.0,
+        "Left": 555.0,
+        "Top": 335.25,
+        "Height": 15.75,
+        "Name": "TextBox 185",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "高处、吊装、临电多而散，靠到场盯不完",
+        "Width": 189.0,
+        "Left": 555.0,
+        "Top": 352.5,
+        "Height": 12.75,
+        "Name": "TextBox 186",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "06",
+        "Width": 25.5,
+        "Left": 519.0,
+        "Top": 391.5,
+        "Height": 20.25,
+        "Name": "TextBox 187",
+        "FontSize": 16.5
+      },
+      {
+        "Text": "结算卡档案",
+        "Width": 178.5,
+        "Left": 555.0,
+        "Top": 386.25,
+        "Height": 15.75,
+        "Name": "TextBox 188",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "资料不齐，并网结算就拖，现金流承压",
+        "Width": 178.5,
+        "Left": 555.0,
+        "Top": 403.5,
+        "Height": 12.75,
+        "Name": "TextBox 189",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "根因不是缺人，是缺一把能落到每个点位的工作标准。",
+        "Width": 369.0,
+        "Left": 532.5,
+        "Top": 447.0,
+        "Height": 15.0,
+        "Name": "TextBox 191",
+        "FontSize": 12.0
+      },
+      {
+        "Text": "06 ／ 21",
+        "Width": 42.0,
+        "Left": 873.0,
+        "Top": 504.75,
+        "Height": 12.75,
+        "Name": "TextBox 192",
+        "FontSize": 10.5
+      }
+    ]
+  },
+  {
+    "Page": 7,
+    "Texts": [
+      {
+        "Text": "02 ／ 新能源项目管理业务场景",
+        "Width": 870.0,
+        "Left": 45.0,
+        "Top": 45.0,
+        "Height": 12.75,
+        "Name": "TextBox 195",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "一条主线：分部分项，就是那把尺",
+        "Width": 870.0,
+        "Left": 45.0,
+        "Top": 81.0,
+        "Height": 33.0,
+        "Name": "TextBox 197",
+        "FontSize": 27.0
+      },
+      {
+        "Text": "标准生任务、任务带资料、资料归档案——六个环节共用同一套分部分项标准，AI 沿着标准把活跑起来。 （每个界面的对应的AI的目前实现）",
+        "Width": 870.0,
+        "Left": 45.0,
+        "Top": 124.5,
+        "Height": 16.5,
+        "Name": "TextBox 198",
+        "FontSize": 13.5
+      },
+      {
+        "Text": "01",
+        "Width": 105.0,
+        "Left": 57.0,
+        "Top": 177.0,
+        "Height": 18.0,
+        "Name": "TextBox 200",
+        "FontSize": 15.0
+      },
+      {
+        "Text": "标准分部分项",
+        "Width": 105.0,
+        "Left": 57.0,
+        "Top": 201.0,
+        "Height": 23.25,
+        "Name": "TextBox 201",
+        "FontSize": 14.25
+      },
+      {
+        "Text": "02",
+        "Width": 105.0,
+        "Left": 204.0,
+        "Top": 177.0,
+        "Height": 18.0,
+        "Name": "TextBox 204",
+        "FontSize": 15.0
+      },
+      {
+        "Text": "计划编排",
+        "Width": 105.0,
+        "Left": 204.0,
+        "Top": 201.0,
+        "Height": 23.25,
+        "Name": "TextBox 205",
+        "FontSize": 14.25
+      },
+      {
+        "Text": "按标准工序倒排到天，冲突先亮",
+        "Width": 105.0,
+        "Left": 204.0,
+        "Top": 231.75,
+        "Height": 39.75,
+        "Name": "TextBox 206",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "03",
+        "Width": 105.0,
+        "Left": 351.0,
+        "Top": 177.0,
+        "Height": 18.0,
+        "Name": "TextBox 209",
+        "FontSize": 15.0
+      },
+      {
+        "Text": "施工日志",
+        "Width": 105.0,
+        "Left": 351.0,
+        "Top": 201.0,
+        "Height": 23.25,
+        "Name": "TextBox 210",
+        "FontSize": 14.25
+      },
+      {
+        "Text": "说一段话成一条日志，单据自动入账",
+        "Width": 105.0,
+        "Left": 351.0,
+        "Top": 231.75,
+        "Height": 39.75,
+        "Name": "TextBox 211",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "04",
+        "Width": 105.0,
+        "Left": 498.0,
+        "Top": 177.0,
+        "Height": 18.0,
+        "Name": "TextBox 214",
+        "FontSize": 15.0
+      },
+      {
+        "Text": "安全质量",
+        "Width": 105.0,
+        "Left": 498.0,
+        "Top": 201.0,
+        "Height": 23.25,
+        "Name": "TextBox 215",
+        "FontSize": 14.25
+      },
+      {
+        "Text": "检查项随工序带出，隐患闭环销项",
+        "Width": 105.0,
+        "Left": 498.0,
+        "Top": 231.75,
+        "Height": 39.75,
+        "Name": "TextBox 216",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "05",
+        "Width": 105.0,
+        "Left": 645.0,
+        "Top": 177.0,
+        "Height": 18.0,
+        "Name": "TextBox 219",
+        "FontSize": 15.0
+      },
+      {
+        "Text": "分包队伍",
+        "Width": 105.0,
+        "Left": 645.0,
+        "Top": 201.0,
+        "Height": 23.25,
+        "Name": "TextBox 220",
+        "FontSize": 14.25
+      },
+      {
+        "Text": "按画像与负载派单，证件到期先知",
+        "Width": 105.0,
+        "Left": 645.0,
+        "Top": 231.75,
+        "Height": 39.75,
+        "Name": "TextBox 221",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "06",
+        "Width": 105.0,
+        "Left": 792.0,
+        "Top": 177.0,
+        "Height": 18.0,
+        "Name": "TextBox 224",
+        "FontSize": 15.0
+      },
+      {
+        "Text": "档案交付",
+        "Width": 105.0,
+        "Left": 792.0,
+        "Top": 201.0,
+        "Height": 23.25,
+        "Name": "TextBox 225",
+        "FontSize": 14.25
+      },
+      {
+        "Text": "资料随工序长出来，一次组卷交付",
+        "Width": 105.0,
+        "Left": 792.0,
+        "Top": 231.75,
+        "Height": 39.75,
+        "Name": "TextBox 226",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "对业主与供电公司",
+        "Width": 246.75,
+        "Left": 61.5,
+        "Top": 366.0,
+        "Height": 13.5,
+        "Name": "TextBox 228",
+        "FontSize": 11.25
+      },
+      {
+        "Text": "进度、影像、资料实时可查，并网验收有依据",
+        "Width": 246.75,
+        "Left": 61.5,
+        "Top": 384.0,
+        "Height": 13.5,
+        "Name": "TextBox 229",
+        "FontSize": 11.25
+      },
+      {
+        "Text": "对项目部",
+        "Width": 247.5,
+        "Left": 356.25,
+        "Top": 366.0,
+        "Height": 13.5,
+        "Name": "TextBox 231",
+        "FontSize": 11.25
+      },
+      {
+        "Text": "几十个点位在一块屏上跑，异常自动找人",
+        "Width": 247.5,
+        "Left": 356.25,
+        "Top": 384.0,
+        "Height": 13.5,
+        "Name": "TextBox 232",
+        "FontSize": 11.25
+      },
+      {
+        "Text": "对班组",
+        "Width": 246.75,
+        "Left": 651.75,
+        "Top": 366.0,
+        "Height": 13.5,
+        "Name": "TextBox 234",
+        "FontSize": 11.25
+      },
+      {
+        "Text": "手机上接活、报日志、传照片，不学新系统",
+        "Width": 246.75,
+        "Left": 651.75,
+        "Top": 384.0,
+        "Height": 13.5,
+        "Name": "TextBox 235",
+        "FontSize": 11.25
+      },
+      {
+        "Text": "把工法与验收规程拆成结构化标准包",
+        "Width": 105.0,
+        "Left": 57.0,
+        "Top": 231.75,
+        "Height": 39.75,
+        "Name": "TextBox 236",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "07 ／ 21",
+        "Width": 42.0,
+        "Left": 873.0,
+        "Top": 504.75,
+        "Height": 12.75,
+        "Name": "TextBox 237",
+        "FontSize": 10.5
+      }
+    ]
+  },
+  {
+    "Page": 8,
+    "Texts": [
+      {
+        "Text": "03 ／ 场景智能体 · 01",
+        "Width": 870.0,
+        "Left": 45.0,
+        "Top": 45.0,
+        "Height": 12.75,
+        "Name": "文本框 240",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "智能体 01 · 标准分部分项",
+        "Width": 312.75,
+        "Left": 45.0,
+        "Top": 81.0,
+        "Height": 33.0,
+        "Name": "文本框 242",
+        "FontSize": 27.0
+      },
+      {
+        "Text": "按部位拆解作业，形成可复用的工序标准",
+        "Width": 307.5,
+        "Left": 607.5,
+        "Top": 95.25,
+        "Height": 18.75,
+        "Name": "文本框 243",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "专业类型",
+        "Width": 319.5,
+        "Left": 61.5,
+        "Top": 162.0,
+        "Height": 17.25,
+        "Name": "文本框 245",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "作业部位",
+        "Width": 271.5,
+        "Left": 85.5,
+        "Top": 217.5,
+        "Height": 17.25,
+        "Name": "文本框 247",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "作业颗粒",
+        "Width": 223.5,
+        "Left": 109.5,
+        "Top": 273.0,
+        "Height": 17.25,
+        "Name": "文本框 249",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "作业工序",
+        "Width": 175.5,
+        "Left": 133.5,
+        "Top": 328.5,
+        "Height": 17.25,
+        "Name": "文本框 251",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "标准风险点",
+        "Width": 127.5,
+        "Left": 157.5,
+        "Top": 384.0,
+        "Height": 17.25,
+        "Name": "文本框 253",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "建标准",
+        "Width": 490.5,
+        "Left": 424.5,
+        "Top": 133.5,
+        "Height": 18.0,
+        "Name": "文本框 254",
+        "FontSize": 15.0
+      },
+      {
+        "Text": "汇集企业工法、验收规程与历史项目经验。\r按专业、部位和作业颗粒逐级拆解，形成可复用的标准包。",
+        "Width": 490.5,
+        "Left": 424.5,
+        "Top": 159.0,
+        "Height": 48.0,
+        "Name": "文本框 255",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "生结构",
+        "Width": 490.5,
+        "Left": 424.5,
+        "Top": 223.5,
+        "Height": 18.0,
+        "Name": "文本框 256",
+        "FontSize": 15.0
+      },
+      {
+        "Text": "导入片区点位清单，按光伏、储能、升压站、充电设施匹配模板，\r自动生成项目 WBS、工序任务及应交资料清册。",
+        "Width": 490.5,
+        "Left": 424.5,
+        "Top": 249.0,
+        "Height": 48.0,
+        "Name": "文本框 257",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "可校核",
+        "Width": 490.5,
+        "Left": 424.5,
+        "Top": 313.5,
+        "Height": 18.0,
+        "Name": "文本框 258",
+        "FontSize": 15.0
+      },
+      {
+        "Text": "每道工序关联工期、风险控制措施、验收要求及应留单据与影像，\r为计划编排、安全检查和档案交付提供统一依据。",
+        "Width": 490.5,
+        "Left": 424.5,
+        "Top": 339.0,
+        "Height": 48.0,
+        "Name": "文本框 259",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "1 天 → 1 小时",
+        "Width": 126.0,
+        "Left": 438.0,
+        "Top": 414.0,
+        "Height": 24.0,
+        "Name": "文本框 261",
+        "FontSize": 19.5
+      },
+      {
+        "Text": "WBS 编制耗时（试点目标）",
+        "Width": 132.0,
+        "Left": 573.0,
+        "Top": 420.0,
+        "Height": 12.75,
+        "Name": "文本框 262",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "土建工程、电气安装",
+        "Width": 319.5,
+        "Left": 61.5,
+        "Top": 182.25,
+        "Height": 15.75,
+        "Name": "文本框 263",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "光伏区、储能区、升压站、充电区",
+        "Width": 271.5,
+        "Left": 85.5,
+        "Top": 237.75,
+        "Height": 15.75,
+        "Name": "文本框 264",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "支架安装、储能柜就位、充电桩安装",
+        "Width": 223.5,
+        "Left": 109.5,
+        "Top": 293.25,
+        "Height": 15.75,
+        "Name": "文本框 265",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "定位放线、安装固定、接线检测",
+        "Width": 175.5,
+        "Left": 133.5,
+        "Top": 348.75,
+        "Height": 15.75,
+        "Name": "文本框 266",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "高处坠落、物体打击",
+        "Width": 127.5,
+        "Left": 157.5,
+        "Top": 404.25,
+        "Height": 15.75,
+        "Name": "文本框 267",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "08 ／ 21",
+        "Width": 42.0,
+        "Left": 873.0,
+        "Top": 504.75,
+        "Height": 12.75,
+        "Name": "文本框 268",
+        "FontSize": 10.5
+      }
+    ]
+  },
+  {
+    "Page": 9,
+    "Texts": [
+      {
+        "Text": "03 ／ 场景智能体 · 02",
+        "Width": 870.0,
+        "Left": 45.0,
+        "Top": 45.0,
+        "Height": 12.75,
+        "Name": "TextBox 271",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "智能体 02 · 计划编排",
+        "Width": 258.75,
+        "Left": 45.0,
+        "Top": 81.0,
+        "Height": 33.0,
+        "Name": "TextBox 273",
+        "FontSize": 27.0
+      },
+      {
+        "Text": "按并网节点倒排，变动自动滚动重排",
+        "Width": 204.0,
+        "Left": 711.0,
+        "Top": 95.25,
+        "Height": 18.75,
+        "Name": "TextBox 274",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "排期有依据",
+        "Width": 347.25,
+        "Left": 45.0,
+        "Top": 340.5,
+        "Height": 17.25,
+        "Name": "TextBox 275",
+        "FontSize": 14.25
+      },
+      {
+        "Text": "工期取同类工序历史中位数，按并网日期倒排到天——排期不拍脑袋。",
+        "Width": 347.25,
+        "Left": 45.0,
+        "Top": 362.25,
+        "Height": 43.5,
+        "Name": "TextBox 276",
+        "FontSize": 11.25
+      },
+      {
+        "Text": "变动自动滚",
+        "Width": 278.25,
+        "Left": 410.25,
+        "Top": 340.5,
+        "Height": 17.25,
+        "Name": "TextBox 277",
+        "FontSize": 14.25
+      },
+      {
+        "Text": "材料晚到、雨天停工，下游自动顺延并标出对并网节点的影响。",
+        "Width": 278.25,
+        "Left": 410.25,
+        "Top": 362.25,
+        "Height": 43.5,
+        "Name": "TextBox 278",
+        "FontSize": 11.25
+      },
+      {
+        "Text": "冲突先亮",
+        "Width": 208.5,
+        "Left": 706.5,
+        "Top": 340.5,
+        "Height": 17.25,
+        "Name": "TextBox 279",
+        "FontSize": 14.25
+      },
+      {
+        "Text": "班组撞档、作业面未移交，派单前先预警。",
+        "Width": 208.5,
+        "Left": 706.5,
+        "Top": 362.25,
+        "Height": 43.5,
+        "Name": "TextBox 280",
+        "FontSize": 11.25
+      },
+      {
+        "Text": "偏差提前 ≥7 天可见",
+        "Width": 135.0,
+        "Left": 60.0,
+        "Top": 426.75,
+        "Height": 18.0,
+        "Name": "TextBox 282",
+        "FontSize": 15.0
+      },
+      {
+        "Text": "示例 · 12 个光伏点位",
+        "Width": 105.0,
+        "Left": 60.0,
+        "Top": 142.5,
+        "Height": 12.0,
+        "Name": "TextBox 284",
+        "FontSize": 9.75
+      },
+      {
+        "Text": "06-01",
+        "Width": 27.75,
+        "Left": 165.0,
+        "Top": 142.5,
+        "Height": 12.0,
+        "Name": "TextBox 285",
+        "FontSize": 9.75
+      },
+      {
+        "Text": "06-08",
+        "Width": 27.75,
+        "Left": 303.75,
+        "Top": 142.5,
+        "Height": 12.0,
+        "Name": "TextBox 286",
+        "FontSize": 9.75
+      },
+      {
+        "Text": "06-15",
+        "Width": 27.75,
+        "Left": 441.75,
+        "Top": 142.5,
+        "Height": 12.0,
+        "Name": "TextBox 287",
+        "FontSize": 9.75
+      },
+      {
+        "Text": "06-22",
+        "Width": 27.75,
+        "Left": 580.5,
+        "Top": 142.5,
+        "Height": 12.0,
+        "Name": "TextBox 288",
+        "FontSize": 9.75
+      },
+      {
+        "Text": "06-29",
+        "Width": 27.75,
+        "Left": 718.5,
+        "Top": 142.5,
+        "Height": 12.0,
+        "Name": "TextBox 289",
+        "FontSize": 9.75
+      },
+      {
+        "Text": "07-06",
+        "Width": 27.75,
+        "Left": 857.25,
+        "Top": 142.5,
+        "Height": 12.0,
+        "Name": "TextBox 290",
+        "FontSize": 9.75
+      },
+      {
+        "Text": "基础与接地",
+        "Width": 105.0,
+        "Left": 60.0,
+        "Top": 161.25,
+        "Height": 13.5,
+        "Name": "TextBox 291",
+        "FontSize": 11.25
+      },
+      {
+        "Text": "支架安装",
+        "Width": 105.0,
+        "Left": 60.0,
+        "Top": 188.25,
+        "Height": 13.5,
+        "Name": "TextBox 294",
+        "FontSize": 11.25
+      },
+      {
+        "Text": "滞后 → 下游顺延",
+        "Width": 74.25,
+        "Left": 493.5,
+        "Top": 190.5,
+        "Height": 12.0,
+        "Name": "TextBox 297",
+        "FontSize": 9.75
+      },
+      {
+        "Text": "组件敷设",
+        "Width": 105.0,
+        "Left": 60.0,
+        "Top": 215.25,
+        "Height": 13.5,
+        "Name": "TextBox 298",
+        "FontSize": 11.25
+      },
+      {
+        "Text": "自动顺延 2 天",
+        "Width": 60.75,
+        "Left": 761.25,
+        "Top": 217.5,
+        "Height": 12.0,
+        "Name": "TextBox 301",
+        "FontSize": 9.75
+      },
+      {
+        "Text": "并网调试",
+        "Width": 105.0,
+        "Left": 60.0,
+        "Top": 242.25,
+        "Height": 13.5,
+        "Name": "TextBox 302",
+        "FontSize": 11.25
+      },
+      {
+        "Text": "缓冲被压缩 ⚠",
+        "Width": 61.5,
+        "Left": 618.0,
+        "Top": 244.5,
+        "Height": 12.0,
+        "Name": "TextBox 305",
+        "FontSize": 9.75
+      },
+      {
+        "Text": "并网节点 07-05 · 硬约束",
+        "Width": 110.25,
+        "Left": 712.5,
+        "Top": 170.25,
+        "Height": 12.0,
+        "Name": "TextBox 308",
+        "FontSize": 9.75
+      },
+      {
+        "Text": "从「事后追进度」到「事前调资源」（试点目标）",
+        "Width": 231.0,
+        "Left": 205.5,
+        "Top": 429.75,
+        "Height": 12.75,
+        "Name": "TextBox 309",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "09 ／ 21",
+        "Width": 42.0,
+        "Left": 873.0,
+        "Top": 504.75,
+        "Height": 12.75,
+        "Name": "TextBox 310",
+        "FontSize": 10.5
+      }
+    ]
+  },
+  {
+    "Page": 10,
+    "Texts": [
+      {
+        "Text": "03 ／ 场景智能体 · 03",
+        "Width": 870.0,
+        "Left": 45.0,
+        "Top": 45.0,
+        "Height": 12.75,
+        "Name": "TextBox 313",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "智能体 03 · 施工日志",
+        "Width": 258.75,
+        "Left": 45.0,
+        "Top": 81.0,
+        "Height": 33.0,
+        "Name": "TextBox 315",
+        "FontSize": 27.0
+      },
+      {
+        "Text": "单据、手工、系统三源同轴，日志不再是晚上补的",
+        "Width": 280.5,
+        "Left": 634.5,
+        "Top": 95.25,
+        "Height": 18.75,
+        "Name": "TextBox 316",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "说一段话，成一条日志",
+        "Width": 390.0,
+        "Left": 45.0,
+        "Top": 133.5,
+        "Height": 18.0,
+        "Name": "TextBox 317",
+        "FontSize": 15.0
+      },
+      {
+        "Text": "班组长手机上说两句、拍几张照，自动结构化出人员、机械、部位、完成量与天气。",
+        "Width": 390.0,
+        "Left": 45.0,
+        "Top": 157.5,
+        "Height": 48.0,
+        "Name": "TextBox 318",
+        "FontSize": 12.0
+      },
+      {
+        "Text": "单据事件自动入账",
+        "Width": 390.0,
+        "Left": 45.0,
+        "Top": 236.25,
+        "Height": 18.0,
+        "Name": "TextBox 319",
+        "FontSize": 15.0
+      },
+      {
+        "Text": "报审报验、验收审批自动进日志，每条记录可回源到单据原文，不靠人工转抄。",
+        "Width": 390.0,
+        "Left": 45.0,
+        "Top": 260.25,
+        "Height": 48.0,
+        "Name": "TextBox 320",
+        "FontSize": 12.0
+      },
+      {
+        "Text": "日报周报自动生成",
+        "Width": 390.0,
+        "Left": 45.0,
+        "Top": 339.0,
+        "Height": 18.0,
+        "Name": "TextBox 321",
+        "FontSize": 15.0
+      },
+      {
+        "Text": "按监理与业主的既有格式输出，附当日影像，晚上不再集中补写。",
+        "Width": 390.0,
+        "Left": 45.0,
+        "Top": 363.0,
+        "Height": 24.0,
+        "Name": "TextBox 322",
+        "FontSize": 12.0
+      },
+      {
+        "Text": "10 分钟 → 1 分钟",
+        "Width": 144.75,
+        "Left": 58.5,
+        "Top": 428.25,
+        "Height": 21.75,
+        "Name": "TextBox 324",
+        "FontSize": 18.0
+      },
+      {
+        "Text": "单点日志耗时，完整率 ≥95%（试点目标）",
+        "Width": 201.0,
+        "Left": 212.25,
+        "Top": 432.75,
+        "Height": 12.75,
+        "Name": "TextBox 325",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "示例 · 某点位日志时间轴（三源同轴）",
+        "Width": 417.0,
+        "Left": 480.0,
+        "Top": 148.5,
+        "Height": 12.75,
+        "Name": "TextBox 327",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "09:12　隐蔽验收单提交审批",
+        "Width": 144.0,
+        "Left": 513.0,
+        "Top": 179.25,
+        "Height": 13.5,
+        "Name": "TextBox 331",
+        "FontSize": 11.25
+      },
+      {
+        "Text": "单据事件",
+        "Width": 36.0,
+        "Left": 844.5,
+        "Top": 180.75,
+        "Height": 11.25,
+        "Name": "TextBox 333",
+        "FontSize": 9.0
+      },
+      {
+        "Text": "3# 方阵直流侧 · 附照片 6 张 · 提交人：张伟",
+        "Width": 373.5,
+        "Left": 513.0,
+        "Top": 195.75,
+        "Height": 12.0,
+        "Name": "TextBox 334",
+        "FontSize": 9.75
+      },
+      {
+        "Text": "14:30　现场日志：组件安装 120 块",
+        "Width": 182.25,
+        "Left": 513.0,
+        "Top": 231.75,
+        "Height": 13.5,
+        "Name": "TextBox 338",
+        "FontSize": 11.25
+      },
+      {
+        "Text": "手工 · 语音转写",
+        "Width": 63.75,
+        "Left": 816.75,
+        "Top": 233.25,
+        "Height": 11.25,
+        "Name": "TextBox 340",
+        "FontSize": 9.0
+      },
+      {
+        "Text": "出勤 8 人 · 机械 2 台 · 天气多云（自动带入）",
+        "Width": 373.5,
+        "Left": 513.0,
+        "Top": 248.25,
+        "Height": 12.0,
+        "Name": "TextBox 341",
+        "FontSize": 9.75
+      },
+      {
+        "Text": "16:05　进度重算：62% → 68%",
+        "Width": 165.75,
+        "Left": 513.0,
+        "Top": 284.25,
+        "Height": 13.5,
+        "Name": "TextBox 345",
+        "FontSize": 11.25
+      },
+      {
+        "Text": "系统",
+        "Width": 18.0,
+        "Left": 862.5,
+        "Top": 285.75,
+        "Height": 11.25,
+        "Name": "TextBox 347",
+        "FontSize": 9.0
+      },
+      {
+        "Text": "触发：隐蔽验收单审批通过，完成量 +80 块",
+        "Width": 373.5,
+        "Left": 513.0,
+        "Top": 300.75,
+        "Height": 12.0,
+        "Name": "TextBox 348",
+        "FontSize": 9.75
+      },
+      {
+        "Text": "17:40　日报生成并推送监理",
+        "Width": 144.0,
+        "Left": 513.0,
+        "Top": 336.75,
+        "Height": 13.5,
+        "Name": "TextBox 351",
+        "FontSize": 11.25
+      },
+      {
+        "Text": "智能体",
+        "Width": 27.0,
+        "Left": 853.5,
+        "Top": 338.25,
+        "Height": 11.25,
+        "Name": "TextBox 353",
+        "FontSize": 9.0
+      },
+      {
+        "Text": "汇总当日单据、影像与完成量，格式按监理要求",
+        "Width": 373.5,
+        "Left": 513.0,
+        "Top": 353.25,
+        "Height": 12.0,
+        "Name": "TextBox 354",
+        "FontSize": 9.75
+      },
+      {
+        "Text": "10 ／ 21",
+        "Width": 42.0,
+        "Left": 873.0,
+        "Top": 504.75,
+        "Height": 12.75,
+        "Name": "TextBox 355",
+        "FontSize": 10.5
+      }
+    ]
+  },
+  {
+    "Page": 11,
+    "Texts": [
+      {
+        "Text": "03 ／ 场景智能体 · 04",
+        "Width": 870.0,
+        "Left": 45.0,
+        "Top": 45.0,
+        "Height": 12.75,
+        "Name": "TextBox 358",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "智能体 04 · 安全质量检查",
+        "Width": 312.75,
+        "Left": 45.0,
+        "Top": 81.0,
+        "Height": 33.0,
+        "Name": "TextBox 360",
+        "FontSize": 27.0
+      },
+      {
+        "Text": "风险点长在工序上，检查跟着任务走",
+        "Width": 204.0,
+        "Left": 711.0,
+        "Top": 95.25,
+        "Height": 18.75,
+        "Name": "TextBox 361",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "高风险工序 · 标准风险点（随分部分项维护）",
+        "Width": 420.0,
+        "Left": 45.0,
+        "Top": 133.5,
+        "Height": 12.75,
+        "Name": "TextBox 362",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "组件吊装",
+        "Width": 181.5,
+        "Left": 57.0,
+        "Top": 164.25,
+        "Height": 15.0,
+        "Name": "TextBox 364",
+        "FontSize": 12.0
+      },
+      {
+        "Text": "吊装区域未隔离 · 交叉作业",
+        "Width": 181.5,
+        "Left": 57.0,
+        "Top": 182.25,
+        "Height": 12.0,
+        "Name": "TextBox 365",
+        "FontSize": 9.75
+      },
+      {
+        "Text": "储能柜就位",
+        "Width": 181.5,
+        "Left": 271.5,
+        "Top": 164.25,
+        "Height": 15.0,
+        "Name": "TextBox 367",
+        "FontSize": 12.0
+      },
+      {
+        "Text": "重型吊装 · 电池端子短路",
+        "Width": 181.5,
+        "Left": 271.5,
+        "Top": 182.25,
+        "Height": 12.0,
+        "Name": "TextBox 368",
+        "FontSize": 9.75
+      },
+      {
+        "Text": "直流带电作业",
+        "Width": 181.5,
+        "Left": 57.0,
+        "Top": 221.25,
+        "Height": 15.0,
+        "Name": "TextBox 370",
+        "FontSize": 12.0
+      },
+      {
+        "Text": "触电 · 电弧 · 误碰带电体",
+        "Width": 181.5,
+        "Left": 57.0,
+        "Top": 239.25,
+        "Height": 12.0,
+        "Name": "TextBox 371",
+        "FontSize": 9.75
+      },
+      {
+        "Text": "电缆沟敷设",
+        "Width": 181.5,
+        "Left": 271.5,
+        "Top": 221.25,
+        "Height": 15.0,
+        "Name": "TextBox 373",
+        "FontSize": 12.0
+      },
+      {
+        "Text": "沟槽坍塌 · 临时用电",
+        "Width": 181.5,
+        "Left": 271.5,
+        "Top": 239.25,
+        "Height": 12.0,
+        "Name": "TextBox 374",
+        "FontSize": 9.75
+      },
+      {
+        "Text": "屋面临边作业",
+        "Width": 181.5,
+        "Left": 57.0,
+        "Top": 278.25,
+        "Height": 15.0,
+        "Name": "TextBox 376",
+        "FontSize": 12.0
+      },
+      {
+        "Text": "高处坠落 · 物料坠落",
+        "Width": 181.5,
+        "Left": 57.0,
+        "Top": 296.25,
+        "Height": 12.0,
+        "Name": "TextBox 377",
+        "FontSize": 9.75
+      },
+      {
+        "Text": "并网调试",
+        "Width": 181.5,
+        "Left": 271.5,
+        "Top": 278.25,
+        "Height": 15.0,
+        "Name": "TextBox 379",
+        "FontSize": 12.0
+      },
+      {
+        "Text": "误带电 · 反送电",
+        "Width": 181.5,
+        "Left": 271.5,
+        "Top": 296.25,
+        "Height": 12.0,
+        "Name": "TextBox 380",
+        "FontSize": 9.75
+      },
+      {
+        "Text": "检查项未完成，任务不允许闭合——清单跟着标准走，不靠老师傅记忆。",
+        "Width": 420.0,
+        "Left": 45.0,
+        "Top": 327.75,
+        "Height": 13.5,
+        "Name": "TextBox 381",
+        "FontSize": 11.25
+      },
+      {
+        "Text": "01",
+        "Width": 15.75,
+        "Left": 499.5,
+        "Top": 141.75,
+        "Height": 15.75,
+        "Name": "TextBox 383",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "开工带出",
+        "Width": 381.0,
+        "Left": 534.0,
+        "Top": 133.5,
+        "Height": 16.5,
+        "Name": "TextBox 384",
+        "FontSize": 13.5
+      },
+      {
+        "Text": "任务开工即生成检查清单，逐项确认留痕",
+        "Width": 381.0,
+        "Left": 534.0,
+        "Top": 151.5,
+        "Height": 12.75,
+        "Name": "TextBox 385",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "02",
+        "Width": 15.75,
+        "Left": 499.5,
+        "Top": 220.5,
+        "Height": 15.75,
+        "Name": "TextBox 387",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "影像核验",
+        "Width": 381.0,
+        "Left": 534.0,
+        "Top": 212.25,
+        "Height": 16.5,
+        "Name": "TextBox 388",
+        "FontSize": 13.5
+      },
+      {
+        "Text": "现场照片按检查项归位，缺项自动提示",
+        "Width": 381.0,
+        "Left": 534.0,
+        "Top": 230.25,
+        "Height": 12.75,
+        "Name": "TextBox 389",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "03",
+        "Width": 15.75,
+        "Left": 499.5,
+        "Top": 299.25,
+        "Height": 15.75,
+        "Name": "TextBox 391",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "分级派单",
+        "Width": 381.0,
+        "Left": 534.0,
+        "Top": 291.0,
+        "Height": 16.5,
+        "Name": "TextBox 392",
+        "FontSize": 13.5
+      },
+      {
+        "Text": "隐患按等级派单到人，超时自动升级",
+        "Width": 381.0,
+        "Left": 534.0,
+        "Top": 309.0,
+        "Height": 12.75,
+        "Name": "TextBox 393",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "04",
+        "Width": 15.75,
+        "Left": 499.5,
+        "Top": 378.0,
+        "Height": 15.75,
+        "Name": "TextBox 395",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "闭环销项",
+        "Width": 381.0,
+        "Left": 534.0,
+        "Top": 369.75,
+        "Height": 16.5,
+        "Name": "TextBox 396",
+        "FontSize": 13.5
+      },
+      {
+        "Text": "整改后复核销项，重复问题回写标准库",
+        "Width": 381.0,
+        "Left": 534.0,
+        "Top": 387.75,
+        "Height": 12.75,
+        "Name": "TextBox 397",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "隐患闭环时长 −50%",
+        "Width": 138.75,
+        "Left": 60.0,
+        "Top": 424.5,
+        "Height": 18.0,
+        "Name": "TextBox 399",
+        "FontSize": 15.0
+      },
+      {
+        "Text": "重复隐患回写标准，越用越准（试点目标）",
+        "Width": 199.5,
+        "Left": 209.25,
+        "Top": 427.5,
+        "Height": 12.75,
+        "Name": "TextBox 400",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "11 ／ 21",
+        "Width": 42.0,
+        "Left": 873.0,
+        "Top": 504.75,
+        "Height": 12.75,
+        "Name": "TextBox 401",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "专项扩展：可引入站班会识别、施工变更呈现等子智能体",
+        "Width": 420.0,
+        "Left": 45.0,
+        "Top": 360.0,
+        "Height": 18.0,
+        "Name": "V9专项能力引入",
+        "FontSize": 12.0
+      },
+      {
+        "Text": "站班会核验到岗与资格，变更呈现核查实测走线与施工图差异。",
+        "Width": 420.0,
+        "Left": 45.0,
+        "Top": 382.5,
+        "Height": 18.0,
+        "Name": "V9专项能力作用",
+        "FontSize": 10.5
+      }
+    ]
+  },
+  {
+    "Page": 12,
+    "Texts": [
+      {
+        "Text": "03 ／ 场景智能体 · 01—04 · 界面展示",
+        "Width": 870.0,
+        "Left": 45.0,
+        "Top": 45.0,
+        "Height": 15.0,
+        "Name": "页眉",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "标准任务贯通计划、日志与检查",
+        "Width": 870.0,
+        "Left": 45.0,
+        "Top": 81.0,
+        "Height": 33.0,
+        "Name": "主标题",
+        "FontSize": 27.0
+      },
+      {
+        "Text": "同一套分部分项，衔接后台标准、每日安排与现场执行",
+        "Width": 870.0,
+        "Left": 45.0,
+        "Top": 124.5,
+        "Height": 21.0,
+        "Name": "副标题",
+        "FontSize": 13.5
+      },
+      {
+        "Text": "01  标准分部分项",
+        "Width": 195.0,
+        "Left": 45.0,
+        "Top": 156.0,
+        "Height": 21.75,
+        "Name": "环节1",
+        "FontSize": 16.5
+      },
+      {
+        "Text": "专业与工序逐级组织",
+        "Width": 195.0,
+        "Left": 45.0,
+        "Top": 182.25,
+        "Height": 18.0,
+        "Name": "说明1",
+        "FontSize": 12.0
+      },
+      {
+        "Text": "02  计划编排",
+        "Width": 195.0,
+        "Left": 270.0,
+        "Top": 156.0,
+        "Height": 21.75,
+        "Name": "环节2",
+        "FontSize": 16.5
+      },
+      {
+        "Text": "周计划分解到每日",
+        "Width": 195.0,
+        "Left": 270.0,
+        "Top": 182.25,
+        "Height": 18.0,
+        "Name": "说明2",
+        "FontSize": 12.0
+      },
+      {
+        "Text": "03  施工日志",
+        "Width": 195.0,
+        "Left": 495.0,
+        "Top": 156.0,
+        "Height": 21.75,
+        "Name": "环节3",
+        "FontSize": 16.5
+      },
+      {
+        "Text": "任务信息带到现场",
+        "Width": 195.0,
+        "Left": 495.0,
+        "Top": 182.25,
+        "Height": 18.0,
+        "Name": "说明3",
+        "FontSize": 12.0
+      },
+      {
+        "Text": "04  检查整改",
+        "Width": 195.0,
+        "Left": 720.0,
+        "Top": 156.0,
+        "Height": 21.75,
+        "Name": "环节4",
+        "FontSize": 16.5
+      },
+      {
+        "Text": "检查状态关联整改",
+        "Width": 195.0,
+        "Left": 720.0,
+        "Top": 182.25,
+        "Height": 18.0,
+        "Name": "说明4",
+        "FontSize": 12.0
+      },
+      {
+        "Text": "智能体衔接",
+        "Width": 90.0,
+        "Left": 45.0,
+        "Top": 490.5,
+        "Height": 16.5,
+        "Name": "智能体衔接标签",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "按标准生成任务，辅助排期与日志归集，提示检查缺项及整改期限",
+        "Width": 693.75,
+        "Left": 146.25,
+        "Top": 492.0,
+        "Height": 16.5,
+        "Name": "智能体衔接内容",
+        "FontSize": 12.0
+      },
+      {
+        "Text": "整改信息",
+        "Width": 190.5,
+        "Left": 724.5,
+        "Top": 318.0,
+        "Height": 16.5,
+        "Name": "移动整改_标题",
+        "FontSize": 9.4
+      },
+      {
+        "Text": "整改推送人",
+        "Width": 64.5,
+        "Left": 724.5,
+        "Top": 339.75,
+        "Height": 12.75,
+        "Name": "移动整改_推送人_字段",
+        "FontSize": 8.25
+      },
+      {
+        "Text": "示例负责人",
+        "Width": 126.0,
+        "Left": 789.0,
+        "Top": 339.75,
+        "Height": 12.75,
+        "Name": "移动整改_推送人_内容",
+        "FontSize": 8.25
+      },
+      {
+        "Text": "整改抄送人",
+        "Width": 64.5,
+        "Left": 724.5,
+        "Top": 357.75,
+        "Height": 12.75,
+        "Name": "移动整改_抄送人_字段",
+        "FontSize": 8.25
+      },
+      {
+        "Text": "整改截至日期",
+        "Width": 64.5,
+        "Left": 724.5,
+        "Top": 375.75,
+        "Height": 12.75,
+        "Name": "移动整改_截止_字段",
+        "FontSize": 8.25
+      },
+      {
+        "Text": "整改单据编号",
+        "Width": 64.5,
+        "Left": 724.5,
+        "Top": 393.75,
+        "Height": 12.75,
+        "Name": "移动整改_单据_字段",
+        "FontSize": 8.25
+      },
+      {
+        "Text": "ZG00000682",
+        "Width": 126.0,
+        "Left": 789.0,
+        "Top": 393.75,
+        "Height": 12.75,
+        "Name": "移动整改_单据_内容",
+        "FontSize": 8.25
+      },
+      {
+        "Text": "工艺标准整改信息",
+        "Width": 190.5,
+        "Left": 724.5,
+        "Top": 421.5,
+        "Height": 16.5,
+        "Name": "工艺整改_标题",
+        "FontSize": 9.4
+      },
+      {
+        "Text": "整改要求",
+        "Width": 64.5,
+        "Left": 724.5,
+        "Top": 442.5,
+        "Height": 12.75,
+        "Name": "工艺整改_要求_字段",
+        "FontSize": 8.25
+      },
+      {
+        "Text": "按工艺标准整改（示例）",
+        "Width": 126.0,
+        "Left": 789.0,
+        "Top": 442.5,
+        "Height": 12.75,
+        "Name": "工艺整改_要求_内容",
+        "FontSize": 8.25
+      },
+      {
+        "Text": "整改截止日期",
+        "Width": 64.5,
+        "Left": 724.5,
+        "Top": 463.5,
+        "Height": 12.75,
+        "Name": "工艺整改_截止_字段",
+        "FontSize": 8.25
+      },
+      {
+        "Text": "2026/08/27",
+        "Width": 126.0,
+        "Left": 789.0,
+        "Top": 463.5,
+        "Height": 12.75,
+        "Name": "工艺整改_截止_内容",
+        "FontSize": 8.25
+      },
+      {
+        "Text": "周计划 · 任务范围",
+        "Width": 195.0,
+        "Left": 270.0,
+        "Top": 204.0,
+        "Height": 16.5,
+        "Name": "计划展示_周计划标题",
+        "FontSize": 10.15
+      },
+      {
+        "Text": "2026/09/24—09/30",
+        "Width": 195.0,
+        "Left": 270.0,
+        "Top": 226.5,
+        "Height": 15.0,
+        "Name": "计划展示_计划周期",
+        "FontSize": 8.65
+      },
+      {
+        "Text": "每日作业安排",
+        "Width": 195.0,
+        "Left": 270.0,
+        "Top": 332.25,
+        "Height": 16.5,
+        "Name": "计划展示_每日标题",
+        "FontSize": 10.15
+      },
+      {
+        "Text": "12 ／ 21",
+        "Width": 45.0,
+        "Left": 870.0,
+        "Top": 506.25,
+        "Height": 15.0,
+        "Name": "统一页码",
+        "FontSize": 10.5
+      }
+    ]
+  },
+  {
+    "Page": 13,
+    "Texts": [
+      {
+        "Text": "03 ／ 安全质量检查 · 专项能力",
+        "Width": 870.0,
+        "Left": 45.0,
+        "Top": 45.0,
+        "Height": 15.0,
+        "Name": "站班会页眉",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "AI 站班会识别：谁到岗，资格够不够",
+        "Width": 570.0,
+        "Left": 45.0,
+        "Top": 81.0,
+        "Height": 33.0,
+        "Name": "站班会主标题",
+        "FontSize": 27.0
+      },
+      {
+        "Text": "一张现场照片，AI 替你把人点清",
+        "Width": 280.5,
+        "Left": 634.5,
+        "Top": 90.0,
+        "Height": 27.0,
+        "Name": "站班会副标题",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "AI 站班会识别记录 · 示例（计划 7 人 / 到岗 5 人）",
+        "Width": 621.0,
+        "Left": 45.0,
+        "Top": 130.5,
+        "Height": 13.5,
+        "Name": "站班会图片说明",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "01",
+        "Width": 30.0,
+        "Left": 688.5,
+        "Top": 148.5,
+        "Height": 30.0,
+        "Name": "专项编号1",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "到岗核验",
+        "Width": 184.5,
+        "Left": 730.5,
+        "Top": 148.5,
+        "Height": 18.0,
+        "Name": "专项标题1",
+        "FontSize": 13.5
+      },
+      {
+        "Text": "AI比对站班会照片与人脸库，\r计划人数、实际到岗一次核清。",
+        "Width": 184.5,
+        "Left": 730.5,
+        "Top": 168.0,
+        "Height": 43.5,
+        "Name": "专项正文1",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "02",
+        "Width": 30.0,
+        "Left": 688.5,
+        "Top": 217.5,
+        "Height": 30.0,
+        "Name": "专项编号2",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "资格校验",
+        "Width": 184.5,
+        "Left": 730.5,
+        "Top": 217.5,
+        "Height": 18.0,
+        "Name": "专项标题2",
+        "FontSize": 13.5
+      },
+      {
+        "Text": "与准入台账比对岗位和证书，\r资格缺项当场标红，不具备不上岗。",
+        "Width": 184.5,
+        "Left": 730.5,
+        "Top": 237.0,
+        "Height": 43.5,
+        "Name": "专项正文2",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "03",
+        "Width": 30.0,
+        "Left": 688.5,
+        "Top": 286.5,
+        "Height": 30.0,
+        "Name": "专项编号3",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "异常成单",
+        "Width": 184.5,
+        "Left": 730.5,
+        "Top": 286.5,
+        "Height": 18.0,
+        "Name": "专项标题3",
+        "FontSize": 13.5
+      },
+      {
+        "Text": "人数不足、比对不符或资格缺项，\r自动成单，附现场照片可回查。",
+        "Width": 184.5,
+        "Left": 730.5,
+        "Top": 306.0,
+        "Height": 43.5,
+        "Name": "专项正文3",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "异常未销项，任务不闭合",
+        "Width": 193.5,
+        "Left": 705.0,
+        "Top": 412.8971,
+        "Height": 21.0,
+        "Name": "专项结果标题",
+        "FontSize": 13.5
+      },
+      {
+        "Text": "AI识别结果自动写入当日安全质量\r检查清单，派单到责任人。",
+        "Width": 193.5,
+        "Left": 705.0,
+        "Top": 434.6471,
+        "Height": 42.0,
+        "Name": "专项结果正文",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "13 ／ 21",
+        "Width": 42.0,
+        "Left": 873.0,
+        "Top": 504.75,
+        "Height": 12.75,
+        "Name": "站班会页脚",
+        "FontSize": 10.5
+      }
+    ]
+  },
+  {
+    "Page": 14,
+    "Texts": [
+      {
+        "Text": "03 ／ 安全质量检查 · 专项能力",
+        "Width": 870.0,
+        "Left": 45.0,
+        "Top": 45.0,
+        "Height": 15.0,
+        "Name": "Rectangle 2",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "施工变更呈现：原图与现场对比",
+        "Width": 570.0,
+        "Left": 45.0,
+        "Top": 81.0,
+        "Height": 33.0,
+        "Name": "Rectangle 4",
+        "FontSize": 27.0
+      },
+      {
+        "Text": "测绘点位与照片对上原图，走线一变就出对比图",
+        "Width": 280.5,
+        "Left": 634.5,
+        "Top": 90.0,
+        "Height": 27.0,
+        "Name": "Rectangle 5",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "14 ／ 21",
+        "Width": 42.0,
+        "Left": 873.0,
+        "Top": 504.75,
+        "Height": 12.75,
+        "Name": "V9专项页脚",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "施工变更对比 · 原图与施工实际",
+        "Width": 621.0,
+        "Left": 45.0,
+        "Top": 130.5,
+        "Height": 13.5,
+        "Name": "施工变更图片说明",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "01",
+        "Width": 30.0,
+        "Left": 688.5,
+        "Top": 148.5,
+        "Height": 30.0,
+        "Name": "专项编号1",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "点位与照片自动落图",
+        "Width": 184.5,
+        "Left": 730.5,
+        "Top": 148.5,
+        "Height": 18.0,
+        "Name": "专项标题1",
+        "FontSize": 13.5
+      },
+      {
+        "Text": "现场实时测绘点位、照片随时上传，\r坐标、朝向自动挂到对应图纸。",
+        "Width": 184.5,
+        "Left": 730.5,
+        "Top": 168.0,
+        "Height": 43.5,
+        "Name": "专项正文1",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "02",
+        "Width": 30.0,
+        "Left": 688.5,
+        "Top": 217.5,
+        "Height": 30.0,
+        "Name": "专项编号2",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "逐段比对判定变更",
+        "Width": 184.5,
+        "Left": 730.5,
+        "Top": 217.5,
+        "Height": 18.0,
+        "Name": "专项标题2",
+        "FontSize": 13.5
+      },
+      {
+        "Text": "实测走线与原施工图逐段比对，\r超出允许偏差即判定变更，\r标出变更段落与偏移量。",
+        "Width": 184.5,
+        "Left": 730.5,
+        "Top": 237.0,
+        "Height": 43.5,
+        "Name": "专项正文2",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "03",
+        "Width": 30.0,
+        "Left": 688.5,
+        "Top": 286.5,
+        "Height": 30.0,
+        "Name": "专项编号3",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "对比图与变更单一键生成",
+        "Width": 184.5,
+        "Left": 730.5,
+        "Top": 286.5,
+        "Height": 18.0,
+        "Name": "专项标题3",
+        "FontSize": 13.5
+      },
+      {
+        "Text": "原设计与实测路径同图叠放，\r标偏移、标长度，可直接交底、报审。\r全程不靠人工绘图。",
+        "Width": 184.5,
+        "Left": 730.5,
+        "Top": 306.0,
+        "Height": 43.5,
+        "Name": "专项正文3",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "1 天 → 10 分钟",
+        "Width": 193.5,
+        "Left": 705.0,
+        "Top": 413.25,
+        "Height": 21.0,
+        "Name": "专项结果标题",
+        "FontSize": 13.5
+      },
+      {
+        "Text": "变更确认与出图耗时（试点目标）",
+        "Width": 193.5,
+        "Left": 705.0,
+        "Top": 435.0,
+        "Height": 42.0,
+        "Name": "专项结果正文",
+        "FontSize": 10.5
+      }
+    ]
+  },
+  {
+    "Page": 15,
+    "Texts": [
+      {
+        "Text": "03 ／ 场景智能体 · 05",
+        "Width": 870.0,
+        "Left": 45.0,
+        "Top": 45.0,
+        "Height": 15.0,
+        "Name": "文本框 11",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "智能体 05 · 分包队伍",
+        "Width": 570.0,
+        "Left": 45.0,
+        "Top": 81.0,
+        "Height": 33.0,
+        "Name": "文本框 13",
+        "FontSize": 27.0
+      },
+      {
+        "Text": "从「谁在场派谁」到「谁合适派谁」",
+        "Width": 280.5,
+        "Left": 634.5,
+        "Top": 90.0,
+        "Height": 27.0,
+        "Name": "文本框 14",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "现在：派活靠电话",
+        "Width": 870.0,
+        "Left": 45.0,
+        "Top": 133.5,
+        "Height": 19.5,
+        "Name": "文本框 16",
+        "FontSize": 15.0
+      },
+      {
+        "Text": "谁熟悉、谁在场就派谁，忙闲不均",
+        "Width": 264.75,
+        "Left": 45.0,
+        "Top": 159.75,
+        "Height": 22.5,
+        "Name": "文本框 18",
+        "FontSize": 12.0
+      },
+      {
+        "Text": "证件到期靠人盯，合规靠抽查",
+        "Width": 264.75,
+        "Left": 340.5,
+        "Top": 159.75,
+        "Height": 22.5,
+        "Name": "文本框 20",
+        "FontSize": 12.0
+      },
+      {
+        "Text": "干得好不好没有记录，结算各说各话",
+        "Width": 279.0,
+        "Left": 636.0,
+        "Top": 159.75,
+        "Height": 22.5,
+        "Name": "文本框 22",
+        "FontSize": 12.0
+      },
+      {
+        "Text": "新能源点位分散，一个班组同时跑三四个点，靠电话对表迟早出错。",
+        "Width": 870.0,
+        "Left": 45.0,
+        "Top": 399.0,
+        "Height": 17.25,
+        "Name": "文本框 24",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "派单看匹配",
+        "Width": 234.75,
+        "Left": 60.0,
+        "Top": 211.5,
+        "Height": 21.0,
+        "Name": "文本框 27",
+        "FontSize": 15.0
+      },
+      {
+        "Text": "工种、证件、在岗负载、历史履约\r四个维度推荐人选——负载 41%\r优先于负载 86%，忙闲先摆平。",
+        "Width": 234.75,
+        "Left": 60.0,
+        "Top": 244.5,
+        "Height": 114.0,
+        "Name": "文本框 28",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "证件到期先知",
+        "Width": 234.75,
+        "Left": 355.5,
+        "Top": 211.5,
+        "Height": 21.0,
+        "Name": "文本框 30",
+        "FontSize": 15.0
+      },
+      {
+        "Text": "电工证、登高证、入场教育到期\r自动预警，不合规的人员\r派不出去、上不了岗。",
+        "Width": 234.75,
+        "Left": 355.5,
+        "Top": 244.5,
+        "Height": 114.0,
+        "Name": "文本框 31",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "履约有画像",
+        "Width": 249.0,
+        "Left": 651.0,
+        "Top": 211.5,
+        "Height": 21.0,
+        "Name": "文本框 33",
+        "FontSize": 15.0
+      },
+      {
+        "Text": "进度、质量、安全记录沉淀为班组画像，\r作为后续派单、评优与结算的统一依据。",
+        "Width": 249.0,
+        "Left": 651.0,
+        "Top": 244.5,
+        "Height": 114.0,
+        "Name": "文本框 34",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "证件过期 0 起 · 关键工序一次匹配率 ≥90%",
+        "Width": 547.5,
+        "Left": 60.0,
+        "Top": 436.5,
+        "Height": 19.5,
+        "Name": "文本框 36",
+        "FontSize": 15.0
+      },
+      {
+        "Text": "合规与效率一起管（试点目标）",
+        "Width": 262.5,
+        "Left": 637.5,
+        "Top": 439.5,
+        "Height": 13.5,
+        "Name": "文本框 37",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "15 ／ 21",
+        "Width": 42.0,
+        "Left": 873.0,
+        "Top": 504.75,
+        "Height": 12.75,
+        "Name": "文本框 38",
+        "FontSize": 10.5
+      }
+    ]
+  },
+  {
+    "Page": 16,
+    "Texts": [
+      {
+        "Text": "03 ／ 场景智能体 · 05 · 界面展示",
+        "Width": 870.0,
+        "Left": 45.0,
+        "Top": 45.0,
+        "Height": 15.0,
+        "Name": "界面页眉",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "分包队伍 · 系统界面展示",
+        "Width": 570.0,
+        "Left": 45.0,
+        "Top": 81.0,
+        "Height": 33.0,
+        "Name": "界面主标题",
+        "FontSize": 27.0
+      },
+      {
+        "Text": "人员、资质与履约信息集中可查",
+        "Width": 280.5,
+        "Left": 634.5,
+        "Top": 90.0,
+        "Height": 27.0,
+        "Name": "界面副标题",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "01",
+        "Width": 30.0,
+        "Left": 688.5,
+        "Top": 148.5,
+        "Height": 30.0,
+        "Name": "界面编号1",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "人员与资质",
+        "Width": 184.5,
+        "Left": 730.5,
+        "Top": 148.5,
+        "Height": 18.0,
+        "Name": "界面说明标题1",
+        "FontSize": 13.5
+      },
+      {
+        "Text": "集中查看准入、参保与特种作业人员，\r以及企业资质类别和有效期。",
+        "Width": 184.5,
+        "Left": 730.5,
+        "Top": 168.0,
+        "Height": 43.5,
+        "Name": "界面说明正文1",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "02",
+        "Width": 30.0,
+        "Left": 688.5,
+        "Top": 217.5,
+        "Height": 30.0,
+        "Name": "界面编号2",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "履约与违章",
+        "Width": 184.5,
+        "Left": 730.5,
+        "Top": 217.5,
+        "Height": 18.0,
+        "Name": "界面说明标题2",
+        "FontSize": 13.5
+      },
+      {
+        "Text": "汇总施工项目、施工评价与违章扣分，\r辅助查看队伍履约和风险情况。",
+        "Width": 184.5,
+        "Left": 730.5,
+        "Top": 237.0,
+        "Height": 43.5,
+        "Name": "界面说明正文2",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "03",
+        "Width": 30.0,
+        "Left": 688.5,
+        "Top": 286.5,
+        "Height": 30.0,
+        "Name": "界面编号3",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "人员流动",
+        "Width": 184.5,
+        "Left": 730.5,
+        "Top": 286.5,
+        "Height": 18.0,
+        "Name": "界面说明标题3",
+        "FontSize": 13.5
+      },
+      {
+        "Text": "查看流入流出与借入借出情况，\r辅助掌握队伍人员变化。",
+        "Width": 184.5,
+        "Left": 730.5,
+        "Top": 306.0,
+        "Height": 43.5,
+        "Name": "界面说明正文3",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "队伍状态集中可查",
+        "Width": 193.5,
+        "Left": 705.0,
+        "Top": 377.2108,
+        "Height": 21.0,
+        "Name": "界面结果标题",
+        "FontSize": 13.5
+      },
+      {
+        "Text": "人员、资质与履约信息同屏呈现，\r辅助项目部选队伍、查风险。",
+        "Width": 193.5,
+        "Left": 705.0,
+        "Top": 398.9608,
+        "Height": 42.0,
+        "Name": "界面结果正文",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "16 ／ 21",
+        "Width": 42.0,
+        "Left": 873.0,
+        "Top": 504.75,
+        "Height": 12.75,
+        "Name": "界面页码",
+        "FontSize": 10.5
+      }
+    ]
+  },
+  {
+    "Page": 17,
+    "Texts": [
+      {
+        "Text": "03 ／ 场景智能体 · 06",
+        "Width": 870.0,
+        "Left": 45.0,
+        "Top": 45.0,
+        "Height": 15.0,
+        "Name": "文本框 41",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "智能体 06 · 档案交付",
+        "Width": 570.0,
+        "Left": 45.0,
+        "Top": 81.0,
+        "Height": 33.0,
+        "Name": "文本框 43",
+        "FontSize": 27.0
+      },
+      {
+        "Text": "资料随工序长出来，验收不再集中补档",
+        "Width": 280.5,
+        "Left": 634.5,
+        "Top": 90.0,
+        "Height": 27.0,
+        "Name": "文本框 44",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "应交清册 · 随分部分项自动生成",
+        "Width": 352.5,
+        "Left": 45.0,
+        "Top": 133.5,
+        "Height": 12.75,
+        "Name": "文本框 45",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "随工序形成",
+        "Width": 144.0,
+        "Left": 55.5,
+        "Top": 175.5,
+        "Height": 19.5,
+        "Name": "文本框 47",
+        "FontSize": 12.0
+      },
+      {
+        "Text": "自动挂接归集",
+        "Width": 144.0,
+        "Left": 231.75,
+        "Top": 175.5,
+        "Height": 19.5,
+        "Name": "文本框 49",
+        "FontSize": 12.0
+      },
+      {
+        "Text": "齐套校验",
+        "Width": 144.0,
+        "Left": 408.0,
+        "Top": 175.5,
+        "Height": 19.5,
+        "Name": "文本框 51",
+        "FontSize": 12.0
+      },
+      {
+        "Text": "缺件催办",
+        "Width": 144.0,
+        "Left": 584.25,
+        "Top": 175.5,
+        "Height": 19.5,
+        "Name": "文本框 53",
+        "FontSize": 12.0
+      },
+      {
+        "Text": "一次组卷交付",
+        "Width": 144.0,
+        "Left": 760.5,
+        "Top": 175.5,
+        "Height": 19.5,
+        "Name": "文本框 55",
+        "FontSize": 12.0
+      },
+      {
+        "Text": "资料随工序长出来",
+        "Width": 264.75,
+        "Left": 45.0,
+        "Top": 294.0,
+        "Height": 20.25,
+        "Name": "文本框 56",
+        "FontSize": 15.0
+      },
+      {
+        "Text": "开工报审、材料报验、隐蔽验收、检验批在任务完成时自动归集——不搞验收前集中补写。",
+        "Width": 264.75,
+        "Left": 45.0,
+        "Top": 333.0,
+        "Height": 61.5,
+        "Name": "文本框 57",
+        "FontSize": 12.0
+      },
+      {
+        "Text": "校验定位到页",
+        "Width": 264.75,
+        "Left": 339.75,
+        "Top": 294.0,
+        "Height": 20.25,
+        "Name": "文本框 58",
+        "FontSize": 15.0
+      },
+      {
+        "Text": "签认缺失、日期不衔接、跨文件不一致自动检查，问题清单直接派给整改人，复核留痕。",
+        "Width": 264.75,
+        "Left": 339.75,
+        "Top": 333.0,
+        "Height": 61.5,
+        "Name": "文本框 59",
+        "FontSize": 12.0
+      },
+      {
+        "Text": "交付即结算",
+        "Width": 280.5,
+        "Left": 634.5,
+        "Top": 294.0,
+        "Height": 20.25,
+        "Name": "文本框 60",
+        "FontSize": 15.0
+      },
+      {
+        "Text": "组卷一次通过，并网与结算资料同步备齐——档案从「交差」变成「资产」。",
+        "Width": 280.5,
+        "Left": 634.5,
+        "Top": 333.0,
+        "Height": 61.5,
+        "Name": "文本框 61",
+        "FontSize": 12.0
+      },
+      {
+        "Text": "一次通过率 ≥90%",
+        "Width": 285.0,
+        "Left": 65.25,
+        "Top": 435.75,
+        "Height": 21.75,
+        "Name": "文本框 63",
+        "FontSize": 16.5
+      },
+      {
+        "Text": "结算资料准备周期 −50%（试点目标）",
+        "Width": 412.5,
+        "Left": 399.75,
+        "Top": 441.0,
+        "Height": 15.0,
+        "Name": "文本框 64",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "验收即归档，影像同步入册",
+        "Width": 141.0,
+        "Left": 57.0,
+        "Top": 210.75,
+        "Height": 27.0,
+        "Name": "文本框 65",
+        "FontSize": 9.0
+      },
+      {
+        "Text": "按分部分项挂到目录",
+        "Width": 141.0,
+        "Left": 233.25,
+        "Top": 210.75,
+        "Height": 27.0,
+        "Name": "文本框 66",
+        "FontSize": 9.0
+      },
+      {
+        "Text": "签认 · 日期 · 关联材料一致",
+        "Width": 141.0,
+        "Left": 409.5,
+        "Top": 210.75,
+        "Height": 27.0,
+        "Name": "文本框 67",
+        "FontSize": 9.0
+      },
+      {
+        "Text": "问题定位到页，催到人",
+        "Width": 141.0,
+        "Left": 585.75,
+        "Top": 210.75,
+        "Height": 27.0,
+        "Name": "文本框 68",
+        "FontSize": 9.0
+      },
+      {
+        "Text": "并网 · 结算资料同步备齐",
+        "Width": 141.0,
+        "Left": 762.0,
+        "Top": 210.75,
+        "Height": 27.0,
+        "Name": "文本框 69",
+        "FontSize": 9.0
+      },
+      {
+        "Text": "17 ／ 21",
+        "Width": 42.0,
+        "Left": 873.0,
+        "Top": 504.75,
+        "Height": 12.75,
+        "Name": "文本框 70",
+        "FontSize": 10.5
+      }
+    ]
+  },
+  {
+    "Page": 18,
+    "Texts": [
+      {
+        "Text": "03 ／ 场景智能体 · 06 · 界面展示",
+        "Width": 870.0,
+        "Left": 45.0,
+        "Top": 45.0,
+        "Height": 15.0,
+        "Name": "界面页眉",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "电子档案 · 档案文件",
+        "Width": 570.0,
+        "Left": 45.0,
+        "Top": 81.0,
+        "Height": 33.0,
+        "Name": "界面主标题",
+        "FontSize": 27.0
+      },
+      {
+        "Text": "按目录查看应交资料、缺项与办理状态",
+        "Width": 280.5,
+        "Left": 634.5,
+        "Top": 90.0,
+        "Height": 27.0,
+        "Name": "界面副标题",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "01",
+        "Width": 30.0,
+        "Left": 688.5,
+        "Top": 148.5,
+        "Height": 30.0,
+        "Name": "界面编号1",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "目录组织",
+        "Width": 184.5,
+        "Left": 730.5,
+        "Top": 148.5,
+        "Height": 18.0,
+        "Name": "界面说明标题1",
+        "FontSize": 13.5
+      },
+      {
+        "Text": "按项目阶段与材料类型查看目录，\r定位需要提交的档案资料。",
+        "Width": 184.5,
+        "Left": 730.5,
+        "Top": 168.0,
+        "Height": 43.5,
+        "Name": "界面说明正文1",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "02",
+        "Width": 30.0,
+        "Left": 688.5,
+        "Top": 217.5,
+        "Height": 30.0,
+        "Name": "界面编号2",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "缺项提示",
+        "Width": 184.5,
+        "Left": 730.5,
+        "Top": 217.5,
+        "Height": 18.0,
+        "Name": "界面说明标题2",
+        "FontSize": 13.5
+      },
+      {
+        "Text": "对照必传清单查看未上传与缺份数量，\r结合提交情况发现缺件。",
+        "Width": 184.5,
+        "Left": 730.5,
+        "Top": 237.0,
+        "Height": 43.5,
+        "Name": "界面说明正文2",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "03",
+        "Width": 30.0,
+        "Left": 688.5,
+        "Top": 286.5,
+        "Height": 30.0,
+        "Name": "界面编号3",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "审查与归档",
+        "Width": 184.5,
+        "Left": 730.5,
+        "Top": 286.5,
+        "Height": 18.0,
+        "Name": "界面说明标题3",
+        "FontSize": 13.5
+      },
+      {
+        "Text": "查看文件版本、审查情况与归档状态，\r跟踪资料办理进度。",
+        "Width": 184.5,
+        "Left": 730.5,
+        "Top": 306.0,
+        "Height": 43.5,
+        "Name": "界面说明正文3",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "从清册定位到待办",
+        "Width": 193.5,
+        "Left": 705.0,
+        "Top": 366.9956,
+        "Height": 21.0,
+        "Name": "界面结果标题",
+        "FontSize": 13.5
+      },
+      {
+        "Text": "目录、缺项和状态集中呈现，\r便于项目部按清单补齐资料。",
+        "Width": 193.5,
+        "Left": 705.0,
+        "Top": 388.7456,
+        "Height": 42.0,
+        "Name": "界面结果正文",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "18 ／ 21",
+        "Width": 42.0,
+        "Left": 873.0,
+        "Top": 504.75,
+        "Height": 12.75,
+        "Name": "界面页码",
+        "FontSize": 10.5
+      }
+    ]
+  },
+  {
+    "Page": 19,
+    "Texts": [
+      {
+        "Text": "03 ／ 场景智能体 · 06 · 界面展示",
+        "Width": 870.0,
+        "Left": 45.0,
+        "Top": 45.0,
+        "Height": 15.0,
+        "Name": "界面页眉",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "电子档案 · 共用信息",
+        "Width": 570.0,
+        "Left": 45.0,
+        "Top": 81.0,
+        "Height": 33.0,
+        "Name": "界面主标题",
+        "FontSize": 27.0
+      },
+      {
+        "Text": "项目基础信息与专业分项保持对应",
+        "Width": 280.5,
+        "Left": 634.5,
+        "Top": 90.0,
+        "Height": 27.0,
+        "Name": "界面副标题",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "01",
+        "Width": 30.0,
+        "Left": 688.5,
+        "Top": 148.5,
+        "Height": 30.0,
+        "Name": "界面编号1",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "项目基础信息",
+        "Width": 184.5,
+        "Left": 730.5,
+        "Top": 148.5,
+        "Height": 18.0,
+        "Name": "界面说明标题1",
+        "FontSize": 13.5
+      },
+      {
+        "Text": "集中展示项目编号、名称与建设单位，\r明确资料所属项目。",
+        "Width": 184.5,
+        "Left": 730.5,
+        "Top": 168.0,
+        "Height": 43.5,
+        "Name": "界面说明正文1",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "02",
+        "Width": 30.0,
+        "Left": 688.5,
+        "Top": 217.5,
+        "Height": 30.0,
+        "Name": "界面编号2",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "专业分项匹配",
+        "Width": 184.5,
+        "Left": 730.5,
+        "Top": 217.5,
+        "Height": 18.0,
+        "Name": "界面说明标题2",
+        "FontSize": 13.5
+      },
+      {
+        "Text": "查看线路、电缆、变电等专业分项，\r关联对应子项目与匹配电压。",
+        "Width": 184.5,
+        "Left": 730.5,
+        "Top": 237.0,
+        "Height": 43.5,
+        "Name": "界面说明正文2",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "03",
+        "Width": 30.0,
+        "Left": 688.5,
+        "Top": 286.5,
+        "Height": 30.0,
+        "Name": "界面编号3",
+        "FontSize": 12.75
+      },
+      {
+        "Text": "来源与待确认",
+        "Width": 184.5,
+        "Left": 730.5,
+        "Top": 286.5,
+        "Height": 18.0,
+        "Name": "界面说明标题3",
+        "FontSize": 13.5
+      },
+      {
+        "Text": "查看信息来源和待确认变更，\r辅助核对项目与专业分项的对应关系。",
+        "Width": 184.5,
+        "Left": 730.5,
+        "Top": 306.0,
+        "Height": 43.5,
+        "Name": "界面说明正文3",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "项目与档案保持对应",
+        "Width": 193.5,
+        "Left": 705.0,
+        "Top": 367.15536,
+        "Height": 21.0,
+        "Name": "界面结果标题",
+        "FontSize": 13.5
+      },
+      {
+        "Text": "为资料目录、归集与交付，\r提供统一的项目信息依据。",
+        "Width": 193.5,
+        "Left": 705.0,
+        "Top": 388.90536,
+        "Height": 42.0,
+        "Name": "界面结果正文",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "19 ／ 21",
+        "Width": 42.0,
+        "Left": 873.0,
+        "Top": 504.75,
+        "Height": 12.75,
+        "Name": "界面页码",
+        "FontSize": 10.5
+      }
+    ]
+  },
+  {
+    "Page": 20,
+    "Texts": [
+      {
+        "Text": "04 ／ 怎么开始",
+        "Width": 870.0,
+        "Left": 45.0,
+        "Top": 45.0,
+        "Height": 15.0,
+        "Name": "文本框 73",
+        "FontSize": 10.5
+      },
+      {
+        "Text": "一个片区，四周跑通",
+        "Width": 570.0,
+        "Left": 45.0,
+        "Top": 81.0,
+        "Height": 33.0,
+        "Name": "文本框 75",
+        "FontSize": 27.0
+      },
+      {
+        "Text": "第 1 周",
+        "Width": 43.5,
+        "Left": 64.5,
+        "Top": 158.25,
+        "Height": 16.5,
+        "Name": "文本框 77",
+        "FontSize": 13.5
+      },
+      {
+        "Text": "装标准",
+        "Width": 387.0,
+        "Left": 141.0,
+        "Top": 133.5,
+        "Height": 18.0,
+        "Name": "文本框 78",
+        "FontSize": 15.0
+      },
+      {
+        "Text": "选定片区 10–20 个点位，导入分部分项标准与点位清单，生成 WBS 与应交清册。",
+        "Width": 387.0,
+        "Left": 141.0,
+        "Top": 156.0,
+        "Height": 43.5,
+        "Name": "文本框 79",
+        "FontSize": 11.25
+      },
+      {
+        "Text": "第 2–3 周",
+        "Width": 59.25,
+        "Left": 57.0,
+        "Top": 232.5,
+        "Height": 16.5,
+        "Name": "文本框 81",
+        "FontSize": 13.5
+      },
+      {
+        "Text": "跑起来",
+        "Width": 387.0,
+        "Left": 141.0,
+        "Top": 207.75,
+        "Height": 18.0,
+        "Name": "文本框 82",
+        "FontSize": 15.0
+      },
+      {
+        "Text": "计划编排、施工日志、安全质量三个智能体上线，班组真实派单、报日志、传影像。",
+        "Width": 387.0,
+        "Left": 141.0,
+        "Top": 230.25,
+        "Height": 43.5,
+        "Name": "文本框 83",
+        "FontSize": 11.25
+      },
+      {
+        "Text": "第 4 周",
+        "Width": 43.5,
+        "Left": 64.5,
+        "Top": 306.0,
+        "Height": 16.5,
+        "Name": "文本框 85",
+        "FontSize": 13.5
+      },
+      {
+        "Text": "看结果",
+        "Width": 387.0,
+        "Left": 141.0,
+        "Top": 281.25,
+        "Height": 18.0,
+        "Name": "文本框 86",
+        "FontSize": 15.0
+      },
+      {
+        "Text": "对照 WBS 编制时长、日志完整率、隐患闭环时长三个指标复盘，再决定推广节奏。",
+        "Width": 387.0,
+        "Left": 141.0,
+        "Top": 303.75,
+        "Height": 43.5,
+        "Name": "文本框 87",
+        "FontSize": 11.25
+      },
+      {
+        "Text": "适用于分布式光伏、储能、充电设施与配网改造场景；数据留在企业域，可与现有系统对接，逸集控七端覆盖到班组手机。",
+        "Width": 453.0,
+        "Left": 60.0,
+        "Top": 366.0,
+        "Height": 45.0,
+        "Name": "文本框 89",
+        "FontSize": 11.25
+      },
+      {
+        "Text": "20 ／ 21",
+        "Width": 42.0,
+        "Left": 873.0,
+        "Top": 504.75,
+        "Height": 12.75,
+        "Name": "文本框 91",
+        "FontSize": 10.5
+      }
+    ]
+  },
+  {
+    "Page": 21,
+    "Texts": [
+      {
+        "Text": "让每一道工序都有任务、有责任人、\r有影像、有档案",
+        "Width": 624.0,
+        "Left": 168.0,
+        "Top": 161.25,
+        "Height": 141.0,
+        "Name": "TextBox 95",
+        "FontSize": 39.0
+      },
+      {
+        "Text": "以分部分项为尺，让每道工序都有据可查",
+        "Width": 270.0,
+        "Left": 345.0,
+        "Top": 329.25,
+        "Height": 18.0,
+        "Name": "TextBox 97",
+        "FontSize": 15.0
+      },
+      {
+        "Text": "上海逸舟信息科技有限公司 ｜ www.erow.cn",
+        "Width": 237.75,
+        "Left": 361.5,
+        "Top": 397.5,
+        "Height": 15.0,
+        "Name": "TextBox 98",
+        "FontSize": 12.0
+      }
+    ]
+  }
+]

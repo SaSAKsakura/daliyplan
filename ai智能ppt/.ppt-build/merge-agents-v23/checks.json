@@ -1,0 +1,30 @@
+{
+  "totalSlides": 16,
+  "agentCount": 5,
+  "originalPageOrder": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    8,
+    9,
+    10,
+    11,
+    13,
+    12,
+    15,
+    16,
+    17,
+    18
+  ],
+  "mainlineSixStagesUnchanged": true,
+  "mergedOriginalPages": [
+    6,
+    7
+  ],
+  "qualificationPageRemoved": 14,
+  "stationMeetingFollowsTeamIntro": true,
+  "screenshotAssetsUnchanged": true
+}

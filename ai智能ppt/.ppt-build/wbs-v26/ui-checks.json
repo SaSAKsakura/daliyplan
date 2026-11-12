@@ -1,0 +1,64 @@
+{
+  "errors": [],
+  "basisSelection": true,
+  "manualAdoption": true,
+  "conflictMerge": true,
+  "batchGates": true,
+  "draftState": true,
+  "layouts": [
+    {
+      "width": 1920,
+      "doc": 1920,
+      "panes": [
+        {
+          "width": 264,
+          "scrollWidth": 264
+        },
+        {
+          "width": 1202,
+          "scrollWidth": 1202
+        },
+        {
+          "width": 380,
+          "scrollWidth": 380
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "doc": 1440,
+      "panes": [
+        {
+          "width": 264,
+          "scrollWidth": 264
+        },
+        {
+          "width": 722,
+          "scrollWidth": 722
+        },
+        {
+          "width": 380,
+          "scrollWidth": 380
+        }
+      ]
+    },
+    {
+      "width": 1200,
+      "doc": 1200,
+      "panes": [
+        {
+          "width": 233,
+          "scrollWidth": 233
+        },
+        {
+          "width": 609,
+          "scrollWidth": 609
+        },
+        {
+          "width": 308,
+          "scrollWidth": 308
+        }
+      ]
+    }
+  ]
+}

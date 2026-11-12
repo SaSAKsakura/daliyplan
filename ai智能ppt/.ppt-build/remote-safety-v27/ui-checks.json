@@ -1,0 +1,30 @@
+{
+  "photos": [
+    {
+      "width": 1371,
+      "height": 878
+    },
+    {
+      "width": 1377,
+      "height": 871
+    }
+  ],
+  "videoPicker": true,
+  "manualConfirmationGate": true,
+  "issueWorkflow": true,
+  "errors": [],
+  "layouts": [
+    {
+      "width": 1920,
+      "doc": 1920
+    },
+    {
+      "width": 1440,
+      "doc": 1440
+    },
+    {
+      "width": 1200,
+      "doc": 1200
+    }
+  ]
+}

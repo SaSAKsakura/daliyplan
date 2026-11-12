@@ -1,0 +1,7 @@
+import fs from 'node:fs/promises';
+import {constants} from 'node:fs';
+import {finalizePresentation} from 'file:///C:/Users/MateBook%2014/.codex/plugins/cache/openai-primary-runtime/presentations/26.1104.12130/skills/presentations/container_tools/artifact_tool_utils.mjs';
+const root='D:/工作文档/每月文档/正常工作/ai智能ppt',dir=`${root}/.ppt-build/future-ai-20261106`,skill='C:/Users/MateBook 14/.codex/plugins/cache/openai-primary-runtime/presentations/26.1104.12130/skills/presentations';
+const link=fs.link.bind(fs);fs.link=async(a,b)=>{try{return await link(a,b);}catch(e){if(e.code!=='EPERM'&&e.code!=='ENOTSUP')throw e;await fs.copyFile(a,b,constants.COPYFILE_EXCL);}};
+const r=await finalizePresentation({workspaceDir:root,candidatePath:`${dir}/candidate.pptx`,finalPath:`${root}/output/分部分项_AI协同未来方案单页v1.pptx`,pythonExecutable:'C:/Users/MateBook 14/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe',integrityValidatorPath:`${skill}/container_tools/inspect_presentation_package_integrity.py`,layoutValidatorPath:`${skill}/container_tools/inspect_presentation_layout_geometry.py`,layoutArgs:['--expected-slide-size-emu','12192000,6858000','--validate-heading-fit','--validate-bullet-geometry'],explicitTotalSlideCount:1,fontPolicy:{basis:'design',families:['微软雅黑']},verifyArtifactToolImport:true,receiptPath:`${dir}/validation.json`});
+console.log(JSON.stringify({path:r.finalPath,integrity:r.packageIntegrity.status,layoutFindings:r.presentationLayout.findingCount}));

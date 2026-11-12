@@ -1,0 +1,130 @@
+[
+  {
+    "name": "标准库_专业与工序",
+    "source": "C:\\Users\\MateBook 14\\AppData\\Local\\Temp\\codex-clipboard-748fd6a9-a202-442b-8e8d-0e2348c7eae6.png",
+    "rect": [
+      432,
+      218,
+      295,
+      390
+    ],
+    "position": {
+      "x": 60,
+      "y": 269,
+      "w": 260,
+      "h": 343.728813559322
+    }
+  },
+  {
+    "name": "周计划_分部分项",
+    "source": "C:\\Users\\MateBook 14\\AppData\\Local\\Temp\\codex-clipboard-4165660c-82d3-4506-82f8-65ede9dc1d8d.png",
+    "rect": [
+      188,
+      844,
+      240,
+      94
+    ],
+    "position": {
+      "x": 360,
+      "y": 269,
+      "w": 260,
+      "h": 101.83333333333333
+    }
+  },
+  {
+    "name": "每日安排_单据日期",
+    "source": "C:\\Users\\MateBook 14\\AppData\\Local\\Temp\\codex-clipboard-adb06d99-93e5-4898-bb72-d763b0ae9275.png",
+    "rect": [
+      628,
+      366,
+      320,
+      251
+    ],
+    "position": {
+      "x": 360,
+      "y": 391,
+      "w": 260,
+      "h": 203.9375
+    }
+  },
+  {
+    "name": "移动日志_任务卡片",
+    "source": "C:\\Users\\MateBook 14\\AppData\\Local\\Temp\\codex-clipboard-5179d54a-097a-47d3-8e28-63529b069460.png",
+    "rect": [
+      24,
+      151,
+      571,
+      514
+    ],
+    "position": {
+      "x": 660,
+      "y": 269,
+      "w": 260,
+      "h": 234.04553415061295
+    }
+  },
+  {
+    "name": "移动日志_工序内容",
+    "source": "C:\\Users\\MateBook 14\\AppData\\Local\\Temp\\codex-clipboard-fba67017-eff8-4f51-a063-8b0fc3232805.jpg",
+    "rect": [
+      84,
+      938,
+      1110,
+      316
+    ],
+    "position": {
+      "x": 660,
+      "y": 523,
+      "w": 260,
+      "h": 74.01801801801801
+    }
+  },
+  {
+    "name": "施工中_检查与质量取照",
+    "source": "C:\\Users\\MateBook 14\\AppData\\Local\\Temp\\codex-clipboard-f5295703-55dd-407e-8852-7b270d56686c.png",
+    "rect": [
+      35,
+      1410,
+      1250,
+      650
+    ],
+    "position": {
+      "x": 960,
+      "y": 269,
+      "w": 260,
+      "h": 135.2
+    }
+  },
+  {
+    "name": "质量验收_整改关联",
+    "source": "C:\\Users\\MateBook 14\\AppData\\Local\\Temp\\codex-clipboard-28f77623-edab-44c4-99f0-4d18f22dd9a7.png",
+    "rect": [
+      15,
+      322,
+      580,
+      247
+    ],
+    "position": {
+      "x": 960,
+      "y": 419,
+      "w": 260,
+      "h": 110.72413793103448
+    }
+  },
+  {
+    "name": "工艺标准_整改要求与期限",
+    "source": "C:\\Users\\MateBook 14\\AppData\\Local\\Temp\\codex-clipboard-b269c284-5358-45a2-bd7d-133c50e88fb4.png",
+    "rect": [
+      17,
+      477,
+      585,
+      178
+    ],
+    "position": {
+      "x": 960,
+      "y": 548,
+      "w": 260,
+      "h": 79.11111111111111
+    }
+  }
+]

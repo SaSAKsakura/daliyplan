@@ -1,0 +1,132 @@
+{
+  "schemaVersion": "presentation-finalization.v1",
+  "finalSha256": "968c621f9ce92824581eadfa011b287b155f259fff71551eceab7cba1372f799",
+  "byteCount": 8265498,
+  "packageIntegrity": {
+    "chart_count": 0,
+    "claim_boundary": "Structural package checks only; no slide text, notes, formulas, chart values, or native PowerPoint execution were inspected.",
+    "finding_count": 0,
+    "findings": [],
+    "notes_parts_skipped": 0,
+    "relationship_part_count": 20,
+    "slide_count": 15,
+    "status": "pass",
+    "exitCode": 0,
+    "findingCount": 0,
+    "warnings": []
+  },
+  "presentationLayout": {
+    "finding_count": 0,
+    "findings": [],
+    "font_policy": {
+      "checked_text_script_count": 539,
+      "native_font_rendering_verified": false,
+      "observed_font_families": [
+        "微软雅黑"
+      ],
+      "observed_font_use_counts": {
+        "微软雅黑": 539
+      },
+      "passed": true,
+      "performed": true
+    },
+    "slide_count": 15,
+    "slide_size_in": [
+      13.3333,
+      7.5
+    ],
+    "warning_count": 0,
+    "warnings": [],
+    "exitCode": 0,
+    "findingCount": 0,
+    "fontPolicy": {
+      "checked_text_script_count": 539,
+      "native_font_rendering_verified": false,
+      "observed_font_families": [
+        "微软雅黑"
+      ],
+      "observed_font_use_counts": {
+        "微软雅黑": 539
+      },
+      "passed": true,
+      "performed": true
+    }
+  },
+  "fontSelection": {
+    "basis": "reference",
+    "approvedFamilies": [
+      "微软雅黑"
+    ],
+    "scriptFonts": {},
+    "referenceSha256": "6dc756169890a1a9c03d6c5484277f776269572c423d358443eb622504f8da54",
+    "referenceFontsVerifiedInEncodedText": true,
+    "checked_text_script_count": 539,
+    "native_font_rendering_verified": false,
+    "observed_font_families": [
+      "微软雅黑"
+    ],
+    "observed_font_use_counts": {
+      "微软雅黑": 539
+    },
+    "passed": true,
+    "performed": true
+  },
+  "firstPartyImport": {
+    "performed": true,
+    "passed": true,
+    "slideCount": 15,
+    "sha256": "968c621f9ce92824581eadfa011b287b155f259fff71551eceab7cba1372f799",
+    "runtimeNodeModules": "C:\\Users\\MateBook 14\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\node_modules",
+    "nodeExecutable": "C:\\Users\\MateBook 14\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe"
+  },
+  "nativeTableArithmetic": {
+    "performed": true,
+    "checked_column_count": 0,
+    "checks": [],
+    "claim_boundary": "Displayed-value arithmetic with rounding tolerance; not source-data verification.",
+    "eligible_table_count": 0,
+    "finding_count": 0,
+    "findings": [],
+    "native_table_count": 0,
+    "passed": true,
+    "schema_version": "presentation-native-table-arithmetic.v1",
+    "skipped_tables": [],
+    "slide_count": 15,
+    "warning_count": 0,
+    "warnings": []
+  },
+  "nativeChartTitles": {
+    "performed": true,
+    "checks": [],
+    "finding_count": 0,
+    "findings": [],
+    "native_chart_count": 0,
+    "native_powerpoint_verified": false,
+    "passed": true,
+    "presentation_sha256": "968c621f9ce92824581eadfa011b287b155f259fff71551eceab7cba1372f799",
+    "schema_version": "presentation-native-chart-titles.v1",
+    "slide_count": 15,
+    "source_text_emitted": false,
+    "unresolved_linked_title_count": 0
+  },
+  "sourceDerivedPolicyFlags": [
+    "--expected-slide-size-emu",
+    "12192000,6858000",
+    "--validate-bullet-geometry",
+    "--validate-heading-fit",
+    "--cover-role",
+    "none",
+    "--expected-slide-count",
+    "15",
+    "--approved-font-family",
+    "微软雅黑"
+  ],
+  "nativeChartValidation": {
+    "detectedOwnerSlides": [],
+    "detectedChartCount": 0,
+    "targetApplication": null,
+    "sourceChartOwnersExplicitlyDeclared": false,
+    "validatorRan": false,
+    "passed": true
+  }
+}

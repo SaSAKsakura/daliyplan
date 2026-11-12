@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "id": "7af1d56e-5f03-42cb-9b3a-abb262d64cd0",
+  "title": "不规则 JSON 树",
+  "tags": [],
+  "favorite": false,
+  "createdAt": "2026-08-17T02:05:31.699Z",
+  "updatedAt": "2026-08-17T02:05:31.699Z",
+  "revision": 1,
+  "sceneSha256": "1b22cde0435ae2c974a0ef0108273d221bb420303b0e78a7e5da3cf025278805",
+  "elementCount": 30,
+  "searchText": "不规则 JSON 树 不规则 JSON 树 不规则 JSON 树 根节点 根节点 分支 A 分支 A 分支 B 分支 B 分支 C 分支 C 节点 A1 节点 A1 叶子 A11 叶子 A11 叶子 A12 叶子 A12 叶子 C1 叶子 C1 节点 C2 节点 C2 叶子 C21 叶子 C21",
+  "previewRevision": 1
+}

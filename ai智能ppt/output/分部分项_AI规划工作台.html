@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI 分部分项规划工作台</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft YaHei",-apple-system,"Segoe UI",sans-serif;background:#f5f7fa;color:#0f172a;font-size:13px;line-height:1.55}
+.top{display:flex;align-items:center;gap:12px;height:46px;padding:0 16px;background:#1d4f91;color:#fff;position:sticky;top:0;z-index:60}
+.brand{font-weight:700;letter-spacing:.2px}
+.brand span{font-weight:400;font-size:11.4px;opacity:.72;margin-left:7px}
+nav{display:flex;gap:2px;margin-left:14px}
+nav button{background:transparent;border:0;color:#cfe0f5;padding:6px 12px;border-radius:6px;font-size:12.4px;cursor:pointer;white-space:nowrap}
+nav button.on{background:rgba(255,255,255,.18);color:#fff;font-weight:600}
+nav button i{font-style:normal;display:inline-block;min-width:15px;height:15px;line-height:15px;text-align:center;border-radius:8px;background:#f59e0b;color:#fff;font-size:10px;margin-left:4px;padding:0 4px}
+.who{margin-left:auto;font-size:12px;opacity:.92;white-space:nowrap}
+#btnReset{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);color:#fff;border-radius:6px;padding:5px 10px;font-size:12px;cursor:pointer}
+main{padding:13px 16px 46px;max-width:1560px}
+.view{display:none}.view.on{display:block}
+.page-h{display:flex;align-items:baseline;gap:10px;margin:2px 0 11px}
+.page-h h1{font-size:17px;margin:0}
+.page-h .desc{font-size:11.8px;color:#7b8794}
+.spacer{flex:1}
+
+.card{background:#fff;border:1px solid #e6ebf2;border-radius:9px;padding:12px 13px}
+.card h3{margin:0 0 9px;font-size:13px;display:flex;align-items:center;gap:8px}
+.card h3 .mini{font-weight:400;font-size:10.8px;color:#94a3b8}
+.chip{display:inline-block;font-size:10.4px;padding:0 6px;line-height:17px;border-radius:9px;border:1px solid transparent;white-space:nowrap;vertical-align:middle}
+.c-blue{background:#e8f1fb;color:#1d4f91;border-color:#cfe0f3}
+.c-gray{background:#f1f5f9;color:#64748b;border-color:#e2e8f0}
+.c-green{background:#e8f8ef;color:#15803d;border-color:#c9ecd7}
+.c-amber{background:#fff7e6;color:#b45309;border-color:#fde3ae}
+.c-red{background:#feeceb;color:#b42318;border-color:#fbd3d0}
+.c-purple{background:#f3e8ff;color:#7c3aed;border-color:#e9d8fd}
+.c-teal{background:#e6f7f5;color:#0f766e;border-color:#c5ece7}
+.tiny{font-size:10.6px}.muted{color:#94a3b8}.mono{font-family:Consolas,Monaco,monospace}
+.btn{border:1px solid #d6dfe9;background:#fff;border-radius:6px;padding:5.5px 11px;font-size:12.2px;cursor:pointer;color:#334155}
+.btn:hover{border-color:#b9c8d9}
+.btn.pri{background:#1d4f91;border-color:#1d4f91;color:#fff;font-weight:600}
+.btn.pri:hover{background:#17406f}
+.btn.ghost{background:#f8fafc}
+.btn.sm{padding:3px 8px;font-size:11.2px}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn.danger{border-color:#fbd3d0;color:#b42318;background:#fff}
+
+/* 三栏 */
+.g3{display:grid;grid-template-columns:288px minmax(520px,1fr) 336px;gap:11px;align-items:start}
+@media (max-width:1340px){.g3{grid-template-columns:264px 1fr 300px}}
+.pane{background:#fff;border:1px solid #e6ebf2;border-radius:9px;overflow:hidden}
+.pane-h{padding:8px 11px;border-bottom:1px solid #eef2f7;font-size:12.2px;font-weight:600;background:#fbfcfe;display:flex;align-items:center;gap:7px}
+.pane-h .mini{font-weight:400;font-size:10.6px;color:#94a3b8;margin-left:auto}
+.pane-b{padding:10px 11px;max-height:calc(100vh - 172px);overflow:auto}
+.pane-b.tall{max-height:calc(100vh - 150px)}
+
+label.f{display:block;font-size:11.4px;color:#64748b;margin:9px 0 4px}
+label.f:first-child{margin-top:0}
+input[type=text],input[type=number],select,textarea{width:100%;border:1px solid #dde5ee;border-radius:6px;padding:6px 8px;font-size:12.2px;font-family:inherit;color:#0f172a;background:#fff}
+textarea{resize:vertical;min-height:74px;line-height:1.6}
+input:focus,select:focus,textarea:focus{outline:2px solid #dbe9fb;border-color:#9dc0e8}
+
+/* 阶段列表 */
+.ph{display:flex;flex-direction:column;gap:5px}
+.ph button{display:flex;align-items:center;gap:7px;text-align:left;border:1px solid #e6ebf2;background:#fff;border-radius:7px;padding:6px 9px;font-size:12.2px;cursor:pointer;color:#334155}
+.ph button.on{border-color:#1d4f91;background:#f2f7fd;color:#1d4f91;font-weight:600}
+.ph button span.n{margin-left:auto;font-size:10.4px;color:#94a3b8;font-weight:400}
+.ph button.on span.n{color:#5b7fa8}
+.ph .dot{width:7px;height:7px;border-radius:50%;background:#cbd5e1;flex:none}
+.ph button.on .dot{background:#1d4f91}
+.ph button.done .dot{background:#16a34a}
+
+/* 候选树 */
+.ctree{margin:-2px -3px}
+.row{display:flex;align-items:center;gap:7px;padding:5px 8px;border-radius:6px;cursor:pointer;border:1px solid transparent}
+.row:hover{background:#f8fbfe}
+.row.sel{background:#f2f7fd;border-color:#cfe0f3}
+.row.l2{margin-left:18px}
+.row.ign{opacity:.46;text-decoration:line-through}
+.tg{display:inline-flex;align-items:center;justify-content:center;width:17px;height:17px;border-radius:5px;font-size:10.4px;font-weight:700;flex:none;color:#fff}
+.tgS{background:#1d4f91}.tgI{background:#7c3aed}.tgK{background:#0f766e}.tgW{background:#94a3b8}
+.nm{font-size:12.4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nm.b{font-weight:600}
+.conf{font-size:10.4px;padding:0 5px;line-height:16px;border-radius:8px;flex:none}
+.conf.h{background:#e8f8ef;color:#15803d;border:1px solid #c9ecd7}
+.conf.m{background:#e8f1fb;color:#1d4f91;border:1px solid #cfe0f3}
+.conf.l{background:#fff7e6;color:#b45309;border:1px solid #fde3ae}
+.basis{display:inline-flex;gap:2px;flex:none}
+.basis b{font-weight:600;font-size:9.6px;padding:0 4px;line-height:15px;border-radius:4px;background:#f1f5f9;color:#64748b;border:1px solid #e2e8f0}
+.basis b.lib{background:#eef2ff;color:#4338ca;border-color:#dbe3fb}
+.basis b.hist{background:#f0fdf4;color:#15803d;border-color:#d3f0dd}
+.basis b.rule{background:#fef6e7;color:#b45309;border-color:#fbe4b8}
+.row .ops{margin-left:auto;display:flex;gap:5px;align-items:center;flex:none}
+.kids{margin-left:26px;border-left:1px dashed #e3eaf3;padding-left:4px}
+.items{display:flex;flex-wrap:wrap;gap:4px;margin:2px 0 6px 26px}
+.items .it{font-size:10.4px;background:#f8fafc;border:1px solid #e6ebf2;border-radius:5px;padding:1px 6px;color:#475569}
+.items .it .pos{color:#c2410c}
+.input-check{width:14px;height:14px;flex:none;accent-color:#1d4f91;cursor:pointer}
+
+/* 依据面板 */
+.basis-card{border:1px solid #e6ebf2;border-radius:8px;padding:9px 10px;margin-bottom:9px;background:#fbfcfe}
+.basis-card .bh{font-size:11.2px;color:#64748b;margin-bottom:4px;display:flex;gap:6px;align-items:center}
+.basis-card .bt{font-size:12.2px;font-weight:600;margin-bottom:3px}
+.basis-card .bd{font-size:11.4px;color:#475569;line-height:1.66}
+.kv{display:grid;grid-template-columns:78px 1fr;gap:3px 8px;font-size:11.6px;margin:2px 0}
+.kv dt{color:#94a3b8}
+.kv dd{margin:0;color:#1e293b}
+
+/* 审核 */
+.rlist{display:flex;flex-direction:column;gap:8px}
+.rit{display:flex;gap:9px;align-items:flex-start;border:1px solid #e6ebf2;border-radius:8px;padding:9px 10px;background:#fff}
+.rit.warn{border-color:#fde3ae;background:#fffdf7}
+.rit.dup{border-color:#fbd3d0;background:#fffafa}
+.rit.low{border-color:#fde3ae;background:#fffdf7}
+.rit .rt{font-size:12.4px;font-weight:600}
+.rit .rd{font-size:11.4px;color:#64748b;margin-top:2px;line-height:1.65}
+.rit .ra{margin-left:auto;display:flex;gap:5px;flex:none;align-items:center}
+.kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;margin-bottom:11px}
+.kpi{background:#fff;border:1px solid #e6ebf2;border-radius:8px;padding:8px 11px}
+.kpi label{font-size:10.8px;color:#94a3b8;display:block}
+.kpi b{font-size:19px;font-weight:700;letter-spacing:.3px}
+.kpi b small{font-size:10.6px;font-weight:400;color:#94a3b8;margin-left:3px}
+.kpi.k1 b{color:#1d4f91}.kpi.k2 b{color:#15803d}.kpi.k3 b{color:#b45309}.kpi.k4 b{color:#7c3aed}
+
+.banner{display:flex;gap:9px;border-radius:8px;padding:8px 11px;font-size:11.8px;line-height:1.68;margin-bottom:10px;border:1px solid #cfe0f3;background:#f2f7fd;color:#1e4c7f}
+.banner.amber{border-color:#fde3ae;background:#fffcf3;color:#8a5a06}
+.banner.green{border-color:#c9ecd7;background:#f4fcf7;color:#14603a}
+.banner b{font-weight:700}
+
+/* 正式树 */
+.ftree{font-size:12.4px}
+.fr{display:flex;align-items:center;gap:7px;padding:5px 8px;border-radius:6px;cursor:pointer;border:1px solid transparent}
+.fr:hover{background:#f8fbfe}
+.fr.sel{background:#f2f7fd;border-color:#cfe0f3}
+.fr.l2{margin-left:20px}.fr.l3{margin-left:40px}
+.fr .pbar{width:74px;height:4px;border-radius:2px;background:#eef2f7;overflow:hidden;margin-left:auto}
+.fr .pbar i{display:block;height:100%;background:#1d4f91}
+.fr .pct{font-size:10.4px;color:#64748b;width:30px;text-align:right}
+.newmk{font-size:9.6px;background:#e6f7f5;color:#0f766e;border:1px solid #c5ece7;border-radius:4px;padding:0 4px;line-height:15px}
+
+/* 表格 */
+table.dt{width:100%;border-collapse:collapse;font-size:11.8px}
+table.dt th{background:#f8fafc;border-bottom:1px solid #e6ebf2;text-align:left;padding:6px 9px;font-weight:600;color:#475569;white-space:nowrap}
+table.dt td{border-bottom:1px solid #f1f5f9;padding:6px 9px;vertical-align:top}
+table.dt tr:last-child td{border-bottom:0}
+table.dt td.sub{color:#64748b}
+
+/* 生成动画 */
+.steps{display:flex;flex-direction:column;gap:8px;padding:16px 6px}
+.step{display:flex;align-items:center;gap:9px;font-size:12.2px;color:#64748b}
+.step .ic{width:16px;height:16px;border-radius:50%;border:2px solid #dbe3ec;flex:none}
+.step.run{color:#1d4f91;font-weight:600}
+.step.run .ic{border-color:#1d4f91;border-top-color:transparent;animation:spin .8s linear infinite}
+.step.ok{color:#15803d}
+.step.ok .ic{border-color:#16a34a;background:#16a34a}
+@keyframes spin{to{transform:rotate(360deg)}}
+.fade{animation:fade .28s ease both}
+@keyframes fade{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:none}}
+.empty{padding:26px 10px;text-align:center;color:#94a3b8;font-size:12px}
+.empty b{display:block;color:#475569;font-size:12.8px;margin-bottom:4px}
+
+/* 弹窗 */
+.mask{position:fixed;inset:0;background:rgba(15,23,42,.36);display:none;align-items:center;justify-content:center;z-index:90}
+.mask.on{display:flex}
+.modal{width:560px;max-width:92vw;background:#fff;border-radius:10px;box-shadow:0 18px 48px rgba(15,23,42,.22);overflow:hidden}
+.modal-h{padding:11px 14px;border-bottom:1px solid #eef2f7;font-weight:700;display:flex;align-items:center;gap:8px}
+.modal-h .x{margin-left:auto;cursor:pointer;color:#94a3b8;font-size:16px;line-height:1}
+.modal-b{padding:12px 14px;max-height:62vh;overflow:auto}
+.modal-f{padding:10px 14px;border-top:1px solid #eef2f7;display:flex;gap:8px;justify-content:flex-end;background:#fbfcfe}
+.chk{display:flex;gap:8px;align-items:flex-start;padding:6px 0;border-bottom:1px dashed #eef2f7;font-size:12px}
+.chk:last-child{border-bottom:0}
+.chk .r{width:38px;flex:none;font-size:10.6px;font-weight:700}
+.chk .r.no{color:#b42318}.chk .r.yes{color:#15803d}
+
+/* toast */
+#toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(8px);background:#0f172a;color:#fff;font-size:12.2px;padding:8px 15px;border-radius:8px;opacity:0;transition:.22s;z-index:120;max-width:82vw}
+#toast.on{opacity:.95;transform:translateX(-50%)}
+</style>
+
+<style id="deck-style">
+:root{--erow-primary:#2563eb;--erow-navy:#123b61;--erow-border:#dce4ef;--erow-muted:#64748b;--erow-surface:#fff;--erow-bg:#f4f7fb}
+body{font-size:14px;color:#1c2a38;background:var(--erow-bg)}
+.top{height:50px;background:white;color:var(--erow-navy);border-bottom:1px solid var(--erow-border);padding:0 20px;gap:14px}
+.brand{font-size:14px;white-space:nowrap}.brand span{display:none}.who{color:var(--erow-muted);font-size:12px}
+nav{gap:5px;margin-left:16px}nav button{color:#64748b;font-size:13px;border-radius:4px}nav button.on{background:#eaf1ff;color:var(--erow-primary)}
+#btnReset{background:white;border-color:var(--erow-border);color:var(--erow-muted);height:30px;font-size:12px}
+main{max-width:none;padding:17px 20px 20px}.page-h{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:0 0 16px}.page-h h1{font-size:22px;width:100%;line-height:1.35}.page-h .desc{font-size:13px;color:#64748b}.page-h>.chip{font-size:12px}.page-h .spacer{min-width:10px}
+.g3{grid-template-columns:266px minmax(0,1fr) 382px;gap:14px}.pane{border-color:var(--erow-border);border-radius:8px}.pane-h{font-size:15px;height:44px;padding:12px 14px;background:white;border-bottom-color:var(--erow-border)}.pane-h .mini{font-size:11px}.pane-b,.pane-b.tall{max-height:calc(100vh - 187px);padding:14px;overflow:auto;scrollbar-width:thin;scrollbar-color:#cad5e4 transparent}
+#v-ai>.g3>.pane:nth-child(3)>.pane-h{color:#7257d9}
+label.f{font-size:12px;margin:12px 0 6px}input[type=text],input[type=number],select,textarea{font-size:13px;border-radius:4px;border-color:var(--erow-border);min-height:32px}textarea{height:105px}.ph{gap:6px}.ph button{font-size:13px;padding:7px 9px;border-radius:5px}.ph button.on{border-color:#2563eb;color:#123b61;background:#edf4ff}.ph button span.n{font-size:11px}
+.row{padding:7px 8px;gap:8px;border-radius:5px}.row.sel{background:#edf4ff;border-color:#bcd1fa}.row.l2{margin-left:20px}.nm{font-size:14px}.tg{width:20px;height:20px;font-size:11px;border-radius:5px}.tgS{background:#123b61}.tgI{background:#7257d9}.conf{font-size:11px;line-height:18px}.input-check{width:16px;height:16px;accent-color:#2563eb}.basis b{font-size:10px;line-height:17px}.items{gap:4px;margin:3px 0 8px 29px}.items .it{font-size:11px;line-height:19px}.items .it .pos{color:#ba7926}
+.banner{font-size:12px;border-color:#d6e4fb;background:#f1f6ff;color:#355b84;padding:10px 12px}.tiny{font-size:11px}.muted{color:#8291a9}.basis-card{background:#f8faff;border-color:var(--erow-border);padding:12px}.basis-card .bh{font-size:12px}.basis-card .bt{font-size:14px;line-height:1.6}.basis-card .bd{font-size:13px;line-height:1.75}.kv{font-size:13px;grid-template-columns:84px 1fr;gap:7px 8px}.card{border-color:var(--erow-border);border-radius:6px}.card h3{font-size:14px!important}.card h3 .mini{font-size:11px}table.dt{font-size:12px}table.dt th{background:#eff5fd}table.dt td{padding:10px 8px}
+.btn{font-size:13px;min-height:32px;border-radius:4px}.btn.sm{font-size:12px;min-height:29px}.btn.pri{background:#2563eb;border-color:#2563eb}.btn.pri:hover{background:#1d4ed8}.btn:focus-visible,.ph button:focus-visible,.row:focus-visible{outline:2px solid #8bb3ff;outline-offset:2px}.row .ops{max-width:26%}.card .btn{white-space:nowrap}
+@media(max-width:1300px){.g3{grid-template-columns:235px minmax(0,1fr) 310px;gap:10px}main{padding:14px 12px}.pane-b,.pane-b.tall{padding:10px}.brand{font-size:13px}nav{margin-left:4px}nav button{font-size:12px;padding:5px 7px}.items .it{font-size:10.8px}.row{gap:5px}.nm{font-size:13px}.who{display:none}}
+.fade{animation:none!important;opacity:1!important}.pane-b,.pane-b.tall{max-height:calc(100vh - 204px)} @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="brand">项目管理协同平台<span>分部分项规划</span></div>
+  <nav id="nav"></nav>
+  <div class="who">项目负责人 A</div>
+  <button id="btnReset">重置</button>
+</header>
+
+<main>
+  <section class="view" id="v-ai"></section>
+  <section class="view" id="v-review"></section>
+  <section class="view" id="v-tree"></section>
+  <section class="view" id="v-manual"></section>
+  <section class="view" id="v-rule"></section>
+</main>
+
+<div class="mask" id="mask"><div class="modal" id="modal"></div></div>
+<div id="toast"></div>
+
+<script>
+/* =========================================================
+   0. 工具
+   ========================================================= */
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let toastTimer = null;
+function toast(msg){
+  const t = $('#toast'); t.textContent = msg; t.classList.add('on');
+  clearTimeout(toastTimer); toastTimer = setTimeout(()=>t.classList.remove('on'), 2600);
+}
+const PRJS = { 'PRJ-DEMO-ESS':'某储能示范项目' };
+/* 作业部位 = 具体实例（哪个舱区 / 哪个配电室）；与作业颗粒正交 */
+const POS = {
+  'POS-BAY1':'1# 电池舱区（20 台）',
+  'POS-BAY2':'2# 电池舱区（预留扩建）',
+  'POS-PCS' :'PCS 升压舱区',
+  'POS-SUB' :'35kV 配电装置室',
+  'POS-MAIN':'110kV 主变区',
+  'POS-CTRL':'集控楼 · 二次设备室',
+  'POS-SITE':'全站 / 站区道路'
+};
+/* 作业对象 = 类型字典（设备/系统/区域/材料），不是具体实例 */
+const OBJS = { DEVICE:'设备', SYSTEM:'系统', AREA:'区域', MATERIAL:'材料' };
+
+/* =========================================================
+   1. 数据：项目规划阶段（上下文）
+   ========================================================= */
+const PHASES = [
+  { code:'PH1', name:'前期与可研',   state:'DONE', ms:'接入批复 08/22', hint:'已完成：接入系统批复、可研评审、选址与用地预审' },
+  { code:'PH2', name:'设计与采购',   state:'DONE', ms:'设备定标 09/30', hint:'已完成：初设评审、电池舱/PCS/主变定标、长周期设备下单' },
+  { code:'PH3', name:'土建施工',     state:'DOING', ms:'基础交安 11/28', hint:'当前阶段：需拆解为分部分项，并落到作业颗粒 + 作业部位' },
+  { code:'PH4', name:'设备安装',     state:'TODO', ms:'电池舱吊装 12/18', hint:'待土建交安后拆解：舱体吊装、舱间连接、PCS 就位' },
+  { code:'PH5', name:'电气调试并网', state:'TODO', ms:'全站并网 01/15', hint:'待安装完成后拆解：分系统调试、涉网试验、并网' },
+  { code:'PH6', name:'竣工与移交',   state:'TODO', ms:'移交生产 02/10', hint:'收尾阶段：消缺、资料移交、性能考核' }
+];
+
+/* 现有结构（用于冲突检测） */
+const EXIST = [
+  { code:'SD-0101', name:'场地平整与土方开挖', type:'I', progress:100 },
+  { code:'SD-0103', name:'接地网施工',         type:'I', progress:35 }
+];
+
+/* =========================================================
+   2. 数据：AI 候选结构（分部 → 分项 → 颗粒建议）
+   ========================================================= */
+const CANDS = [
+  {
+    id:'n1', lvl:1, type:'S', name:'土建与基础工程', conf:0.95,
+    basis:{ kind:'LIB', ref:'企业分部标准库 · 电化学储能电站 v2.1 · SD-01 土建与基础',
+            sim:0.96, rule:'标准库同名分部直接匹配；单位取库默认「m³」，按 110kV 升压站 + 20 台电池舱规模折算；权重取同规模项目均值 0.26' },
+    obj:'AREA', pos:'POS-BAY1', uom:'m³', qty:1860, weight:0.26,
+    kids:[
+      { id:'n1-1', name:'电池舱基础', conf:0.93, obj:'AREA', pos:'POS-BAY1', uom:'m³', qty:820,
+        basis:{ kind:'LIB', ref:'标准库 · SD-01-01 预制舱设备基础', sim:0.94, rule:'20 台电池舱 × 单舱基础 41 m³ 折算，含垫层与独立基础' },
+        items:[{name:'基础垫层浇筑',qty:120,uom:'m³',pos:'POS-BAY1'},
+               {name:'独立基础混凝土浇筑',qty:640,uom:'m³',pos:'POS-BAY1'},
+               {name:'预埋件与接地扁钢安装',qty:60,uom:'套',pos:'POS-BAY1'}] },
+      { id:'n1-2', name:'PCS 升压舱基础', conf:0.90, obj:'AREA', pos:'POS-PCS', uom:'m³', qty:380,
+        basis:{ kind:'LIB', ref:'标准库 · SD-01-02 PCS/升压舱基础', sim:0.91, rule:'按同类项目与本项目 PCS 舱规模估算，包含筏板与电缆沟预埋，工程量须结合设计复核' },
+        items:[{name:'筏板基础混凝土浇筑',qty:280,uom:'m³',pos:'POS-PCS'},
+               {name:'电缆沟预埋与盖板',qty:80,uom:'m',pos:'POS-PCS'},
+               {name:'舱体接地连接',qty:12,uom:'处',pos:'POS-PCS'}] },
+      { id:'n1-3', name:'接地网施工', conf:0.92, obj:'AREA', pos:'POS-SITE', uom:'m', qty:4200,
+        basis:{ kind:'LIB', ref:'标准库 · SD-01-05 接地装置（水平接地体）', sim:0.92, rule:'按站区面积与土壤电阻率估算水平接地体长度，与现有分项同名' },
+        conflict:{ target:'SD-0103 接地网施工（现有分项 · 进度 35%）',
+                   suggest:'不重复建分项：合并到现有 SD-0103，继承已完成的 1,470 m 与已批检验批记录' },
+        items:[{name:'水平接地体敷设',qty:3600,uom:'m',pos:'POS-SITE'},
+               {name:'接地极打入',qty:600,uom:'根',pos:'POS-SITE'}] }
+    ]
+  },
+  {
+    id:'n2', lvl:1, type:'S', name:'储能系统设备安装', conf:0.90,
+    basis:{ kind:'HIST', ref:'历史项目：×× 50MW/100MWh 储能电站（2024）· 结构相似度 0.89',
+            sim:0.89, rule:'电池舱 + PCS 舱的安装分部划分与该历史项目一致（同厂家 20 尺舱型），复用其分项与颗粒模板' },
+    obj:'DEVICE', pos:'POS-BAY1', uom:'台', qty:32, weight:0.38,
+    kids:[
+      { id:'n2-1', name:'电池舱吊装就位', conf:0.88, obj:'DEVICE', pos:'POS-BAY1', uom:'台', qty:20,
+        basis:{ kind:'HIST', ref:'历史项目 · 电池舱安装（20 台同型舱）', sim:0.90, rule:'按舱型与数量直接复用；单台拆为吊装、找平固定、舱间连接三个颗粒' },
+        items:[{name:'电池舱吊装就位',qty:20,uom:'台',pos:'POS-BAY1'},
+               {name:'舱体找平与螺栓固定',qty:20,uom:'台',pos:'POS-BAY1'},
+               {name:'舱间动力电缆连接',qty:19,uom:'处',pos:'POS-BAY1'}] },
+      { id:'n2-2', name:'PCS 升压舱安装', conf:0.86, obj:'DEVICE', pos:'POS-PCS', uom:'台', qty:12,
+        basis:{ kind:'HIST', ref:'历史项目 · PCS 舱安装', sim:0.87, rule:'同型舱复用历史颗粒划分；吊装与就位复核分列' },
+        items:[{name:'PCS 舱吊装就位',qty:12,uom:'台',pos:'POS-PCS'},
+               {name:'舱内设备就位复核',qty:12,uom:'台',pos:'POS-PCS'}] }
+    ]
+  },
+  {
+    id:'n3', lvl:1, type:'S', name:'电气一次与集电线路', conf:0.86,
+    basis:{ kind:'RULE', ref:'拆解规则 · R-11 独立电压等级 / 独立系统须单列分部', sim:0.86,
+            rule:'工程描述含 35kV 集电线路与 110kV 送出，按规则将电气一次单列，避免与土建混算权重' },
+    obj:'SYSTEM', pos:'POS-SUB', uom:'面', qty:44, weight:0.24,
+    kids:[
+      { id:'n3-1', name:'35kV 配电装置安装', conf:0.87, obj:'SYSTEM', pos:'POS-SUB', uom:'面', qty:18,
+        basis:{ kind:'LIB', ref:'标准库 · SD-03-02 35kV 开关柜安装', sim:0.88, rule:'按配电室开关柜数量匹配；母线连接按段单列' },
+        items:[{name:'35kV 开关柜就位安装',qty:18,uom:'面',pos:'POS-SUB'},
+               {name:'母线连接与耐压试验',qty:6,uom:'段',pos:'POS-SUB'}] },
+      { id:'n3-2', name:'主变及升压站设备安装', conf:0.85, obj:'SYSTEM', pos:'POS-MAIN', uom:'台', qty:8,
+        basis:{ kind:'HIST', ref:'历史项目 · 110kV 主变与 GIS 安装', sim:0.85, rule:'主变 2 台、GIS 6 个间隔，与历史项目配置一致' },
+        items:[{name:'主变本体就位',qty:2,uom:'台',pos:'POS-MAIN'},
+               {name:'GIS 间隔安装',qty:6,uom:'间隔',pos:'POS-MAIN'}] },
+      { id:'n3-3', name:'直流侧电缆敷设与接线', conf:0.80, obj:'MATERIAL', pos:'POS-BAY1', uom:'m', qty:8600,
+        basis:{ kind:'RULE', ref:'拆解规则 · R-09 电缆按回路单列', sim:0.80,
+                rule:'规则命中，但工程描述未给出回路数与长度；量值按历史项目单舱均值估算，需人工核实' },
+        items:[{name:'直流电缆敷设',qty:7200,uom:'m',pos:'POS-BAY1'},
+               {name:'电缆头制作与接线',qty:96,uom:'个',pos:'POS-BAY1'}] }
+    ]
+  },
+  {
+    id:'n4', lvl:1, type:'S', name:'消防与暖通', conf:0.79,
+    basis:{ kind:'HIST', ref:'历史项目：×× 储能电站消防工程（2023）· 相似度 0.79',
+            sim:0.79, rule:'描述仅提及「消防验收」，未明确灭火介质（气体 / 水喷雾），按历史项目补建但需人工确认方案' },
+    obj:'SYSTEM', pos:null, uom:'套', qty:0, weight:0,
+    warn:['缺作业部位：未指定消防分区实例'],
+    kids:[
+      { id:'n4-1', name:'气体灭火系统', conf:0.76, obj:'SYSTEM', pos:null, uom:'套', qty:0,
+        basis:{ kind:'HIST', ref:'历史项目 · 预制舱七氟丙烷灭火', sim:0.76, rule:'历史项目采用七氟丙烷，本项目介质未定，量值留空' },
+        warn:['缺颗粒：未定义可计量工作','缺部位：舱区未指定'],
+        items:[] }
+    ]
+  },
+  {
+    id:'n5', lvl:1, type:'S', name:'电气二次与并网调试', conf:0.74,
+    basis:{ kind:'HIST', ref:'历史项目：×× 储能电站二次与涉网试验（2023）· 相似度 0.74',
+            sim:0.74, rule:'描述仅含「并网调试」一句，未列调度数据网、AGC/AVC、一次调频范围；按历史项目补建但置信度低于阈值' },
+    obj:'SYSTEM', pos:'POS-CTRL', uom:'面', qty:0, weight:0,
+    kids:[
+      { id:'n5-1', name:'监控与调度数据网接入', conf:0.72, obj:'SYSTEM', pos:'POS-CTRL', uom:'面', qty:0,
+        basis:{ kind:'RULE', ref:'拆解规则 · R-14 涉网系统单列', sim:0.72, rule:'规则命中，但无同类项目历史支撑，须人工确认范围与屏柜数量' },
+        warn:['量值待定：屏柜数量未给出'],
+        items:[] }
+    ]
+  }
+];
+
+/* 量值展示：工程量 + 单位（储能场景以 m³ / 台 / 套 / m / 面 / 处 计量，不用工时） */
+const fmtQ = q => Number(q).toLocaleString('en-US');
+const qtyTxt = n => n.qty ? fmtQ(n.qty) + (n.uom ? ' ' + n.uom : '') : '量值待定';
+const objName = o => OBJS[o] || '—';
+
+/* =========================================================
+   3. 状态
+   ========================================================= */
+const S = {
+  view:'ai',
+  phase:'PH3',
+  desc:'某储能示范项目 EPC：20 台电池舱（20 尺预制舱）+ 12 台 PCS 升压舱；35kV 集电、110kV 送出；站区接地网已开工；消防介质与并网调试范围待业主确认。',
+  depth:'ITEM',
+  running:false, stepIdx:0, generated:true,
+  sel:'n1',
+  adState:{},        // id -> 'PICK' | 'IGN' | 'MERGED'
+  mergedTo:{},       // id -> 现有节点 code
+  adopted:false,
+  formal:[],         // 落库后的正式节点
+  logs:[]
+};
+
+/* =========================================================
+   4. 计算
+   ========================================================= */
+function flatCands(){
+  const out = [];
+  CANDS.forEach(p=>{
+    out.push(p);
+    (p.kids||[]).forEach(k=>out.push(k));
+  });
+  return out;
+}
+const isPick = id => S.adState[id] === 'PICK';
+const isIgn  = id => S.adState[id] === 'IGN';
+const isMerged = id => S.adState[id] === 'MERGED';
+const confCls = c => c >= 0.85 ? 'h' : c >= 0.8 ? 'm' : 'l';
+
+function nodeById(id){ return flatCands().find(n=>n.id===id) || null; }
+function kidsOf(id){ const p = CANDS.find(x=>x.id===id); return p ? (p.kids||[]) : []; }
+
+function stats(){
+  const all = flatCands();
+  const pending = all.filter(n=>!S.adState[n.id]);
+  const pick = all.filter(n=>isPick(n.id));
+  const low = all.filter(n=>n.conf < 0.85);
+  const dup = all.filter(n=>n.conflict);
+  const warn = all.filter(n=>n.warn && n.warn.length);
+  const items = pick.reduce((a,n)=>a + ((n.items&&n.items.length)||0), 0);
+  return { all, pending, pick, low, dup, warn, items };
+}
+
+function projName(code){ return PRJS[code] || code; }
+
+/* =========================================================
+   5. 渲染：导航
+   ========================================================= */
+const VIEWS = [
+  {k:'ai', n:'AI 拆解'},
+  {k:'review', n:'审核与采纳'},
+  {k:'tree', n:'落库结果'},
+  {k:'manual', n:'手工编排'},
+  {k:'rule', n:'边界与留痕'}
+];
+
+function renderNav(){
+  const st = stats();
+  const badge = { review: st.pending.length, rule: S.logs.length };
+  $('#nav').innerHTML = VIEWS.map(v=>{
+    const b = badge[v.k] || 0;
+    return `<button data-act="go" data-v="${v.k}" class="${S.view===v.k?'on':''}">${v.n}${b?`<i>${b}</i>`:''}</button>`;
+  }).join('');
+}
+
+/* =========================================================
+   6. 视图 A：AI 拆解
+   ========================================================= */
+function renderAI(){
+  const gen = S.generated && !S.running;
+  const sel = nodeById(S.sel);
+
+  let h = `<div class="page-h"><h1>AI 分部分项规划工作台</h1>
+    <span class="desc">按阶段生成分部、分项与作业颗粒，查看依据后确认采纳</span>
+    <div class="spacer"></div>
+    ${S.adopted
+      ? `<span class="chip c-green">已采纳并落库</span><button class="btn sm ghost" data-act="go" data-v="tree">查看落库结果 ›</button>`
+      : `<span class="chip ${gen?'c-blue':'c-gray'}">${gen?'候选结构已生成':'尚未生成'}</span>`}
+  </div>
+
+  <div class="g3">
+    <!-- 左：上下文 -->
+    <div class="pane">
+      <div class="pane-h">拆解上下文<span class="mini">项目规划阶段</span></div>
+      <div class="pane-b">
+        <label class="f">当前项目</label>
+        <input type="text" value="某储能示范项目 · PRJ-DEMO-ESS" readonly style="background:#f8fafc;color:#64748b">
+
+        <label class="f">选择要拆解的项目规划阶段</label>
+        <div class="ph">
+          ${PHASES.map(p=>`<button class="${S.phase===p.code?'on':''} ${p.state==='DONE'?'done':''}" data-act="phase" data-c="${p.code}">
+            <span class="dot"></span>${p.name}<span class="n">${p.ms.split(' ').pop()}</span></button>`).join('')}
+        </div>
+        <div class="tiny muted" style="margin-top:6px">${(PHASES.find(p=>p.code===S.phase)||{}).hint||''}</div>
+
+        <label class="f">需求 / 工程描述（AI 唯一输入源）</label>
+        <textarea id="desc">${esc(S.desc)}</textarea>
+        <div class="tiny muted" style="margin-top:4px">粘贴招标范围、初设说明或施工组织设计要点，AI 只依据此文本与企业标准库拆解，不臆造范围。</div>
+
+        <label class="f">拆解深度</label>
+        <select id="depth">
+          <option value="SUB" ${S.depth==='SUB'?'selected':''}>仅分部（粗排，快速估算）</option>
+          <option value="ITEM" ${S.depth==='ITEM'?'selected':''}>分部 + 分项 + 颗粒建议（推荐）</option>
+          <option value="STD" ${S.depth==='STD'?'selected':''}>到分项并带标准配置（工艺标准 / 检验批检查项 / 强制性条文）</option>
+        </select>
+
+        <label class="f">参考知识源</label>
+        <div class="tiny" style="display:flex;flex-direction:column;gap:4px;color:#475569">
+          <label style="display:flex;gap:6px;align-items:center"><input type="checkbox" checked disabled>企业分部标准库 · 电化学储能电站 v2.1</label>
+          <label style="display:flex;gap:6px;align-items:center"><input type="checkbox" checked disabled>历史项目结构（8 个已归档储能项目）</label>
+          <label style="display:flex;gap:6px;align-items:center"><input type="checkbox" checked disabled>拆解规则库 · R-01～R-18</label>
+        </div>
+
+        <div style="margin-top:12px;display:flex;gap:7px">
+          <button class="btn pri" style="flex:1" data-act="gen" ${S.running?'disabled':''}>
+            ${S.running?'拆解中…':(S.generated?'重新拆解':'开始 AI 拆解')}</button>
+        </div>
+        <div class="tiny muted" style="margin-top:7px;line-height:1.7">
+          拆解只生成<b>候选结构</b>，不写库。采纳动作由人完成，写入后为「计划草稿」，基线仍需 PM 定版。
+        </div>
+      </div>
+    </div>
+
+    <!-- 中：候选结构 -->
+    <div class="pane">
+      <div class="pane-h">AI 候选结构
+        <span class="mini">${gen?`${stats().all.length} 节点 · 置信度加权 ${(stats().all.reduce((a,b)=>a+b.conf,0)/stats().all.length).toFixed(2)}`:'等待生成'}</span>
+      </div>
+      <div class="pane-b tall">
+        ${S.running ? renderSteps() : (S.generated ? renderCandTree() : renderEmptyState())}
+      </div>
+    </div>
+
+    <!-- 右：依据 -->
+    <div class="pane">
+      <div class="pane-h">拆解依据<span class="mini">每个结论必须可回溯</span></div>
+      <div class="pane-b">
+        ${gen && sel ? renderBasis(sel) : `<div class="empty"><b>未选中节点</b>生成后点左侧任意节点，这里显示它的拆解依据</div>`}
+      </div>
+    </div>
+  </div>`;
+
+  $('#v-ai').innerHTML = h;
+}
+
+function renderEmptyState(){
+  return `<div class="empty" style="padding:54px 14px">
+    <b>还没有候选结构</b>
+    选择阶段、确认需求描述后点「开始 AI 拆解」<br>
+    <span class="tiny">AI 输出：分部 / 分项 / 颗粒建议 / 计划默认值（草稿）· 全部带依据</span>
+  </div>`;
+}
+
+function renderSteps(){
+  const steps = ['读取项目规划阶段与需求描述','匹配企业标准库与历史项目结构','套用拆解规则并生成颗粒建议','标注置信度、冲突与缺失要素'];
+  return `<div class="steps">${steps.map((s,i)=>{
+    const cls = i < S.stepIdx ? 'ok' : i === S.stepIdx ? 'run' : '';
+    return `<div class="step ${cls}"><span class="ic"></span>${s}${i<S.stepIdx?'<span class="tiny muted" style="margin-left:auto">完成</span>':''}</div>`;
+  }).join('')}</div>`;
+}
+
+function renderCandTree(){
+  const st = stats();
+  let h = `<div class="banner" style="margin:0 0 8px">
+      <div><b>候选结构 ${st.all.length} 个节点</b>（${CANDS.length} 分部 / ${CANDS.reduce((a,p)=>a+(p.kids||[]).length,0)} 分项 / ${st.all.reduce((a,n)=>a+((n.items&&n.items.length)||0),0)} 颗粒建议）。
+      置信度 <span class="conf h">≥0.85 可批量</span> <span class="conf l">&lt;0.85 须逐条</span>；
+      <b>红框</b>=与现有结构重合（只建议合并，不覆盖）。</div>
+    </div>`;
+
+  CANDS.forEach(p=>{
+    const ign = isIgn(p.id), pick = isPick(p.id), mg = isMerged(p.id);
+    h += `<div class="row fade ${S.sel===p.id?'sel':''} ${ign?'ign':''}" data-act="sel" data-id="${p.id}">
+      <input type="checkbox" class="input-check" data-act="pick" data-id="${p.id}" ${pick?'checked':''} ${ign?'disabled':''}>
+      <span class="tg tgS">S</span>
+      <span class="nm b">${esc(p.name)}</span>
+      <span class="conf ${confCls(p.conf)}">${p.conf.toFixed(2)}</span>
+      <span class="basis">
+        <b class="${p.basis.kind==='LIB'?'lib':p.basis.kind==='HIST'?'hist':'rule'}">${p.basis.kind==='LIB'?'库':p.basis.kind==='HIST'?'史':'规'}</b>
+      </span>
+      ${p.conflict?`<span class="chip c-red">重合</span>`:''}
+      ${mg?'<span class="chip c-gray">已合并</span>':''}
+      <span class="ops">
+        <span class="tiny muted">${p.qty?qtyTxt(p):''}</span>
+      </span>
+    </div>`;
+
+    if(!ign && !mg){
+      (p.kids||[]).forEach(k=>{
+        const kIgn = isIgn(k.id), kPick = isPick(k.id);
+        h += `<div class="row l2 fade ${S.sel===k.id?'sel':''} ${kIgn?'ign':''}" data-act="sel" data-id="${k.id}">
+          <input type="checkbox" class="input-check" data-act="pick" data-id="${k.id}" ${kPick?'checked':''} ${kIgn?'disabled':''}>
+          <span class="tg tgI">I</span>
+          <span class="nm">${esc(k.name)}</span>
+          <span class="conf ${confCls(k.conf)}">${k.conf.toFixed(2)}</span>
+          <span class="basis"><b class="${k.basis.kind==='LIB'?'lib':k.basis.kind==='HIST'?'hist':'rule'}">${k.basis.kind==='LIB'?'库':k.basis.kind==='HIST'?'史':'规'}</b></span>
+          ${k.linkTo?`<span class="chip c-teal">关联 ${k.linkTo}</span>`:''}
+          ${(k.warn||[]).map(w=>`<span class="chip c-amber">${esc(w)}</span>`).join('')}
+          <span class="ops"><span class="tiny muted">${qtyTxt(k)}</span></span>
+        </div>`;
+        if((k.items||[]).length && !kIgn){
+          h += `<div class="items">${k.items.map(it=>`<span class="it">${esc(it.name)} · ${fmtQ(it.qty)} ${esc(it.uom||'')} · <span class="pos">${esc(POS[it.pos]||'未定')}</span></span>`).join('')}</div>`;
+        }
+      });
+    }
+  });
+
+  h += `<div style="display:flex;gap:7px;margin-top:11px;align-items:center">
+    <button class="btn pri" data-act="adoptBatch">采纳置信度 ≥0.85（${CANDS.flatMap(p=>[p,...(p.kids||[])]).filter(n=>n.conf>=0.85 && !n.conflict && !(n.warn&&n.warn.length) && !S.adState[n.id]).length} 项）</button>
+    <button class="btn" data-act="go" data-v="review">逐条审核 ›</button>
+    <span class="tiny muted" style="margin-left:auto">采纳不代表发布：落库为「计划草稿」</span>
+  </div>`;
+  return h;
+}
+
+function renderBasis(n){
+  const kindName = n.basis.kind==='LIB' ? '企业标准库' : n.basis.kind==='HIST' ? '历史项目' : '拆解规则';
+  const kindCls  = n.basis.kind==='LIB' ? 'lib' : n.basis.kind==='HIST' ? 'hist' : 'rule';
+  const parent = flatCands().find(x => x.id === n.id);
+  const kids = kidsOf(n.id);
+
+  let h = `<div style="display:flex;align-items:center;gap:7px;margin-bottom:9px">
+    <span class="tg ${n.type==='S'?'tgS':'tgI'}">${n.type}</span>
+    <b style="font-size:13px">${esc(n.name)}</b>
+    <span class="conf ${confCls(n.conf)}" style="margin-left:auto">${n.conf.toFixed(2)}</span>
+  </div>`;
+
+  h += `<div class="basis-card">
+    <div class="bh"><b class="${kindCls}" style="font-size:9.8px;padding:0 5px;line-height:16px;border-radius:4px;border:1px solid">${n.basis.kind==='LIB'?'库':n.basis.kind==='HIST'?'史':'规'}</b>
+      ${kindName} · 匹配度 ${(n.basis.sim*100).toFixed(0)}%</div>
+    <div class="bt">${esc(n.basis.ref)}</div>
+    <div class="bd">${esc(n.basis.rule)}</div>
+  </div>`;
+
+  h += `<div class="card" style="padding:9px 10px;margin-bottom:9px">
+    <h3 style="font-size:12px;margin-bottom:7px">计划默认值 <span class="mini">草稿，待 PM 定版</span></h3>
+    <dl class="kv">
+      <dt>计量单位</dt><dd>${esc(n.uom||'—')}</dd>
+      <dt>计划量值</dt><dd>${n.qty?qtyTxt(n):'<span style="color:#b45309">待定</span>'}</dd>
+      <dt>权重</dt><dd>${n.weight?n.weight.toFixed(2):'<span style="color:#b45309">待定</span>'}</dd>
+      <dt>作业对象</dt><dd>${n.obj?esc(objName(n.obj)):'—'}</dd>
+      <dt>作业部位</dt><dd>${n.pos?esc(POS[n.pos]):'<span style="color:#b42318">未指定</span>'}</dd>
+    </dl>
+  </div>`;
+
+  if(kids.length){
+    h += `<div class="card" style="padding:9px 10px;margin-bottom:9px">
+      <h3 style="font-size:12px;margin-bottom:6px">推导出的分项 <span class="mini">${kids.length} 项</span></h3>
+      <table class="dt"><thead><tr><th>分项</th><th style="width:52px">置信</th><th style="width:56px">量值</th></tr></thead><tbody>
+      ${kids.map(k=>`<tr><td>${esc(k.name)}</td><td><span class="conf ${confCls(k.conf)}">${k.conf.toFixed(2)}</span></td><td class="sub">${k.qty?qtyTxt(k):'待定'}</td></tr>`).join('')}
+      </tbody></table></div>`;
+  }
+
+  if((n.items||[]).length){
+    h += `<div class="card" style="padding:9px 10px;margin-bottom:9px">
+      <h3 style="font-size:12px;margin-bottom:6px">颗粒建议 <span class="mini">落到最小可计量</span></h3>
+      <table class="dt"><thead><tr><th>颗粒</th><th style="width:86px">工程量</th><th style="width:96px">作业部位</th></tr></thead><tbody>
+      ${n.items.map(it=>`<tr><td>${esc(it.name)}</td><td class="sub">${fmtQ(it.qty)} ${esc(it.uom||'')}</td><td class="sub">${esc(POS[it.pos]||'未定')}</td></tr>`).join('')}
+      </tbody></table></div>`;
+  }
+
+  if(n.conflict){
+    h += `<div class="banner amber" style="margin-bottom:9px">
+      <div><b>与现有结构重合：</b>${esc(n.conflict.target)}<br>
+      <b>AI 建议：</b>${esc(n.conflict.suggest)}<br>
+      <span class="tiny">重合不覆盖——采纳时走「合并」动作，保留已有进度与单据。</span></div>
+    </div>`;
+  }
+  if((n.warn||[]).length){
+    h += `<div class="banner amber" style="margin-bottom:9px"><div><b>缺失要素：</b>${n.warn.map(esc).join('；')}<br>
+      <span class="tiny">缺要素的节点不可批量采纳，须补全后人工确认。</span></div></div>`;
+  }
+
+  h += `<div style="display:flex;gap:6px;flex-wrap:wrap">
+    <button class="btn pri sm" data-act="adoptOne" data-id="${n.id}">采纳此节点</button>
+    <button class="btn sm" data-act="rename" data-id="${n.id}">改写名称</button>
+    <button class="btn sm ghost" data-act="ignore" data-id="${n.id}">忽略</button>
+    ${n.conflict?`<button class="btn sm" data-act="merge" data-id="${n.id}">合并到现有</button>`:''}
+  </div>`;
+
+  h += `<div class="tiny muted" style="margin-top:10px;line-height:1.75">
+    AI 边界：不写基线计划、不生成责任人、不自动发布；本次结论保存在「边界与留痕」，可撤销。
+  </div>`;
+  return h;
+}
+
+/* =========================================================
+   7. 视图 B：审核与采纳
+   ========================================================= */
+function renderReview(){
+  const st = stats();
+  const dupList  = st.all.filter(n=>n.conflict);
+  const warnList = st.all.filter(n=>n.warn && n.warn.length);
+  const lowList  = st.all.filter(n=>n.conf<0.85);
+  const okList   = st.all.filter(n=>n.conf>=0.85 && !n.conflict && !(n.warn&&n.warn.length));
+
+  let h = `<div class="page-h"><h1>审核与采纳</h1>
+    <span class="desc">AI 出候选，人做决策：冲突只建议合并、缺要素不可批量、低置信逐条确认</span>
+    <div class="spacer"></div><button class="btn ghost sm" data-act="go" data-v="ai">‹ 回到候选结构</button></div>
+
+  <div class="kpis">
+    <div class="kpi k1"><label>候选节点</label><b>${st.all.length}<small>个</small></b></div>
+    <div class="kpi k2"><label>可直接批量采纳</label><b>${okList.filter(n=>!S.adState[n.id]).length}<small>项 ≥0.85</small></b></div>
+    <div class="kpi k3"><label>低置信需确认</label><b>${lowList.length}<small>项 &lt;0.85</small></b></div>
+    <div class="kpi k3"><label>缺失要素</label><b>${warnList.length}<small>项</small></b></div>
+    <div class="kpi k4"><label>与现有重合</label><b>${dupList.length}<small>项</small></b></div>
+  </div>
+
+  <div class="banner"><div><b>采纳规则：</b>批量采纳只处理「置信度 ≥0.85 且无冲突、无缺要素」的节点；冲突节点走合并、缺要素节点先补全、低置信节点必须逐条看依据。
+  已采纳 ${st.pick.length} 项，采纳后写入「计划草稿」，<b>基线仍需 PM 定版</b>。</div></div>
+
+  <div class="g3" style="grid-template-columns:1fr 336px">
+    <div class="card">
+      <h3>待处理清单 <span class="mini">按风险排序：重合 → 缺要素 → 低置信 → 其余</span></h3>
+      <div class="rlist">
+        ${dupList.map(n=>ritem(n,'dup','与现有结构重合', n.conflict.target + '。' + n.conflict.suggest,
+          `<button class="btn sm" data-act="merge" data-id="${n.id}">合并到现有</button>
+           <button class="btn sm ghost" data-act="adoptOne" data-id="${n.id}">仍新建</button>`)).join('')}
+        ${warnList.map(n=>ritem(n,'warn','缺失要素', (n.warn||[]).join('；'),
+          `<button class="btn sm pri" data-act="fix" data-id="${n.id}">补全要素</button>
+           <button class="btn sm ghost" data-act="ignore" data-id="${n.id}">忽略</button>`)).join('')}
+        ${lowList.filter(n=>!(n.warn&&n.warn.length) && !n.conflict).map(n=>ritem(n,'low','置信度 ' + n.conf.toFixed(2) + ' 低于阈值', n.basis.rule,
+          `<button class="btn sm pri" data-act="adoptOne" data-id="${n.id}">确认采纳</button>
+           <button class="btn sm ghost" data-act="ignore" data-id="${n.id}">忽略</button>`)).join('')}
+        ${okList.filter(n=>!S.adState[n.id]).map(n=>ritem(n,'ok','可直接采纳', n.basis.ref + ' · 匹配 ' + (n.basis.sim*100).toFixed(0) + '%',
+          `<button class="btn sm" data-act="adoptOne" data-id="${n.id}">采纳</button>`)).join('')}
+        ${(dupList.length+warnList.length+lowList.length+okList.length)===0 ? '<div class="empty">全部节点已处理</div>' : ''}
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>采纳预览 <span class="mini">写入前确认</span></h3>
+      <dl class="kv" style="grid-template-columns:96px 1fr">
+        <dt>新建分部</dt><dd>${st.pick.filter(n=>n.type==='S' && !isMerged(n.id)).length} 个</dd>
+        <dt>新建分项</dt><dd>${st.pick.filter(n=>n.type==='I').length} 个</dd>
+        <dt>颗粒建议</dt><dd>${st.items} 个</dd>
+        <dt>合并到现有</dt><dd>${st.all.filter(n=>isMerged(n.id)).length} 个</dd>
+        <dt>忽略</dt><dd>${st.all.filter(n=>isIgn(n.id)).length} 个</dd>
+        <dt>写入状态</dt><dd>计划草稿（非基线）</dd>
+      </dl>
+      <div class="banner amber" style="margin:10px 0 0"><div><b>提醒：</b>落库只写结构与计划默认值，权重需 PM 合计校核（Σ权重应=1.00）。</div></div>
+      <div style="display:flex;gap:7px;margin-top:11px">
+        <button class="btn pri" style="flex:1" data-act="apply" ${st.pick.length?'':'disabled'}>写入正式结构（${st.pick.length}）</button>
+      </div>
+      <button class="btn ghost sm" style="width:100%;margin-top:7px" data-act="adoptBatch">批量采纳 ≥0.85</button>
+    </div>
+  </div>`;
+  $('#v-review').innerHTML = h;
+}
+
+function ritem(n, cls, title, desc, ops){
+  return `<div class="rit ${cls==='ok'?'':cls}">
+    <span class="tg ${n.type==='S'?'tgS':'tgI'}" style="margin-top:1px">${n.type}</span>
+    <div style="min-width:0">
+      <div class="rt">${esc(n.name)} <span class="chip ${cls==='ok'?'c-green':cls==='dup'?'c-red':'c-amber'}">${esc(title)}</span>
+        <span class="conf ${confCls(n.conf)}">${n.conf.toFixed(2)}</span></div>
+      <div class="rd">${esc(desc)}</div>
+    </div>
+    <div class="ra">${ops}</div>
+  </div>`;
+}
+
+/* =========================================================
+   8. 视图 C：落库结果
+   ========================================================= */
+function parentOf(n){
+  return CANDS.find(x=>n.id.startsWith(x.id+'-')) || null;
+}
+function ensureParent(n){
+  if(n.type!=='I') return;
+  const p = parentOf(n);
+  if(p && !S.adState[p.id]){
+    S.adState[p.id] = 'PICK';
+    addLog('带出', p.name, '子分项已采纳，父分部自动带出', p.conf);
+  }
+}
+function buildFormal(){
+  flatCands().filter(n=>n.type==='I' && isPick(n.id)).forEach(ensureParent);
+  const segMap = {};
+  const out = [];
+  CANDS.forEach(p=>{
+    if(isPick(p.id)){
+      const merged = isMerged(p.id);
+      const code = merged ? ((p.conflict&&p.conflict.target||'').split(' ')[0] || 'MERGED') : 'AI-' + p.id.toUpperCase();
+      segMap[p.id] = code;
+      out.push({ code, name:p.name, type:'S', merged,
+                 qty:p.qty, weight:p.weight, pos:p.pos, items:(p.items||[]).length, ai:true });
+    }
+  });
+  flatCands().filter(n=>n.type==='I' && isPick(n.id)).forEach(n=>{
+    out.push({ code:'AI-' + n.id.toUpperCase(), name:n.name, type:'I',
+               parent: segMap[n.id.split('-')[0]] || null,
+               linked:n.linkTo||'', qty:n.qty, pos:n.pos, items:n.items||[], ai:true });
+  });
+  return out;
+}
+
+function renderTree(){
+  const st = stats();
+  const wt = buildFormal().filter(n=>n.type==='S').reduce((a,b)=>a+(b.weight||0),0);
+
+  let h = `<div class="page-h"><h1>落库结果</h1>
+    <span class="desc">AI 候选 → 人工采纳 → 结构与计划草稿写入；粒度为作业颗粒，部位与颗粒正交</span>
+    <div class="spacer"></div>
+    <span class="chip ${S.adopted?'c-green':'c-amber'}">${S.adopted?'计划草稿 · 待 PM 定版':'尚未写入'}</span>
+  </div>`;
+
+  if(!S.adopted){
+    h += `<div class="card"><div class="empty" style="padding:44px 10px"><b>还没有落库</b>
+      先在「审核与采纳」里处理冲突与缺要素，再写入正式结构<br>
+      <button class="btn pri sm" style="margin-top:9px" data-act="go" data-v="review">去审核 ›</button></div></div>`;
+    $('#v-tree').innerHTML = h; return;
+  }
+
+  const formal = buildFormal();
+  const segs = formal.filter(n=>n.type==='S' && !n.merged);
+  const mergedNodes = formal.filter(n=>n.type==='S' && n.merged);
+  const itemsN = formal.reduce((a,b)=>a+((b.items&&b.items.length)?b.items.length:b.items||0),0);
+
+  h += `<div class="kpis">
+    <div class="kpi k1"><label>新建分部</label><b>${segs.length}<small>个</small></b></div>
+    <div class="kpi k1"><label>新建分项</label><b>${formal.filter(n=>n.type==='I').length}<small>个</small></b></div>
+    <div class="kpi k2"><label>颗粒建议</label><b>${itemsN}<small>个</small></b></div>
+    <div class="kpi k3"><label>权重合计</label><b>${wt.toFixed(2)}<small>${Math.abs(wt-1)<0.01?'✓ 校验通过':'⚠ 需校核'}</small></b></div>
+    <div class="kpi k4"><label>合并到现有</label><b>${mergedNodes.length}<small>个</small></b></div>
+  </div>
+
+  <div class="banner green"><div><b>写入完成：</b>结构 + 计划默认值（草稿）+ 颗粒建议已落库；<b>基线未定版</b>，权重与工期需 PM 复核后定版才生效。继承企业标准 ${S.adopted?9:0} 条（工艺标准 4 · 检验批检查项 3 · 强制性条文 2）。</div></div>
+
+  <div class="g3" style="grid-template-columns:minmax(460px,1fr) 380px">
+    <div class="card">
+      <h3>结构树 <span class="mini">单位工程 → 分部（新建）→ 分项 → 颗粒</span></h3>
+      <div class="ftree">
+        <div class="fr" data-act="fsel" data-code="PRJ-DEMO-ESS"><span class="tg tgW">U</span><span class="nm b">某储能示范项目</span>
+          <span class="tiny muted">单位工程</span><span class="pbar"><i style="width:24%"></i></span><span class="pct">24%</span></div>
+        ${formal.filter(n=>n.type==='S').map(seg=>{
+          const kids = formal.filter(k=>k.type==='I' && k.parent===seg.code);
+          const mk = seg.merged ? '<span class="chip c-gray">合并现有</span>' : '<span class="newmk">AI 新建</span>';
+          return `<div class="fr l2" data-act="fsel" data-code="${seg.code}">
+              <span class="tg tgS">S</span><span class="nm b">${esc(seg.name)}</span>${mk}
+              <span class="tiny muted">${seg.qty?qtyTxt(seg):''}</span>
+              <span class="tiny muted" style="margin-left:auto">权重 ${seg.weight?seg.weight.toFixed(2):'—'}</span></div>
+            ${kids.map(k=>`<div class="fr l3" data-act="fsel" data-code="${k.code}">
+              <span class="tg tgI">I</span><span class="nm">${esc(k.name)}</span>
+              ${k.linked?`<span class="chip c-teal">关联 ${k.linked}</span>`:''}
+              <span class="tiny muted">${qtyTxt(k)}</span>
+              <span class="tiny muted" style="margin-left:auto">${k.pos?esc(POS[k.pos]):'<span style="color:#b42318">缺部位</span>'}</span></div>
+              ${(k.items&&k.items.length)?`<div class="items">${k.items.map(it=>`<span class="it">${esc(it.name)} · ${fmtQ(it.qty)} ${esc(it.uom||'')} · <span class="pos">${esc(POS[it.pos]||'未定')}</span></span>`).join('')}</div>`:''}
+            `).join('')}`;
+        }).join('')}
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>写入台账 <span class="mini">可追溯到依据</span></h3>
+      <table class="dt"><thead><tr><th>动作</th><th>节点</th><th style="width:52px">置信</th></tr></thead><tbody>
+        ${S.logs.filter(l=>l.act!=='撤销').slice(-9).reverse().map(l=>`<tr>
+          <td><span class="chip ${l.act==='合并'?'c-gray':'c-green'}">${l.act}</span></td>
+          <td>${esc(l.node)}<div class="tiny muted">${esc(l.ref)}</div></td>
+          <td class="sub">${l.conf?l.conf.toFixed(2):'—'}</td></tr>`).join('') ||
+          '<tr><td colspan="3" class="sub">暂无记录</td></tr>'}
+      </tbody></table>
+      <div class="tiny muted" style="margin-top:9px;line-height:1.7">
+        记录保存：采纳人、时间、置信度、依据快照（来源 + 匹配度）。撤销只回滚结构与计划草稿，不回滚已产生的日志。
+      </div>
+    </div>
+  </div>`;
+  $('#v-tree').innerHTML = h;
+}
+
+/* =========================================================
+   9. 视图 D：手工编排
+   ========================================================= */
+const TPLS = [
+  { code:'TPL-ESS-STD', name:'电化学储能电站标准结构模板 v2.1', nodes:'6 分部 / 24 分项 / 96 颗粒', scope:'企业级（只读）' },
+  { code:'TPL-EPC',     name:'新能源 EPC 总承包交付模板', nodes:'5 分部 / 18 分项 / 74 颗粒', scope:'企业级（只读）' },
+  { code:'TPL-LOCAL',   name:'本项目复用：×× 50MW/100MWh 储能电站（2024）', nodes:'上次采纳结果', scope:'项目级（可改）' }
+];
+
+function renderManual(){
+  let h = `<div class="page-h"><h1>手工编排</h1>
+    <span class="desc">AI 拆解是加速器，不是唯一入口：模板套用 / 手工增补 / 删除校验</span>
+    <div class="spacer"></div><span class="chip c-gray">与 AI 拆解同一张结构表</span></div>
+
+  <div class="g3" style="grid-template-columns:1fr 1fr">
+    <div class="card">
+      <h3>模板套用 <span class="mini">模板只管结构骨架 + 计划默认值</span></h3>
+      <div class="rlist">
+        ${TPLS.map(t=>`<div class="rit">
+          <div style="min-width:0"><div class="rt">${esc(t.name)}</div>
+            <div class="rd">${esc(t.nodes)} · ${esc(t.scope)}</div></div>
+          <div class="ra"><button class="btn sm" data-act="tpl" data-c="${t.code}">差异预览</button></div>
+        </div>`).join('')}
+      </div>
+      <div class="tiny muted" style="margin-top:9px;line-height:1.7">
+        实例化 = 深度复制 + 生成流水编码 + 同步写 BASELINE 计划；模板升级不影响已生成项目，走差异预览人工确认。
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>手工增补节点 <span class="mini">AI 没拆到的，人来补</span></h3>
+      <label class="f">父节点</label>
+      <select id="mParent">
+        <option value="PRJ-DEMO-ESS">某储能示范项目（L1 单位工程）</option>
+        ${S.adopted?buildFormal().filter(n=>n.type==='S').map(n=>`<option value="${n.code}">${esc(n.name)}（分部）</option>`).join(''):''}
+      </select>
+      <label class="f">节点名称</label>
+      <input type="text" id="mName" placeholder="如：站区道路与电缆沟">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <div><label class="f">类型</label>
+          <select id="mType"><option value="S">分部</option><option value="I">分项</option><option value="K">作业颗粒</option></select></div>
+        <div><label class="f">计划工程量</label><input type="number" id="mQty" value="120" min="0" step="10"></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <div><label class="f">计量单位</label>
+          <select id="mUom"><option value="m³">m³（混凝土/土方）</option><option value="m">m（电缆/管线/接地）</option>
+            <option value="台">台（设备/舱体）</option><option value="套">套（系统/装置）</option>
+            <option value="面">面（屏柜/开关柜）</option><option value="处">处（连接/接地点）</option></select></div>
+        <div><label class="f">作业对象</label>
+          <select id="mObj"><option value="DEVICE">设备</option><option value="SYSTEM">系统</option>
+            <option value="AREA">区域</option><option value="MATERIAL">材料</option></select></div>
+      </div>
+      <label class="f">作业部位（具体实例，与颗粒正交）</label>
+      <select id="mPos"><option value="">未指定（缺要素，后续必补）</option>
+        ${Object.entries(POS).map(([k,v])=>`<option value="${k}">${esc(v)}</option>`).join('')}</select>
+      <div style="display:flex;gap:7px;margin-top:11px">
+        <button class="btn pri" data-act="addNode">新增节点</button>
+        <button class="btn ghost" data-act="go" data-v="ai">用 AI 补拆 ›</button>
+      </div>
+      <div class="banner amber" style="margin-top:10px"><div><b>缺要素提醒：</b>手工新增未选作业部位时，节点会带「缺部位」标记，不能进入进度计算。</div></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:11px">
+    <h3>删除校验 <span class="mini">四重校验：子节点 / 单据 / 未完结任务 / 依赖</span></h3>
+    <table class="dt"><thead><tr><th>节点</th><th style="width:90px">子节点</th><th style="width:90px">单据</th><th style="width:110px">未完结任务</th><th style="width:80px">依赖</th><th style="width:120px">操作</th></tr></thead><tbody>
+      ${(S.adopted?buildFormal():[]).map(n=>{
+        const sub = formalChildren(n.code), docs = n.type==='I'?2:1, tasks = n.type==='I'?1:0, dep = n.type==='I'?1:0;
+        const blocked = sub>0 || docs>0 || tasks>0 || dep>0;
+        return `<tr><td><b>${esc(n.name)}</b><div class="tiny muted">${n.code}</div></td>
+          <td class="sub">${sub}</td><td class="sub">${docs}</td><td class="sub">${tasks}</td><td class="sub">${dep}</td>
+          <td>${blocked
+            ? `<button class="btn sm ghost" data-act="delChk" data-c="${n.code}" data-n="${esc(n.name)}">校验 · 仅可归档</button>`
+            : `<button class="btn sm danger" data-act="delChk" data-c="${n.code}" data-n="${esc(n.name)}">校验 · 可删除</button>`}</td></tr>`;
+      }).join('') || '<tr><td colspan="6" class="sub">尚无正式节点（先采纳 AI 候选或手工新增）</td></tr>'}
+    </tbody></table>
+  </div>`;
+  $('#v-manual').innerHTML = h;
+}
+function formalChildren(code){
+  return buildFormal().filter(n=>n.parent === code).length;
+}
+
+/* =========================================================
+   10. 视图 E：边界与留痕
+   ========================================================= */
+const RULES = [
+  ['R1','不写基线','AI 只产出候选与「计划草稿」；BASELINE 计划必须由 PM 定版，AI 无权设定基线','硬约束'],
+  ['R2','依据必带','每个节点、分项、颗粒建议都必须挂依据快照（标准库条目 / 历史项目 / 规则编号 + 匹配度）','硬约束'],
+  ['R3','冲突不覆盖','与现有结构重合时只给合并建议，绝不覆盖已有进度、单据与任务','硬约束'],
+  ['R4','低置信须人工','置信度 < 0.85 不得批量采纳，必须逐条查看依据后人工确认','硬约束'],
+  ['R5','缺要素不落库','缺作业部位 / 缺颗粒 / 量值为 0 的节点不能进入进度计算，必须先补全','硬约束'],
+  ['R6','不生成责任人','分派属于责任项目 PM 的人事权，AI 不指定责任人，只给工种 / 班组 / 负载建议','硬约束'],
+  ['R7','可撤销','采纳动作可整体撤销（回滚结构与计划草稿），日志保留不被抹除','能力'],
+  ['R8','企业库只读','企业标准库与历史项目为只读知识源，AI 不改库；项目内的修正另存为项目级结构','能力']
+];
+
+function renderRule(){
+  let h = `<div class="page-h"><h1>边界与留痕</h1>
+    <span class="desc">AI 帮拆解，不替决策：规则清单 + 全量采纳台账 + 撤销</span>
+    <div class="spacer"></div>
+    <button class="btn ghost sm" data-act="undo">撤销最近一次采纳</button></div>
+
+  <div class="kpis">
+    <div class="kpi k1"><label>拆解轮次</label><b>${S.generated?1:0}<small>次</small></b></div>
+    <div class="kpi k2"><label>人工采纳</label><b>${S.logs.filter(l=>l.act!=='撤销').length}<small>条</small></b></div>
+    <div class="kpi k3"><label>合并而非新建</label><b>${S.logs.filter(l=>l.act==='合并').length}<small>条</small></b></div>
+    <div class="kpi k4"><label>撤销</label><b>${S.logs.filter(l=>l.act==='撤销').length}<small>次</small></b></div>
+    <div class="kpi"><label>基线变更</label><b>0<small>AI 从不改基线</small></b></div>
+  </div>
+
+  <div class="g3" style="grid-template-columns:1.05fr 1fr">
+    <div class="card">
+      <h3>AI 边界规则 <span class="mini">8 条 · 评审基线</span></h3>
+      <table class="dt"><thead><tr><th style="width:40px">编号</th><th style="width:110px">主题</th><th>规则</th><th style="width:70px">类型</th></tr></thead><tbody>
+        ${RULES.map(r=>`<tr><td class="mono">${r[0]}</td><td><b>${r[1]}</b></td><td class="sub">${r[2]}</td>
+          <td><span class="chip ${r[3]==='硬约束'?'c-red':'c-gray'}">${r[3]}</span></td></tr>`).join('')}
+      </tbody></table>
+    </div>
+
+    <div class="card">
+      <h3>采纳台账 <span class="mini">追加式，不删除</span></h3>
+      <table class="dt"><thead><tr><th style="width:66px">时间</th><th style="width:54px">动作</th><th>节点</th><th style="width:52px">置信</th></tr></thead><tbody>
+        ${S.logs.slice().reverse().map(l=>`<tr>
+          <td class="sub mono">${l.t}</td>
+          <td><span class="chip ${l.act==='撤销'?'c-red':l.act==='合并'?'c-gray':'c-green'}">${l.act}</span></td>
+          <td>${esc(l.node)}<div class="tiny muted">${esc(l.ref)}</div></td>
+          <td class="sub">${l.conf?l.conf.toFixed(2):'—'}</td></tr>`).join('') ||
+          '<tr><td colspan="4" class="sub">暂无记录，去「AI 拆解」生成候选并采纳</td></tr>'}
+      </tbody></table>
+      <div class="tiny muted" style="margin-top:9px;line-height:1.7">
+        依据快照随日志保存：来源类型、来源条目、匹配度、规则编号、置信度——评审时可逐条回溯「AI 为什么这么拆」。
+      </div>
+    </div>
+  </div>`;
+  $('#v-rule').innerHTML = h;
+}
+
+/* =========================================================
+   11. 交互
+   ========================================================= */
+function addLog(act, node, ref, conf){
+  const d = new Date();
+  const t = `${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`;
+  S.logs.push({ t, act, node, ref, conf });
+}
+
+function adoptNode(id, silent){
+  const n = nodeById(id); if(!n) return;
+  if(n.conflict && !silent){
+    // 冲突节点：采纳 = 合并
+    S.adState[id] = 'MERGED'; S.mergedTo[id] = n.conflict.target;
+    addLog('合并', n.name, n.basis.ref, n.conf);
+    toast(`「${n.name}」与现有结构重合 → 已按合并处理（不重复建分部）`);
+  }else{
+    S.adState[id] = 'PICK';
+    addLog('采纳', n.name, n.basis.ref, n.conf);
+    ensureParent(n);
+    if(!silent) toast(`已采纳「${n.name}」→ 计划草稿`);
+  }
+  renderNav(); render();
+}
+
+function adoptBatch(){
+  if(!S.generated){ toast('请先执行 AI 拆解'); return; }
+  const list = flatCands().filter(n=>n.conf>=0.85 && !n.conflict && !(n.warn&&n.warn.length) && !S.adState[n.id]);
+  if(!list.length){ toast('没有可批量采纳的节点（≥0.85 且无冲突、无缺要素）'); return; }
+  list.forEach(n=>{ S.adState[n.id]='PICK'; addLog('采纳', n.name, n.basis.ref, n.conf); ensureParent(n); });
+  renderNav(); render();
+  toast(`批量采纳 ${list.length} 项（低置信 / 冲突 / 缺要素节点已跳过，需逐条处理）`);
+}
+
+function applyFormal(){
+  const st = stats();
+  if(!st.pick.length){ toast('尚未采纳任何节点'); return; }
+  S.adopted = true;
+  addLog('写入', '正式结构', '计划草稿 · 待 PM 定版', null);
+  go('tree');
+  toast('已写入正式结构（计划草稿），基线待 PM 定版');
+}
+
+function openModal(html){ $('#modal').innerHTML = html; $('#mask').classList.add('on'); }
+function closeModal(){ $('#mask').classList.remove('on'); }
+
+function delCheck(code, name){
+  const sub = formalChildren(code);
+  const rows = [
+    ['子节点', sub ? sub+' 个未迁出' : '无', !!sub],
+    ['已审批单据', '2 张（隐蔽验收 / 检验批）', true],
+    ['未完结任务', '1 项进行中', true],
+    ['前置/后续依赖', '1 条 TECH 工艺依赖', true]
+  ];
+  openModal(`<div class="modal-h">删除校验 · ${esc(name)}<span class="x" data-act="close">×</span></div>
+    <div class="modal-b">
+      <div class="banner amber"><div><b>四重校验命中，不可物理删除。</b>只能转为归档（可逆）：解码不变、展示码顺延、可随时恢复。</div></div>
+      ${rows.map(r=>`<div class="chk"><span class="r ${r[2]?'no':'yes'}">${r[2]?'阻断':'通过'}</span>
+        <div><b>${r[0]}</b>：${esc(r[1])}</div></div>`).join('')}
+      <div class="tiny muted" style="margin-top:9px">归档后：子节点与单据保留并悬挂；未完结任务需先移交；依赖置 SUSPENDED，归档可逆则依赖可逆。</div>
+    </div>
+    <div class="modal-f"><button class="btn ghost" data-act="close">取消</button>
+      <button class="btn pri" data-act="archive">转为归档</button></div>`);
+}
+
+function fixNode(id){
+  const n = nodeById(id); if(!n) return;
+  openModal(`<div class="modal-h">补全要素 · ${esc(n.name)}<span class="x" data-act="close">×</span></div>
+    <div class="modal-b">
+      <div class="banner amber"><div><b>缺什么：</b>${(n.warn||[]).join('；')}。补全后才可进入进度计算。</div></div>
+      <label class="f">作业部位</label>
+      <select id="fxPos"><option value="">请选择部位</option>
+        ${Object.entries(POS).map(([k,v])=>`<option value="${k}">${esc(v)}</option>`).join('')}</select>
+      <label class="f">颗粒（逗号分隔，最少 1 个）</label>
+      <input type="text" id="fxItems" placeholder="如：柜体就位,二次接线,单体调试">
+      <label class="f">计划工程量</label>
+      <input type="number" id="fxQty" value="0" min="0" step="10">
+      <div class="tiny muted" style="margin-top:8px">补全动作视为人工输入，会写入台账（动作=补全），AI 不改写你填的值。</div>
+    </div>
+    <div class="modal-f"><button class="btn ghost" data-act="close">取消</button>
+      <button class="btn pri" data-act="doFix" data-id="${id}">补全并采纳</button></div>`);
+}
+
+function doFix(id){
+  const n = nodeById(id); if(!n) return;
+  const pos = $('#fxPos').value;
+  const itemsRaw = $('#fxItems').value.trim();
+  const qty = +$('#fxQty').value || 0;
+  if(!pos || !itemsRaw){ toast('部位与颗粒为必填项'); return; }
+  n.pos = pos; n.qty = qty;
+  n.items = itemsRaw.split(/[,，]/).map(x=>x.trim()).filter(Boolean).map(x=>({ name:x, qty: Math.max(1, Math.round(qty/2)), uom:n.uom, pos }));
+  n.warn = [];
+  S.adState[id] = 'PICK';
+  addLog('补全', n.name, '人工补全：部位 + 颗粒 + 量值', n.conf);
+  ensureParent(n);
+  closeModal(); renderNav(); render();
+  toast(`「${n.name}」要素已补全并采纳`);
+}
+
+/* 生成流程（分步动画） */
+function runGen(){
+  if(S.running) return;
+  S.running = true; S.stepIdx = 0; S.generated = false;
+  S.adState = {}; S.mergedTo = {};
+  S.sel = 'n1';
+  render();
+  const tick = () => {
+    S.stepIdx++;
+    if(S.stepIdx >= 4){
+      S.running = false; S.generated = true;
+      render();
+      addLog('拆解', (PHASES.find(p=>p.code===S.phase)||{}).name||'土建施工', '标准库 v2.1 + 历史储能项目 8 个 + 规则 R-01～R-18', null);
+      renderNav();
+      toast(`候选结构已生成：${CANDS.length} 分部 / ${CANDS.reduce((a,p)=>a+(p.kids||[]).length,0)} 分项 · 请审核依据后采纳`);
+      return;
+    }
+    render();
+    setTimeout(tick, 520);
+  };
+  setTimeout(tick, 620);
+}
+
+/* =========================================================
+   12. 路由 / 事件
+   ========================================================= */
+function go(v){ S.view = v; render(); }
+function render(){
+  $$('.view').forEach(x=>x.classList.toggle('on', x.id === 'v-' + S.view));
+  renderNav();
+  if(S.view==='ai') renderAI();
+  else if(S.view==='review') renderReview();
+  else if(S.view==='tree') renderTree();
+  else if(S.view==='manual') renderManual();
+  else renderRule();
+}
+
+document.addEventListener('click', e=>{
+  const t = e.target.closest('[data-act]');
+  if(!t) return;
+  const act = t.dataset.act;
+  if(act==='go'){ go(t.dataset.v); return; }
+  if(act==='phase'){ S.phase = t.dataset.c; render(); toast('已切换拆解阶段：' + (PHASES.find(p=>p.code===S.phase)||{}).name); return; }
+  if(act==='gen'){ runGen(); return; }
+  if(act==='sel'){ S.sel = t.dataset.id; render(); return; }
+  if(act==='pick'){
+    const id = t.dataset.id;
+    if(S.adState[id]){ delete S.adState[id]; }
+    else { S.adState[id]='PICK'; const n=nodeById(id); addLog('采纳', n.name, n.basis.ref, n.conf); ensureParent(n); }
+    renderNav(); render(); return;
+  }
+  if(act==='adoptOne'){ adoptNode(t.dataset.id); return; }
+  if(act==='merge'){
+    const n = nodeById(t.dataset.id);
+    S.adState[n.id] = 'MERGED';
+    addLog('合并', n.name, n.conflict.target, n.conf);
+    renderNav(); render(); toast(`已合并到现有节点：${n.conflict.target}`);
+    return;
+  }
+  if(act==='ignore'){
+    const n = nodeById(t.dataset.id);
+    S.adState[n.id] = 'IGN'; addLog('忽略', n.name, '人工忽略：' + n.basis.ref, n.conf);
+    renderNav(); render(); toast(`已忽略「${n.name}」`); return;
+  }
+  if(act==='rename'){
+    const n = nodeById(t.dataset.id);
+    const v = prompt('改写节点名称（AI 建议名 → 人工确认名）', n.name);
+    if(v && v.trim()){ n.name = v.trim(); addLog('改写', n.name, '人工改写自：' + n.basis.ref, n.conf); renderNav(); render(); toast('名称已改写（留痕）'); }
+    return;
+  }
+  if(act==='adoptBatch'){ adoptBatch(); return; }
+  if(act==='apply'){ applyFormal(); return; }
+  if(act==='fix'){ fixNode(t.dataset.id); return; }
+  if(act==='doFix'){ doFix(t.dataset.id); return; }
+  if(act==='close'){ closeModal(); return; }
+  if(act==='archive'){ closeModal(); toast('已转为归档（可逆）：解码不变、展示码顺延、可随时恢复'); return; }
+  if(act==='delChk'){ delCheck(t.dataset.c, t.dataset.n); return; }
+  if(act==='tpl'){
+    const tp = TPLS.find(x=>x.code===t.dataset.c);
+    openModal(`<div class="modal-h">模板差异预览 · ${esc(tp.name)}<span class="x" data-act="close">×</span></div>
+      <div class="modal-b">
+        <div class="banner"><div><b>差异三态：</b>新增 14 · 跳过 8 · 冲突 0。跳过行必须写保留理由（有进度 / 项目已自定义权重）。</div></div>
+        <table class="dt"><thead><tr><th>节点</th><th style="width:66px">差异</th><th>处理</th></tr></thead><tbody>
+          <tr><td>接地网施工</td><td><span class="chip c-gray">跳过</span></td><td class="sub">已有进度 35%、已批检验批 2 份，保留项目值</td></tr>
+          <tr><td>电池舱基础</td><td><span class="chip c-green">新增</span></td><td class="sub">带计划默认值 820 m³ / 权重 0.26</td></tr>
+          <tr><td>消防与暖通</td><td><span class="chip c-green">新增</span></td><td class="sub">带颗粒：管网敷设 / 气体灭火装置 / 联动调试</td></tr>
+        </tbody></table>
+        <div class="tiny muted" style="margin-top:9px">实例化单事务执行：深度复制 → 生成流水码 → 写 BASELINE 计划；重复套用按 tpl_node_code 幂等比对。</div>
+      </div>
+      <div class="modal-f"><button class="btn ghost" data-act="close">取消</button>
+        <button class="btn pri" data-act="tplApply">确认套用</button></div>`);
+    return;
+  }
+  if(act==='tplApply'){ closeModal(); toast('已套用模板（POC 演示：真实实现为单事务差异写入）'); return; }
+  if(act==='addNode'){
+    const nm = ($('#mName').value||'').trim();
+    if(!nm){ toast('请填写节点名称'); return; }
+    const typ = $('#mType').value, qty = +$('#mQty').value||0, pos = $('#mPos').value;
+    const uom = ($('#mUom')||{}).value || '项', obj = ($('#mObj')||{}).value || null;
+    if(!S.adopted){ S.adopted = true; }
+    const code = 'MA-' + Math.random().toString(36).slice(2,7).toUpperCase();
+    S.logs.push({ t:new Date().toTimeString().slice(0,5), act:'手工新增', node:nm, ref:'人工新增 · ' + (pos?POS[pos]:'未指定部位'), conf:null });
+    addLog('手工新增', nm, '人工新增' + (pos?' · '+POS[pos]:' · 缺部位'), null);
+    // 直接进入正式结构（简化为 push 到 CANDS 的一个虚拟分部）
+    CANDS.push({ id:code.toLowerCase(), lvl:1, type: typ, name:nm, conf:1,
+      basis:{kind:'RULE', ref:'人工新增', sim:1, rule:'人工编排，不走 AI'},
+      obj:obj, pos:pos||null, uom:uom, qty:qty, weight:0, kids:[], items:[] });
+    S.adState[code.toLowerCase()] = 'PICK';
+    renderNav(); render();
+    toast(`已新增「${nm}」${pos?'':'（缺部位，不能进入进度计算）'}`);
+    return;
+  }
+  if(act==='undo'){
+    const last = [...S.logs].reverse().find(l=>l.act!=='撤销' && l.act!=='拆解');
+    if(!last){ toast('没有可撤销的采纳记录'); return; }
+    addLog('撤销', last.node, '撤销采纳，回滚结构与计划草稿', null);
+    S.adopted = false;
+    renderNav(); render();
+    toast(`已撤销「${last.node}」的采纳（日志保留）`);
+    return;
+  }
+});
+
+document.addEventListener('change', e=>{
+  if(e.target.id==='depth'){ S.depth = e.target.value; toast('拆解深度：' + e.target.selectedOptions[0].text); }
+});
+document.addEventListener('input', e=>{
+  if(e.target.id==='desc'){ S.desc = e.target.value; }
+});
+
+$('#mask').addEventListener('click', e=>{ if(e.target.id==='mask') closeModal(); });
+$('#btnReset').addEventListener('click', ()=>location.reload());
+
+/* =========================================================
+   13. 启动
+   ========================================================= */
+(function init(){
+  const p = new URLSearchParams(location.search);
+  const v = p.get('v');
+  if(v && VIEWS.some(x=>x.k===v)) S.view = v;
+  if(p.get('ph')) S.phase = p.get('ph');
+  if(p.get('gen')==='1'){ S.generated = true; }
+  if(p.get('adopt')==='1'){
+    S.generated = true;
+    flatCands().forEach(n=>{
+      if(n.conf>=0.85 && !n.conflict && !(n.warn&&n.warn.length)){ S.adState[n.id]='PICK'; }
+    });
+    CANDS.forEach(n=>{ if(n.conflict){ S.adState[n.id]='MERGED'; } });
+    S.adopted = true;
+    addLog('拆解','土建施工','标准库 v2.1 + 历史储能项目 + 规则库', null);
+    addLog('合并','接地网施工','SD-0103 接地网施工（现有分项 · 进度 35%）',0.92);
+    addLog('写入','正式结构','计划草稿 · 待 PM 定版', null);
+  }
+  render();
+  if(!S.generated && S.view==='ai'){
+    setTimeout(()=>toast('演示路径：选阶段 →「开始 AI 拆解」→ 点节点看依据 → 审核采纳 → 写入正式结构'), 700);
+  }
+})();
+</script>
+</body>
+</html>
+

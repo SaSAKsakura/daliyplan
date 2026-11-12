@@ -1,0 +1,132 @@
+{
+  "headers": [
+    {
+      "page": 10,
+      "title": "AI 站班会识别：谁到岗，资格够不够",
+      "position": {
+        "left": 60,
+        "top": 108,
+        "width": 760,
+        "height": 44
+      },
+      "fontSize": 36
+    },
+    {
+      "page": 11,
+      "title": "施工变更呈现：原图与现场对比",
+      "position": {
+        "left": 60,
+        "top": 108,
+        "width": 760,
+        "height": 44,
+        "rotation": 0,
+        "horizontalFlip": false,
+        "verticalFlip": false
+      },
+      "fontSize": 36
+    },
+    {
+      "page": 12,
+      "title": "智能体 05 · 分包队伍",
+      "position": {
+        "left": 60,
+        "top": 108,
+        "width": 760,
+        "height": 44
+      },
+      "fontSize": 36
+    },
+    {
+      "page": 13,
+      "title": "分包队伍 · 系统界面展示",
+      "position": {
+        "left": 60,
+        "top": 108,
+        "width": 760,
+        "height": 44
+      },
+      "fontSize": 36
+    },
+    {
+      "page": 14,
+      "title": "智能体 06 · 档案交付",
+      "position": {
+        "left": 60,
+        "top": 108,
+        "width": 760,
+        "height": 44
+      },
+      "fontSize": 36
+    },
+    {
+      "page": 15,
+      "title": "电子档案 · 档案文件",
+      "position": {
+        "left": 60,
+        "top": 108,
+        "width": 760,
+        "height": 44
+      },
+      "fontSize": 36
+    },
+    {
+      "page": 16,
+      "title": "电子档案 · 共用信息",
+      "position": {
+        "left": 60,
+        "top": 108,
+        "width": 760,
+        "height": 44
+      },
+      "fontSize": 36
+    },
+    {
+      "page": 17,
+      "title": "一个片区，四周跑通",
+      "position": {
+        "left": 60,
+        "top": 108,
+        "width": 760,
+        "height": 44
+      },
+      "fontSize": 36
+    }
+  ],
+  "comparisons": [
+    {
+      "page": 10,
+      "imageTop": 198,
+      "imageBottom": 648.5294488188977,
+      "rightTop": 198,
+      "rightBottom": 648.5294488188977
+    },
+    {
+      "page": 11,
+      "imageTop": 198,
+      "imageBottom": 649,
+      "rightTop": 198,
+      "rightBottom": 649
+    },
+    {
+      "page": 13,
+      "imageTop": 198,
+      "imageBottom": 600.9477165354331,
+      "rightTop": 198,
+      "rightBottom": 600.9477165354331
+    },
+    {
+      "page": 15,
+      "imageTop": 198,
+      "imageBottom": 587.3274540682414,
+      "rightTop": 198,
+      "rightBottom": 587.3274540682414
+    },
+    {
+      "page": 16,
+      "imageTop": 198,
+      "imageBottom": 587.5404724409449,
+      "rightTop": 198,
+      "rightBottom": 587.5404724409449
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "errors": [],
+  "requiredFieldValidation": true,
+  "issueConfirmation": true,
+  "passConfirmation": true,
+  "layouts": [
+    {
+      "width": 1920,
+      "doc": 1920,
+      "panels": [
+        {
+          "width": 246,
+          "scrollWidth": 246
+        },
+        {
+          "width": 1188,
+          "scrollWidth": 1188
+        },
+        {
+          "width": 412,
+          "scrollWidth": 412
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "doc": 1440,
+      "panels": [
+        {
+          "width": 246,
+          "scrollWidth": 246
+        },
+        {
+          "width": 708,
+          "scrollWidth": 708
+        },
+        {
+          "width": 412,
+          "scrollWidth": 412
+        }
+      ]
+    },
+    {
+      "width": 1200,
+      "doc": 1200,
+      "panels": [
+        {
+          "width": 208,
+          "scrollWidth": 208
+        },
+        {
+          "width": 594,
+          "scrollWidth": 594
+        },
+        {
+          "width": 348,
+          "scrollWidth": 348
+        }
+      ]
+    }
+  ]
+}

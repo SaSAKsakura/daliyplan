@@ -1,0 +1,24 @@
+{"kind":"deck","id":"pr/e38w0t","name":"Deck"}
+{"kind":"layout","id":"ly/atofqts7","editable":false,"name":"Master","type":"master"}
+{"kind":"layout","id":"ly/ux4ruhcv","editable":false,"name":"Title Slide","type":"title","placeholders":[{"name":"title","type":"title"},{"name":"subtitle","type":"subtitle"}]}
+{"kind":"layout","id":"ly/p83mt83u","editable":false,"name":"Section Header","type":"","placeholders":[{"name":"title","type":"title"}]}
+{"kind":"layout","id":"ly/4v2ps7ql","editable":false,"name":"Title and Body","type":"","placeholders":[{"name":"title","type":"title"},{"name":"body","type":"body"}]}
+{"kind":"layout","id":"ly/3yt8jipk","editable":false,"name":"Title and Two Column","type":"","placeholders":[{"name":"title","type":"title"},{"name":"Left column","type":"body"},{"name":"Right column","type":"body"}]}
+{"kind":"layout","id":"ly/elwrupwj","editable":false,"name":"Title and One Column","type":"","placeholders":[{"name":"title","type":"title"},{"name":"body","type":"body"}]}
+{"kind":"layout","id":"ly/14ra9krq","editable":false,"name":"Blank","type":"blank"}
+{"kind":"slide","id":"sl/y90nupkv","slideIndex":0,"layout":{"id":"ly/14ra9krq","name":"Blank"},"title":"01 ／ 公司介绍","textShapes":13,"backgroundColor":"rgba(255,255,255,1)"}
+{"kind":"textbox","id":"sh/547294r6","slideIndex":0,"position":{"left":60,"top":60,"width":1160,"height":20},"name":"栏目","text":"01 ／ 公司介绍","geometry":"rect","lineWidth":0,"style":{"fontSize":14,"typeface":"微软雅黑","color":"#64748B","alignment":"left"}}
+{"kind":"textbox","id":"sh/k3yl0zql","slideIndex":0,"position":{"left":60,"top":108,"width":1160,"height":44},"name":"标题","text":"我们的优势","geometry":"rect","lineWidth":0,"style":{"fontSize":36,"typeface":"微软雅黑","color":"#1C2A38","bold":true,"alignment":"left"}}
+{"kind":"textbox","id":"sh/7qp4be9c","slideIndex":0,"position":{"left":60,"top":166,"width":1160,"height":30},"name":"副标题","text":"电力工程领域的应用积累","geometry":"rect","lineWidth":0,"style":{"fontSize":19,"typeface":"微软雅黑","color":"#64748B","alignment":"left"}}
+{"kind":"textbox","id":"sh/65g3298r","slideIndex":0,"position":{"left":60,"top":302,"width":360,"height":108},"name":"指标数值0","text":"3.4万+","geometry":"rect","lineWidth":0,"style":{"fontSize":76,"typeface":"微软雅黑","color":"#123B61","bold":true,"alignment":"left"}}
+{"kind":"textbox","id":"sh/ts7md4r2","slideIndex":0,"position":{"left":60,"top":440,"width":360,"height":34},"name":"指标名称0","text":"目前准入的分包人员","geometry":"rect","lineWidth":0,"style":{"fontSize":22,"typeface":"微软雅黑","color":"#1C2A38","alignment":"left"}}
+{"kind":"textbox","id":"sh/sryl4zqx","slideIndex":0,"position":{"left":60,"top":488,"width":360,"height":28},"name":"指标单位0","text":"人","geometry":"rect","lineWidth":0,"style":{"fontSize":18,"typeface":"微软雅黑","color":"#64748B","alignment":"left"}}
+{"kind":"textbox","id":"sh/fu94fe98","slideIndex":0,"position":{"left":460,"top":302,"width":360,"height":108},"name":"指标数值1","text":"4.5万+","geometry":"rect","lineWidth":0,"style":{"fontSize":76,"typeface":"微软雅黑","color":"#123B61","bold":true,"alignment":"left"}}
+{"kind":"textbox","id":"sh/utg3698n","slideIndex":0,"position":{"left":460,"top":440,"width":360,"height":34},"name":"指标名称1","text":"两年内准入的分包人员","geometry":"rect","lineWidth":0,"style":{"fontSize":22,"typeface":"微软雅黑","color":"#1C2A38","alignment":"left"}}
+{"kind":"textbox","id":"sh/wn6dc7eh","slideIndex":0,"position":{"left":460,"top":488,"width":360,"height":28},"name":"指标单位1","text":"人","geometry":"rect","lineWidth":0,"style":{"fontSize":18,"typeface":"微软雅黑","color":"#64748B","alignment":"left"}}
+{"kind":"textbox","id":"sh/hofulsf2","slideIndex":0,"position":{"left":860,"top":302,"width":360,"height":108},"name":"指标数值2","text":"1,300+","geometry":"rect","lineWidth":0,"style":{"fontSize":76,"typeface":"微软雅黑","color":"#123B61","bold":true,"alignment":"left"}}
+{"kind":"textbox","id":"sh/ul4vaxgb","slideIndex":0,"position":{"left":860,"top":440,"width":360,"height":34},"name":"指标名称2","text":"目前准入的分包队伍","geometry":"rect","lineWidth":0,"style":{"fontSize":22,"typeface":"微软雅黑","color":"#1C2A38","alignment":"left"}}
+{"kind":"textbox","id":"sh/vmdcj2xw","slideIndex":0,"position":{"left":860,"top":488,"width":360,"height":28},"name":"指标单位2","text":"支","geometry":"rect","lineWidth":0,"style":{"fontSize":18,"typeface":"微软雅黑","color":"#64748B","alignment":"left"}}
+{"kind":"shape","id":"sh/3qxwn2x8","slideIndex":0,"position":{"left":60,"top":87.5,"width":1160,"height":0},"name":"统一页眉分隔线","geometry":"line","lineColor":"#D3DDE9","lineWidth":0.65}
+{"kind":"textbox","id":"sh/sfqdkrep","slideIndex":0,"position":{"left":1160,"top":675,"width":60,"height":20},"name":"统一页码","text":"04 ／ 20","geometry":"rect","lineWidth":0,"style":{"fontSize":14,"typeface":"微软雅黑","color":"#94A3B8","alignment":"right"}}
+{"kind":"notes","id":"nt/y90nupkv","slideIndex":0,"text":"数据来源：用户提供。展示采用向下取整的概数，原始数据为目前准入的分包人员34681人、两年内准入的分包人员45443人、目前准入的分包队伍1322支。统计截止日期未提供。"}

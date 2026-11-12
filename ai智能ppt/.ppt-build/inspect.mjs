@@ -1,0 +1,10 @@
+import fs from 'node:fs/promises';
+import { FileBlob, PresentationFile } from 'file:///C:/Users/MateBook%2014/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/dist/artifact_tool.mjs';
+const root = 'D:/工作文档/每月文档/正常工作/ai智能ppt';
+const p = await PresentationFile.importPptx(await FileBlob.load(`${root}/AI新能源设施建设场景方案v0.pptx`));
+console.log((await p.inspect({kind:'slide,textbox,shape,layout', search:'专业类型|作业部位|标准分部分项',maxChars:16000})).ndjson);
+const slide = p.slides.items[5];
+await fs.writeFile(`${root}/.ppt-build/before.png`,new Uint8Array(await (await p.export({slide,format:'png',scale:1.5})).arrayBuffer()));
+await fs.writeFile(`${root}/.ppt-build/before-layout.json`,await (await slide.export({format:'layout'})).text());
+await fs.writeFile(`${root}/.ppt-build/before-inspect.txt`,(await p.inspect({kind:'textbox,shape',maxChars:100000})).ndjson);
+console.log('rendered',p.slides.items.length);

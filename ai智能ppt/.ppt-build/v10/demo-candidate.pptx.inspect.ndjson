@@ -1,0 +1,23 @@
+{"kind":"deck","id":"pr/drk99j","name":"Deck"}
+{"kind":"layout","id":"ly/tsbit0b2","editable":false,"name":"Master","type":"master"}
+{"kind":"layout","id":"ly/ry103q5s","editable":false,"name":"Title Slide","type":"title","placeholders":[{"name":"title","type":"title"},{"name":"subtitle","type":"subtitle"}]}
+{"kind":"layout","id":"ly/oby9wn6d","editable":false,"name":"Section Header","type":"sectionHeader","placeholders":[{"name":"title","type":"title"}]}
+{"kind":"layout","id":"ly/snilgfu5","editable":false,"name":"Title and Body","type":"tx","placeholders":[{"name":"title","type":"title"},{"name":"body","type":"body"}]}
+{"kind":"layout","id":"ly/xc3ql0ri","editable":false,"name":"Title and Two Column","type":"twoColTx","placeholders":[{"name":"title","type":"title"},{"name":"Left column","type":"body"},{"name":"Right column","type":"body"}]}
+{"kind":"layout","id":"ly/3m9wvqpw","editable":false,"name":"Title and One Column","type":"tx","placeholders":[{"name":"title","type":"title"},{"name":"body","type":"body"}]}
+{"kind":"layout","id":"ly/kbmdk7ml","editable":false,"name":"Blank","type":"blank"}
+{"kind":"slide","id":"sl/74oz27","slideIndex":0,"layout":{"id":"ly/kbmdk7ml","name":"Blank"},"title":"分包队伍 · 系统界面","textShapes":2,"backgroundColor":"rgba(255,255,255,1)"}
+{"kind":"textbox","id":"sh/lg72t0f6","slideIndex":0,"position":{"left":60,"top":46,"width":1160,"height":48},"name":"界面展示标题","text":"分包队伍 · 系统界面","geometry":"rect","lineWidth":0,"style":{"fontSize":32,"typeface":"微软雅黑","color":"#1C2A38","bold":true,"alignment":"left"}}
+{"kind":"textbox","id":"sh/zepkrax0","slideIndex":0,"position":{"left":1140,"top":690,"width":80,"height":17},"name":"界面展示页码","text":"01 ／ 03","geometry":"rect","lineWidth":0,"style":{"fontSize":12,"typeface":"微软雅黑","color":"#94A3B8","alignment":"right"}}
+{"kind":"image","id":"im/ba5svidw","slideIndex":0,"position":{"left":90.33,"top":135,"width":1099.35,"height":535},"fit":"contain","name":"","alt":"分包队伍 · 系统界面"}
+{"kind":"notes","id":"nt/74oz27","slideIndex":0,"text":"界面来源：用户提供的系统截图。"}
+{"kind":"slide","id":"sl/e7gv69","slideIndex":1,"layout":{"id":"ly/kbmdk7ml","name":"Blank"},"title":"档案交付 · 档案文件","textShapes":2,"backgroundColor":"rgba(255,255,255,1)"}
+{"kind":"textbox","id":"sh/ahkr2l0n","slideIndex":1,"position":{"left":60,"top":46,"width":1160,"height":48},"name":"界面展示标题","text":"档案交付 · 档案文件","geometry":"rect","lineWidth":0,"style":{"fontSize":32,"typeface":"微软雅黑","color":"#1C2A38","bold":true,"alignment":"left"}}
+{"kind":"textbox","id":"sh/wj294vid","slideIndex":1,"position":{"left":1140,"top":690,"width":80,"height":17},"name":"界面展示页码","text":"02 ／ 03","geometry":"rect","lineWidth":0,"style":{"fontSize":12,"typeface":"微软雅黑","color":"#94A3B8","alignment":"right"}}
+{"kind":"image","id":"im/w3q5svad","slideIndex":1,"position":{"left":71.1,"top":135,"width":1137.81,"height":535},"fit":"contain","name":"","alt":"档案交付 · 档案文件"}
+{"kind":"notes","id":"nt/e7gv69","slideIndex":1,"text":"界面来源：用户提供的系统截图。"}
+{"kind":"slide","id":"sl/wga28c","slideIndex":2,"layout":{"id":"ly/kbmdk7ml","name":"Blank"},"title":"档案交付 · 共用信息","textShapes":2,"backgroundColor":"rgba(255,255,255,1)"}
+{"kind":"textbox","id":"sh/2pgnmh0b","slideIndex":2,"position":{"left":60,"top":46,"width":1160,"height":48},"name":"界面展示标题","text":"档案交付 · 共用信息","geometry":"rect","lineWidth":0,"style":{"fontSize":32,"typeface":"微软雅黑","color":"#1C2A38","bold":true,"alignment":"left"}}
+{"kind":"textbox","id":"sh/ory5orih","slideIndex":2,"position":{"left":1140,"top":690,"width":80,"height":17},"name":"界面展示页码","text":"03 ／ 03","geometry":"rect","lineWidth":0,"style":{"fontSize":12,"typeface":"微软雅黑","color":"#94A3B8","alignment":"right"}}
+{"kind":"image","id":"im/sjy5c729","slideIndex":2,"position":{"left":71.41,"top":135,"width":1137.19,"height":535},"fit":"contain","name":"","alt":"档案交付 · 共用信息"}
+{"kind":"notes","id":"nt/wga28c","slideIndex":2,"text":"界面来源：用户提供的系统截图。"}

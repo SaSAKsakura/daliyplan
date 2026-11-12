@@ -1,0 +1,24 @@
+{
+  "AdvantagesPage": 4,
+  "Static": true,
+  "NativeTables": [
+    {
+      "Top": 249.0,
+      "Rows": 3,
+      "Bottom": 309.75,
+      "Columns": 3,
+      "Name": "Table 87"
+    },
+    {
+      "Top": 357.0,
+      "Rows": 8,
+      "Bottom": 483.0,
+      "Columns": 3,
+      "Name": "Table 89"
+    }
+  ],
+  "InterfaceImages": 4,
+  "FoundationPage": 11,
+  "ReadOnly": true,
+  "SlideCount": 20
+}

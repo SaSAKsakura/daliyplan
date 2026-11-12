@@ -1,0 +1,12 @@
+import fs from 'node:fs/promises';
+import {FileBlob,PresentationFile} from 'file:///C:/Users/MateBook%2014/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/@oai/artifact-tool/dist/artifact_tool.mjs';
+const root='D:/工作文档/每月文档/正常工作/ai智能ppt',dir=`${root}/.ppt-build/merge-iot-20261105`;
+await fs.mkdir(dir,{recursive:true});
+const p=await PresentationFile.importPptx(await FileBlob.load(`${root}/output/AI新能源设施建设场景方案v14.pptx`));
+const s=p.slides.items[3];
+if(!s.shapes.items.some(x=>x.text.toString()==='逸视角 · 智能物联运行管理'))throw Error('Unexpected source page');
+const footer=s.shapes.items.find(x=>/^04\s*[／/]\s*19$/.test(x.text.toString()));if(!footer)throw Error('Footer not found');
+footer.text.replace('04 ／ 19','04 ／ 21');
+await fs.writeFile(`${dir}/page-4.png`,new Uint8Array(await(await p.export({slide:s,format:'png',scale:1.5})).arrayBuffer()));
+await(await PresentationFile.exportPptx(p)).save(`${dir}/source-edited.pptx`);
+console.log('Prepared existing editable IoT interface page for insertion after product overview.');
